@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@types/node": "^17.0.2",
+    "less": "^4.1.2",
     "vue": "^3.2.25",
     "vue-router": "4"
   },
