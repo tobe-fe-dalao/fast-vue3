@@ -4,13 +4,18 @@ import {
     RouteRecordRaw
 } from 'vue-router'
 import Home from '@/views/GithubNum.vue'
-
+import HelloWorld from '@/components/HelloWorld.vue'
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/home',
-        name: 'Home',
+        path: '/',
+        name: 'Index',
         component: Home
     },
+    {
+        path: '/hello',
+        name: 'Hello',
+        component: HelloWorld
+    }
 ]
 
 const router = createRouter({

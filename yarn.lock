@@ -1150,6 +1150,11 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
+perfume.js@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/perfume.js/-/perfume.js-6.3.0.tgz#c8fbbc306d6c050a1da767755190ffc0cd75132b"
+  integrity sha512-M9LTtPD6DfU0tswgmSDW6jBQdYLvmhu+5HmrnjG+aojnvjWKAszPoK0tNLbmmSILHm8GP2wcdozRuPnuUT6WlA==
+
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
