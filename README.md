@@ -1,4 +1,4 @@
-## 以Vue3+Ts+Vite+Pinia组合的高效开发套件
+## 以Vue3+Vite+Ts+Pinia组合的高效开发套件
 
 上面已提到Vite基于Ts语法，并且对Vue3天然的支持，加上尤大主推的[Pinia](https://pinia.vuejs.org/)作为vuex的最佳替代品。此套组合或成为22年Vue开发的最佳选择。我建个了[Vue3+Vite+Pinia的基础模板](https://github.com/MaleWeb/vue3-vite-ts) 供大家参考，后续也会加入一些工具包(自封装的)。这里只是基础，根据自己项目需求可以增加 Volar / Vue Router /   Vue Devtools / [VueUse](https://vueuse.org/) / Element Plus / NutUI。
 
