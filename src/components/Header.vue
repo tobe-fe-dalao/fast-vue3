@@ -31,7 +31,7 @@ const ThemeChange = (val: boolean) => {
                     <div class="relative flex items-center">
                         <a
                             class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto text-ms leading-6 font-semibold dark:text-slate-200"
-                            href
+                            href="https://github.com/MaleWeb"
                         >扫地盲僧</a>
                         <div class="relative hidden lg:flex items-center ml-auto">
                             <nav
@@ -41,12 +41,12 @@ const ThemeChange = (val: boolean) => {
                                     <li>
                                         <a
                                             class="hover:text-sky-500 dark:hover:text-sky-400"
-                                            href="#"
+                                            href="/"
                                         >Docs</a>
                                     </li>
                                     <li>
                                         <a
-                                            href="#"
+                                            href="/demo"
                                             class="hover:text-sky-500 dark:hover:text-sky-400"
                                         >Components</a>
                                     </li>
@@ -74,7 +74,7 @@ const ThemeChange = (val: boolean) => {
                                     target="_bank"
                                     class="ml-6 block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
                                 >
-                                    <SvgIcon name="svg-github" size="small" color='#999999' />
+                                    <SvgIcon name="svg-github" size="small" color="#999999" />
                                 </a>
                             </div>
                         </div>

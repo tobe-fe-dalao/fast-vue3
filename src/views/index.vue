@@ -4,14 +4,14 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:29:46
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-19 22:24:11
+ * @LastEditTime: 2022-01-19 22:33:49
 -->
 <script setup lang="ts">
 import Header from "@/components/Header.vue"
 import { version } from "../../package.json"
 import SvgIcon from "@/components/SvgIcon/index.vue"
-import request from '@/utils/http/axios/index.ts'
-import getGithubVersion from '@/utils/index.ts'
+import request from '../utils/http/axios'
+import getGithubVersion from '../utils'
 import { ref, onMounted, reactive } from 'vue'
 
 const vue3Version = ref('');
@@ -73,7 +73,6 @@ async function getversion(url: string) {
                             >
                                 <img
                                     :src="item.avatar"
-                                    alt
                                     class="w-12 h-12 rounded-full"
                                     loading="lazy"
                                 />
