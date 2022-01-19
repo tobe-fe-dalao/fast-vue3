@@ -18,7 +18,7 @@
 - .....
 
 ## 首页案例
-![](https://cdn.jsdelivr.net/gh/MaleWeb/vvtp/blob/main/src/assets/pages-index.jpg)
+![首页](https://cdn.jsdelivr.net/gh/MaleWeb/vvtp/blob/main/src/assets/pages-index.jpg)
 ### 工具包分享
 
 另外分享一下我们团队使用的技术包，可以大大团队提升研发效率
