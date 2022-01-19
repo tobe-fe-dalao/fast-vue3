@@ -1,7 +1,25 @@
+/*
+ * @GitHub: https://github.com/MaleWeb/vvtp
+ * @version: 
+ * @Author: 扫地盲僧
+ * @Date: 2022-01-19 16:19:27
+ * @LastEditors: BlindMonk
+ * @LastEditTime: 2022-01-19 20:51:36
+ */
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
 import './index.css'
+import ArcoVue from '@arco-design/web-vue';
+// 支持markdown 语法高亮
+import 'prismjs'
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-typescript'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-markup'
+import 'prismjs/components/prism-markup-templating'
+// 支持SVG
+import 'virtual:svg-icons-register';
 
-createApp(App).use(router).use(createPinia()).mount('#app')
+createApp(App).use(router).use(ArcoVue).use(createPinia()).mount('#app');

@@ -3,8 +3,9 @@ import {
     createWebHashHistory,
     RouteRecordRaw
 } from 'vue-router'
-import Home from '@/views/GithubNum.vue'
+import Home from '@/views/index.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
+import GithubDemo from '@/views/demo/GithubDemo.vue'
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
@@ -12,9 +13,9 @@ const routes: Array<RouteRecordRaw> = [
         component: Home
     },
     {
-        path: '/hello',
-        name: 'Hello',
-        component: HelloWorld
+        path: '/demo',
+        name: 'GithubDemo',
+        component: GithubDemo
     }
 ]
 
