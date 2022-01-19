@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-17 16:21:01
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-19 22:37:21
+ * @LastEditTime: 2022-01-19 22:40:06
 -->
 ## 以Vue3+Vite+Ts+Pinia组合的高效开发套件
 
@@ -18,7 +18,7 @@
 - .....
 
 ## 首页案例
-![](./src/assets/pages-index.jpgpages-index.jpg)
+![](https://cdn.jsdelivr.net/gh/MaleWeb/vvtp/blob/main/src/assets/pages-index.jpg)
 ### 工具包分享
 
 另外分享一下我们团队使用的技术包，可以大大团队提升研发效率
