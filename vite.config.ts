@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:19:27
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-19 20:59:53
+ * @LastEditTime: 2022-01-19 22:34:50
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -91,7 +91,7 @@ export default defineConfig({
     'process.env': {}
   }
 });
-function resovePath(paths) {
+function resovePath(paths: string) {
   // 如何 __dirname 找不到 需要 yarn add @types/node --save-dev
   return path.resolve(__dirname, paths);
 }
