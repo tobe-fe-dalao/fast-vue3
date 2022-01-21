@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:29:46
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 15:19:31
+ * @LastEditTime: 2022-01-21 19:27:53
 -->
 <script setup lang="ts">
 import Header from "@/components/Header.vue"
@@ -83,10 +83,10 @@ const data = reactive([
                             <img :src="item.avatar" class="w-12 h-12 rounded-full" loading="lazy" />
                         </div>
                         <div class="flex-auto">
-                            <div
-                                class="text-base font-semibold dark:text-slate-200"
-                            >{{ item.title }}</div>
-                            <p>{{ item.author }}</p>
+                            <div class="text-base font-semibold dark:text-slate-200">
+                                {{ item.title }}
+                                <p>{{ item.author }}</p>
+                            </div>
                         </div>
                         <cite class="flex">
                             <a
