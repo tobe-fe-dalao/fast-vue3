@@ -45,16 +45,16 @@ const ThemeChange = (val: boolean) => {
                                         >Docs</a>
                                     </li>
                                     <li>
-                                        <a
-                                            href="/demo"
+                                        <router-link
+                                            to="/demo"
                                             class="hover:text-sky-500 dark:hover:text-sky-400"
-                                        >Components</a>
+                                        >GithubDemo</router-link>
                                     </li>
                                     <li>
-                                        <a
+                                        <router-link
+                                            to="/blog"
                                             class="hover:text-sky-500 dark:hover:text-sky-400"
-                                            href="/blog"
-                                        >Blog</a>
+                                        >blog</router-link>
                                     </li>
                                 </ul>
                             </nav>

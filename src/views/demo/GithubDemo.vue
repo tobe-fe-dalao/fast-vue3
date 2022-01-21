@@ -1,5 +1,14 @@
+<!--
+ * @GitHub: https://github.com/MaleWeb/vvtp
+ * @version: 
+ * @Author: 扫地盲僧
+ * @Date: 2022-01-17 16:21:01
+ * @LastEditors: BlindMonk
+ * @LastEditTime: 2022-01-21 15:13:32
+-->
 <script setup lang="ts">
 import { reactive, ref } from "vue"
+import Header from '@/components/Header.vue'
 const title = `通过TailWind快速实现<br>Github2021年年度
                     <a traget="_blank" href="https://octoverse.github.com/"><font>octoverse</font></a>`;
 const datav = reactive([
@@ -11,6 +20,7 @@ const datav = reactive([
 ]);
 </script>
 <template>
+    <Header />
     <section class="container max-w-screen-xl px-6 mx-auto 2xl:px-0">
         <div class="flex flex-wrap">
             <div class="flex w-1/2 p-20 bg-white">
