@@ -7,8 +7,8 @@
  * @LastEditTime: 2022-01-21 19:23:36
 -->
 <script setup lang="ts">
-import { useSettingsOutsideStore } from './store/modules/settings'
-console.log(useSettingsOutsideStore().title, '测试全局store')
+import { useSettingsOutsideStore } from "./store/modules/settings"
+console.log(useSettingsOutsideStore().title, "测试全局store")
 </script>
 <template>
   <router-view></router-view>
