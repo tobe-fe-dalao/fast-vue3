@@ -23,5 +23,5 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "**/*.ts"
-  ]
+, "plop-tpls/component/prompt.js", "plopfile.js", "tailwind.config.js", "postcss.config.js"  ]
 }
