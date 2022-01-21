@@ -30,6 +30,7 @@ specifiers:
   plop: ^3.0.5
   pnpm: ^6.27.0
   postcss: ^8.4.5
+  postcss-px-to-viewport: ^1.1.1
   prettier: ^2.5.1
   prismjs: ^1.26.0
   qs: ^6.10.3
@@ -66,6 +67,7 @@ dependencies:
   pinia: registry.npmmirror.com/pinia/2.0.9_typescript@4.5.4+vue@3.2.27
   plop: registry.npmmirror.com/plop/3.0.5
   pnpm: registry.npmmirror.com/pnpm/6.27.0
+  postcss-px-to-viewport: registry.npmmirror.com/postcss-px-to-viewport/1.1.1
   prettier: registry.npmmirror.com/prettier/2.5.1
   prismjs: registry.npmmirror.com/prismjs/1.26.0
   qs: registry.npmmirror.com/qs/6.10.3
@@ -1979,7 +1981,7 @@ packages:
     dev: false
 
   registry.nlark.com/object-assign/4.1.1:
-    resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=, registry: http://registry.npm.taobao.org/, tarball: https://registry.nlark.com/object-assign/download/object-assign-4.1.1.tgz?cache=0&sync_timestamp=1631600272706&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fobject-assign%2Fdownload%2Fobject-assign-4.1.1.tgz}
+    resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=, registry: http://registry.npm.taobao.org/, tarball: https://registry.nlark.com/object-assign/download/object-assign-4.1.1.tgz}
     name: object-assign
     version: 4.1.1
     engines: {node: '>=0.10.0'}
@@ -6447,6 +6449,15 @@ packages:
       postcss: 7.x || 8.x
     dependencies:
       postcss: registry.npmmirror.com/postcss/5.2.18
+    dev: false
+
+  registry.npmmirror.com/postcss-px-to-viewport/1.1.1:
+    resolution: {integrity: sha1-olykELVTyYksyLUlzHENpHvxqlU=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/postcss-px-to-viewport/download/postcss-px-to-viewport-1.1.1.tgz}
+    name: postcss-px-to-viewport
+    version: 1.1.1
+    dependencies:
+      object-assign: registry.nlark.com/object-assign/4.1.1
+      postcss: registry.npmmirror.com/postcss/8.4.5
     dev: false
 
   registry.npmmirror.com/postcss-selector-parser/6.0.8:
