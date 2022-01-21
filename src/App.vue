@@ -4,10 +4,10 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:19:27
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 18:20:02
+ * @LastEditTime: 2022-01-21 19:23:36
 -->
 <script setup lang="ts">
-import { useSettingsOutsideStore } from '@/store/modules/settings'
+import { useSettingsOutsideStore } from './store/modules/settings'
 console.log(useSettingsOutsideStore().title, '测试全局store')
 </script>
 <template>

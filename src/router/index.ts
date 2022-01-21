@@ -4,14 +4,14 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:19:27
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 18:11:01
+ * @LastEditTime: 2022-01-21 19:24:14
  */
 import {
     createRouter,
     createWebHashHistory,
     RouteRecordRaw
 } from 'vue-router'
-import { useSettingsOutsideStore } from "@/store/modules/settings"
+import { useSettingsOutsideStore } from "../store/modules/settings"
 import Home from '@/views/index.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 import GithubDemo from '@/views/demo/GithubDemo.vue'
