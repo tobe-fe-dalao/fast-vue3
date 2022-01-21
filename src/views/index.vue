@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:29:46
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-20 10:27:10
+ * @LastEditTime: 2022-01-21 15:19:31
 -->
 <script setup lang="ts">
 import Header from "@/components/Header.vue"
@@ -20,30 +20,26 @@ const data = reactive([
         content: '支持最新的Vue3.X版本🎆<br/> 配套新版Vue Router 4.X<br/> Proxy、Setup、Hooks等特性超前体验加强对TS的支持，还有什么可犹豫的？快来开箱使用吧🤣',
         avatar: 'https://v3.cn.vuejs.org/logo.png', title: 'Vue3', version: 'https://api.github.com/repos/vuejs/core/releases', github: 'https://github.com/vuejs/vue',
         color: 'from-green-400 to-cyan-500',
-        position: 'transform: rotate(-2deg)translateZ(0px);',
         author: "尤大作品",
     },
     {
-        content: '号称新一代前端开发与构建工具🎆，极速启动、原生ESM、HMR热重载、TS支持<br/>Rollup插件、2022超火生态还等什么？💕',
+        content: '号称新一代前端开发与构建工具🎆，极速启动、原生ESM、HMR热重载、TS支持、Rollup插件等等<br>2022超火生态还等什么？💕',
         avatar: 'https://vitejs.cn/logo.svg', title: 'Vite2.7', version: 'https://api.github.com/repos/vitejs/vite/releases', github: 'https://github.com/vitejs/vite',
         color: 'from-orange-400 to-purple-600',
-        position: 'transform: rotate(1deg)translateZ(0px);',
         author: "新一代构建工具",
     },
     {
-        content: '始于JavaScript，归于JavaScript🎆，构建大型应用程序、先进的JavaScript语法支持、大厂前端必备基础🛵',
+        content: '2021全球语言持续霸榜，始于JavaScript，归于JavaScript🎆，构建大型应用程序、先进的JS语法支持、大厂前端必备基础🛵',
         avatar: 'https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png', title: 'TypeScript4.5', version: 'https://api.github.com/repos/Microsoft/TypeScript/releases', github: 'https://github.com/Microsoft/TypeScript',
         color: 'from-cyan-400 to-light-blue-500',
-        position: 'transform: rotate(-2deg)translateZ(0px);',
         author: "JS的超集"
     },
     {
-        content: '支持Vue devtools 挂钩🎆，类型安全、模块化设计、只有1kb经典之作🍡',
+        content: '只有1kb经典之作支持、Vue devtools 挂钩🎆、类型安全、模块化设计、关联本地存储的响应等等更多新特性🍡<br>学不动？Come on 卷起来',
         avatar: 'https://pinia.vuejs.org/logo.svg', title: 'Pinia',
         version: 'https://api.github.com/repos/vuejs/pinia/releases',
         github: 'https://github.com/vuejs/pinia',
         color: ' from-yellow-400 to-orange-500',
-        position: 'transform: rotate(1deg)translateZ(0px);',
         author: "Vuex最佳替代品"
     }
 ])
@@ -52,7 +48,7 @@ const data = reactive([
 
 <template>
     <Header />
-    <main class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
+    <main class="max-w-5xl mx-auto px-4 pb-22 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
         <div class="pt-16 pb-9 sm:pb-16 sm:text-center">
             <h1
                 class="relative mb-4 text-9xl sm:text-7xl tracking-tight text-slate-900 font-blimone dark:text-slate-200"
@@ -70,7 +66,7 @@ const data = reactive([
     >
         <ul class="flex items-center w-full py-8">
             <li class="px-3 md:px-4 flex-none" v-for="(item,index) in data" :key="index * 1.1">
-                <figure class="shadow-lg rounded-xl flex-none w-80 md:w-xl" :style="item.position">
+                <figure class="shadow-lg rounded-xl flex-none w-80 md:w-xl">
                     <blockquote
                         class="rounded-t-xl bg-white px-6 py-8 md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-slate-700 dark:text-slate-300 dark:bg-slate-800 dark:highlight-white/5"
                     >

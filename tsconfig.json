@@ -12,6 +12,9 @@
     "lib": [
       "esnext",
       "dom"
+    ],
+    "types": [
+      "node"
     ]
   },
   "include": [
