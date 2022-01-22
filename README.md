@@ -7,13 +7,9 @@
  * @LastEditTime: 2022-01-21 22:22:56
 -->
 
-# 前言
-即将来到的新的一年，注定是[Vue3](https://vuejs.org/)崛起的一年，也将是以[Vite](https://vitejs.cn/)为代表进入构建加速时代的一年。  
-我在之前的[《2022年哪些前端技术会火？》](https://juejin.cn/post/7051901448044429349)提过，我们早在2020年就已经使用vue3框架，并开发了数个商业级项目，已验证其框架的稳定性。  
-
-最近，尤大发布了Vue3成为默认版本的消息，意味着vue3将成为社区维护的主要方向。 为了让更多的小伙伴快速进入vue3，我在Github发起了一个开源模板[fast-vue3](https://github.com/MaleWeb/fast-vue3)，以提供开箱即用的脚手架，快速渡过一档起步(各种配置)，直接体验加速阶段（实际项目）。配置本身并没有什么难度，后面用到再阅读文档即可。
 
 # FastVue3 
+
 `fast-vue3`，是`Vue3+Vite2.7+TypeScript+Pinia`等Vue的开发工具链。融入了当前比较主流的工具链，可以直接开箱使用，方便小伙伴学习，最好的学习方式——`边用边学边学边用`~ 
 
 ![Vue](https://img.shields.io/badge/-Vue3-34495e?logo=vue.js)
