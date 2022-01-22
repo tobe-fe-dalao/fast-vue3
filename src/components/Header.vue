@@ -59,7 +59,7 @@ const ThemeChange = (val: boolean) => {
                   />
                 </a-space>
                 <a
-                  href="https://github.com/MaleWeb/vvtp"
+                  href="https://github.com/MaleWeb/fast-vue3"
                   target="_bank"
                   class="ml-6 block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
                 >
