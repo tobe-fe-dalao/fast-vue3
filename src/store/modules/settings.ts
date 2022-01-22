@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-21 17:06:03
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 18:07:02
+ * @LastEditTime: 2022-01-22 10:43:44
  */
 import { defineStore } from "pinia"
 import piniaStore from "../index"
@@ -14,7 +14,7 @@ export const useSettingsStore = defineStore(
   "settings",
   {
     state: () => ({
-      title: "VVTP-Vue3+Vite2.7+TS+...",
+      title: "FastVue3,一个快速开箱即用的Vue3+Vite模板",
     }),
     actions: {
       // 设置网页标题

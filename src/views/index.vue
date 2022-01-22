@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:29:46
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 19:27:53
+ * @LastEditTime: 2022-01-22 12:02:22
 -->
 <script setup lang="ts">
 import Header from "@/components/Header.vue"
@@ -13,6 +13,7 @@ import SvgIcon from "@/components/SvgIcon/index.vue"
 import request from "../utils/http/axios"
 import getGithubVersion from "../utils"
 import { ref, onMounted, reactive, watchEffect } from "vue"
+import ReadMe from '../../README.md'
 
 const vue3Version = ref([]);
 const data = reactive([
@@ -62,33 +63,24 @@ const data = reactive([
 
 <template>
   <Header />
-  <main
-    class="max-w-5xl mx-auto px-4 pb-22 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl"
-  >
+  <main class="max-w-5xl mx-auto px-4 pb-22 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
     <div class="pt-16 pb-9 sm:pb-16 sm:text-center">
       <h1
-        class="relative mb-4 text-9xl sm:text-7xl tracking-tight text-slate-900 font-blimone dark:text-slate-200"
+        class="relative mb-4 text-9xl sm:text-7xl font-blimone tracking-tight text-slate-900 dark:text-slate-200"
       >
         Vue3+Vite2.x+Ts+Pinia大厂开发必备
         <span
           class="version tracking-wide absolute text-4xl bg-gradient-to-br from-fuchsia-500 to-purple-600"
-          >{{ `V${version}` }}</span
-        >
+        >{{ `V${version}` }}</span>
       </h1>
-      <p class="text-2xl text-slate-300 dark:text-slate-400">
-        最新Vue3技术流，超全配置，大厂协作规范，大佬必备神器
-      </p>
+      <p class="text-2xl text-slate-300 dark:text-slate-400">最新Vue3技术流，超全配置，大厂协作规范，大佬必备神器</p>
     </div>
   </main>
   <article
     class="max-w-screen-lg xl:max-w-screen-xl mx-auto space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44"
   >
     <ul class="flex items-center w-full py-8">
-      <li
-        v-for="(item, index) in data"
-        :key="index * 1.1"
-        class="px-3 md:px-4 flex-none"
-      >
+      <li v-for="(item, index) in data" :key="index * 1.1" class="px-3 md:px-4 flex-none">
         <figure class="shadow-lg rounded-xl flex-none w-80 md:w-xl">
           <blockquote
             class="rounded-t-xl bg-white px-6 py-8 md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-slate-700 dark:text-slate-300 dark:bg-slate-800 dark:highlight-white/5"
@@ -100,14 +92,8 @@ const data = reactive([
             class="flex items-center space-x-4 p-6 md:px-10 md:py-6 bg-gradient-to-br rounded-b-xl leading-6 text-white"
             :class="item.color"
           >
-            <div
-              class="flex-none w-14 h-14 bg-white rounded-full flex items-center justify-center"
-            >
-              <img
-                :src="item.avatar"
-                class="w-12 h-12 rounded-full"
-                loading="lazy"
-              />
+            <div class="flex-none w-14 h-14 bg-white rounded-full flex items-center justify-center">
+              <img :src="item.avatar" class="w-12 h-12 rounded-full" loading="lazy" />
             </div>
             <div class="flex-auto">
               <div class="text-base font-semibold dark:text-slate-200">
@@ -128,6 +114,7 @@ const data = reactive([
       </li>
     </ul>
   </article>
+  <!-- Readme -->
 </template>
 
 <style lang="less" scoped>

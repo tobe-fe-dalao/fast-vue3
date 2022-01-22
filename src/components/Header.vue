@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { reactive, toRefs, ref } from "vue"
-import { Space, Button, Switch } from "@arco-design/web-vue"
-import { IconPlus, IconDelete } from "@arco-design/web-vue/es/icon"
 import SvgIcon from "@/components/SvgIcon/index.vue"
 
 const title = ref("I want to study typescript")
@@ -20,9 +17,7 @@ const ThemeChange = (val: boolean) => {
 </script>
 
 <template>
-  <header
-    class="Male antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900"
-  >
+  <header class="Male antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
     <div
       class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent"
     >
@@ -30,51 +25,39 @@ const ThemeChange = (val: boolean) => {
         <div
           class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 px-4"
         >
-          <div class="relative flex items-center">
+          <div class="relative flex items-center text-2xl sm:text-2xl font-blimone">
             <a
-              class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto text-ms leading-6 font-semibold dark:text-slate-200"
+              class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto leading-6 dark:text-slate-200"
               href="https://github.com/MaleWeb"
-              >扫地盲僧</a
-            >
+            >Fast-Vue3</a>
             <div class="relative hidden lg:flex items-center ml-auto">
-              <nav
-                class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200"
-              >
+              <nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
                   <li>
-                    <a
-                      class="hover:text-sky-500 dark:hover:text-sky-400"
-                      href="/"
-                      >Docs</a
-                    >
+                    <a class="hover:text-sky-500 dark:hover:text-sky-400" href="/">Docs</a>
                   </li>
                   <li>
                     <router-link
                       to="/demo"
                       class="hover:text-sky-500 dark:hover:text-sky-400"
-                      >GithubDemo</router-link
-                    >
+                    >GithubDemo</router-link>
                   </li>
                   <li>
-                    <router-link
-                      to="/blog"
-                      class="hover:text-sky-500 dark:hover:text-sky-400"
-                      >blog</router-link
-                    >
+                    <router-link to="/blog" class="hover:text-sky-500 dark:hover:text-sky-400">blog</router-link>
                   </li>
                 </ul>
               </nav>
               <div
                 class="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800"
               >
-                <Space size="large">
-                  <Switch
+                <a-space size="large">
+                  <a-switch
                     type="round"
                     checked-color="#86909c"
                     unchecked-color="#253250"
                     @change="ThemeChange"
                   />
-                </Space>
+                </a-space>
                 <a
                   href="https://github.com/MaleWeb/vvtp"
                   target="_bank"

@@ -4,65 +4,14 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:19:27
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 17:59:38
+ * @LastEditTime: 2022-01-22 11:42:41
  */
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
 import path from "path";
-// 按需加载插件
-import styleImport from 'vite-plugin-style-import'
-// markdown渲染插件
-import Markdown from 'vite-plugin-md'
-// SVG生成插件
-import viteSvgIcons from 'vite-plugin-svg-icons';
-// @ts-ignore
-import viteCompression from 'vite-plugin-compression'
+import Fast from './persets/fast'
 
 export default defineConfig({
-  plugins: [vue({
-    include: [/\.vue$/, /\.md$/], // 引入兼容md文件
-  }),
-  styleImport({
-    libs: [
-      {
-        libraryName: '@arco-design/web-vue',
-        esModule: true,
-        resolveStyle: (name) => {
-          // css
-          return `@arco-design/web-vue/es/${name}/style/css.js`
-          // less
-          return `@arco-design/web-vue/es/${name}/style/index.js`
-        },
-      }
-    ]
-  }),
-  Markdown({
-    markdownItOptions: {
-      html: true,
-      linkify: true,
-      typographer: true,
-    },
-    markdownItSetup(md) {
-      // md.use(require('markdown-it-anchor'))
-      md.use(require('markdown-it-prism'))
-    },
-    wrapperClasses: 'markdown-sdms'
-  }),
-  viteSvgIcons({
-    // 指定需要缓存的图标文件夹
-    iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-    // 指定symbolId格式
-    symbolId: 'icon-[dir]-[name]',
-  }),
-  // gzip压缩 生产环境生成 .gz 文件
-  viteCompression({
-    verbose: true,
-    disable: false,
-    threshold: 10240,
-    algorithm: 'gzip',
-    ext: '.gz',
-  }),
-  ],
+  plugins: [Fast()],
   resolve: {
     alias: {
       "@": resovePath("src"),
@@ -81,7 +30,7 @@ export default defineConfig({
   //启动服务配置
   server: {
     host: '0.0.0.0',
-    port: 8000,
+    port: 3000,
     open: true,
     https: false,
     proxy: {},
