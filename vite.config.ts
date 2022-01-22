@@ -15,7 +15,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resovePath("src"),
-      "@views": resovePath("src/views"),
+      "@pages": resovePath("src/pages"),
     },
   },
   css: {

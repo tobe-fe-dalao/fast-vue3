@@ -8,9 +8,9 @@
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import { useSettingsOutsideStore } from "../store/modules/settings"
-import Home from "@/views/index.vue"
+import Home from "@/pages/index.vue"
 import HelloWorld from "@/components/HelloWorld.vue"
-import GithubDemo from "@/views/demo/GithubDemo.vue"
+import GithubDemo from "@/pages/demo/GithubDemo.vue"
 
 const routesContext = import.meta.globEager("./modules/*.js")
 const routes: Array<RouteRecordRaw> = [

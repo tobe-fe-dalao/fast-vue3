@@ -4,13 +4,13 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-22 10:58:01
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-22 12:01:39
+ * @LastEditTime: 2022-01-22 16:15:23
  */
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-
+import Inspect from 'vite-plugin-inspect'
 import {
     ArcoResolver,
     VueUseComponentsResolver
@@ -73,5 +73,7 @@ export default () => {
             algorithm: 'gzip',
             ext: '.gz',
         }),
+        //依赖关系图
+        Inspect()
     ]
 }
