@@ -12,6 +12,11 @@
 
 `fast-vue3`，是`Vue3+Vite2.7+TypeScript+Pinia`等Vue的开发工具链。融入了当前比较主流的工具链，可以直接开箱使用，方便小伙伴学习，最好的学习方式——`边用边学边学边用`~ 
 
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1221b496334f4bd6bf8f8c51426a0eeb~tplv-k3u1fbpfcp-watermark.image?) 
+
+
+# 特点
+
 ![Vue](https://img.shields.io/badge/-Vue3-34495e?logo=vue.js)
 ![Vite](https://img.shields.io/badge/-Vite2.7-646cff?logo=vite&logoColor=white) 
 ![TypeScript](https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white)
@@ -22,12 +27,6 @@
 ![Prettier](https://img.shields.io/badge/-Prettier-ef9421?logo=Prettier&logoColor=white)
 ![Less](https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white) 
 ![Taiwind](https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white)
-
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1221b496334f4bd6bf8f8c51426a0eeb~tplv-k3u1fbpfcp-watermark.image?) 
-
-
-
-# 特点
 
 - 💕 `fast-vue3`就不赘述了，框架基座支持`Vue3+Vite2.7+TypeScript+Pinia`
 - 🔌 支持[husky](https://github.com/typicode/husky)和 [lint-staged](https://github.com/okonet/lint-staged)，大厂团队代码规范协作必备
