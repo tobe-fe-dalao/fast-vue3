@@ -9,11 +9,11 @@
 export default [
   {
     path: "/",
-    component: () => import("@/views/index.vue"),
+    component: () => import("@/pages/index.vue"),
   },
   {
     path: "/login",
-    component: () => import("@/views/login.vue"),
+    component: () => import("@/pages/login.vue"),
     meta: {
       title: "登录",
     },

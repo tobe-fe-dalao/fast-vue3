@@ -34,7 +34,7 @@ module.exports = {
             type: 'list',
             name: 'path',
             message: '请选择组件创建目录',
-            choices: getFolder('src/views'),
+            choices: getFolder('src/pages'),
             when: answers => {
                 return !answers.isGlobal
             }

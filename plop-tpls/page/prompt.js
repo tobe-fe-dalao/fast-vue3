@@ -29,7 +29,7 @@ module.exports = {
             type: 'list',
             name: 'path',
             message: '请选择页面创建目录',
-            choices: getFolder('src/views')
+            choices: getFolder('src/pages')
         },
         {
             type: 'input',
@@ -45,7 +45,7 @@ module.exports = {
         }
     ],
     actions: data => {
-        let relativePath = path.relative('src/views', data.path)
+        let relativePath = path.relative('src/pages', data.path)
         const actions = [
             {
                 type: 'add',

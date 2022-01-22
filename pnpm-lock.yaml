@@ -44,6 +44,7 @@ specifiers:
   unplugin-vue-components: ^0.17.11
   vite: ^2.7.2
   vite-plugin-compression: ^0.4.0
+  vite-plugin-inspect: ^0.3.13
   vite-plugin-md: ^0.11.7
   vite-plugin-style-import: ^1.4.1
   vite-plugin-svg-icons: ^1.1.0
@@ -84,6 +85,7 @@ dependencies:
   unplugin-icons: registry.npmmirror.com/unplugin-icons/0.13.0_vite@2.7.12
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.17.14_vite@2.7.12+vue@3.2.27
   vite-plugin-compression: registry.npmmirror.com/vite-plugin-compression/0.4.0_vite@2.7.12
+  vite-plugin-inspect: registry.npmmirror.com/vite-plugin-inspect/0.3.13_vite@2.7.12
   vite-plugin-md: registry.npmmirror.com/vite-plugin-md/0.11.7_vite@2.7.12
   vite-plugin-style-import: registry.npmmirror.com/vite-plugin-style-import/1.4.1_vite@2.7.12
   vite-plugin-svg-icons: registry.npmmirror.com/vite-plugin-svg-icons/1.1.0_vite@2.7.12
@@ -2932,6 +2934,12 @@ packages:
       prelude-ls: registry.nlark.com/prelude-ls/1.2.1
     dev: false
 
+  registry.nlark.com/ufo/0.7.9:
+    resolution: {integrity: sha1-Amjjc0tBPJ7W81ECAfQjcoIbh1w=, registry: http://registry.npm.taobao.org/, tarball: https://registry.nlark.com/ufo/download/ufo-0.7.9.tgz}
+    name: ufo
+    version: 0.7.9
+    dev: false
+
   registry.nlark.com/unc-path-regex/0.1.2:
     resolution: {integrity: sha1-5z3T17DXxe2G+6xrCufYxqadUPo=, registry: http://registry.npm.taobao.org/, tarball: https://registry.nlark.com/unc-path-regex/download/unc-path-regex-0.1.2.tgz}
     name: unc-path-regex
@@ -3519,6 +3527,12 @@ packages:
     name: '@nodelib/fs.stat'
     version: 2.0.5
     engines: {node: '>= 8'}
+
+  registry.npmmirror.com/@polka/url/1.0.0-next.21:
+    resolution: {integrity: sha1-XeWiOFo1MJQn9gEZkrVEUU1VmqE=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@polka/url/download/@polka/url-1.0.0-next.21.tgz}
+    name: '@polka/url'
+    version: 1.0.0-next.21
+    dev: false
 
   registry.npmmirror.com/@rollup/pluginutils/4.1.2:
     resolution: {integrity: sha512-ROn4qvkxP9SyPeHaf7uQC/GPFY6L/OWy9+bd9AwcjOAWQwxRscoEyAUD8qCY5o5iL4jqQwoLk2kaTKJPb/HwzQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@rollup/pluginutils/download/@rollup/pluginutils-4.1.2.tgz}
@@ -6205,6 +6219,13 @@ packages:
     hasBin: true
     dev: false
 
+  registry.npmmirror.com/mrmime/1.0.0:
+    resolution: {integrity: sha1-FNOH8FhaUjPSkbq6M5sGN1KiOYs=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mrmime/download/mrmime-1.0.0.tgz}
+    name: mrmime
+    version: 1.0.0
+    engines: {node: '>=10'}
+    dev: false
+
   registry.npmmirror.com/ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/download/ms-2.0.0.tgz}
     name: ms
@@ -6891,6 +6912,17 @@ packages:
       is-arrayish: registry.nlark.com/is-arrayish/0.3.2
     dev: false
 
+  registry.npmmirror.com/sirv/2.0.2:
+    resolution: {integrity: sha512-4Qog6aE29nIjAOKe/wowFTxOdmbEZKb+3tsLljaBRzJwtqto0BChD2zzH0LhgCSXiI+V7X+Y45v14wBZQ1TK3w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sirv/download/sirv-2.0.2.tgz}
+    name: sirv
+    version: 2.0.2
+    engines: {node: '>= 10'}
+    dependencies:
+      '@polka/url': registry.npmmirror.com/@polka/url/1.0.0-next.21
+      mrmime: registry.npmmirror.com/mrmime/1.0.0
+      totalist: registry.npmmirror.com/totalist/3.0.0
+    dev: false
+
   registry.npmmirror.com/slash/3.0.0:
     resolution: {integrity: sha1-ZTm+hwwWWtvVJAIg2+Nh8bxNRjQ=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/slash/download/slash-3.0.0.tgz}
     name: slash
@@ -7164,6 +7196,13 @@ packages:
     version: 1.9.0
     engines: {node: '>=0.10'}
     dev: true
+
+  registry.npmmirror.com/totalist/3.0.0:
+    resolution: {integrity: sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/totalist/download/totalist-3.0.0.tgz}
+    name: totalist
+    version: 3.0.0
+    engines: {node: '>=6'}
+    dev: false
 
   registry.npmmirror.com/ts-node/10.4.0_82b55006877de54992e74492b614ace9:
     resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ts-node/download/ts-node-10.4.0.tgz}
@@ -7452,6 +7491,25 @@ packages:
       chalk: registry.npmmirror.com/chalk/4.1.2
       debug: registry.npmmirror.com/debug/4.3.3
       fs-extra: registry.nlark.com/fs-extra/10.0.0
+      vite: registry.npmmirror.com/vite/2.7.12_less@4.1.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  registry.npmmirror.com/vite-plugin-inspect/0.3.13_vite@2.7.12:
+    resolution: {integrity: sha512-Naie3Rx/0IbmQSknfQPVrvWKiar7fCu50u+uLcUgt54yX0espduLDnI8IEtOYlsCA4gHs93IYKtxFDTxAThmYw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-plugin-inspect/download/vite-plugin-inspect-0.3.13.tgz}
+    id: registry.npmmirror.com/vite-plugin-inspect/0.3.13
+    name: vite-plugin-inspect
+    version: 0.3.13
+    engines: {node: '>=14'}
+    peerDependencies:
+      vite: ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/4.1.2
+      debug: registry.npmmirror.com/debug/4.3.3
+      kolorist: registry.npmmirror.com/kolorist/1.5.1
+      sirv: registry.npmmirror.com/sirv/2.0.2
+      ufo: registry.nlark.com/ufo/0.7.9
       vite: registry.npmmirror.com/vite/2.7.12_less@4.1.2
     transitivePeerDependencies:
       - supports-color
