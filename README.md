@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-17 16:21:01
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 22:22:56
+ * @LastEditTime: 2022-01-24 17:45:38
 -->
 
 
@@ -337,6 +337,9 @@ pnpm run plop
 
 # 最后
 
--   欢迎加群[前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，划水，大家一起划水，现在粉丝群甚少讨论技术，那么我们就一起水吧。欢迎关注我的公众号[扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。
+-   欢迎加群[前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，划水，大家一起划水，现在粉丝群甚少讨论技术，那么我们就一起水吧。欢迎关注我的公众号[扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
+  
 -   前沿技术，各类体验、互动相关的技术，各类译文、研报的提前透视。
 -   白嫖，承诺发布的所有付费资源，粉丝群统统免费白嫖，不然大家谁有时间跟你玩，嘿嘿。
+![](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/varqun.jpg) 
+![](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/扫地盲僧公众号.png)
