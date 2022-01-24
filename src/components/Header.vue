@@ -34,7 +34,10 @@ const ThemeChange = (val: boolean) => {
               <nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
                   <li>
-                    <a class="hover:text-sky-500 dark:hover:text-sky-400" href="/">Docs</a>
+                    <router-link
+                      to="/markdown"
+                      class="hover:text-sky-500 dark:hover:text-sky-400"
+                    >markdown</router-link>
                   </li>
                   <li>
                     <router-link

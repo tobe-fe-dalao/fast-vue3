@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:29:46
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-22 16:40:53
+ * @LastEditTime: 2022-01-24 17:15:27
 -->
 <script setup lang="ts">
 import Header from "@/components/Header.vue"
@@ -13,7 +13,6 @@ import SvgIcon from "@/components/SvgIcon/index.vue"
 import request from "../utils/http/axios"
 import getGithubVersion from "../utils"
 import { ref, onMounted, reactive, watchEffect } from "vue"
-import ReadMe from '../../README.md'
 
 const vue3Version = ref([]);
 const data = reactive([
@@ -60,13 +59,12 @@ const data = reactive([
   },
 ])
 </script>
-
 <template>
   <Header />
   <main class="max-w-5xl mx-auto px-4 pb-22 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
     <div class="pt-16 pb-9 sm:pb-16 sm:text-center">
       <h1
-        class="relative mb-4  font-blimone text-4xl sm:text-5xl lg:text-6xl tracking-tight text-slate-900 dark:text-slate-200"
+        class="relative mb-4 font-blimone text-4xl sm:text-5xl lg:text-6xl tracking-tight text-slate-900 dark:text-slate-200"
       >
         Vue3+Vite2.x+Ts+Pinia大厂开发必备
         <span
@@ -83,7 +81,7 @@ const data = reactive([
       <li v-for="(item, index) in data" :key="index * 1.1" class="px-3 md:px-4 flex-none">
         <figure class="shadow-lg rounded-xl flex-none w-80 md:w-xl">
           <blockquote
-            class="rounded-t-xl bg-white px-6 py-8  md:p-5 text-lg md:text-base leading-8 md:leading-8 font-semibold text-slate-700 dark:text-slate-300 dark:bg-slate-800 dark:highlight-white/5"
+            class="rounded-t-xl bg-white px-6 py-8 md:p-5 text-lg md:text-base leading-8 md:leading-8 font-semibold text-slate-700 dark:text-slate-300 dark:bg-slate-800 dark:highlight-white/5"
           >
             <SvgIcon name="svg-marks" />
             <p v-html="item.content"></p>
