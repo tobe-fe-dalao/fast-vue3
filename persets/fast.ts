@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-22 10:58:01
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-22 16:15:23
+ * @LastEditTime: 2022-01-24 15:23:42
  */
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
@@ -23,6 +23,8 @@ import Prism from 'markdown-it-prism'
 import path from "path";
 // @ts-ignore
 import viteCompression from 'vite-plugin-compression'
+// 支持动态路由生成
+import Pages from 'vite-plugin-pages'
 
 const markdownWrapperClasses = 'rounded-t-xl bg-white px-6 py-8 md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-slate-700 dark:text-slate-300 dark:bg-slate-800 dark:highlight-white/5'
 export default () => {
@@ -57,6 +59,7 @@ export default () => {
             symbolId: 'icon-[dir]-[name]',
         }),
         AutoImport({
+            dts: './persets/types/auto-imports.d.ts',
             imports: [
                 'vue',
                 'pinia',
@@ -74,6 +77,12 @@ export default () => {
             ext: '.gz',
         }),
         //依赖关系图
-        Inspect()
+        Inspect(),
+        //动态生成路由
+        Pages({
+            pagesDir: [{ dir: 'src/pages', baseRoute: '' }],
+            exclude: ['**/components/*.vue'],
+            nuxtStyle: true
+        })
     ]
 }
