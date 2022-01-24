@@ -26,6 +26,7 @@ specifiers:
   less-loader: ^10.2.0
   lint-staged: ^12.3.1
   markdown-it: ^12.3.2
+  markdown-it-anchor: ^8.4.1
   markdown-it-prism: ^2.2.2
   npm: ^8.3.2
   nprogress: ^0.2.0
@@ -47,6 +48,7 @@ specifiers:
   vite-plugin-inspect: ^0.3.13
   vite-plugin-md: ^0.11.7
   vite-plugin-pages: ^0.20.0
+  vite-plugin-restart: ^0.1.0
   vite-plugin-style-import: ^1.4.1
   vite-plugin-svg-icons: ^1.1.0
   vue: ^3.2.29
@@ -72,6 +74,7 @@ dependencies:
   less: registry.npmmirror.com/less/4.1.2
   lint-staged: registry.npmmirror.com/lint-staged/12.3.1
   markdown-it: registry.npmmirror.com/markdown-it/12.3.2
+  markdown-it-anchor: registry.npmmirror.com/markdown-it-anchor/8.4.1_markdown-it@12.3.2
   markdown-it-prism: registry.npmmirror.com/markdown-it-prism/2.2.2
   npm: registry.npmmirror.com/npm/8.3.2
   nprogress: registry.npmmirror.com/nprogress/0.2.0
@@ -89,6 +92,7 @@ dependencies:
   vite-plugin-inspect: registry.npmmirror.com/vite-plugin-inspect/0.3.13_vite@2.7.13
   vite-plugin-md: registry.npmmirror.com/vite-plugin-md/0.11.7_vite@2.7.13
   vite-plugin-pages: registry.npmmirror.com/vite-plugin-pages/0.20.0_vite@2.7.13
+  vite-plugin-restart: registry.npmmirror.com/vite-plugin-restart/0.1.0_vite@2.7.13
   vite-plugin-style-import: registry.npmmirror.com/vite-plugin-style-import/1.4.1_vite@2.7.13
   vite-plugin-svg-icons: registry.npmmirror.com/vite-plugin-svg-icons/1.1.0_vite@2.7.13
   vue: registry.npmmirror.com/vue/3.2.29
@@ -6341,6 +6345,18 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  registry.npmmirror.com/markdown-it-anchor/8.4.1_markdown-it@12.3.2:
+    resolution: {integrity: sha1-KeVgWT9e24CyX9q4sj+T74qRsx4=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-anchor/download/markdown-it-anchor-8.4.1.tgz}
+    id: registry.npmmirror.com/markdown-it-anchor/8.4.1
+    name: markdown-it-anchor
+    version: 8.4.1
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dependencies:
+      markdown-it: registry.npmmirror.com/markdown-it/12.3.2
+    dev: false
+
   registry.npmmirror.com/markdown-it-prism/2.2.2:
     resolution: {integrity: sha512-lsyKocpHdRH8utUv3n0+BaDT1jQqX3wcacbFOkFPncX8C/Te3Wmv+Y8O4GVS7kdlj35fN4U455wzCW41pd93cw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-prism/download/markdown-it-prism-2.2.2.tgz}
     name: markdown-it-prism
@@ -7821,6 +7837,18 @@ packages:
       yaml: registry.npmmirror.com/yaml/2.0.0-10
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  registry.npmmirror.com/vite-plugin-restart/0.1.0_vite@2.7.13:
+    resolution: {integrity: sha512-WR+GFzEN+30/zeTbUbMaMSzqxBaQ/FkoulZE5YNQ+JBqYCJEtKCoUSHA8o2BE6c8dKjzdlo9r3rRK9bozEjo1w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-plugin-restart/download/vite-plugin-restart-0.1.0.tgz}
+    id: registry.npmmirror.com/vite-plugin-restart/0.1.0
+    name: vite-plugin-restart
+    version: 0.1.0
+    peerDependencies:
+      vite: ^2.0.0
+    dependencies:
+      micromatch: registry.nlark.com/micromatch/4.0.4
+      vite: registry.npmmirror.com/vite/2.7.13_less@4.1.2
     dev: false
 
   registry.npmmirror.com/vite-plugin-style-import/1.4.1_vite@2.7.13:

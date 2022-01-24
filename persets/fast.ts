@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-22 10:58:01
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-24 15:23:42
+ * @LastEditTime: 2022-01-24 17:26:57
  */
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
@@ -19,12 +19,13 @@ import Markdown from 'vite-plugin-md'
 // SVG生成插件
 import viteSvgIcons from 'vite-plugin-svg-icons';
 import vue from '@vitejs/plugin-vue'
-import Prism from 'markdown-it-prism'
 import path from "path";
 // @ts-ignore
 import viteCompression from 'vite-plugin-compression'
 // 支持动态路由生成
 import Pages from 'vite-plugin-pages'
+// 引入配置文件监听插件
+import Restart from 'vite-plugin-restart'
 
 const markdownWrapperClasses = 'rounded-t-xl bg-white px-6 py-8 md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-slate-700 dark:text-slate-300 dark:bg-slate-800 dark:highlight-white/5'
 export default () => {
@@ -33,9 +34,15 @@ export default () => {
             include: [/\.vue$/, /\.md$/],
         }),
         Markdown({
+            markdownItOptions: {
+                html: true,
+                linkify: true,
+                typographer: true,
+            },
             wrapperClasses: markdownWrapperClasses,
             markdownItSetup(md) {
-                md.use(Prism)
+                md.use(require('markdown-it-anchor'))
+                // md.use(require('markdown-it-prism'))
             }
         }),
         Icons({
@@ -81,8 +88,13 @@ export default () => {
         //动态生成路由
         Pages({
             pagesDir: [{ dir: 'src/pages', baseRoute: '' }],
-            exclude: ['**/components/*.vue'],
-            nuxtStyle: true
+            extensions: ['vue', 'md'],
+            exclude: ["**/components/*.vue"],
+            nuxtStyle: true,
+        }),
+        //配置文件改动自动重启
+        Restart({
+            restart: ['../../vite.config.js', '../../.env.*']
         })
     ]
 }

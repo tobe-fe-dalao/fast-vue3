@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:19:27
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-24 15:31:51
+ * @LastEditTime: 2022-01-24 17:14:58
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import { useSettingsOutsideStore } from "../store/modules/settings"
@@ -19,7 +19,6 @@ Object.keys(routesContext).forEach((v) => {
   routes.push(routesContext[v].default)
 });
 //导入生成的路由数据
-
 
 const router = createRouter({
   history: createWebHashHistory(),

@@ -1,6 +1,6 @@
 {
   "name": "fast-vue3",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "dev": "vite --mode development",
     "build": "vue-tsc --noEmit && vite build",
@@ -32,6 +32,7 @@
     "less": "^4.1.2",
     "lint-staged": "^12.3.1",
     "markdown-it": "^12.3.2",
+    "markdown-it-anchor": "^8.4.1",
     "markdown-it-prism": "^2.2.2",
     "npm": "^8.3.2",
     "nprogress": "^0.2.0",
@@ -49,6 +50,7 @@
     "vite-plugin-inspect": "^0.3.13",
     "vite-plugin-md": "^0.11.7",
     "vite-plugin-pages": "^0.20.0",
+    "vite-plugin-restart": "^0.1.0",
     "vite-plugin-style-import": "^1.4.1",
     "vite-plugin-svg-icons": "^1.1.0",
     "vue": "^3.2.29",
