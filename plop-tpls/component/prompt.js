@@ -1,3 +1,11 @@
+/*
+ * @GitHub: https://github.com/MaleWeb/fast-vue3
+ * @version: 
+ * @Author: 扫地盲僧
+ * @Date: 2022-01-21 16:58:34
+ * @LastEditors: your name
+ * @LastEditTime: 2022-01-25 12:40:07
+ */
 const fs = require('fs')
 
 function getFolder(path) {
