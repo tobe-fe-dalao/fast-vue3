@@ -1,3 +1,11 @@
+/*
+ * @GitHub: https://github.com/MaleWeb/fast-vue3
+ * @version: 
+ * @Author: 扫地盲僧
+ * @Date: 2022-01-21 17:00:58
+ * @LastEditors: your name
+ * @LastEditTime: 2022-01-25 12:39:54
+ */
 const path = require('path')
 const fs = require('fs')
 

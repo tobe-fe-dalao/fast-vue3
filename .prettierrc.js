@@ -15,8 +15,4 @@ module.exports = {
   ],
   arrowParens: 'always',
   endOfLine: 'auto',
-  vueIndentScriptAndStyle: true,
-  trailingComma: 'all',
-  proseWrap: 'never',
-  htmlWhitespaceSensitivity: 'strict',
 }
