@@ -3,8 +3,8 @@
  * @version: 
  * @Author: 扫地盲僧
  * @Date: 2022-01-21 17:03:13
- * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 17:03:13
+ * @LastEditors: your name
+ * @LastEditTime: 2022-01-25 12:39:41
  */
 module.exports = {
     description: '创建全局状态',
@@ -27,7 +27,7 @@ module.exports = {
             {
                 type: 'add',
                 path: 'src/store/modules/{{camelCase name}}.js',
-                templateFile: 'plop-templates/store/index.hbs'
+                templateFile: 'plop-tpls/store/index.hbs'
             }
         ]
         return actions
