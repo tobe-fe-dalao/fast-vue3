@@ -1,28 +1,20 @@
-<!--
- * @GitHub: https://github.com/MaleWeb/fast-vue3
- * @version: 
- * @Author: 扫地盲僧
- * @Date: 2022-01-17 16:21:01
- * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-21 15:13:32
--->
 <script setup lang="ts">
-import { reactive, ref } from "vue"
-import Header from "@/components/Header.vue"
+import { reactive, ref } from 'vue'
+import Header from '@/components/Header.vue'
 const title = `通过TailWind快速实现<br>Github2021年年度
-                    <a traget="_blank" href="https://octoverse.github.com/"><font>octoverse</font></a>`;
+                    <a traget="_blank" href="https://octoverse.github.com/"><font>octoverse</font></a>`
 const datav = reactive([
-  { num: 73, unit: "百万+", text: "GitHub 上的开发人员总数", bg: "bg-1" },
-  { num: 16, unit: "百万+", text: "2021年新增用户", bg: "bg-2" },
+  { num: 73, unit: '百万+', text: 'GitHub 上的开发人员总数', bg: 'bg-1' },
+  { num: 16, unit: '百万+', text: '2021年新增用户', bg: 'bg-2' },
   {
     num: 84,
-    unit: "百分之",
-    text: "财富100强公司<br>使用GitHub Enterprise",
-    bg: "bg-0",
+    unit: '百分之',
+    text: '财富100强公司<br>使用GitHub Enterprise',
+    bg: 'bg-0',
   },
-  { num: 61, unit: "百万+", text: "创建的新存储库数量", bg: "bg-0" },
-  { num: 170, unit: "百万", text: "合并拉去请求", bg: "bg-3" },
-]);
+  { num: 61, unit: '百万+', text: '创建的新存储库数量', bg: 'bg-0' },
+  { num: 170, unit: '百万', text: '合并拉去请求', bg: 'bg-3' },
+])
 </script>
 <template>
   <Header />
@@ -38,9 +30,7 @@ const datav = reactive([
         :class="item.bg"
       >
         <span class="inline-flex">
-          <span class="font-blimone text-9xl stacked-fractions">{{
-            item.num
-          }}</span>
+          <span class="font-blimone text-9xl stacked-fractions">{{ item.num }}</span>
           <span class="inline-flex flex-col">
             <span class="p-4 ml-2 text-4xl font-blimone">{{ item.unit }}</span>
             <span class="ml-6 font-thin text-1xl" v-html="item.text"></span>

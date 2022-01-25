@@ -1,11 +1,3 @@
-/*
- * @GitHub: https://github.com/MaleWeb/fast-vue3
- * @version: 
- * @Author: 扫地盲僧
- * @Date: 2022-01-19 16:19:27
- * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-22 11:42:41
- */
 import { defineConfig } from 'vite'
 import path from "path";
 import Fast from './persets/fast'
