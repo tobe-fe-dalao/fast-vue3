@@ -270,7 +270,7 @@ module.exports = {
             {
                 type: 'add',
                 path: `${data.path}/{{dotCase name}}.vue`,
-                templateFile: 'plop-templates/page/index.hbs',
+                templateFile: 'plop-tpls/page/index.hbs',
                 data: {
                     componentName: `${relativePath} ${data.name}`
                 }
