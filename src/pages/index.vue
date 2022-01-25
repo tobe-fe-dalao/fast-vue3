@@ -4,7 +4,7 @@
  * @Author: 扫地盲僧
  * @Date: 2022-01-19 16:29:46
  * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-24 17:15:27
+ * @LastEditTime: 2022-01-25 16:06:48
 -->
 <script setup lang="ts">
 import Header from "@/components/Header.vue"
@@ -12,8 +12,8 @@ import { version } from "../../package.json"
 import SvgIcon from "@/components/SvgIcon/index.vue"
 import request from "../utils/http/axios"
 import getGithubVersion from "../utils"
-import { ref, onMounted, reactive, watchEffect } from "vue"
-
+import { useSettingsStore } from '../store/modules/settings'
+const useSetStore = useSettingsStore()
 const vue3Version = ref([]);
 const data = reactive([
   {
@@ -66,7 +66,7 @@ const data = reactive([
       <h1
         class="relative mb-4 font-blimone text-4xl sm:text-5xl lg:text-6xl tracking-tight text-slate-900 dark:text-slate-200"
       >
-        Vue3+Vite2.x+Ts+Pinia大厂开发必备
+        {{ useSetStore.h1 }}
         <span
           class="version tracking-wide absolute text-4xl bg-gradient-to-br from-fuchsia-500 to-purple-600"
         >{{ `V${version}` }}</span>
