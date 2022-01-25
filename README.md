@@ -1,13 +1,3 @@
-<!--
- * @GitHub: https://github.com/MaleWeb/fast-vue3
- * @version: 
- * @Author: 扫地盲僧
- * @Date: 2022-01-17 16:21:01
- * @LastEditors: BlindMonk
- * @LastEditTime: 2022-01-24 17:45:38
--->
-
-
 # FastVue3 
 
 `fast-vue3`，是`Vue3+Vite2.7+TypeScript+Pinia`等Vue的开发工具链。融入了当前比较主流的工具链，可以直接开箱使用，方便小伙伴学习，最好的学习方式——`边用边学边学边用`~ 
