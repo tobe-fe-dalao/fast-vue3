@@ -1,0 +1,51 @@
+{
+	"console.log": {
+		"scope": "javascript,typescript,vue",
+		"prefix": "con",
+		"body": [
+			"console.log($1)"
+		],
+		"description": "Log output to console"
+	},
+	"style postcss scoped": {
+		"scope": "vue",
+		"prefix": "style",
+		"body": [
+            "<style lang='less' scoped>",
+            "    $1",
+            "</style>"
+		],
+		"description": ""
+	},
+	"Const statement": {
+		"prefix": ["const statement"],
+		"body": [
+			"const { $0 } = ${1:function}()"
+		],
+		"description": "Const statement"
+	},
+	"vue新建页面": {
+		"scope": "vue",
+		"prefix": "page",
+		"body": [
+            "<template>",
+            "    <div>",
+            "       $2",
+            "    </div>",
+            "</template>",
+
+            "",
+
+            "<script setup lang='ts'>",
+            "    $1",
+            "</script>",
+
+            "",
+            
+            "<style lang='less' scoped>",
+            "    $3",
+            "</style>"
+		],
+		"description": "vue page"
+	}
+}
