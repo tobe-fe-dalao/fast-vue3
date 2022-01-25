@@ -9,9 +9,27 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "types": ["node"]
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "**/*.ts", "plop-tpls/component/prompt.js", "plopfile.js", "tailwind.config.js", "postcss.config.js"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "**/*.ts",
+    "plop-tpls/component/prompt.js",
+    "plopfile.js",
+    "tailwind.config.js",
+    "postcss.config.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
