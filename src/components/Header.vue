@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import SvgIcon from "@/components/SvgIcon/index.vue"
-
-const title = ref("I want to study typescript")
+import SvgIcon from '@/components/SvgIcon/index.vue'
+import { ref } from 'vue'
+const title = ref('I want to study typescript')
 // 检测浏览器系统主题
-const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)")
+const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
 
-const ThemeChange = (val: boolean) => {
+const ThemeChange = (val: string | number | boolean) => {
   if (!val) {
-    document.documentElement.classList.add("dark")
-    document.body.setAttribute("arco-theme", "dark")
+    document.documentElement.classList.add('dark')
+    document.body.setAttribute('arco-theme', 'dark')
   } else {
-    document.body.removeAttribute("arco-theme")
-    document.documentElement.classList.remove("dark")
+    document.body.removeAttribute('arco-theme')
+    document.documentElement.classList.remove('dark')
   }
 }
 </script>
@@ -29,24 +29,26 @@ const ThemeChange = (val: boolean) => {
             <a
               class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto leading-6 dark:text-slate-200"
               href="https://github.com/MaleWeb"
-            >Fast-Vue3</a>
+            >
+              Fast-Vue3
+            </a>
             <div class="relative hidden lg:flex items-center ml-auto">
               <nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
                   <li>
-                    <router-link
-                      to="/markdown"
-                      class="hover:text-sky-500 dark:hover:text-sky-400"
-                    >markdown</router-link>
+                    <router-link to="/markdown" class="hover:text-sky-500 dark:hover:text-sky-400">
+                      markdown
+                    </router-link>
                   </li>
                   <li>
-                    <router-link
-                      to="/demo"
-                      class="hover:text-sky-500 dark:hover:text-sky-400"
-                    >GithubDemo</router-link>
+                    <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400">
+                      GithubDemo
+                    </router-link>
                   </li>
                   <li>
-                    <router-link to="/blog" class="hover:text-sky-500 dark:hover:text-sky-400">blog</router-link>
+                    <router-link to="/blog" class="hover:text-sky-500 dark:hover:text-sky-400">
+                      blog
+                    </router-link>
                   </li>
                 </ul>
               </nav>
@@ -84,13 +86,13 @@ const ThemeChange = (val: boolean) => {
   font-variant-ligatures: none;
   code {
     color: #0f172a;
-    font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco,
-      Consolas, Liberation Mono, Courier New, monospace;
+    font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      Liberation Mono, Courier New, monospace;
     &::before {
-      content: "`";
+      content: '`';
     }
     &::after {
-      content: "`";
+      content: '`';
     }
   }
   &.dark\:prose-dark {
