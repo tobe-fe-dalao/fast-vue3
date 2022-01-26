@@ -1,10 +1,31 @@
 <script setup lang="ts">
-import SvgIcon from '@/components/SvgIcon/index.vue'
+import SvgIcon from './SvgIcon/index.vue'
 import { ref } from 'vue'
+import { useDark, useToggle } from '@vueuse/core';
+import { useAppStore, useUserStore } from '@/store';
+import { IconMoonFill, IconSunFill } from '@arco-design/web-vue/es/icon';
 const title = ref('I want to study typescript')
 // 检测浏览器系统主题
 const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
-
+const appStore = useAppStore()
+const useStore = useUserStore()
+const theme = computed(() => {
+  return appStore.theme
+})
+const isDark = useDark({
+  selector: 'body',
+  attribute: 'arco-theme',
+  valueDark: 'dark',
+  valueLight: 'light',
+  storageKey: 'arco-theme',
+  onChanged(dark: boolean) {
+    appStore.toggleTheme(dark);
+  },
+})
+const toggleTheme = useToggle(isDark)
+// const setVisible = () => {
+//   appStore.updateSettings({ globalSettings: true });
+// };
 const ThemeChange = (val: string | number | boolean) => {
   if (!val) {
     document.documentElement.classList.add('dark')
@@ -29,40 +50,50 @@ const ThemeChange = (val: string | number | boolean) => {
             <a
               class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto leading-6 dark:text-slate-200"
               href="https://github.com/MaleWeb"
-            >
-              Fast-Vue3
-            </a>
+            >Fast-Vue3</a>
             <div class="relative hidden lg:flex items-center ml-auto">
               <nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
                   <li>
-                    <router-link to="/markdown" class="hover:text-sky-500 dark:hover:text-sky-400">
-                      markdown
-                    </router-link>
+                    <router-link
+                      to="/markdown"
+                      class="hover:text-sky-500 dark:hover:text-sky-400"
+                    >markdown</router-link>
                   </li>
                   <li>
-                    <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400">
-                      GithubDemo
-                    </router-link>
+                    <router-link
+                      to="/demo"
+                      class="hover:text-sky-500 dark:hover:text-sky-400"
+                    >GithubDemo</router-link>
                   </li>
                   <li>
-                    <router-link to="/blog" class="hover:text-sky-500 dark:hover:text-sky-400">
-                      blog
-                    </router-link>
+                    <router-link to="/blog" class="hover:text-sky-500 dark:hover:text-sky-400">blog</router-link>
                   </li>
                 </ul>
               </nav>
               <div
                 class="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800"
               >
-                <a-space size="large">
-                  <a-switch
-                    type="round"
-                    checked-color="#86909c"
-                    unchecked-color="#253250"
-                    @change="ThemeChange"
-                  />
-                </a-space>
+                <a-tooltip
+                  :content="
+                    theme === 'light'
+                      ? '设置暗黑主题'
+                      : '设置明亮主题'
+                  "
+                >
+                  <a-button
+                    size="mini"
+                    class="nav-btn"
+                    type="outline"
+                    :shape="'circle'"
+                    @click="toggleTheme"
+                  >
+                    <template #icon>
+                      <icon-moon-fill v-if="theme === 'dark'" />
+                      <icon-sun-fill v-else />
+                    </template>
+                  </a-button>
+                </a-tooltip>
                 <a
                   href="https://github.com/MaleWeb/fast-vue3"
                   target="_bank"
@@ -86,13 +117,13 @@ const ThemeChange = (val: string | number | boolean) => {
   font-variant-ligatures: none;
   code {
     color: #0f172a;
-    font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      Liberation Mono, Courier New, monospace;
+    font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco,
+      Consolas, Liberation Mono, Courier New, monospace;
     &::before {
-      content: '`';
+      content: "`";
     }
     &::after {
-      content: '`';
+      content: "`";
     }
   }
   &.dark\:prose-dark {

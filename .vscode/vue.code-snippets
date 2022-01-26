@@ -4,7 +4,7 @@
 		"prefix": "store",
 		"body": [
 			"import { defineStore } from 'pinia'",
-			"import { piniaStore } from '@/store'",
+			"import { piniaStore } from '@store'",
 			"",
 			"export const use$1Store = defineStore(",
 			"    '${1/(.*)/${1:/camelcase}/}',",

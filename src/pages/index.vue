@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import Header from "@/components/Header.vue"
+import Header from "../components/Header.vue"
 import { version } from "../../package.json"
-import SvgIcon from "@/components/SvgIcon/index.vue"
+import SvgIcon from "../components/SvgIcon/index.vue"
 import request from "../utils/http/axios"
 import getGithubVersion from "../utils"
-import { useSettingsStore } from '../store/modules/settings'
-const useSetStore = useSettingsStore()
+import { useAppStore } from '../store/modules/app'
+import { getUserProfile } from "../api/user/user"
+const useSetStore = useAppStore()
 const vue3Version = ref([]);
 const data = reactive([
   {
@@ -49,6 +50,8 @@ const data = reactive([
     author: 'Vuex最佳替代品',
   },
 ])
+// const user = getUserProfile()
+console.log(getUserProfile(), 'sadasasd大苏打')
 </script>
 <template>
   <Header />
