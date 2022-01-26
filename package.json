@@ -1,6 +1,7 @@
 {
   "name": "fast-vue3",
-  "version": "0.0.6",
+  "version": "0.0.7",
+  "author": "扫地盲僧",
   "scripts": {
     "dev": "vite --mode development",
     "build": "vue-tsc --noEmit && vite build",
