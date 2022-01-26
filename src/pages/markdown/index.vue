@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Header from '@components/Header.vue'
-import ReadMe from '@components/MarkDown/index.md'
+// import ReadMe from '@components/MarkDown/index.md'
 </script>
 
 <template>
   <div>
     <!-- <Header /> -->
     <div class="w-full flex justify-center">
-      <ReadMe />
+      <!-- <ReadMe /> -->
     </div>
   </div>
 </template>

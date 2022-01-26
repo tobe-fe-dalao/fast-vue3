@@ -68,7 +68,35 @@ axiosInstance.interceptors.request.use(
   }
 )
 
-export default axios
+const request = <T = any>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
+  if (typeof config === 'string') {
+    if (!options) {
+      return axiosInstance.request<T, T>({
+        url: config,
+      });
+      // throw new Error('请配置正确的请求参数');
+    } else {
+      return axiosInstance.request<T, T>({
+        url: config,
+        ...options,
+      });
+    }
+  } else {
+    return axiosInstance.request<T, T>(config);
+  }
+};
+export function get<T = any>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> {
+  return request({ ...config, method: 'GET' }, options);
+}
+
+export function post<T = any>(
+  config: AxiosRequestConfig,
+  options?: AxiosRequestConfig,
+): Promise<T> {
+  return request({ ...config, method: 'POST' }, options);
+}
+export default request;
+export type { AxiosInstance, AxiosResponse };
 /**
  * @description: 用户登录案例
  * @params {ILogin} params

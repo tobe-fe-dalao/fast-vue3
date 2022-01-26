@@ -1,11 +1,5 @@
 # FastVue3 
 
-`fast-vue3`，是`Vue3+Vite2.7+TypeScript+Pinia`等Vue的开发工具链。融入了当前比较主流的工具链，可以直接开箱使用，方便小伙伴学习，最好的学习方式——`边用边学边学边用`~ 
-
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1221b496334f4bd6bf8f8c51426a0eeb~tplv-k3u1fbpfcp-watermark.image?) 
-
-
-# 特点
 
 ![Vue](https://img.shields.io/badge/-Vue3-34495e?logo=vue.js)
 ![Vite](https://img.shields.io/badge/-Vite2.7-646cff?logo=vite&logoColor=white) 
@@ -18,13 +12,362 @@
 ![Less](https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white) 
 ![Taiwind](https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white)
 
-- 💕 `fast-vue3`就不赘述了，框架基座支持`Vue3+Vite2.7+TypeScript+Pinia`
-- 🔌 支持[husky](https://github.com/typicode/husky)和 [lint-staged](https://github.com/okonet/lint-staged)，大厂团队代码规范协作必备
-- 🖼️ 支持`svg`图标，已封装一个简单的`SvgIcon`组件，可以直接读取文件下的`svg` 
-- ⚙️ 支持`Plop`，代码文件自动生成，提供三种预设模板`pages`,`components`,`store`等可自定义 
-- 📦 支持`axios(ts版)`,已封装了主流的拦截器，请求调用等方法  
-- 👽 支持`router,store`模块化，内置生成路由钩子
+一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。
+# 功能亮点
+这里简单介绍一些核心部分，安装部分不再细讲，建议大家直接阅读官方文档或[可视化仓库](https://github1s.com/MaleWeb/fast-vue3)
+
+## 🪂大厂协作-代码规范
+🪁 目前多数大厂团队一般使用[husky](https://github.com/typicode/husky)和 [lint-staged](https://github.com/okonet/lint-staged)  来约束代码规范，
+- 通过`pre-commit`实现lint检查、单元测试、代码格式化等。 
+- 结合VsCode编辑器（保存时自动执行格式化：editor.formatOnSave: true）
+- 配合Git hooks钩子（commit前或提交前执行：pre-commit => npm run lint:lint-staged）
+- IDE 配置（`.editorconfig`）、ESLint 配置（`.eslintrc.js` 和 `.eslintignore`）、StyleLint 配置（`.stylelintrc` 和 `.stylelintignore`），详细请看对应的配置文件。  
+
+🔌关闭代码规范  
+将 `src/` 目录分别加入 `.eslintignore` 和 `.stylelintignore` 进行忽略即可。 
+
+
+## 💕支持JSX语法
+
+```json
+{
+    ...
+    "@vitejs/plugin-vue-jsx": "^1.3.3"
+    ...
+}
+```
+## 🎸UI组件按需加载，自动导入
+```typescript
+//模块化写法
+import Components from 'unplugin-vue-components/vite'
+export const AutoRegistryComponents = () => {
+    return Components({
+        extensions: ['vue', 'md'],
+        deep: true,
+        dts: 'src/components.d.ts',
+        directoryAsNamespace: false,
+        globalNamespaces: [],
+        directives: true,
+        include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+        exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
+        resolvers: [
+            IconsResolver({
+                componentPrefix: '',
+            }),
+            ArcoResolver({ importStyle: 'less' }),//根据你需要增加UI框架
+            VueUseComponentsResolver(),//默认使用VueUse组件
+        ],
+    })
+}
+```
+
+## 🧩Vite插件模块化
+为了方便管理插件，将所有的`config`统一放入`config/vite/plugins`里面，未来还会有更多插件直接分文件夹管理十分干净。
+值得一提的是，`Fast-Vue3`增加了统一环境变量管理，来区分动态开启某些插件。
+```typescript
+// vite/plugins/index.ts
+/**
+ * @name createVitePlugins
+ * @description 封装plugins数组统一调用
+ */
+import type { Plugin } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import { ConfigSvgIconsPlugin } from './svgIcons';
+import { AutoRegistryComponents } from './component';
+import { AutoImportDeps } from './autoImport';
+import { ConfigMockPlugin } from './mock';
+import { ConfigVisualizerConfig } from './visualizer';
+import { ConfigCompressPlugin } from './compress';
+import { ConfigPagesPlugin } from './pages'
+import { ConfigMarkDownPlugin } from './markdown'
+import { ConfigRestartPlugin } from './restart'
+
+export function createVitePlugins(isBuild: boolean) {
+    const vitePlugins: (Plugin | Plugin[])[] = [
+        // vue支持
+        vue(),
+        // JSX支持
+        vueJsx(),
+        // 自动按需引入组件
+        AutoRegistryComponents(),
+        // 自动按需引入依赖
+        AutoImportDeps(),
+        // 自动生成路由
+        ConfigPagesPlugin(),
+        // 开启.gz压缩  rollup-plugin-gzip
+        ConfigCompressPlugin(),
+        //支持markdown
+        ConfigMarkDownPlugin(),
+        // 监听配置文件改动重启
+        ConfigRestartPlugin(),
+    ];
+    // vite-plugin-svg-icons
+    vitePlugins.push(ConfigSvgIconsPlugin(isBuild));
+    // vite-plugin-mock
+    vitePlugins.push(ConfigMockPlugin(isBuild));
+    // rollup-plugin-visualizer
+    vitePlugins.push(ConfigVisualizerConfig());
+    return vitePlugins;
+}
+```
+而`vite.config.ts`便干净多了
+```typescript
+import { createVitePlugins } from './config/vite/plugins'
+...
+return {
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, './src'),
+        '@config': path.resolve(__dirname, './config'),
+        "@components": path.resolve(__dirname, './src/components'),
+        '@utils': path.resolve(__dirname, './src/utils'),
+        '@api': path.resolve(__dirname, './src/api'),
+      }
+    },
+    // plugins
+    plugins: createVitePlugins(isBuild)
+}
+...
+```
+## 📱支持`Pinia` ,下一代`Vuex5`
+创建文件`src/store/index.ts`
+```typescript
+// 支持模块化，配合plop可以通过命令行一键生成
+import { createPinia } from 'pinia';
+import { useAppStore } from './modules/app';
+import { useUserStore } from './modules/user';
+const pinia = createPinia();
+export { useAppStore, useUserStore };
+export default pinia;
+```
+创建文件`src/store/modules/user/index.ts`
+
+```typescript
+import { defineStore } from 'pinia'
+import piniaStore from '@/store'
+export const useUserStore = defineStore(
+    // 唯一ID
+    'user',
+    {
+        state: () => ({}),
+        getters: {},
+        actions: {}
+    }
+)
+```
+## 🤖 支持`Plop`自动生成文件
+ ⚙️ 代码文件自动生成，提供三种预设模板`pages`,`components`,`store`，也可以根据自己需要设计更多自动生成脚本。一般后端同学惯用此形式，十分高效。
+
+```shell
+# 安装plop
+pnpm add plop
+```
+根目录创建`plopfile.ts`
+```typescript
+import { NodePlopAPI } from 'plop';
+export default function (plop: NodePlopAPI) {
+    plop.setWelcomeMessage('请选择需要创建的模式：')
+    plop.setGenerator('page', require('./plop-tpls/page/prompt'))
+    plop.setGenerator('component', require('./plop-tpls/component/prompt'))
+    plop.setGenerator('store', require('./plop-tpls/store/prompt'))
+}
+```
+
+```shell
+# 启动命令
+pnpm run plop
+```
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a6756aebd4d6407e8545eed41b6e5864~tplv-k3u1fbpfcp-watermark.image?)
+
+
+## 🖼️ 支持`SVG`图标
+随着浏览器兼容性的提升，SVG的性能逐渐凸显，很多大厂团队都在创建自己的SVG管理库，后面工具库会有推荐。
+```shell
+# 安装svg依赖
+pnpm add vite-plugin-svg-icons
+```
+配置`vite.config.ts`
+```typescript
+import viteSvgIcons from 'vite-plugin-svg-icons';
+export default defineConfig({
+plugins:[
+...
+ viteSvgIcons({
+    // 指定需要缓存的图标文件夹
+    iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+    // 指定symbolId格式
+    symbolId: 'icon-[dir]-[name]',
+  }),
+]
+...
+})
+```
+
+已封装一个简单的`SvgIcon`组件，可以直接读取文件下的`svg`，可以根据文件夹目录自动查找文件。
+
+```html
+<template>
+  <svg aria-hidden="true" class="svg-icon-spin" :class="calsses">
+    <use :xlink:href="symbolId" :fill="color" />
+  </svg>
+</template>
+
+<script lang="ts" setup>
+const props = defineProps({
+  prefix: {
+    type: String,
+    default: 'icon',
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  color: {
+    type: String,
+    default: '#333',
+  },
+  size: {
+    type: String,
+    default: 'default',
+  },
+})
+const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+const calsses = computed(() => {
+  return {
+    [`sdms-size-${props.size}`]: props.size,
+  }
+})
+const fontSize = reactive({ default: '32px', small: '20px', large: '48px' })
+</script>
+```
+## 📦支持`axios(ts版)`
+已封装了主流的拦截器，请求调用等方法，区分了模块`index.ts`/`status.ts`/`type.ts`
+```typescript
+//封装src/api/user/index.ts
+import request from '@utils/http/axios'
+import { IResponse } from '@utils/http/axios/type'
+import { ReqAuth, ReqParams, ResResult } from './type';
+enum URL {
+    login = '/v1/user/login',
+    permission = '/v1/user/permission',
+    userProfile = 'mock/api/userProfile'
+}
+const getUserProfile = async () => request<ReqAuth>({ url: URL.userProfile });
+const login = async (data: ReqParams) => request({ url: URL.login, data });
+const permission = async () => request<ReqAuth>({ url: URL.permission });
+export default { getUserProfile, login, permission };
+```
+```typescript
+//调用
+import userApi from "@api/user"
+// setup模式下组件可以直接引用
+const res = await userApi.profile()
+```
+## 👽 自动生成`router`，过滤`components`组件
+支持`vue-router4.0`的模块化，通过检索pages文件夹可自动生成路由，并支持动态路由
+
+```typescript
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import routes from 'virtual:generated-pages'
+
+console.log(routes,'打印生成自动生成的路由')
+//导入生成的路由数据
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+})
+
+export default router
+```
+## 🧬支持Mock数据
+使用`vite-plugin-mock`插件，支持自动区分和启停的环境配置  
+
+```javascript
+// vite config
+viteMockServe({
+    ignore: /^\_/,
+    mockPath: 'mock',
+    localEnabled: !isBuild,
+    prodEnabled: false,
+    // https://github.com/anncwb/vite-plugin-mock/issues/9
+    injectCode: `
+       import { setupProdMockServer } from '../mock/_createProdMockServer';
+       setupProdMockServer();
+       `
+    })
+```
+根目录下创建 `_createProductionServer.ts`文件,非`_`开头文件会被自动加载成mock文件
+
+```typescript
+import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
+// 批量加载
+const modules = import.meta.globEager('./mock/*.ts');
+
+const mockModules: Array<string> = [];
+Object.keys(modules).forEach((key) => {
+    if (key.includes('/_')) {
+        return;
+    }
+    mockModules.push(...modules[key].default);
+});
+export function setupProdMockServer() {
+    createProdMockServer(mockModules);
+}
+```
+## 🎎Proxy代理
+```typescript
+// vite config
+import proxy from '@config/vite/proxy';
+export default defineConfig({
+    ...
+    server: {
+        hmr: { overlay: false }, // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
+        // 服务配置
+        port: VITE_PORT, // 类型： number 指定服务器端口;
+        open: false, // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
+        cors: false, // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
+        host: '0.0.0.0', // IP配置，支持从IP启动
+        proxy,
+    }
+    ...
+})
+```
+```typescript
+// proxy.ts
+import {
+    API_BASE_URL,
+    API_TARGET_URL,
+    MOCK_API_BASE_URL,
+    MOCK_API_TARGET_URL,
+} from '@config/constant';
+import { ProxyOptions } from 'vite';
+type ProxyTargetList = Record<string, ProxyOptions>;
+
+const init: ProxyTargetList = {
+    // test
+    [API_BASE_URL]: {
+        target: API_TARGET_URL,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(new RegExp(`^${API_BASE_URL}`), ''),
+    },
+    // mock
+    [MOCK_API_BASE_URL]: {
+        target: MOCK_API_TARGET_URL,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(new RegExp(`^${MOCK_API_BASE_URL}`), '/api'),
+    },
+};
+
+export default init;
+
+```
+
+## 🎉 其他
+
 - 🏗 支持`vw/vh`移动端布局兼容，也可以使用`plop`自己配置生成文件
+- 还有更多新功能增在`commiting`,如果你有更好的方案欢迎`PR`
+
 
 # 使用 
 一键三连: Star 或 Fork 或 [可视化仓库](https://github1s.com/MaleWeb/fast-vue3) 
@@ -50,242 +393,6 @@ pnpm run dev
 # clone  template 分支
 git clone -b template https://github.com/MaleWeb/fast-vue3.git
 ```
-# 配置
-为了方便其他小伙伴了解配置，这里简单介绍一些核心部分。资料部分也有详细的配置，建议大家直接阅读官方文档。关于`vite vue pinia`的配置见[可视化仓库](https://github1s.com/MaleWeb/fast-vue3)
-## TypeScript
-`TS`几乎已然成为了大厂必备技能，这两年也频繁出现在面试题与高级前端考核中。所以，我果断默认了`TS`。可能对一些小伙伴比较残忍，学吧。
-
-```shell
-   # 安装ts相关依赖
-   pnpm add @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser
-```
-根目录配置`tsconfig.json` 
-```json
-{
-  "compilerOptions": {
-    "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": [
-      "node"
-    ]
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "**/*.ts"
-  ]
-}
-```
-## 代码规范
-目前多数大厂团队使用```husky + lint-staged```来约束代码规范，通过`pre-commit`实现lint检查、单元测试、代码格式化等。 IDE 配置（`.editorconfig`）、ESLint 配置（`.eslintrc.js` 和 `.eslintignore`）、StyleLint 配置（`.stylelintrc` 和 `.stylelintignore`），详细请看对应的配置文件。  
-
-**关闭代码规范**  
-如果不想使用，将 `src/` 目录分别加入 `.eslintignore` 和 `.stylelintignore` 进行忽略即可。 
-
-## SVG支持
-随着浏览器兼容性的提升，SVG的性能逐渐凸显，很多大厂团队都在创建自己的SVG管理库，后面工具库会有推荐。
-
-这里将svg组件化，正好算是一个小`demo`。创建文件夹`src/asstes/icons/svg`，将svg图标放在`svg`下面，通过`name`即可使用。
-```shell
-# 安装svg依赖
-pnpm add vite-plugin-svg-icons
-```
-配置`vite.config.ts`
-```typescript
-import viteSvgIcons from 'vite-plugin-svg-icons';
-export default defineConfig({
-plugins:[
-...
- viteSvgIcons({
-    // 指定需要缓存的图标文件夹
-    iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-    // 指定symbolId格式
-    symbolId: 'icon-[dir]-[name]',
-  }),
-]
-...
-})
-```
-封装`SvgIcon`组件
-```javascript
-<template>
-    <svg aria-hidden="true" class="svg-icon-spin" :class="calsses">
-        <use :xlink:href="symbolId" :fill="color" />
-    </svg>
-</template>
-
-<script lang="ts" setup>
-import { computed, reactive } from 'vue'
-const props = defineProps({
-    prefix: {
-        type: String,
-        default: 'icon'
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    color: {
-        type: String,
-        default: '#333'
-    },
-    size: {
-        type: String,
-        default: 'default'
-    }
-})
-const symbolId = computed(() => `#${props.prefix}-${props.name}`)
-const calsses = computed(() => {
-    return {
-        [`sdms-size-${props.size}`]: props.size
-    }
-})
-const fontSize = reactive({ default: '32px', small: '20px', large: '48px' });
-</script>
-<style lang="less" scoped>
-.svg-icon-spin {
-    width: v-bind("fontSize.default");
-    height: v-bind("fontSize.default");
-    fill: v-bind(color);
-    vertical-align: middle;
-    color: v-bind(color);
-    &.sdms-size-small {
-        font-size: v-bind("fontSize.small");
-        height: v-bind("fontSize.small");
-    }
-    &.sdms-size-large {
-        font-size: v-bind("fontSize.large");
-        height: v-bind("fontSize.large");
-    }
-}
-</style>
-```
-调用svg组件
-```javascript
-import SvgIcon from '@/components/SvgIcon'
-<SvgIcon name="svg-github" size="small" color="#999999" />
-```
-## Plop自动生成
-`plop`是一个脚手架工具，其实大厂为了进一步规范团队协作，自动生成是最好的`init`初始化选择。这其实在后端早已屡见不鲜，比如`CURD`Api的自动生成，甚至`controll、module`都是可视化或命令行生成。又如流行的数据库迁移工具`migration`，也是进一步规范多人协作数据表管理。由此可见，技术发展的终点是一个圆，也说明前端还有很长一段路要走。
-
-```shell
-# 安装plop
-pnpm add plop
-```
-根目录创建`plopfile.ts`
-```typescript
-import { NodePlopAPI } from 'plop';
-export default function (plop: NodePlopAPI) {
-    plop.setWelcomeMessage('请选择需要创建的模式：')
-    plop.setGenerator('page', require('./plop-tpls/page/prompt'))
-    plop.setGenerator('component', require('./plop-tpls/component/prompt'))
-    plop.setGenerator('store', require('./plop-tpls/store/prompt'))
-}
-```
-在根目录下创建`plop-tpls/page`文件夹，并创建`index.hbs`和`prompt.js`
-```javascript
-// index.hbs 一种模板文件
-<template>
-    <div>
-        <!-- Your content -->
-    </div>
-</template>
-
-<script setup name="{{ properCase componentName }}">
-// const { proxy } = getCurrentInstance()
-// const router = useRouter()
-// const route = useRoute()
-</script>
-
-<style lang="less" scoped>
-
-</style>
-```
-```javascript
-// prompt.js执行函数
-const path = require('path')
-const fs = require('fs')
-
-function getFolder(path) {
-    let components = []
-    const files = fs.readdirSync(path)
-    files.forEach(function (item) {
-        let stat = fs.lstatSync(path + '/' + item)
-        if (stat.isDirectory() === true && item != 'components') {
-            components.push(path + '/' + item)
-            components.push.apply(components, getFolder(path + '/' + item))
-        }
-    })
-    return components
-}
-
-module.exports = {
-    description: '创建页面',
-    prompts: [
-        {
-            type: 'list',
-            name: 'path',
-            message: '请选择页面创建目录',
-            choices: getFolder('src/pages')
-        },
-        {
-            type: 'input',
-            name: 'name',
-            message: '请输入文件名',
-            validate: v => {
-                if (!v || v.trim === '') {
-                    return '文件名不能为空'
-                } else {
-                    return true
-                }
-            }
-        }
-    ],
-    actions: data => {
-        let relativePath = path.relative('src/pages', data.path)
-        const actions = [
-            {
-                type: 'add',
-                path: `${data.path}/{{dotCase name}}.vue`,
-                templateFile: 'plop-tpls/page/index.hbs',
-                data: {
-                    componentName: `${relativePath} ${data.name}`
-                }
-            }
-        ]
-        return actions
-    }
-}
-```
-**运行调试**
-```json
-// 在package.json里面配置启动命令行
-"scripts": {
-...
-"plop": "plop"
-...
-}
-```
-```shell
-// 启动命令
-pnpm run plop
-```
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a6756aebd4d6407e8545eed41b6e5864~tplv-k3u1fbpfcp-watermark.image?)
-## 移动端的支持
-移动端默认集成[postcss-px-to-viewport](https://www.npmjs.com/package/postcss-px-to-viewport) 插件，使用时将`.postcss.config.js`文件修改为`postcss.config.js`即可。开发正常使用`px`，最终转化为`vw`。
 
 # 工具库
 学会使用适当的工具库，让`coding`事半功倍。尤其是开源的工具库，值得每个人学习，因为这本身就是你应该达到的层次。这里推荐一些大厂常用的类库，因为我喜新...，以下工具均可直接引入。

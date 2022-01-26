@@ -1,7 +1,7 @@
 import { MockMethod } from "vite-plugin-mock"
 export default [
     {
-        url: '/api/userProfile',
+        url: '/v1/user/profile',
         method: 'get',
         response: () => {
             return {
