@@ -47,10 +47,8 @@ const ThemeChange = (val: string | number | boolean) => {
           class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 px-4"
         >
           <div class="relative flex items-center text-2xl sm:text-2xl font-blimone">
-            <a
-              class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto leading-6 dark:text-slate-200"
-              href="https://github.com/MaleWeb"
-            >Fast-Vue3</a>
+            <router-link to="/" class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto leading-6 dark:text-slate-200">Fast-Vue3</router-link>
+      
             <div class="relative hidden lg:flex items-center ml-auto">
               <nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">

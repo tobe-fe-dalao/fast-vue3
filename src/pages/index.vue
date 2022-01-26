@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import Header from "../components/Header.vue"
+import Header from "@components/Header.vue"
 import { version } from "../../package.json"
-import SvgIcon from "../components/SvgIcon/index.vue"
-import request from "../utils/http/axios"
+import SvgIcon from "@components/SvgIcon/index.vue"
 import getGithubVersion from "../utils"
-import { useAppStore } from '../store/modules/app'
+import { useAppStore } from '@/store/modules/app'
 import userApi from "@api/user"
-const useSetStore = useAppStore()
+const appStore = useAppStore()
 const vue3Version = ref([]);
 const data = reactive([
   {
@@ -50,8 +49,8 @@ const data = reactive([
     author: 'Vuex最佳替代品',
   },
 ])
-const user = await userApi.getUserProfile()
-console.log(user, '获取用户信息')
+// const user = await userApi.getUserProfile()
+// console.log(user, '获取用户信息')
 </script>
 <template>
   <Header />
@@ -60,7 +59,7 @@ console.log(user, '获取用户信息')
       <h1
         class="relative mb-4 font-blimone text-4xl sm:text-5xl lg:text-6xl tracking-tight text-slate-900 dark:text-slate-200"
       >
-        {{ useSetStore.h1 }}
+        {{ appStore.h1 }}
         <span
           class="version tracking-wide absolute text-4xl bg-gradient-to-br from-fuchsia-500 to-purple-600"
         >{{ `V${version}` }}</span>
