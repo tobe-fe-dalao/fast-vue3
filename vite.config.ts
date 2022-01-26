@@ -22,6 +22,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         '@config': resovePath('./config'),
         "@components": resovePath('./src/components'),
         '@utils': resovePath('./src/utils'),
+        '@api': resovePath('./src/api'),
       }
     },
     // plugins

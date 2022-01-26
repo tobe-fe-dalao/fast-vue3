@@ -38,21 +38,21 @@ const ThemeChange = (val: string | number | boolean) => {
 </script>
 
 <template>
-  <header class="Male antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+  <header class="antialiased bg-white Male text-slate-500 dark:text-slate-400 dark:bg-slate-900">
     <div
       class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent"
     >
-      <div class="max-w-8xl mx-auto">
+      <div class="mx-auto max-w-8xl">
         <div
-          class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 px-4"
+          class="px-4 py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10"
         >
           <div class="relative flex items-center text-2xl sm:text-2xl font-blimone">
             <a
               class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200"
               href="https://github.com/MaleWeb"
             >Fast-Vue3</a>
-            <div class="relative hidden lg:flex items-center ml-auto">
-              <nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
+            <div class="relative items-center hidden ml-auto lg:flex">
+              <nav class="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
                   <li>
                     <router-link
@@ -72,7 +72,7 @@ const ThemeChange = (val: string | number | boolean) => {
                 </ul>
               </nav>
               <div
-                class="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800"
+                class="flex items-center pl-6 ml-6 border-l border-slate-200 dark:border-slate-800"
               >
                 <a-tooltip
                   :content="
@@ -97,7 +97,7 @@ const ThemeChange = (val: string | number | boolean) => {
                 <a
                   href="https://github.com/MaleWeb/fast-vue3"
                   target="_bank"
-                  class="ml-6 block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
+                  class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
                 >
                   <SvgIcon name="svg-github" size="small" color="#999999" />
                 </a>
