@@ -438,6 +438,7 @@ git clone -b template https://github.com/MaleWeb/fast-vue3.git
   
 -   前沿技术，各类体验、互动相关的技术，各类译文、研报的提前透视。
 -   白嫖，承诺发布的所有付费资源，粉丝群统统免费白嫖，不然大家谁有时间跟你玩，嘿嘿。
+-   [Fast-Vue3的更新说明在这里](https://github.com/MaleWeb/fast-vue3/docs/update.md)
 
 <p>
 <img width="360" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/varqun.jpg">
