@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Header from '@/components/Header.vue'
-import ReadMe from '../../README.md'
+import Header from '@components/Header.vue'
+import ReadMe from '@components/MarkDown/index.md'
 </script>
 
 <template>

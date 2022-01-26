@@ -5890,16 +5890,7 @@ vite-plugin-compression@^0.4.0:
     debug "^4.3.3"
     fs-extra "^10.0.0"
 
-vite-plugin-inspect@^0.3.13:
-  version "0.3.13"
-  resolved "https://registry.npmmirror.com/vite-plugin-inspect/download/vite-plugin-inspect-0.3.13.tgz#8b45b639867cdd62b1e8a3b90de62aa959461d2b"
-  integrity sha512-Naie3Rx/0IbmQSknfQPVrvWKiar7fCu50u+uLcUgt54yX0espduLDnI8IEtOYlsCA4gHs93IYKtxFDTxAThmYw==
-  dependencies:
-    "@rollup/pluginutils" "^4.1.2"
-    debug "^4.3.3"
-    kolorist "^1.5.1"
-    sirv "^2.0.0"
-    ufo "^0.7.9"
+
 
 vite-plugin-md@^0.11.7:
   version "0.11.7"

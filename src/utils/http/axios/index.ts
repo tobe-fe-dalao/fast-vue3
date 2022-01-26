@@ -1,9 +1,8 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import qs from 'qs'
 import { showMessage } from './status'
-// 字节的Arco.design框架，按需修改
-import { Message } from '@arco-design/web-vue'
 import { IResponse, ILogin } from './type'
+import { API_BASE_URL } from '../../../../config/constant'
 
 // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 5000
@@ -14,9 +13,8 @@ axios.defaults.withCredentials = false
 axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: process.env.VUE_APP_BASE_URL + '/api/',
+  baseURL: API_BASE_URL + '/api/',
   headers: {
-    Accept: 'application/json',
     'Content-Type': 'application/json;charset=UTF-8',
   },
   transformRequest: [
@@ -52,7 +50,7 @@ axiosInstance.interceptors.response.use(
       showMessage(response.status)
       return Promise.reject(response.data)
     }
-    Message.warning('网络连接异常,请稍后再试!')
+    showMessage('网络连接异常,请稍后再试!')
   }
 )
 

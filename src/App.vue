@@ -4,11 +4,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useSettingsStore } from './store/modules/settings'
-import { ref, provide, nextTick, watch } from 'vue'
-const settingsStore = useSettingsStore()
-// @ts-ignore
-console.log(settingsStore.title, '测试全局store')
+import { useAppStore } from './store/modules/app'
+const appStore = useAppStore()
+
 
 provide('reload', reload)
 function reload() {
@@ -19,9 +17,9 @@ function reload() {
 const isRouterAlive = ref(true)
 
 watch(
-  () => settingsStore.title,
+  () => appStore.title,
   () => {
-    const title: string = settingsStore.title
+    const title: string = appStore.title
     document.title = title
       ? `${title} - ${import.meta.env.VITE_APP_TITLE}`
       : import.meta.env.VITE_APP_TITLE
