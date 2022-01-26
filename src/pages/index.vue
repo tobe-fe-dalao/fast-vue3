@@ -2,7 +2,6 @@
 import Header from "@components/Header.vue"
 import { version } from "../../package.json"
 import SvgIcon from "@components/SvgIcon/index.vue"
-import getGithubVersion from "../utils"
 import { useAppStore } from '@/store/modules/app'
 import userApi from "@api/user"
 const appStore = useAppStore()

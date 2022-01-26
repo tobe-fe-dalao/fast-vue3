@@ -9,7 +9,6 @@ declare module 'vue' {
     Footer: typeof import('./components/footer/index.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
-    MarkDown: typeof import('./components/MarkDown/index.md')['default']
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
   }
 }

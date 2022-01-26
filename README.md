@@ -12,7 +12,7 @@
 ![Less](https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white) 
 ![Taiwind](https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white)
 
-一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。
+一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
 # 功能亮点
 这里简单介绍一些核心部分，安装部分不再细讲，建议大家直接阅读官方文档或[可视化仓库](https://github1s.com/MaleWeb/fast-vue3)
 
@@ -438,7 +438,7 @@ git clone -b template https://github.com/MaleWeb/fast-vue3.git
   
 -   前沿技术，各类体验、互动相关的技术，各类译文、研报的提前透视。
 -   白嫖，承诺发布的所有付费资源，粉丝群统统免费白嫖，不然大家谁有时间跟你玩，嘿嘿。
--   [Fast-Vue3的更新说明在这里](https://github.com/MaleWeb/fast-vue3/docs/update.md)
+
 
 <p>
 <img width="360" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/varqun.jpg">
