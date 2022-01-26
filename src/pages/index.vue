@@ -2,8 +2,6 @@
 import Header from "../components/Header.vue"
 import { version } from "../../package.json"
 import SvgIcon from "../components/SvgIcon/index.vue"
-import request from "../utils/http/axios"
-import getGithubVersion from "../utils"
 import { useAppStore } from '../store/modules/app'
 import { getUserProfile } from "../api/user/user"
 const useSetStore = useAppStore()
@@ -49,6 +47,16 @@ const data = reactive([
     color: ' from-yellow-400 to-orange-500',
     author: 'Vuex最佳替代品',
   },
+  {
+    content:
+      'Tailwind CSS 是一个功能类优先的 CSS 框架，它集成了诸如 flex, pt-4, text-center 和 rotate-90 这样的的类，它们能直接在脚本标记语言中组合起来，构建出任何设计。😛',
+    avatar: 'https://pbs.twimg.com/profile_images/1468993891584073729/a_op8KnL_200x200.jpg',
+    title: 'Tailwind',
+    version: 'https://api.github.com/repos/vuejs/pinia/releases',
+    github: 'https://github.com/tailwindlabs/tailwindcss',
+    color: ' from-blue-600 to-green-700',
+    author: '原子式CSS',
+  },
 ])
 // const user = getUserProfile()
 console.log(getUserProfile(), 'sadasasd大苏打')
@@ -62,17 +70,21 @@ console.log(getUserProfile(), 'sadasasd大苏打')
       >
         {{ useSetStore.h1 }}
         <span
-          class="version tracking-wide absolute text-4xl bg-gradient-to-br from-fuchsia-500 to-purple-600"
+          class="version tracking-wide absolute text-2xl lg:text-4xl bg-gradient-to-br from-fuchsia-500 to-purple-600"
         >{{ `V${version}` }}</span>
       </h1>
       <p class="text-2xl text-slate-300 dark:text-slate-400">最新Vue3技术流，超全配置，大厂协作规范，大佬必备神器</p>
     </div>
   </main>
-  <article
-    class="max-w-screen-lg xl:max-w-screen-xl mx-auto space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44"
-  >
-    <ul class="flex items-center w-full py-8">
-      <li v-for="(item, index) in data" :key="index * 1.1" class="px-3 md:px-4 flex-none">
+  <article class="space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44">
+    <ul
+      class="flex items-center justify-center py-8 flex-wrap sm:px-24 lg:px-44 sm:justify-between lg:justify-between"
+    >
+      <li
+        v-for="(item, index) in data"
+        :key="index * 1.1"
+        class="px-3 pt-5 md:px-4 sm:pt-5 md:pt-8 lg:last:mr-auto"
+      >
         <figure class="shadow-lg rounded-xl flex-none w-80 md:w-xl">
           <blockquote
             class="rounded-t-xl bg-white px-6 py-8 md:p-5 text-lg md:text-base leading-8 md:leading-8 font-semibold text-slate-700 dark:text-slate-300 dark:bg-slate-800 dark:highlight-white/5"
@@ -112,8 +124,7 @@ console.log(getUserProfile(), 'sadasasd大苏打')
 <style lang="less" scoped>
 .version {
   display: inline-block;
-  top: 50%;
-  transform: translateY(-50%);
+
   padding: 6px;
   margin-left: 6px;
   border-radius: 10px;

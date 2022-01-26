@@ -48,7 +48,7 @@ const ThemeChange = (val: string | number | boolean) => {
         >
           <div class="relative flex items-center text-2xl sm:text-2xl font-blimone">
             <a
-              class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto leading-6 dark:text-slate-200"
+              class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200"
               href="https://github.com/MaleWeb"
             >Fast-Vue3</a>
             <div class="relative hidden lg:flex items-center ml-auto">
