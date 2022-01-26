@@ -420,7 +420,7 @@ git clone -b template https://github.com/MaleWeb/fast-vue3.git
   ![image-20220110125605172](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125605172.png)
 
 
-## UI库
+# UI库
 - [arco-design](https://github.com/arco-design/arco-design)，字节团队新出的UI框架,配置层面更为灵活,`fast-vue3`使用的就是这个,不喜欢的小伙伴可以移除
 - [semi-design](https://github.com/DouyinFE/semi-design)，抖音前端出的框架，面向经常撕逼UI和FE，可以尝鲜玩玩
 - [nutui](https://github.com/jdf2e/nutui)，京东前端团队出的UI框架，已升级到3.X，个人认为颜值最高并接受反驳
