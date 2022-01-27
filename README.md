@@ -12,22 +12,41 @@
 ![Less](https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white) 
 ![Taiwind](https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white)
 
-一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
-# 功能亮点
-这里简单介绍一些核心部分，安装部分不再细讲，建议大家直接阅读官方文档或[可视化仓库](https://github1s.com/MaleWeb/fast-vue3)
+An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
 
-## 🪂大厂协作-代码规范
-🪁 目前多数大厂团队一般使用[husky](https://github.com/typicode/husky)和 [lint-staged](https://github.com/okonet/lint-staged)  来约束代码规范，
-- 通过`pre-commit`实现lint检查、单元测试、代码格式化等。 
-- 结合VsCode编辑器（保存时自动执行格式化：editor.formatOnSave: true）
-- 配合Git hooks钩子（commit前或提交前执行：pre-commit => npm run lint:lint-staged）
-- IDE 配置（`.editorconfig`）、ESLint 配置（`.eslintrc.js` 和 `.eslintignore`）、StyleLint 配置（`.stylelintrc` 和 `.stylelintignore`），详细请看对应的配置文件。  
+English |  [简体中文](./README-zh_CN.md) |
+# Feature
+Here is a brief introduction to some core parts, and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/MaleWeb/fast-vue3) directly.
 
-🔌关闭代码规范  
-将 `src/` 目录分别加入 `.eslintignore` 和 `.stylelintignore` 进行忽略即可。 
+## 🪂Tech giants collaboration-code specification
+🪁 At present, many tech giants teams generally use [husky](https://github.com/typicode/husky)和 [lint-staged](https://github.com/okonet/lint-staged)  to constrain code specifications.
+- through `pre-commit` to implement  lint check,unit test,code formatting,etc.。 
+- Combined with the VsCode （Formatting automatically when saving：editor.formatOnSave: true）
+- Combined with the Git hooks（Execute before commit：pre-commit => npm run lint:lint-staged）
+- IDE configuration（`.editorconfig`）、ESLint configuration（`.eslintrc.js` 和 `.eslintignore`）、StyleLint configuration（`.stylelintrc` 和 `.stylelintignore`），for details, please refer to the corresponding configuration file。  
+
+🔌 Close code specification 
+add`.eslintignore` 和 `.stylelintignore`  to `src/`  directory respectively to ignore 
 
 
-## 💕支持JSX语法
+## Directory Structure
+
+The following is the directory structure of the system
+
+```
+├── config
+│   ├── vite          # vite配置
+|   └── constant      # 系统常量    
+├── docs
+├── mock                  
+├── plop-tpls            
+├── src                
+├── .d.ts
+├── .env.*
+└── eslintrc.js
+```
+
+## 💕Support JSX syntax
 
 ```json
 {
@@ -36,9 +55,9 @@
     ...
 }
 ```
-## 🎸UI组件按需加载，自动导入
+## 🎸 UI components are loaded on demand and imported automatically
 ```typescript
-//模块化写法
+//Modular writing
 import Components from 'unplugin-vue-components/vite'
 export const AutoRegistryComponents = () => {
     return Components({
@@ -54,21 +73,21 @@ export const AutoRegistryComponents = () => {
             IconsResolver({
                 componentPrefix: '',
             }),
-            ArcoResolver({ importStyle: 'less' }),//根据你需要增加UI框架
-            VueUseComponentsResolver(),//默认使用VueUse组件
+            ArcoResolver({ importStyle: 'less' }),// Add UI framework according to your needs
+            VueUseComponentsResolver(),// VueUse component is used by default
         ],
     })
 }
 ```
 
-## 🧩Vite插件模块化
-为了方便管理插件，将所有的`config`统一放入`config/vite/plugins`里面，未来还会有更多插件直接分文件夹管理十分干净。
-值得一提的是，`Fast-Vue3`增加了统一环境变量管理，来区分动态开启某些插件。
+## 🧩Vite plugin modularity
+In order to facilitate the management of plugins, put all `config` into `config/vite/plugins`. In the future, there will be more plugins directly divided into folders to manage very cleanly。
+It is worth mentioning that `Fast-Vue3` adds unified environment variable management to distinguish dynamic opening of certain plugins.
 ```typescript
 // vite/plugins/index.ts
 /**
  * @name createVitePlugins
- * @description 封装plugins数组统一调用
+ * @description Encapsulate the plugins array to call uniformly
  */
 import type { Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -85,21 +104,21 @@ import { ConfigRestartPlugin } from './restart'
 
 export function createVitePlugins(isBuild: boolean) {
     const vitePlugins: (Plugin | Plugin[])[] = [
-        // vue支持
+        // vue support
         vue(),
-        // JSX支持
+        // JSX support
         vueJsx(),
-        // 自动按需引入组件
+        // Automatically import components on demand
         AutoRegistryComponents(),
-        // 自动按需引入依赖
+        // Automatically import dependencies as needed
         AutoImportDeps(),
-        // 自动生成路由
+        // Automatically generate routes
         ConfigPagesPlugin(),
-        // 开启.gz压缩  rollup-plugin-gzip
+        // Enable .gz compression  rollup-plugin-gzip
         ConfigCompressPlugin(),
-        //支持markdown
+        // markdown support
         ConfigMarkDownPlugin(),
-        // 监听配置文件改动重启
+        // Monitor configuration file changes and restart
         ConfigRestartPlugin(),
     ];
     // vite-plugin-svg-icons
@@ -111,7 +130,7 @@ export function createVitePlugins(isBuild: boolean) {
     return vitePlugins;
 }
 ```
-而`vite.config.ts`便干净多了
+`vite.config.ts` is much cleaner
 ```typescript
 import { createVitePlugins } from './config/vite/plugins'
 ...
@@ -130,10 +149,10 @@ return {
 }
 ...
 ```
-## 📱支持`Pinia` ,下一代`Vuex5`
-创建文件`src/store/index.ts`
+## 📱 Support for `Pinia`, the next generation of `Vuex5`
+Create a file `src/store/index.ts`
 ```typescript
-// 支持模块化，配合plop可以通过命令行一键生成
+// Supports modularization, and can be generated with one click from the command line with plop
 import { createPinia } from 'pinia';
 import { useAppStore } from './modules/app';
 import { useUserStore } from './modules/user';
@@ -141,13 +160,13 @@ const pinia = createPinia();
 export { useAppStore, useUserStore };
 export default pinia;
 ```
-创建文件`src/store/modules/user/index.ts`
+Create a file `src/store/modules/user/index.ts`
 
 ```typescript
 import { defineStore } from 'pinia'
 import piniaStore from '@/store'
 export const useUserStore = defineStore(
-    // 唯一ID
+    // unique id
     'user',
     {
         state: () => ({}),
@@ -156,14 +175,14 @@ export const useUserStore = defineStore(
     }
 )
 ```
-## 🤖 支持`Plop`自动生成文件
+## 🤖 Support `Plop` to automatically generate files
  ⚙️ 代码文件自动生成，提供三种预设模板`pages`,`components`,`store`，也可以根据自己需要设计更多自动生成脚本。一般后端同学惯用此形式，十分高效。
 
 ```shell
-# 安装plop
+# install plop
 pnpm add plop
 ```
-根目录创建`plopfile.ts`
+Create in the root directory `plopfile.ts`
 ```typescript
 import { NodePlopAPI } from 'plop';
 export default function (plop: NodePlopAPI) {
@@ -175,28 +194,28 @@ export default function (plop: NodePlopAPI) {
 ```
 
 ```shell
-# 启动命令
+# start command
 pnpm run plop
 ```
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a6756aebd4d6407e8545eed41b6e5864~tplv-k3u1fbpfcp-watermark.image?)
 
 
-## 🖼️ 支持`SVG`图标
-随着浏览器兼容性的提升，SVG的性能逐渐凸显，很多大厂团队都在创建自己的SVG管理库，后面工具库会有推荐。
+## 🖼️ Support for `SVG` icons
+With the improvement of browser compatibility, the performance of SVG has gradually become prominent. Many tech giants teams are creating their own SVG management library, and the tool library will be recommended later.
 ```shell
-# 安装svg依赖
+#  install svg dependencies
 pnpm add vite-plugin-svg-icons
 ```
-配置`vite.config.ts`
+configure `vite.config.ts`
 ```typescript
 import viteSvgIcons from 'vite-plugin-svg-icons';
 export default defineConfig({
 plugins:[
 ...
  viteSvgIcons({
-    // 指定需要缓存的图标文件夹
+    // Specify the icon folder that needs to be cached
     iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-    // 指定symbolId格式
+    // Specify symbolId format
     symbolId: 'icon-[dir]-[name]',
   }),
 ]
@@ -204,7 +223,7 @@ plugins:[
 })
 ```
 
-已封装一个简单的`SvgIcon`组件，可以直接读取文件下的`svg`，可以根据文件夹目录自动查找文件。
+A simple `SvgIcon` component has been encapsulated, which can directly read the `svg` under the file, and can automatically find the file according to the folder directory.
 
 ```html
 <template>
@@ -241,10 +260,10 @@ const calsses = computed(() => {
 const fontSize = reactive({ default: '32px', small: '20px', large: '48px' })
 </script>
 ```
-## 📦支持`axios(ts版)`
-已封装了主流的拦截器，请求调用等方法，区分了模块`index.ts`/`status.ts`/`type.ts`
+## 📦 Support `axios (ts version)`
+It has encapsulated mainstream interceptors, request calls and other methods, distinguishing modules `index.ts`/`status.ts`/`type.ts`
 ```typescript
-//封装src/api/user/index.ts
+//encapsulate src/api/user/index.ts
 import request from '@utils/http/axios'
 import { IResponse } from '@utils/http/axios/type'
 import { ReqAuth, ReqParams, ResResult } from './type';
@@ -259,20 +278,20 @@ const permission = async () => request<ReqAuth>({ url: URL.permission });
 export default { getUserProfile, login, permission };
 ```
 ```typescript
-//调用
+// transfer
 import userApi from "@api/user"
-// setup模式下组件可以直接引用
+// Components can be directly referenced in setup mode
 const res = await userApi.profile()
 ```
-## 👽 自动生成`router`，过滤`components`组件
-支持`vue-router4.0`的模块化，通过检索pages文件夹可自动生成路由，并支持动态路由
+## 👽 Automatically generate `router`, filter `components` components
+Supports the modularization of `vue-router4.0`, automatically generates routes by retrieving the pages folder, and supports dynamic routes
 
 ```typescript
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import routes from 'virtual:generated-pages'
 
-console.log(routes,'打印生成自动生成的路由')
-//导入生成的路由数据
+console.log(routes,'print generate auto-generated routes')
+// Import generated routing data
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
@@ -280,8 +299,8 @@ const router = createRouter({
 
 export default router
 ```
-## 🧬支持Mock数据
-使用`vite-plugin-mock`插件，支持自动区分和启停的环境配置  
+## 🧬 Support Mock data
+Use the `vite-plugin-mock` plug-in to support automatic distinction and start-stop environment configuration 
 
 ```javascript
 // vite config
@@ -297,11 +316,11 @@ viteMockServe({
        `
     })
 ```
-根目录下创建 `_createProductionServer.ts`文件,非`_`开头文件会被自动加载成mock文件
+Create a `_createProductionServer.ts` file in the root directory, files not starting with `_` will be automatically loaded into mock files
 
 ```typescript
 import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
-// 批量加载
+// Bulk load
 const modules = import.meta.globEager('./mock/*.ts');
 
 const mockModules: Array<string> = [];
@@ -315,19 +334,19 @@ export function setupProdMockServer() {
     createProdMockServer(mockModules);
 }
 ```
-## 🎎Proxy代理
+## 🎎 Proxy
 ```typescript
 // vite config
 import proxy from '@config/vite/proxy';
 export default defineConfig({
     ...
     server: {
-        hmr: { overlay: false }, // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
+        hmr: { overlay: false }, // Disable or configure HMR connections and set server.hmr.overlay to false to `disable` the server error masking layer
         // 服务配置
-        port: VITE_PORT, // 类型： number 指定服务器端口;
-        open: false, // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
-        cors: false, // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
-        host: '0.0.0.0', // IP配置，支持从IP启动
+        port: VITE_PORT, // type:number Specify the server port;
+        open: false, // type:boolean | string Automatically open the application in the browser when the server starts;
+        cors: false, // type:boolean | CorsOptions configure CORS for the development server. Enabled by default and allows any origin
+        host: '0.0.0.0', // IP configuration, support boot from IP
         proxy,
     }
     ...
@@ -363,81 +382,81 @@ export default init;
 
 ```
 
-## 🎉 其他
+## 🎉 Other
 
-- 🏗 支持`vw/vh`移动端布局兼容，也可以使用`plop`自己配置生成文件
-- 还有更多新功能增在`commiting`,如果你有更好的方案欢迎`PR`
+- 🏗 Support `vw/vh` mobile terminal layout compatibility, you can also use `plop` to configure the generated file yourself
+- There are more new features added in `commiting`, if you have a better solution, welcome `PR`
 
 
 # 使用 
-一键三连: Star 或 Fork 或 [可视化仓库](https://github1s.com/MaleWeb/fast-vue3) 
+One key three links: Star 或 Fork 或 [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
 
 ```shell
-# 拉取仓库代码
+# Pull repository code
 git clone  https://github.com/MaleWeb/fast-vue3.git
 
-# 进入项目文件夹
+# enter the project folder
 cd fast-vue3 
 
-# 安装项目依赖
+# Install project dependencies
 pnpm install
 
-# 运行
+# run
 pnpm run dev
 ```
-如果不报错，恭喜你点火成功。否则，请看下面常见问题。
+If no error is reported, congratulations on your successful ignition。Otherwise，Please see the FAQ below。
 
-如果你已经了解本模板，建议你拉取 `template` 分支进行项目开发，该分支不含任何示例代码。
+If you already know this template, it is recommended that you pull the `template` branch for project development, this branch does not contain any sample code.
 
 ```
-# clone  template 分支
+# clone  template branch
 git clone -b template https://github.com/MaleWeb/fast-vue3.git
 ```
 
-# 工具库
-学会使用适当的工具库，让`coding`事半功倍。尤其是开源的工具库，值得每个人学习，因为这本身就是你应该达到的层次。这里推荐一些大厂常用的类库，因为我喜新...，以下工具均可直接引入。
+# Tool Library
+Learn to use the appropriate tool library to make `coding` do more with less. Especially the open source tool library, it is worth everyone to learn, because this is the level you should reach. Here are some class libraries commonly used by major manufacturers, because I like new ones... The following tools can be imported directly.
 
 ## JS库
-- [pnpm](https://pnpm.io/)，一个依赖包全局管理的工具，老板再也不用担心我的C盘不够用。Vite官方推荐，字节官方前端团队大规模项目考验
+- [pnpm](https://pnpm.io/)，A tool that relies on the global management of packages, the boss no longer has to worry that my C drive is not enough. Vite official recommendation, Byte Dance official front-end team large-scale project test
   
 ![image-20220110125758056](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125758056.png)
-- [mitt 全局事件监听库](https://github.com/developit/mitt)，Vue3官方推荐
-- [Hammer](http://hammerjs.github.io/)，可以识别由触摸、鼠标和指针事件做出的手势,只有 7.34kb
-- [outils](https://github.com/proYang/outils)，开发中常用的函数集，也可以使用`lodash`
+- [mitt 全局事件监听库](https://github.com/developit/mitt)，Vue3 official recommendation
+- [Hammer](http://hammerjs.github.io/)，Can recognize gestures made by touch, mouse and pointer events, only 7.34kb
+- [outils](https://github.com/proYang/outils)，A set of functions commonly used in development, you can also use `lodash`
 
-- [tailwindcss](https://tailwindcss.com/)，艾玛香的一塌糊涂，一行css不写，3分钟出一个页面。不适合初中级前端，建议还是先踏实学基础再用框架。
+- [tailwindcss](https://tailwindcss.com/)，Oh my Jesus, without writing a line of CSS, a page is created in 3 minutes. It is not suitable for junior and intermediate front-ends. It is recommended to learn the basics first and then use the framework.
 
   ![tailwindcss-1](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/tailwindcss-1.gif)
 
   ![tailwindcss-2](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/tailwindcss-2.gif)
 
-- [Vue I18n](https://vue-i18n.intlify.dev/)  是 Vue.js 的国际化插件，如果你想做开源框架，国际化首选插件。
+- [Vue I18n](https://vue-i18n.intlify.dev/)  an internationalization plugin for Vue.js. If you want to make an open source framework, the preferred plugin for internationalization.
 
-- [ViteSSG](https://github.com/antfu/vite-ssg)，SEO优化，这个项目有点意思，大家可以玩玩这个方案，之前我都是通过服务端渲染搞SEO，后来了解到这个可以直接在Vue3的服务器上生成。
+- [ViteSSG](https://github.com/antfu/vite-ssg)，SEO optimization, this project is interesting, you can play with this solution, I used to do SEO through server-side rendering before, and later learned that this can be generated directly on the Vue3 server.
 
-- [Vitest](https://github.com/vitest-dev/vitest),基于Vite的单元测试工具，目前迭代比较快，尤大金牌赞助。可以持续关注，不建议使用在小项目中。
+- [Vitest](https://github.com/vitest-dev/vitest),The unit testing tool based on Vite, the iteration is relatively fast at present, and is sponsored by Evan You. You can continue to pay attention, and it is not recommended to use it in small projects.
 
   ![image-20220110125605172](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125605172.png)
 
 
 # UI库
-- [arco-design](https://github.com/arco-design/arco-design)，字节团队新出的UI框架,配置层面更为灵活,`fast-vue3`使用的就是这个,不喜欢的小伙伴可以移除
-- [semi-design](https://github.com/DouyinFE/semi-design)，抖音前端出的框架，面向经常撕逼UI和FE，可以尝鲜玩玩
-- [nutui](https://github.com/jdf2e/nutui)，京东前端团队出的UI框架，已升级到3.X，个人认为颜值最高并接受反驳
-- [naive-ui](https://github.com/TuSimple/naive-ui)，尤大推荐，TypeScript语法，主题可调，这家公司挺厉害 
-- 暂时就这些吧，困了,回头再补
+- [arco-design](https://github.com/arco-design/arco-design)，The new UI framework of the Byte Dance team has a more flexible configuration level.  `fast-vue3` uses it. if you don't like it can be removed.
+- [semi-design](https://github.com/DouyinFE/semi-design)，The framework from the front end of Douyin is aimed at constantly tearing UI and FE, and you can try it out.
+- [nutui](https://github.com/jdf2e/nutui)，The UI framework developed by the front-end team of JD.com has been upgraded to 3.X. Personally, I think it has the highest appearance and accepts the rebuttal.
+- [naive-ui](https://github.com/TuSimple/naive-ui)，Recommended by Evan You, TypeScript syntax, adjustable theme, this company is very powerful
+- That's all for now and I'll make up later
 
-# 资料
-- 官方配置文档入口[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
-- 更详细的配置手册:https://juejin.cn/post/7036745610954801166
-- vu3写组件实践案例:https://juejin.cn/post/7052717075168493598
+# Reference
+- Official configuration document entry[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
+- More detailed configuration manual:https://juejin.cn/post/7036745610954801166
+- vu3 writing component practice case:https://juejin.cn/post/7052717075168493598
 
 # 最后
 
--   欢迎加群[前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，划水，大家一起划水，现在粉丝群甚少讨论技术，那么我们就一起水吧。欢迎关注我的公众号[扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
+-   Welcome to join the group [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，goof off, let's goof off together, and now the fan group rarely discusses technology, so let's goof off together. Welcome to pay attention to Wechat public number [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
   
--   前沿技术，各类体验、互动相关的技术，各类译文、研报的提前透视。
--   白嫖，承诺发布的所有付费资源，粉丝群统统免费白嫖，不然大家谁有时间跟你玩，嘿嘿。
+-   Cutting-edge technologies, technologies related to various experiences and interactions, and advance perspectives of various translations and research reports.
+-   free to use, all the paid resources promised to be released, all the fan groups are free for using, otherwise, who would have time to play with you, interesting.
 
 
 <p>
