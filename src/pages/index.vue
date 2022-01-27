@@ -6,8 +6,7 @@ import { useAppStore } from '@/store/modules/app'
 import { framework } from "./data"
 
 const appStore = useAppStore()
-const vue3Version = ref([]);
-const data = reactive(framework)
+const data = ref(framework)
 
 // const user = await userApi.getUserProfile()
 // console.log(user, '获取用户信息')
@@ -29,7 +28,7 @@ const data = reactive(framework)
   </main>
   <article class="space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44">
     <ul
-      class="flex flex-wrap items-center justify-center py-6 sm:px-24 lg:px-44 sm:justify-start lg:justify-start"
+      class="flex flex-wrap items-center justify-center py-6 sm:px-20 lg:px-36 xl:px-52 sm:justify-start lg:justify-start"
     >
       <li
         v-for="(item, index) in data"
