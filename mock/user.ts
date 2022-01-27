@@ -10,10 +10,9 @@ export default [
                     name: '扫地盲僧',
                     profileBio: '达摩深寺扫地僧，盲崖盘坐思人生',
                     devLanguages: 'JavaScript/Vue/React/Node/PHP',
-                    github: 'https://github.com/MaleWeb',
-                    juejin: 'https://juejin.cn/user/3016715636842622',
-                    zhihu: 'https://www.zhihu.com/people/blind_monk'
-
+                    blogGithub: 'https://github.com/MaleWeb',
+                    blogJuejin: 'https://juejin.cn/user/3016715636842622',
+                    blogZhihu: 'https://www.zhihu.com/people/blind_monk'
                 }
             }
         }
