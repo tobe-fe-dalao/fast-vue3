@@ -41,7 +41,7 @@ export const framework = [
     avatar: 'https://pbs.twimg.com/profile_images/1468993891584073729/a_op8KnL_200x200.jpg',
     title: 'Tailwind',
     github: 'https://github.com/tailwindlabs/tailwindcss',
-    color: ' from-blue-400 to-green-700',
+    color: ' from-teal-400 to-cyan-300',
     author: '原子式CSS',
   },
   {
