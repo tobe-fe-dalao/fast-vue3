@@ -1,16 +1,11 @@
 import { defineStore } from 'pinia'
 import piniaStore from '@/store/index'
 
-export const use{{ properCase name }}Store = defineStore(
-    // 唯一ID
-    '{{ camelCase name }}',
-    {
-        state: () => ({}),
-        getters: {},
-        actions: {}
-    }
-)
-
+export const use{{ properCase name }}Store = defineStore('{{ camelCase name }}', {
+    state: () => ({}),
+    getters: {},
+    actions: {}
+})
 export function use{{ properCase name }}OutsideStore() {
     return use{{ properCase name }}Store(piniaStore)
 }
