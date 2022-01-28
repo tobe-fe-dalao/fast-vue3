@@ -12,52 +12,53 @@
 ![Less](https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white) 
 ![Taiwind](https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white)
 
-An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
+すぐに使えるVue3 + Vite2 + TypeScriptなど。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメントを更新するには、ここをクリックしてください](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
 
-English |  [简体中文](./README-zh_CN.md) |　[日本語](./README.ja-JP.md)
-# Feature
-Here is a brief introduction to some core parts and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/MaleWeb/fast-vue3) directly.
+[English](./README.md) |  [简体中文](./README-zh_CN.md) | 日本語
 
-## 🪂Tech giants collaboration-code specification
-🪁 Many tech giants teams generally use [husky](https://github.com/typicode/husky) and  [lint-staged](https://github.com/okonet/lint-staged)  to constrain code specifications at present.
-- Through `pre-commit` to implement  lint check,unit test,code formatting,etc.。 
-- Combined with the VsCode（formatting automatically when saving：editor.formatOnSave: true）
-- Combined with the Git hooks（execute before commit：pre-commit => npm run lint:lint-staged）
-- IDE configuration（`.editorconfig`）,ESLint configuration（`.eslintrc.js` 和 `.eslintignore`）,StyleLint configuration（`.stylelintrc` 和 `.stylelintignore`）,for details, please refer to the corresponding configuration file。  
+# 特徴
+ここでは、いくつかのコアパーツの簡単な紹介を示しますが、インストールパーツについては詳しく説明しません。 公式ドキュメントまたは[ビジュアルウェアハウス]（https://github1s.com/MaleWeb/fast-vue3）を直接読むことをお勧めします。
 
-🔌 Close code specification 
-add `.eslintignore`  and  `.stylelintignore`  to `src/`  directory respectively to ignore 
+## 🪂技術巨人のコラボレーション-コード仕様
+🪁 現在、多くのハイテク巨人チームは、一般的に [husky](https://github.com/typicode/husky) と [lint-staged](https://github.com/okonet/lint-staged)を使用してコード仕様を制約しています。
+- `pre-commit`を介して、lintチェック、単体テスト、コードフォーマットなどを実装します。 
+- VsCodeと組み合わせる（保存時に自動的にフォーマットする：editor.formatOnSave：true）
+- Gitフックと組み合わせる（コミット前に実行：pre-commit => npm run lint：lint-staged）
+- IDE構成（ `.editorconfig`）、ESLint構成（` .eslintrc.js`和 `.eslintignore`）、StyleLint構成（` .stylelintrc`和 `.stylelintignore`）、詳細については、対応する構成ファイルを参照してください.
+
+🔌 コード仕様を閉じる
+`.eslintignore` と ` .stylelintignore`をそれぞれ `src /`ディレクトリに追加して無視します.
 
 
-## Directory Structure
+## ディレクトリ構造
 
-The following is the directory structure of the system
+システムのディレクトリ構造は次のとおりです
 
 ```
 ├── config
-│   ├── vite             // vite configuration
-│   ├── constant         // system constant 
-|   └── themeConfig      // theme configuration
-├── docs                 // document related
-├── mock                 // mock data    
-├── plop-tpls            // plop template   
+│   ├── vite             // vite 構成
+│   ├── constant         // システム定数
+|   └── themeConfig      // theme 構成
+├── docs                 // ドキュメント関連
+├── mock                 // モックデータ    
+├── plop-tpls            // plopテンプレート
 ├── src     
-│    ├── api             // api request   
-│    ├── assets          // static files   
-│    ├── components      // Common Components   
-│    ├── page            // page
-│    ├── router          // routing file   
-│    ├── store           // state management   
-│    ├── utils           // tools   
-│    ├── App.vue         // vue template entry   
-│    ├── main.ts         // vue template js
-├── .d.ts                // type definition   
-├── tailwind.config.js   // tailwind global configuration 
-├── tsconfig.json        // ts configuration
-└── vite.config.ts       // vite global configuration  
+│    ├── api             // APIリクエスト   
+│    ├── assets          // 静的ファイル  
+│    ├── components      // コンポーネント 
+│    ├── page            // ページ
+│    ├── router          // ルーティングファイル   
+│    ├── store           // 状態管理   
+│    ├── utils           // ツール   
+│    ├── App.vue         // vue テンプレート エントリ 
+│    ├── main.ts         // vue テンプレート js
+├── .d.ts                // タイプ定義
+├── tailwind.config.js   // tailwind グローバル構成 
+├── tsconfig.json        // ts 構成
+└── vite.config.ts       // vite グローバル構成  
 ```
 
-## 💕Support JSX syntax
+## 💕JSX構文をサポートする
 
 ```json
 {
@@ -66,9 +67,9 @@ The following is the directory structure of the system
     ...
 }
 ```
-## 🎸 UI components are loaded on demand and imported automatically
+## 🎸 UIコンポーネントはオンデマンドで読み込まれ、自動的にインポートされます
 ```typescript
-//Modular writing
+// モジュラーライティング
 import Components from 'unplugin-vue-components/vite'
 export const AutoRegistryComponents = () => {
     return Components({
@@ -84,16 +85,16 @@ export const AutoRegistryComponents = () => {
             IconsResolver({
                 componentPrefix: '',
             }),
-            ArcoResolver({ importStyle: 'less' }),// Add UI framework according to your needs
-            VueUseComponentsResolver(),// VueUse component is used by default
+            ArcoResolver({ importStyle: 'less' }),// 必要に応じてUIフレームワークを追加します
+            VueUseComponentsResolver(),// VueUseコンポーネントがデフォルトで使用されます
         ],
     })
 }
 ```
 
-## 🧩Vite plugin modularity
-In order to facilitate the management of plugins, put all `config` into `config/vite/plugins`. In the future, there will be more plugins directly divided into folders to manage very cleanly。
-It is worth mentioning that `Fast-Vue3` adds unified environment variable management to distinguish dynamic opening of certain plugins.
+## 🧩Viteプラグインのモジュール性
+プラグインの管理を容易にするために、すべての `config`を` config / vite / plugins`に入れてください。 将来的には、非常にクリーンに管理するために、フォルダーに直接分割されたプラグインが増える予定です。
+`Fast-Vue3`は、特定のプラグインの動的なオープンを区別するために、統合された環境変数管理を追加することは言及する価値があります。
 ```typescript
 // vite/plugins/index.ts
 /**
@@ -115,21 +116,21 @@ import { ConfigRestartPlugin } from './restart'
 
 export function createVitePlugins(isBuild: boolean) {
     const vitePlugins: (Plugin | Plugin[])[] = [
-        // vue support
+        // vueサポート
         vue(),
-        // JSX support
+        // JSXサポート
         vueJsx(),
-        // Automatically import components on demand
+        // コンポーネントをオンデマンドで自動的にインポート
         AutoRegistryComponents(),
-        // Automatically import dependencies as needed
+        // 必要に応じて依存関係を自動的にインポートします
         AutoImportDeps(),
-        // Automatically generate routes
+        // ルートを自動的に生成する
         ConfigPagesPlugin(),
-        // Enable .gz compression  rollup-plugin-gzip
+        // .gz圧縮を有効にする  rollup-plugin-gzip
         ConfigCompressPlugin(),
-        // markdown support
+        // markdownサポート
         ConfigMarkDownPlugin(),
-        // Monitor configuration file changes and restart
+        // 構成ファイルの変更を監視して再起動します
         ConfigRestartPlugin(),
     ];
     // vite-plugin-svg-icons
@@ -161,9 +162,9 @@ return {
 ...
 ```
 ## 📱 Support for `Pinia`, the next generation of `Vuex5`
-Create a file `src/store/index.ts`
+ファイルを作成する `src/store/index.ts`
 ```typescript
-// Supports modularization, and can be generated with one click from the command line with plop
+// モジュール化をサポートし、plopを使用してコマンドラインからワンクリックで生成できます
 import { createPinia } from 'pinia';
 import { useAppStore } from './modules/app';
 import { useUserStore } from './modules/user';
@@ -171,7 +172,7 @@ const pinia = createPinia();
 export { useAppStore, useUserStore };
 export default pinia;
 ```
-Create a file `src/store/modules/user/index.ts`
+ファイルを作成する `src/store/modules/user/index.ts`
 
 ```typescript
 import { defineStore } from 'pinia'
@@ -186,14 +187,14 @@ export const useUserStore = defineStore(
     }
 )
 ```
-## 🤖 Support `Plop` to automatically generate files
- ⚙️ The code files are automatically generated, providing three preset templates `pages`, `components`, `store`, you can also design more automatic generation scripts according to your needs. Generally, back-end engineer use this form, which is very efficient.。
+## 🤖 ファイルを自動的に生成するための `Plop`をサポート
+ ⚙️ コードファイルは自動的に生成され、3つのプリセットテンプレート `pages`、` components`、 `store`を提供します。また、必要に応じて、より多くの自動生成スクリプトを設計することもできます。 通常、バックエンドエンジニアはこのフォームを使用します。これは非常に効率的です。。
 
 ```shell
 # install plop
 pnpm add plop
 ```
-Create in the root directory `plopfile.ts`
+ルートディレクトリ `plopfile.ts`に作成します
 ```typescript
 import { NodePlopAPI } from 'plop';
 export default function (plop: NodePlopAPI) {
@@ -211,22 +212,22 @@ pnpm run plop
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a6756aebd4d6407e8545eed41b6e5864~tplv-k3u1fbpfcp-watermark.image?)
 
 
-## 🖼️ Support for `SVG` icons
-With the improvement of browser compatibility, the performance of SVG has gradually become prominent. Many tech giants teams are creating their own SVG management library, and the tool library will be recommended later.
+## 🖼️ `SVG`アイコンのサポート
+ブラウザの互換性の向上に伴い、SVGのパフォーマンスは徐々に顕著になりました。 多くの技術大手チームが独自のSVG管理ライブラリを作成しており、ツールライブラリは後で推奨されます。
 ```shell
-#  install svg dependencies
+#  svg依存関係をインストールします
 pnpm add vite-plugin-svg-icons
 ```
-configure `vite.config.ts`
+設定 `vite.config.ts`
 ```typescript
 import viteSvgIcons from 'vite-plugin-svg-icons';
 export default defineConfig({
 plugins:[
 ...
  viteSvgIcons({
-    // Specify the icon folder that needs to be cached
+    // キャッシュする必要のあるアイコンフォルダを指定します
     iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-    // Specify symbolId format
+    // symbolId形式を指定します
     symbolId: 'icon-[dir]-[name]',
   }),
 ]
@@ -234,7 +235,7 @@ plugins:[
 })
 ```
 
-A simple `SvgIcon` component has been encapsulated, which can directly read the `svg` under the file, and can automatically find the file according to the folder directory.
+単純な `SvgIcon`コンポーネントがカプセル化されており、ファイルの下の` svg`を直接読み取ることができ、フォルダーディレクトリに従ってファイルを自動的に見つけることができます。
 
 ```html
 <template>
@@ -271,10 +272,10 @@ const calsses = computed(() => {
 const fontSize = reactive({ default: '32px', small: '20px', large: '48px' })
 </script>
 ```
-## 📦 Support `axios (ts version)`
-It has encapsulated mainstream interceptors, request calls and other methods, distinguishing modules `index.ts`/`status.ts`/`type.ts`
+## 📦 サポート `axios (ts version)`
+主流のインターセプター、リクエスト呼び出し、その他のメソッドをカプセル化し、モジュール `index.ts` /` status.ts` / `type.ts`を区別しています。
 ```typescript
-//encapsulate src/api/user/index.ts
+// カプセル化 src/api/user/index.ts
 import request from '@utils/http/axios'
 import { IResponse } from '@utils/http/axios/type'
 import { ReqAuth, ReqParams, ResResult } from './type';
@@ -287,20 +288,20 @@ const login = async (data: ReqParams) => request({ url: URL.login, data });
 export default { getUserProfile, login };
 ```
 ```typescript
-// transfer
+// 移行
 import userApi from "@api/user"
-// Components can be directly referenced in setup mode
+// コンポーネントは、セットアップモードで直接参照できます
 const res = await userApi.profile()
 ```
 ## 👽 Automatically generate `router`, filter `components` components
-Supports the modularization of `vue-router4.0`, automatically generates routes by retrieving the pages folder, and supports dynamic routes
+`vue-router4.0`のモジュール化をサポートし、pagesフォルダーを取得してルートを自動的に生成し、動的ルートをサポートします
 
 ```typescript
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import routes from 'virtual:generated-pages'
 
 console.log(routes,'print generate auto-generated routes')
-// Import generated routing data
+// 生成されたルーティングデータをインポートする
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
@@ -308,8 +309,8 @@ const router = createRouter({
 
 export default router
 ```
-## 🧬 Support Mock data
-Use the `vite-plugin-mock` plug-in to support automatic distinction and start-stop environment configuration 
+## 🧬 サポート Mock data
+`vite-plugin-mock`プラグインを使用して、自動識別と開始-停止環境構成をサポートします
 
 ```javascript
 // vite config
@@ -325,7 +326,7 @@ viteMockServe({
        `
     })
 ```
-Create a `_createProductionServer.ts` file in the root directory, files not starting with `_` will be automatically loaded into mock files
+ルートディレクトリに `_createProductionServer.ts`ファイルを作成します。`_`で始まらないファイルは自動的にモックファイルにロードされます
 
 ```typescript
 import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
@@ -393,11 +394,11 @@ export default init;
 
 ## 🎉 Other
 
-- 🏗 Support `vw/vh` mobile terminal layout compatibility, you can also use `plop` to configure the generated file yourself
-- There are more new features added in `commiting`, if you have a better solution, welcome `PR`
+- 🏗 `vw / vh`モバイル端末レイアウトの互換性をサポートします。`plop`を使用して、生成されたファイルを自分で構成することもできます
+- `commiting`にはさらに多くの新機能が追加されています。より良い解決策がある場合は、` PR`を歓迎します。
 
 
-# Use 
+# 使用 
 One key three links: Star or Fork or [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
 
 ```shell

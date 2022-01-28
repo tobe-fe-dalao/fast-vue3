@@ -14,7 +14,7 @@
 
 一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
 
-[English](./README.md) | 简体中文 
+[English](./README.md) | 简体中文 | [日本語](./README.ja-JP.md)
 # 功能亮点
 这里简单介绍一些核心部分，安装部分不再细讲，建议大家直接阅读官方文档或[可视化仓库](https://github1s.com/MaleWeb/fast-vue3)
 
