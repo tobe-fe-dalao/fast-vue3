@@ -1,12 +1,23 @@
-import request from '@utils/http/axios'
+// 权限问题后期增加
+// import { get, post } from '@utils/http/axios'
 import { IResponse } from '@utils/http/axios/type'
-import { ReqAuth, ReqParams, ResResult } from './type';
+import { ReqAuth, ReqParams, ResResult } from './types';
+import { UserState } from '@/store/modules/user/types';
+import axios from 'axios';
 enum URL {
-    login = '/v1/user/login',
-    permission = '/v1/user/permission',
-    userProfile = 'mock/api/userProfile'
+    login = '/api/user/login',
+    logout = '/api/user/logout',
+    profile = '/api/userProfile'
 }
-const getUserProfile = async () => request<ReqAuth>({ url: URL.userProfile });
-const login = async (data: ReqParams) => request({ url: URL.login, data });
-const permission = async () => request<ReqAuth>({ url: URL.permission });
-export default { getUserProfile, login, permission };
+interface LoginRes {
+    token: string
+}
+export interface LoginData {
+    username: string;
+    password: string;
+}
+
+const getUserProfile = async () => axios.get<UserState>(URL.profile);
+const login = async (data: LoginData) => axios.post<IResponse>(URL.login, data);
+const logout = async () => axios.post<LoginRes>(URL.logout);
+export { getUserProfile, logout, login };

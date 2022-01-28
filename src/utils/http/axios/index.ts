@@ -14,9 +14,6 @@ axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: API_BASE_URL + '/api/',
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-  },
   transformRequest: [
     function (data) {
       //由于使用的 form-data传数据所以要格式化

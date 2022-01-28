@@ -1,6 +1,6 @@
 {
   "name": "fast-vue3",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "扫地盲僧",
   "scripts": {
     "dev": "vite --mode development",
@@ -73,6 +73,9 @@
     "vite-plugin-style-import": "^1.4.1",
     "vite-plugin-svg-icons": "^1.1.0",
     "vue-tsc": "^0.29.8"
+  },
+  "engines": {
+    "node": ">=14"
   },
   "husky": {
     "hooks": {
