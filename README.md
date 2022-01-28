@@ -12,21 +12,21 @@
 ![Less](https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white) 
 ![Taiwind](https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white)
 
-An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
+An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
 
 English |  [简体中文](./README-zh_CN.md) |
 # Feature
-Here is a brief introduction to some core parts, and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/MaleWeb/fast-vue3) directly.
+Here is a brief introduction to some core parts and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/MaleWeb/fast-vue3) directly.
 
 ## 🪂Tech giants collaboration-code specification
-🪁 At present, many tech giants teams generally use [husky](https://github.com/typicode/husky)和 [lint-staged](https://github.com/okonet/lint-staged)  to constrain code specifications.
-- through `pre-commit` to implement  lint check,unit test,code formatting,etc.。 
-- Combined with the VsCode （Formatting automatically when saving：editor.formatOnSave: true）
-- Combined with the Git hooks（Execute before commit：pre-commit => npm run lint:lint-staged）
-- IDE configuration（`.editorconfig`）、ESLint configuration（`.eslintrc.js` 和 `.eslintignore`）、StyleLint configuration（`.stylelintrc` 和 `.stylelintignore`），for details, please refer to the corresponding configuration file。  
+🪁 Many tech giants teams generally use [husky](https://github.com/typicode/husky) and  [lint-staged](https://github.com/okonet/lint-staged)  to constrain code specifications at present.
+- Through `pre-commit` to implement  lint check,unit test,code formatting,etc.。 
+- Combined with the VsCode（formatting automatically when saving：editor.formatOnSave: true）
+- Combined with the Git hooks（execute before commit：pre-commit => npm run lint:lint-staged）
+- IDE configuration（`.editorconfig`）,ESLint configuration（`.eslintrc.js` 和 `.eslintignore`）,StyleLint configuration（`.stylelintrc` 和 `.stylelintignore`）,for details, please refer to the corresponding configuration file。  
 
 🔌 Close code specification 
-add`.eslintignore` 和 `.stylelintignore`  to `src/`  directory respectively to ignore 
+add `.eslintignore`  and  `.stylelintignore`  to `src/`  directory respectively to ignore 
 
 
 ## Directory Structure
@@ -35,15 +35,26 @@ The following is the directory structure of the system
 
 ```
 ├── config
-│   ├── vite          # vite配置
-|   └── constant      # 系统常量    
-├── docs
-├── mock                  
-├── plop-tpls            
-├── src                
-├── .d.ts
-├── .env.*
-└── eslintrc.js
+│   ├── vite             // vite configuration
+│   ├── constant         // system constant 
+|   └── themeConfig      // theme configuration
+├── docs                 // document related
+├── mock                 // mock data    
+├── plop-tpls            // plop template   
+├── src     
+│    ├── api             // api request   
+│    ├── assets          // static files   
+│    ├── components      // Common Components   
+│    ├── page            // page
+│    ├── router          // routing file   
+│    ├── store           // state management   
+│    ├── utils           // tools   
+│    ├── App.vue         // vue template entry   
+│    ├── main.ts         // vue template js
+├── .d.ts                // type definition   
+├── tailwind.config.js   // tailwind global configuration 
+├── tsconfig.json        // ts configuration
+└── vite.config.ts       // vite global configuration  
 ```
 
 ## 💕Support JSX syntax
@@ -176,7 +187,7 @@ export const useUserStore = defineStore(
 )
 ```
 ## 🤖 Support `Plop` to automatically generate files
- ⚙️ 代码文件自动生成，提供三种预设模板`pages`,`components`,`store`，也可以根据自己需要设计更多自动生成脚本。一般后端同学惯用此形式，十分高效。
+ ⚙️ The code files are automatically generated, providing three preset templates `pages`, `components`, `store`, you can also design more automatic generation scripts according to your needs. Generally, back-end engineer use this form, which is very efficient.。
 
 ```shell
 # install plop
@@ -186,7 +197,7 @@ Create in the root directory `plopfile.ts`
 ```typescript
 import { NodePlopAPI } from 'plop';
 export default function (plop: NodePlopAPI) {
-    plop.setWelcomeMessage('请选择需要创建的模式：')
+    plop.setWelcomeMessage('Please select the pattern you want to create')
     plop.setGenerator('page', require('./plop-tpls/page/prompt'))
     plop.setGenerator('component', require('./plop-tpls/component/prompt'))
     plop.setGenerator('store', require('./plop-tpls/store/prompt'))
@@ -342,7 +353,7 @@ export default defineConfig({
     ...
     server: {
         hmr: { overlay: false }, // Disable or configure HMR connections and set server.hmr.overlay to false to `disable` the server error masking layer
-        // 服务配置
+        // Service configuration
         port: VITE_PORT, // type:number Specify the server port;
         open: false, // type:boolean | string Automatically open the application in the browser when the server starts;
         cors: false, // type:boolean | CorsOptions configure CORS for the development server. Enabled by default and allows any origin
@@ -389,7 +400,7 @@ export default init;
 
 
 # 使用 
-One key three links: Star 或 Fork 或 [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
+One key three links: Star or Fork or [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
 
 ```shell
 # Pull repository code
@@ -416,11 +427,11 @@ git clone -b template https://github.com/MaleWeb/fast-vue3.git
 # Tool Library
 Learn to use the appropriate tool library to make `coding` do more with less. Especially the open source tool library, it is worth everyone to learn, because this is the level you should reach. Here are some class libraries commonly used by major manufacturers, because I like new ones... The following tools can be imported directly.
 
-## JS库
+## JS library
 - [pnpm](https://pnpm.io/)，A tool that relies on the global management of packages, the boss no longer has to worry that my C drive is not enough. Vite official recommendation, Byte Dance official front-end team large-scale project test
   
 ![image-20220110125758056](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125758056.png)
-- [mitt 全局事件监听库](https://github.com/developit/mitt)，Vue3 official recommendation
+- [mitt Global event listener library](https://github.com/developit/mitt)，Vue3 official recommendation
 - [Hammer](http://hammerjs.github.io/)，Can recognize gestures made by touch, mouse and pointer events, only 7.34kb
 - [outils](https://github.com/proYang/outils)，A set of functions commonly used in development, you can also use `lodash`
 
@@ -439,19 +450,19 @@ Learn to use the appropriate tool library to make `coding` do more with less. Es
   ![image-20220110125605172](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125605172.png)
 
 
-# UI库
+# UI library
 - [arco-design](https://github.com/arco-design/arco-design)，The new UI framework of the Byte Dance team has a more flexible configuration level.  `fast-vue3` uses it. if you don't like it can be removed.
 - [semi-design](https://github.com/DouyinFE/semi-design)，The framework from the front end of Douyin is aimed at constantly tearing UI and FE, and you can try it out.
 - [nutui](https://github.com/jdf2e/nutui)，The UI framework developed by the front-end team of JD.com has been upgraded to 3.X. Personally, I think it has the highest appearance and accepts the rebuttal.
-- [naive-ui](https://github.com/TuSimple/naive-ui)，Recommended by Evan You, TypeScript syntax, adjustable theme, this company is very powerful
-- That's all for now and I'll make up later
+- [naive-ui](https://github.com/TuSimple/naive-ui)，Recommended by Evan You, TypeScript syntax, adjustable theme, this company is very powerful.
+- That's all for now and I'll make up later.
 
 # Reference
 - Official configuration document entry[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
 - More detailed configuration manual:https://juejin.cn/post/7036745610954801166
 - vu3 writing component practice case:https://juejin.cn/post/7052717075168493598
 
-# 最后
+# Last
 
 -   Welcome to join the group [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，goof off, let's goof off together, and now the fan group rarely discusses technology, so let's goof off together. Welcome to pay attention to Wechat public number [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
   
