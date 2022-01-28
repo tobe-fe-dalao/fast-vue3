@@ -67,7 +67,10 @@ const ThemeChange = (val: string | number | boolean) => {
                     >GithubDemo</router-link>
                   </li>
                   <li>
-                    <router-link to="/blog" class="hover:text-sky-500 dark:hover:text-sky-400">blog</router-link>
+                    <router-link
+                      to="/login"
+                      class="hover:text-sky-500 dark:hover:text-sky-400"
+                    >Login</router-link>
                   </li>
                 </ul>
               </nav>
