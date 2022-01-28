@@ -74,6 +74,9 @@
     "vite-plugin-svg-icons": "^1.1.0",
     "vue-tsc": "^0.29.8"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

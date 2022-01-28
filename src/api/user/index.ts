@@ -18,6 +18,6 @@ export interface LoginData {
 }
 
 const getUserProfile = async () => axios.get<UserState>(URL.profile);
-const login = async (data: LoginData) => axios.post<ResResult>(URL.login, data);
+const login = async (data: LoginData) => axios.post<IResponse>(URL.login, data);
 const logout = async () => axios.post<LoginRes>(URL.logout);
 export { getUserProfile, logout, login };

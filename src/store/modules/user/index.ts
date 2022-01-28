@@ -45,13 +45,13 @@ export const useUserStore = defineStore('user', {
         // 获取用户信息
         async info() {
             const res = await getUserProfile();
-            this.setInfo(res.data.result);
+            this.setInfo(res.data);
         },
         // 异步登录并存储token
         async login(loginForm: LoginData) {
             const res = await userLogin(loginForm);
-            if (res.data && res.data.result) {
-                setToken(res.data.result.token);
+            if (res.data) {
+                setToken(res.data?.result);
             }
             return res.data;
         },
