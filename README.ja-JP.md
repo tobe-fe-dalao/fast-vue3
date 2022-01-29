@@ -344,19 +344,19 @@ export function setupProdMockServer() {
     createProdMockServer(mockModules);
 }
 ```
-## 🎎 Proxy
+## 🎎 プロキシー
 ```typescript
-// vite config
+// vite 構成
 import proxy from '@config/vite/proxy';
 export default defineConfig({
     ...
     server: {
-        hmr: { overlay: false }, // Disable or configure HMR connections and set server.hmr.overlay to false to `disable` the server error masking layer
-        // Service configuration
-        port: VITE_PORT, // type:number Specify the server port;
-        open: false, // type:boolean | string Automatically open the application in the browser when the server starts;
-        cors: false, // type:boolean | CorsOptions configure CORS for the development server. Enabled by default and allows any origin
-        host: '0.0.0.0', // IP configuration, support boot from IP
+        hmr: { overlay: false }, // HMR接続を無効または構成し、server.hmr.overlayをfalseに設定して、サーバーエラーマスキングレイヤーを「無効」にします
+        // サービス構成
+        port: VITE_PORT, // type:number サーバーポートを指定します；
+        open: false, // type:boolean | string サーバーの起動時にブラウザでアプリケーションを自動的に開きます；
+        cors: false, // type:boolean | CorsOptionsは、開発サーバーのCORSを構成します.デフォルトで有効になっており、任意のオリジンを許可します
+        host: '0.0.0.0', // IP構成、IPからの起動をサポート
         proxy,
     }
     ...
@@ -399,74 +399,74 @@ export default init;
 
 
 # 使用 
-One key three links: Star or Fork or [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
+スターとフォロー：スターまたはフォークまたは[ビジュアルウェアハウス](https://github1s.com/MaleWeb/fast-vue3) 
 
 ```shell
-# Pull repository code
+# リポジトリコードをプルする
 git clone  https://github.com/MaleWeb/fast-vue3.git
 
-# enter the project folder
+# プロジェクトフォルダに入る
 cd fast-vue3 
 
-# Install project dependencies
+# プロジェクトの依存関係をインストールする
 pnpm install
 
-# run
+# ラン
 pnpm run dev
 ```
-If no error is reported, congratulations on your successful ignition。Otherwise，Please see the FAQ below。
+エラーが報告されない場合は、点火に成功しました。それ以外の場合は、以下のFAQを参照してください.
 
-If you already know this template, it is recommended that you pull the `template` branch for project development, this branch does not contain any sample code.
+このテンプレートをすでに知っている場合は、プロジェクト開発のために `テンプレート`ブランチをプルすることをお勧めします。このブランチには、サンプルコードは含まれていません。
 
 ```
-# clone  template branch
+# テンプレートブランチのクローン
 git clone -b template https://github.com/MaleWeb/fast-vue3.git
 ```
 
-# Tool Library
-Learn to use the appropriate tool library to make `coding` do more with less. Especially the open source tool library, it is worth everyone to learn, because this is the level you should reach. Here are some class libraries commonly used by major manufacturers, because I like new ones... The following tools can be imported directly.
+# ツール ライブラリ
+適切なツールライブラリを使用して、 `コーディング`がより少ないリソースでより多くのことを実行できるようにする方法を学びます。 特にオープンソースツールライブラリは、到達すべきレベルであるため、誰もが学ぶ価値があります。 新しいものが好きなので、主要なメーカーで一般的に使用されているクラスライブラリをいくつか示します...次のツールを直接インポートできます。
 
-## JS library
-- [pnpm](https://pnpm.io/)，A tool that relies on the global management of packages, the boss no longer has to worry that my C drive is not enough. Vite official recommendation, Byte Dance official front-end team large-scale project test
+## JS ライブラリ
+- [pnpm](https://pnpm.io/)，パッケージのグローバル管理に依存するツールである上司は、私のCドライブが十分でないことを心配する必要がなくなりました。 Vite公式推奨、ByteDance公式フロントエンドチーム大規模プロジェクトテスト
   
 ![image-20220110125758056](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125758056.png)
-- [mitt Global event listener library](https://github.com/developit/mitt)，Vue3 official recommendation
-- [Hammer](http://hammerjs.github.io/)，Can recognize gestures made by touch, mouse and pointer events, only 7.34kb
-- [outils](https://github.com/proYang/outils)，A set of functions commonly used in development, you can also use `lodash`
+- [mitt Global event listener library](https://github.com/developit/mitt)，Vue3の公式推奨
+- [Hammer](http://hammerjs.github.io/)，タッチ、マウス、ポインターのイベントによって行われたジェスチャを認識できます。わずか7.34kb
+- [outils](https://github.com/proYang/outils)，開発で一般的に使用される関数のセットで、 `lodash`を使用することもできます
 
-- [tailwindcss](https://tailwindcss.com/)，Oh my Jesus, without writing a line of CSS, a page is created in 3 minutes. It is not suitable for junior and intermediate front-ends. It is recommended to learn the basics first and then use the framework.
+- [tailwindcss](https://tailwindcss.com/)，ああ、私のイエス様、CSSの行を書かなくても、ページは3分で作成されます。 ジュニアおよび中間のフロントエンドには適していません。 最初に基本を学び、次にフレームワークを使用することをお勧めします。
 
   ![tailwindcss-1](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/tailwindcss-1.gif)
 
   ![tailwindcss-2](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/tailwindcss-2.gif)
 
-- [Vue I18n](https://vue-i18n.intlify.dev/)  an internationalization plugin for Vue.js. If you want to make an open source framework, the preferred plugin for internationalization.
+- [Vue I18n](https://vue-i18n.intlify.dev/) Vue.jsの国際化プラグイン。 オープンソースフレームワークを作成したい場合は、国際化に適したプラグインです。
 
-- [ViteSSG](https://github.com/antfu/vite-ssg)，SEO optimization, this project is interesting, you can play with this solution, I used to do SEO through server-side rendering before, and later learned that this can be generated directly on the Vue3 server.
+- [ViteSSG](https://github.com/antfu/vite-ssg)，SEO最適化、このプロジェクトは興味深いです。このソリューションで遊ぶことができます。以前はサーバー側のレンダリングでSEOを実行していましたが、後でVue3サーバーで直接生成できることを学びました。
 
-- [Vitest](https://github.com/vitest-dev/vitest),The unit testing tool based on Vite, the iteration is relatively fast at present, and is sponsored by Evan You. You can continue to pay attention, and it is not recommended to use it in small projects.
+- [Vitest](https://github.com/vitest-dev/vitest),Viteに基づく単体テストツールである反復は、現在比較的高速であり、EvanYouが後援しています。 引き続き注意を払うことができますが、小さなプロジェクトで使用することはお勧めしません。
 
   ![image-20220110125605172](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125605172.png)
 
 
-# UI library
-- [arco-design](https://github.com/arco-design/arco-design)，The new UI framework of the Byte Dance team has a more flexible configuration level.  `fast-vue3` uses it. if you don't like it can be removed.
-- [semi-design](https://github.com/DouyinFE/semi-design)，The framework from the front end of Douyin is aimed at constantly tearing UI and FE, and you can try it out.
-- [nutui](https://github.com/jdf2e/nutui)，The UI framework developed by the front-end team of JD.com has been upgraded to 3.X. Personally, I think it has the highest appearance and accepts the rebuttal.
-- [naive-ui](https://github.com/TuSimple/naive-ui)，Recommended by Evan You, TypeScript syntax, adjustable theme, this company is very powerful.
-- That's all for now and I'll make up later.
+# UI ライブラリ
+- [arco-design](https://github.com/arco-design/arco-design)，Byte Danceチームの新しいUIフレームワークには、より柔軟な構成レベルがあります。 `fast-vue3`はそれを使用します。 気に入らない場合は削除できます。
+- [semi-design](https://github.com/DouyinFE/semi-design)，Douyinのフロントエンドのフレームワークは、UIとFEを絶えず引き裂くことを目的としており、試してみることができます。
+- [nutui](https://github.com/jdf2e/nutui)，JDのフロントエンドチームによって開発されたUIフレームワークが3.Xにアップグレードされました。 個人的には見た目が一番高く、反論も受けられると思います。
+- [naive-ui](https://github.com/TuSimple/naive-ui)，Evan Youが推奨する、TypeScript構文、調整可能なテーマ、この会社は非常に強力です。
+- 今のところこれですべてです。後で補います。
 
-# Reference
-- Official configuration document entry[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
-- More detailed configuration manual:https://juejin.cn/post/7036745610954801166
-- vu3 writing component practice case:https://juejin.cn/post/7052717075168493598
+# 参考
+- 公式の構成ドキュメントエントリ[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
+- より詳細な構成マニュアル:https://juejin.cn/post/7036745610954801166
+- vu3ライティングコンポーネントの練習ケース:https://juejin.cn/post/7052717075168493598
 
-# Last
+# 最後
 
--   Welcome to join the group [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，goof off, let's goof off together, and now the fan group rarely discusses technology, so let's goof off together. Welcome to pay attention to Wechat public number [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
+-   グループへようこそ [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，さぼる、一緒にさぼるしましょう。今ではファングループがテクノロジーについて話し合うことはめったにないので、一緒にさぼるしましょう。 Wechat公開番号に注目することを歓迎します [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
   
--   Cutting-edge technologies, technologies related to various experiences and interactions, and advance perspectives of various translations and research reports.
--   Free to use, all the paid resources promised to be released, all the fan groups are free for using.Otherwise, who would have time to play with you, interesting.
+-  最先端のテクノロジー、さまざまな経験や相互作用に関連するテクノロジー、さまざまな翻訳や調査レポートの高度な視点。
+-  無料で使用でき、すべての有料リソースがリリースされることが約束されており、すべてのファングループが無料で使用できます。それ以外の場合は、あなたと遊ぶ時間があります。本当に面白い。
 
 
 <p>
