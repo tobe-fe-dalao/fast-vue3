@@ -397,7 +397,7 @@ export default init;
 - There are more new features added in `commiting`, if you have a better solution, welcome `PR`
 
 
-# Use 
+# ✏️ Use 
 One key three links: Star or Fork or [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
 
 ```shell

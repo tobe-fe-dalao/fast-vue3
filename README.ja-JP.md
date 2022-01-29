@@ -392,13 +392,13 @@ export default init;
 
 ```
 
-## 🎉 Other
+## 🎉 そのた
 
 - 🏗 `vw / vh`モバイル端末レイアウトの互換性をサポートします。`plop`を使用して、生成されたファイルを自分で構成することもできます
 - `commiting`にはさらに多くの新機能が追加されています。より良い解決策がある場合は、` PR`を歓迎します。
 
 
-# 使用 
+# 使用する
 スターとフォロー：スターまたはフォークまたは[ビジュアルウェアハウス](https://github1s.com/MaleWeb/fast-vue3) 
 
 ```shell
@@ -440,7 +440,7 @@ git clone -b template https://github.com/MaleWeb/fast-vue3.git
 
   ![tailwindcss-2](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/tailwindcss-2.gif)
 
-- [Vue I18n](https://vue-i18n.intlify.dev/) Vue.jsの国際化プラグイン。 オープンソースフレームワークを作成したい場合は、国際化に適したプラグインです。
+- [Vue I18n](https://vue-i18n.intlify.dev/)，Vue.jsの国際化プラグイン。 オープンソースフレームワークを作成したい場合は、国際化に適したプラグインです。
 
 - [ViteSSG](https://github.com/antfu/vite-ssg)，SEO最適化、このプロジェクトは興味深いです。このソリューションで遊ぶことができます。以前はサーバー側のレンダリングでSEOを実行していましたが、後でVue3サーバーで直接生成できることを学びました。
 
@@ -463,10 +463,10 @@ git clone -b template https://github.com/MaleWeb/fast-vue3.git
 
 # 最後
 
--   グループへようこそ [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，さぼる、一緒にさぼるしましょう。今ではファングループがテクノロジーについて話し合うことはめったにないので、一緒にさぼるしましょう。 Wechat公開番号に注目することを歓迎します [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
+- グループへようこそ [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，さぼる、一緒にさぼるしましょう。今ではファングループがテクノロジーについて話し合うことはめったにないので、一緒にさぼるしましょう。 Wechat公開番号に注目することを歓迎します [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
   
--  最先端のテクノロジー、さまざまな経験や相互作用に関連するテクノロジー、さまざまな翻訳や調査レポートの高度な視点。
--  無料で使用でき、すべての有料リソースがリリースされることが約束されており、すべてのファングループが無料で使用できます。それ以外の場合は、あなたと遊ぶ時間があります。本当に面白い。
+- 最先端のテクノロジー、さまざまな経験や相互作用に関連するテクノロジー、さまざまな翻訳や調査レポートの高度な視点。
+- 無料で使用でき、すべての有料リソースがリリースされることが約束されており、すべてのファングループが無料で使用できます。それ以外の場合は、あなたと遊ぶ時間があります。本当に面白い。
 
 
 <p>
