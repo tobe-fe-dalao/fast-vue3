@@ -1,38 +1,21 @@
-<template>
-  <router-view></router-view>
-</template>
 <script setup lang="ts">
-// import { useAppStore } from './store/modules/app'
-// const appStore = useAppStore()
-
-
-// provide('reload', reload)
-// function reload() {
-//   isRouterAlive.value = false
-//   nextTick(() => (isRouterAlive.value = true))
-// }
-
-// const isRouterAlive = ref(true)
-
-// watch(
-//   () => appStore.title,
-//   () => {
-//     const title: string = appStore.title
-//     document.title = title
-//       ? `${title} - ${import.meta.env.VITE_APP_TITLE}`
-//       : import.meta.env.VITE_APP_TITLE
-//   },
-//   {
-//     immediate: true,
-//   }
-// )
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import HelloWorld from './components/HelloWorld.vue'
 </script>
+
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+</template>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   color: #2c3e50;
+  margin-top: 60px;
 }
 </style>

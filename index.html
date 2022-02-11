@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" class="[--scroll-mt:9.875rem] lg:[--scroll-mt:6.3125rem] js-focus-visible dark" data-js-focus-visible>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover"
+    />
+    />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+    <script>
+      document.addEventListener("touchstart", function(event) {
+        if (event.touches.length > 1) {
+          event.preventDefault();
+        }
+      });
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fast-vue3-Vue3+Vite2.7+TS+...</title>
-</head>
+      var lastTouchEnd = 0;
 
-<body class="antialiased text-slate-500 dark:text-slate-400 bg-white">
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
+      document.addEventListener(
+        "touchend",
+        function(event) {
+          var now = new Date().getTime();
+          if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+          }
 
+          lastTouchEnd = now;
+        },
+        false
+      );
+
+      document.addEventListener("gesturestart", function(event) {
+        event.preventDefault();
+      });
+    </script>
+  </body>
 </html>
