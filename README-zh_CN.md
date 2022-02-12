@@ -18,7 +18,9 @@
 <p>    
 
     
-一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)[English](./README.md) | 简体中文 
+一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
+
+[English](./README.md) | 简体中文 | [日本語](./README.ja-JP.md)
     
     
 # 功能亮点

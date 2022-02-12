@@ -18,7 +18,7 @@
 
 An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
 
-English |  [简体中文](./README-zh_CN.md) |
+English |  [简体中文](./README-zh_CN.md) | [日本語](./README.ja-JP.md)
 # Feature
 Here is a brief introduction to some core parts and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/MaleWeb/fast-vue3) directly.
 
@@ -401,7 +401,7 @@ export default init;
 - There are more new features added in `commiting`, if you have a better solution, welcome `PR`
 
 
-# 使用 
+# ✏️ Use 
 One key three links: Star or Fork or [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
 
 ```shell
@@ -469,7 +469,7 @@ Learn to use the appropriate tool library to make `coding` do more with less. Es
 -   Welcome to join the group [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，goof off, let's goof off together, and now the fan group rarely discusses technology, so let's goof off together. Welcome to pay attention to Wechat public number [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
   
 -   Cutting-edge technologies, technologies related to various experiences and interactions, and advance perspectives of various translations and research reports.
--   free to use, all the paid resources promised to be released, all the fan groups are free for using, otherwise, who would have time to play with you, interesting.
+-   Free to use, all the paid resources promised to be released, all the fan groups are free for using.Otherwise, who would have time to play with you, interesting.
 
 
 <p>
