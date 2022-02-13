@@ -1,7 +1,6 @@
 {
-  "name": "my-vue-app",
-  "private": true,
-  "version": "0.0.0",
+  "name": "fast-vue",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -12,16 +11,36 @@
     "@vueuse/core": "^7.6.1",
     "@vueuse/integrations": "^7.6.1",
     "axios": "^0.25.0",
+    "vant": "^3.4.4",
     "vue": "^3.2.25",
     "vue-i18n": "^9.1.9",
-    "vue-router": "4",
+    "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@types/node": "^17.0.17",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "@vitejs/plugin-legacy": "^1.7.1",
     "@vitejs/plugin-vue": "^2.2.0",
+    "@vitejs/plugin-vue-jsx": "^1.3.5",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "eruda": "^2.4.1",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.4.1",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "postcss": "^8.4.6",
     "postcss-pxtorem": "^6.0.0",
+    "prettier": "^2.5.1",
     "typescript": "^4.5.4",
     "vite": "^2.8.0",
+    "vite-plugin-eruda": "^1.0.1",
+    "vite-plugin-eslint": "^1.3.0",
+    "vite-plugin-style-import": "1.4.0",
     "vue-tsc": "^0.29.8"
   }
 }

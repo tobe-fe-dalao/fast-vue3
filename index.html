@@ -7,14 +7,13 @@
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover"
     />
-    />
     <title>Vite App</title>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
     <script>
-      document.addEventListener("touchstart", function(event) {
+      document.addEventListener('touchstart', function (event) {
         if (event.touches.length > 1) {
           event.preventDefault();
         }
@@ -23,8 +22,8 @@
       var lastTouchEnd = 0;
 
       document.addEventListener(
-        "touchend",
-        function(event) {
+        'touchend',
+        function (event) {
           var now = new Date().getTime();
           if (now - lastTouchEnd <= 300) {
             event.preventDefault();
@@ -35,7 +34,7 @@
         false
       );
 
-      document.addEventListener("gesturestart", function(event) {
+      document.addEventListener('gesturestart', function (event) {
         event.preventDefault();
       });
     </script>
