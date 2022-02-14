@@ -4,7 +4,7 @@ const routes: RouteRecordRaw[] = [
   {
     name: 'Home',
     path: '/',
-    component: () => import('@/views/home/Home'),
+    component: () => import('@/views/home/Home.vue'),
     meta: {
       keepAlive: true
     }

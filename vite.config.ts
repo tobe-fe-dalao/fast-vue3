@@ -8,6 +8,8 @@ import styleImport, {
   NutuiResolve,
   VantResolve
 } from 'vite-plugin-style-import';
+import { viteMockServe } from 'vite-plugin-mock';
+import eruda from 'vite-plugin-eruda';
 
 function resolve(dir: string) {
   return path.join(__dirname, dir);
@@ -15,6 +17,7 @@ function resolve(dir: string) {
 
 // https://vitejs.dev/config/
 export default function ({ command }: ConfigEnv): UserConfigExport {
+  const isProduction = command === 'build';
   return {
     server: {
       host: '0.0.0.0'
@@ -26,12 +29,26 @@ export default function ({ command }: ConfigEnv): UserConfigExport {
         fix: true
       }),
       styleImport({
-        libs: [NutuiResolve(), VantResolve()]
+        libs: [NutuiResolve()]
       }),
       legacy({
         targets: ['defaults', 'not IE 11']
+      }),
+      eruda(),
+      viteMockServe({
+        mockPath: './src/mock',
+        localEnabled: command === 'serve',
+        logger: true
       })
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // 配置 nutui 全局 scss 变量
+          additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
+        }
+      }
+    },
     resolve: {
       alias: {
         '@': resolve('./src')
