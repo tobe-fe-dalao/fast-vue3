@@ -34,6 +34,23 @@ function changePackageInfo(root, packageName) {
     fs.writeFileSync(pkgJSONPath, JSON.stringify(pkg, null, 2) + '\n')
 }
 
+function removePackagesDir(root) {
+  const deleteFolderRecursive = function(path) {
+    if (fs.existsSync(path)) {
+      fs.readdirSync(path).forEach(function(file) {
+        let curPath = path + "/" + file
+        if (fs.lstatSync(curPath).isDirectory()) {
+          deleteFolderRecursive(curPath)
+        } else {
+          fs.unlinkSync(curPath)
+        }
+      })
+      fs.rmdirSync(path)
+    }
+  }
+
+  deleteFolderRecursive(path.join(root, "packages"))
+}
 
 function isValidPackageName(projectName) {
   return /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(projectName)
@@ -130,6 +147,7 @@ async function init() {
 
   await loading(clone, 'waiting download template', downloadUrl, root, { checkout: 'main' })
 
+  removePackagesDir(root)
   changePackageInfo(root, packageName)
 
   const packageManager = /pnpm/.test(process.env.npm_execpath)
