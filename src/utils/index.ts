@@ -1,14 +1,23 @@
-const path = require('path')
-const fs = require('fs')
-export const getFolder = (path: any) => {
-  let components: Array<string> = []
-  const files = fs.readdirSync(path)
-  files.forEach(function (item: string) {
-    let stat = fs.lstatSync(path + '/' + item)
-    if (stat.isDirectory() === true && item != 'components') {
-      components.push(path + '/' + item)
-      components.push.apply(components, getFolder(path + '/' + item))
+/**
+ * 类型检查
+ */
+
+export function typeCheck(param: any) {
+  return Object.prototype.toString.call(param);
+}
+
+/**
+ * 批量修改stage
+ */
+export function mutateState(state: AnyObject, payload: AnyObject) {
+  if (
+    typeCheck(state) === '[object Object]' &&
+    typeCheck(payload) === '[object Object]'
+  ) {
+    for (const key in payload) {
+      state[key] = payload[key];
     }
-  })
-  return components
+  } else {
+    console.error('expected plain Object');
+  }
 }

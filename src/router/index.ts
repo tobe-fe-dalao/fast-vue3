@@ -1,14 +1,13 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import routes from 'virtual:generated-pages'
-import { getToken } from '../utils/auth';
+import { createRouter, createWebHistory, Router } from 'vue-router';
+import routes from './routes';
 
-routes.push({
-  path: '/',
-  redirect: '/login',
+const router: Router = createRouter({
+  history: createWebHistory(),
+  routes: routes
 });
-//导入生成的路由数据
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
-})
-export default router
+
+router.beforeEach(async (to, from, next) => {
+  next();
+});
+
+export default router;

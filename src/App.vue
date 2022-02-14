@@ -1,38 +1,26 @@
 <template>
-  <router-view></router-view>
+  <ConfigProvider :theme-vars="{ blue: '#6476FF', navBarArrowSize: '1.4rem' }">
+    <Suspense>
+      <template #default>
+        <router-view v-slot="{ Component, route }">
+          <keep-alive>
+            <component
+              v-if="route.meta && route.meta.keepAlive"
+              :is="Component"
+              :key="route.meta.usePathKey ? route.fullPath : undefined"
+            />
+          </keep-alive>
+          <component
+            v-if="!(route.meta && route.meta.keepAlive)"
+            :is="Component"
+            :key="route.meta.usePathKey ? route.fullPath : undefined"
+          />
+        </router-view>
+      </template>
+      <template #fallback>Loading...</template>
+    </Suspense>
+  </ConfigProvider>
 </template>
-<script setup lang="ts">
-// import { useAppStore } from './store/modules/app'
-// const appStore = useAppStore()
-
-
-// provide('reload', reload)
-// function reload() {
-//   isRouterAlive.value = false
-//   nextTick(() => (isRouterAlive.value = true))
-// }
-
-// const isRouterAlive = ref(true)
-
-// watch(
-//   () => appStore.title,
-//   () => {
-//     const title: string = appStore.title
-//     document.title = title
-//       ? `${title} - ${import.meta.env.VITE_APP_TITLE}`
-//       : import.meta.env.VITE_APP_TITLE
-//   },
-//   {
-//     immediate: true,
-//   }
-// )
+<script setup>
+import { ConfigProvider } from 'vant';
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-</style>
