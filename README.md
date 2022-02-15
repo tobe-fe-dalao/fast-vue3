@@ -462,7 +462,18 @@ Learn to use the appropriate tool library to make `coding` do more with less. Es
 # Reference
 - Official configuration document entry[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
 - More detailed configuration manual:https://juejin.cn/post/7036745610954801166
-- vu3 writing component practice case:https://juejin.cn/post/7052717075168493598
+- vu3 writing component practice case:https://juejin.cn/post/7052717075168493598 
+    
+# Contributors
+
+This project exists thanks to all the people who contribute.
+
+And thank you to all our backers! 🙏  
+    
+<a href="https://github.com/study-vue3/fast-vue3/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=study-vue3/fast-vue3" />
+</a>
+    
 
 # Last
 
@@ -478,3 +489,5 @@ Learn to use the appropriate tool library to make `coding` do more with less. Es
 <p>
 <img width="360" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/扫地盲僧公众号.png">
 </p>
+    
+    
