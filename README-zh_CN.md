@@ -468,7 +468,17 @@ git clone -b template https://github.com/MaleWeb/fast-vue3.git
 # 资料
 - 官方配置文档入口[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
 - 更详细的配置手册:https://juejin.cn/post/7036745610954801166
-- vu3写组件实践案例:https://juejin.cn/post/7052717075168493598
+- vu3写组件实践案例:https://juejin.cn/post/7052717075168493598  
+    
+# 贡献者
+
+这个项目的存在要感谢所有做出贡献的人。
+
+并感谢我们所有的支持者! 🙏  
+    
+<a href="https://github.com/study-vue3/fast-vue3/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=study-vue3/fast-vue3" />
+</a>
 
 # 最后
 
