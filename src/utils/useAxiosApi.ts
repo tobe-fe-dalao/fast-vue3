@@ -1,4 +1,3 @@
-import store from '@/store';
 import { useAxios } from '@vueuse/integrations/useAxios';
 import axios, { AxiosRequestConfig } from 'axios';
 import { Toast } from 'vant';
@@ -13,15 +12,15 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     // do something before request is sent
-    const token = store.state.user.token;
+    // const token = store.state.user.token;
 
-    if (token) {
-      // let each request carry token
-      config.headers = {
-        ...config.headers,
-        Authorization: `Bearer ${token}`
-      };
-    }
+    // if (token) {
+    //   // let each request carry token
+    //   config.headers = {
+    //     ...config.headers,
+    //     Authorization: `Bearer ${token}`
+    //   };
+    // }
     return config;
   },
   (error) => {
@@ -50,7 +49,7 @@ instance.interceptors.response.use(
       Toast(res.msg);
       // 412: Token expired;
       if (res.code === 412) {
-        store.dispatch('user/userLogout');
+        // store.dispatch('user/userLogout');
       }
       return Promise.reject(res.msg || 'Error');
     } else {

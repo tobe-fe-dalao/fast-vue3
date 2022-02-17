@@ -1,17 +1,18 @@
 import { createApp } from 'vue';
-// import App from './App.vue';
 import App from './App.vue';
-import { nutuiComponents } from './plugins/nutUI';
+import { nutUiComponents } from './plugins/nutUI';
 // import { i18n } from './i18n';
 import router from './router';
-// import store from './store';
+import { setupStore } from '@/store';
 
 const app = createApp(App);
 app.use(router);
-// app.use(store);
+
+setupStore(app);
 // app.use(i18n);
 app.mount('#app');
 
-nutuiComponents.forEach((item) => {
+// nutUi按需加载
+nutUiComponents.forEach((item) => {
   app.use(item);
 });
