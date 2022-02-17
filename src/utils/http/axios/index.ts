@@ -87,10 +87,10 @@ export function get<T = any>(config: AxiosRequestConfig, options?: AxiosRequestC
 }
 
 export function post<T = any>(
-  config: AxiosRequestConfig,
-  options?: AxiosRequestConfig,
+  url: string,
+  data?: any,
 ): Promise<T> {
-  return request({ ...config, method: 'POST' }, options);
+  return request({ url, method: 'POST', data });
 }
 export default request;
 export type { AxiosInstance, AxiosResponse };
