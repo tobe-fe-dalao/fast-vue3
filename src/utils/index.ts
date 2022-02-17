@@ -10,10 +10,7 @@ export function typeCheck(param: any) {
  * 批量修改stage
  */
 export function mutateState(state: AnyObject, payload: AnyObject) {
-  if (
-    typeCheck(state) === '[object Object]' &&
-    typeCheck(payload) === '[object Object]'
-  ) {
+  if (typeCheck(state) === '[object Object]' && typeCheck(payload) === '[object Object]') {
     for (const key in payload) {
       state[key] = payload[key];
     }

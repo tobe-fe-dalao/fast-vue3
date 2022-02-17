@@ -1,7 +1,10 @@
+// nutui按需加载
+
 import {
   Button,
   Cell,
   Icon,
+  Input,
   Tabbar,
   Toast,
   ShortPassword,
@@ -26,12 +29,13 @@ import {
   FormItem
 } from '@nutui/nutui';
 
-export const nutuiComponents = [
+export const nutUiComponents = [
   Button,
   Cell,
   Form,
   FormItem,
   Icon,
+  Input,
   Tabbar,
   Toast,
   ShortPassword,
