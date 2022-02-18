@@ -45,15 +45,16 @@ export const useUserStore = defineStore('user', {
         // 获取用户信息
         async info() {
             const res = await getUserProfile();
-            this.setInfo(res.data);
+            this.setInfo(res?.result);
         },
         // 异步登录并存储token
         async login(loginForm: LoginData) {
             const res = await userLogin(loginForm);
-            if (res.data) {
-                setToken(res.data?.result);
+            const token = res?.result?.token
+            if (token) {
+                setToken(token);
             }
-            return res.data;
+            return res;
         },
         // Logout
         async logout() {

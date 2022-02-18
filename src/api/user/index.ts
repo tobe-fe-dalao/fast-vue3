@@ -5,9 +5,9 @@ import { ReqAuth, ReqParams, ResResult } from './types';
 import { UserState } from '@/store/modules/user/types';
 // import axios from 'axios';
 enum URL {
-    login = '/api/user/login',
-    logout = '/api/user/logout',
-    profile = '/api/userProfile'
+    login = '/user/login',
+    logout = '/user/logout',
+    profile = '/user/profile'
 }
 interface LoginRes {
     token: string
@@ -17,7 +17,7 @@ export interface LoginData {
     password: string;
 }
 
-const getUserProfile = async () => get<UserState>(URL.profile);
+const getUserProfile = async () => get<IResponse>(URL.profile);
 const login = async (data: LoginData) => post<IResponse>(URL.login, data);
 const logout = async () => post<LoginRes>(URL.logout);
 export { getUserProfile, logout, login };
