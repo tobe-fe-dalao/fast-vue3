@@ -95,6 +95,7 @@ const handleSubmit = async ({
             } else {
                 Message.success('欢迎使用');
                 router.push('/');
+                userStore.info()
             }
         } catch (err) {
             errorMessage.value = (err as Error).message;

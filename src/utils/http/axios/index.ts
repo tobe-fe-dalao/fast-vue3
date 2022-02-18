@@ -3,6 +3,7 @@ import qs from 'qs'
 import { showMessage } from './status'
 import { IResponse, ILogin } from './type'
 import { API_BASE_URL } from '../../../../config/constant'
+import { getToken } from '@/utils/auth'
 
 // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 5000
@@ -13,28 +14,28 @@ axios.defaults.withCredentials = false
 axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: API_BASE_URL + '/api/',
-  transformRequest: [
-    function (data) {
-      //由于使用的 form-data传数据所以要格式化
-      delete data.Authorization
-      data = qs.stringify(data)
-      return data
-    },
-  ],
+  baseURL: API_BASE_URL,
+  // transformRequest: [
+  //   function (data) {
+  //     //由于使用的 form-data传数据所以要格式化
+  //     delete data.Authorization
+  //     data = qs.stringify(data)
+  //     return data
+  //   },
+  // ],
 })
 
 // axios实例拦截响应
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
-    if (response.headers.authorization) {
-      localStorage.setItem('app_token', response.headers.authorization)
-    } else if (response.data && response.data.token) {
-      localStorage.setItem('app_token', response.data.token)
-    }
+    // if (response.headers.authorization) {
+    //   localStorage.setItem('app_token', response.headers.authorization)
+    // } else if (response.data && response.data.token) {
+    //   localStorage.setItem('app_token', response.data.token)
+    // }
 
     if (response.status === 200) {
-      return response
+      return response.data
     }
     showMessage(response.status)
     return response
@@ -54,10 +55,10 @@ axiosInstance.interceptors.response.use(
 // axios实例拦截请求
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    // const { user } = store.state
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`
-    // }
+    const token = getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
     return config
   },
   (error: any) => {
@@ -82,15 +83,18 @@ const request = <T = any>(config: AxiosRequestConfig, options?: AxiosRequestConf
     return axiosInstance.request<T, T>(config);
   }
 };
-export function get<T = any>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> {
-  return request({ ...config, method: 'GET' }, options);
+export function get<T = any>(
+  url: string,
+  params?: object
+): Promise<T> {
+  return request({ url, method: 'GET', params});
 }
 
 export function post<T = any>(
-  config: AxiosRequestConfig,
-  options?: AxiosRequestConfig,
+  url: string,
+  data?: object,
 ): Promise<T> {
-  return request({ ...config, method: 'POST' }, options);
+  return request({ url, method: 'POST', data });
 }
 export default request;
 export type { AxiosInstance, AxiosResponse };

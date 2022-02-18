@@ -58,7 +58,7 @@ export default [
         response: (request: requestParams) => {
             const token = getRequestToken(request);
             if (!token) return errorResult('Invalid token')
-            const checkUser = createFakeUserList().find((item) => item.token === token);
+            const checkUser = createFakeUserList().find((item) => `Bearer ${item.token}` === token);
             if (!checkUser) {
                 return errorResult('未获得相应的用户信息');
             }
@@ -83,11 +83,12 @@ export default [
     {
         url: '/api/user/logout',
         timeout: 200,
-        method: 'get',
+        method: 'post',
         response: (request: requestParams) => {
+            console.dir(request)
             const token = getRequestToken(request);
             if (!token) return errorResult('token缺失!');
-            const checkUser = createFakeUserList().find((item) => item.token === token);
+            const checkUser = createFakeUserList().find((item) => `Bearer ${item.token}` === token);
             if (!checkUser) {
                 return errorResult('token缺失!');
             }
