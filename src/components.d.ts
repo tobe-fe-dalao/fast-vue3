@@ -5,6 +5,16 @@
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('@arco-design/web-vue')['Button']
+    ACarousel: typeof import('@arco-design/web-vue')['Carousel']
+    ACarouselItem: typeof import('@arco-design/web-vue')['CarouselItem']
+    ACheckbox: typeof import('@arco-design/web-vue')['Checkbox']
+    AForm: typeof import('@arco-design/web-vue')['Form']
+    AFormItem: typeof import('@arco-design/web-vue')['FormItem']
+    AInput: typeof import('@arco-design/web-vue')['Input']
+    AInputPassword: typeof import('@arco-design/web-vue')['InputPassword']
+    ALayoutFooter: typeof import('@arco-design/web-vue')['LayoutFooter']
+    ALink: typeof import('@arco-design/web-vue')['Link']
+    ASpace: typeof import('@arco-design/web-vue')['Space']
     ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
     Footer: typeof import('./components/footer/index.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
