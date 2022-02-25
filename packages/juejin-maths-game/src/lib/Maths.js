@@ -10,31 +10,31 @@ class Maths {
     calc(a, option, b) {
         let res;
         let formula;
-        if (option == '+') {
-            res = a.value + b.value;
-            formula = a.formula + '+' + b.formula;
+        switch (option) {
+            case '+':
+                res = a.value + b.value;
+                formula = a.formula + '+' + b.formula;
+                break;
+            case '-':
+                res = a.value - b.value;
+                formula = a.formula + '-' + b.formula;
+                break;
+            case '*':
+                res = a.value * b.value;
+                formula = a.formula + '*' + b.formula;
+                break;
+            case '/':
+                res = a.value / b.value;
+                formula = a.formula + '/' + b.formula;
+                break;
+            case '.':
+                res = Number([a.value, b.value].join(""));
+                formula = a.formula + '.' + b.formula;
+                break;
         }
-        else if (option == '-') {
-            res = a.value - b.value;
-            formula = a.formula + '-' + b.formula;
-        }
-        else if (option == '*') {
-            res = a.value * b.value;
-            formula = a.formula + '*' + b.formula;
-        }
-        else if (option == '/') {
-            res = a.value / b.value;
-            formula = a.formula + '/' + b.formula;
-        }
-        else if (option == '.') {
-            res = Number([a.value, b.value].join(""));
-            formula = a.formula + '.' + b.formula;
-        }
-        if (res < 0) {
+
+        if (res < 0 || res % 1 !== 0) {
             res = NaN;
-        }
-        else if (res % 1 !== 0) {
-            res = NaN
         }
         return {
             value: res,

@@ -46,6 +46,7 @@ const handleRunning = async (nums, options, target) => {
         //正确答案和前50
         if (val.value === target && resArr.length < 50) {
             //尽可能过滤出正确的答案
+            val.formula = val.formula.toString()
             if (nums.every(num => { return val.formula.indexOf(num) != -1 })) {
                 resArr.push(val)
             }
@@ -53,8 +54,8 @@ const handleRunning = async (nums, options, target) => {
     })
     console.log(resArr)
 }
-autoRunning()
-// handleRunning([1,2,3,4], ['/', '*', '-'], 10)
+// autoRunning()
+handleRunning([2, 1], ['*'], 2)
 
 
 
