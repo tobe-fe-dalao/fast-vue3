@@ -24,13 +24,14 @@
 `手动模式`,需要自己根据游戏关卡展示的`数字`,`结果`,`字符`输入到`命令`,然后运行，此模式不需要`COOKIE和UID`
 ```javascript
 # src/index.js
-autoRunning()
+handleRunning([1,2,3,4], ['/', '*', '-'], 10)
 ```
 
 `自动模式`，根据用户的信息自动登录游戏查询到关卡数据，并且直接运行解析算法，给出正确结果。如果通关，再次执行自动模式命令即可。  
 ```javascript
 # src/index.js
-handleRunning([1,2,3,4], ['/', '*', '-'], 10)
+autoRunning()
+
 ```
 
 # 使用
