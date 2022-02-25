@@ -7,8 +7,9 @@
 基于某位掘友的算法，进行进一步改良和加工，仓库[juejin-maths-game](https://github.com/study-vue3/fast-vue3)备注了地址  
 
 # 加强版
-
-![](./statics/maths.png)  
+<a>
+<img src="./statics/maths.png" width="460">
+</a>
 
 - 🎉 双模双待，自动读取关卡的数字，运算符，目标数字。
 - 🧩 答案萃取，增加了对上百种结果的过滤和萃取，更加接近答案值。
