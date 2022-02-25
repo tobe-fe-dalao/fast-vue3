@@ -93,6 +93,16 @@ async function init() {
     result = await prompts(
       [
         {
+          name: 'template',
+          type: 'select',
+          message: 'Choice a Template for scene:',
+          choices: [
+            { title: 'Web', description: 'This will generate template for web scene', value: 'web' },
+            { title: 'Mobile', description: 'This will generate template for mobile scene', value: 'mobile' }
+          ],
+          initial: 0
+        },
+        {
           name: 'projectName',
           type: targetDir ? null : 'text',
           message: 'Project name:',
@@ -136,16 +146,21 @@ async function init() {
     process.exit(1)
   }
 
-  const { packageName = toValidPackageName(defaultProjectName), shouldOverwrite } = result
+  const { packageName = toValidPackageName(defaultProjectName), shouldOverwrite, template } = result
   const root = path.join(cwd, String(targetDir))
 
   if (shouldOverwrite) {
     emptyDir(root)
   }
 
+  const templates = {
+    'web': 'main',
+    'mobile': 'mobile-template'
+  }
+
   console.log(`\nScaffolding project in ${root}...`)
 
-  await loading(clone, 'waiting download template', downloadUrl, root, { checkout: 'main' })
+  await loading(clone, 'waiting download template', downloadUrl, root, { checkout: templates[template] })
 
   removePackagesDir(root)
   changePackageInfo(root, packageName)
