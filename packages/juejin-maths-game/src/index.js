@@ -25,6 +25,7 @@ const autoRunning = async () => {
         //正确答案和前50
         if (val.value === target && resArr.length < RESULT_COUNT) {
             //尽可能过滤出正确的答案
+            val.formula = val.formula.toString()
             if (nums.every(num => { return val.formula.indexOf(num) != -1 })) {
                 resArr.push(val)
             }
