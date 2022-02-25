@@ -12669,7 +12669,7 @@ function changePackageInfo(root, packageName) {
   delete pkg.author;
   import_fs2.default.writeFileSync(pkgJSONPath, JSON.stringify(pkg, null, 2) + "\n");
 }
-function removePackagesDir(root) {
+function removeDir(root, dir) {
   const deleteFolderRecursive = function(path3) {
     if (import_fs2.default.existsSync(path3)) {
       import_fs2.default.readdirSync(path3).forEach(function(file) {
@@ -12683,7 +12683,7 @@ function removePackagesDir(root) {
       import_fs2.default.rmdirSync(path3);
     }
   };
-  deleteFolderRecursive(import_path2.default.join(root, "packages"));
+  deleteFolderRecursive(import_path2.default.join(root, dir));
 }
 function isValidPackageName(projectName) {
   return /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(projectName);
@@ -12769,7 +12769,8 @@ async function init() {
   console.log(`
 Scaffolding project in ${root}...`);
   await loading(import_promise.default, "waiting download template", downloadUrl, root, { checkout: templates[template] });
-  removePackagesDir(root);
+  removeDir(root, "packages");
+  removeDir(root, ".git");
   changePackageInfo(root, packageName);
   const packageManager = /pnpm/.test(process.env.npm_execpath) ? "pnpm" : /yarn/.test(process.env.npm_execpath) ? "yarn" : "npm";
   console.log(`
