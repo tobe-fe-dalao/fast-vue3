@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import qs from 'qs'
 import { showMessage } from './status'
-import { IResponse, ILogin } from './type'
+import { IResponse, ILogin, RequestOptions } from './type'
 import { API_BASE_URL } from '../../../../config/constant'
-import { getToken } from '@/utils/auth'
+import { getToken, TokenPrefix } from '@/utils/auth'
 
 // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 5000
@@ -14,7 +14,7 @@ axios.defaults.withCredentials = false
 axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: import.meta.env.BASE_URL+'',
   // transformRequest: [
   //   function (data) {
   //     //由于使用的 form-data传数据所以要格式化
@@ -35,7 +35,7 @@ axiosInstance.interceptors.response.use(
     // }
 
     if (response.status === 200) {
-      return response.data
+      return response
     }
     showMessage(response.status)
     return response
@@ -57,7 +57,7 @@ axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const token = getToken();
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`
+      config.headers.Authorization = `${TokenPrefix}${token}`
     }
     return config
   },
@@ -66,36 +66,45 @@ axiosInstance.interceptors.request.use(
   }
 )
 
-const request = <T = any>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
-  if (typeof config === 'string') {
-    if (!options) {
-      return axiosInstance.request<T, T>({
-        url: config,
-      });
-      // throw new Error('请配置正确的请求参数');
-    } else {
-      return axiosInstance.request<T, T>({
-        url: config,
-        ...options,
-      });
-    }
-  } else {
-    return axiosInstance.request<T, T>(config);
-  }
-};
-export function get<T = any>(
-  url: string,
-  params?: object
-): Promise<T> {
-  return request({ url, method: 'GET', params});
+const request = <T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> => {
+  const conf = config
+  return new Promise((resolve, reject) => {
+    axiosInstance
+      .request<any, AxiosResponse<IResponse>>(conf)
+      .then((res: AxiosResponse<IResponse>) => {
+        // resolve(res as unknown as Promise<T>);
+        const { data: { result } } = res
+        resolve(result as T)
+      })
+  });
 }
 
-export function post<T = any>(
-  url: string,
-  data?: object,
-): Promise<T> {
-  return request({ url, method: 'POST', data });
+// const request = <T = any>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
+//   if (typeof config === 'string') {
+//     if (!options) {
+//       return axiosInstance.request<T, T>({
+//         url: config,
+//       });
+//       // throw new Error('请配置正确的请求参数');
+//     } else {
+//       return axiosInstance.request<T, T>({
+//         url: config,
+//         ...options,
+//       });
+//     }
+//   } else {
+//     return axiosInstance.request<T, T>(config);
+//   }
+// };
+
+export function get<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
+  return request({ ...config, method: 'GET' }, options);
 }
+
+export function post<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
+  return request({ ...config, method: 'POST' }, options);
+}
+
 export default request;
 export type { AxiosInstance, AxiosResponse };
 /**

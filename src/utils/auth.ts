@@ -1,4 +1,5 @@
 const TokenKey = 'fast-token';
+const TokenPrefix = 'Bearer '
 const isLogin = () => {
     return !!localStorage.getItem(TokenKey);
 }
@@ -11,4 +12,4 @@ const setToken = (token: string) => {
 const clearToken = () => {
     localStorage.removeItem(TokenKey);
 }
-export { isLogin, getToken, setToken, clearToken };
+export { TokenPrefix, isLogin, getToken, setToken, clearToken };
