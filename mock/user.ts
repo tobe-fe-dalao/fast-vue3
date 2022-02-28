@@ -6,7 +6,7 @@ import {
     requestParams,
     getRequestToken
 } from "@/utils/result"
-import { isLogin, getToken } from '@/utils/auth'
+import { isLogin, getToken, TokenPrefix } from '@/utils/auth'
 
 export function createFakeUserList() {
     return [
@@ -52,13 +52,13 @@ export function createFakeUserList() {
 }
 export default [
     {
-        url: '/api/user/profile',
+        url: '/user/profile',
         timeout: 200,
         method: 'get',
         response: (request: requestParams) => {
             const token = getRequestToken(request);
             if (!token) return errorResult('Invalid token')
-            const checkUser = createFakeUserList().find((item) => `Bearer ${item.token}` === token);
+            const checkUser = createFakeUserList().find((item) => `${TokenPrefix}${item.token}` === token);
             if (!checkUser) {
                 return errorResult('未获得相应的用户信息');
             }
@@ -66,7 +66,7 @@ export default [
         }
     },
     {
-        url: '/api/user/login',
+        url: '/user/login',
         timeout: 200,
         method: 'post',
         response: (request: requestParams) => {
@@ -81,14 +81,14 @@ export default [
         }
     },
     {
-        url: '/api/user/logout',
+        url: '/user/logout',
         timeout: 200,
         method: 'post',
         response: (request: requestParams) => {
             console.dir(request)
             const token = getRequestToken(request);
             if (!token) return errorResult('token缺失!');
-            const checkUser = createFakeUserList().find((item) => `Bearer ${item.token}` === token);
+            const checkUser = createFakeUserList().find((item) => `${TokenPrefix}${item.token}` === token);
             if (!checkUser) {
                 return errorResult('token缺失!');
             }
@@ -96,7 +96,7 @@ export default [
         },
     },
     {
-        url: '/api/text',
+        url: '/text',
         method: 'post',
         rawResponse: async (req, res) => {
             let reqbody = ''

@@ -23,3 +23,4 @@ export interface ResResultData {
     message: string;
     status: string
 }
+ 

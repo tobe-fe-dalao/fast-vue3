@@ -81,7 +81,7 @@ const handleSubmit = async ({
     if (!errors) {
         setLoading(true);
         try {
-            const res = await userStore.login(values);
+            const loginRes = await userStore.login(values);
             //改变路由
             // const { redirect, ...othersQuery } = router.currentRoute.value.query;
             // router.push({
@@ -90,13 +90,15 @@ const handleSubmit = async ({
             //         ...othersQuery,
             //     },
             // });
-            if (res && res.code != 200) {
-                Message.error(res.message);
-            } else {
+            if(loginRes){
                 Message.success('欢迎使用');
                 router.push('/');
                 userStore.info()
             }
+            // if (res && res.code != 200) {
+            //     Message.error(res.message);
+            // } else {
+            // }
         } catch (err) {
             errorMessage.value = (err as Error).message;
         } finally {
