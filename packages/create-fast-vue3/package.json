@@ -1,7 +1,7 @@
 {
   "name": "create-fast-vue3",
   "type": "module",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "a easy way to create vue3 project based of fast-vue3 template",
   "bin": {
     "create-fast-vue3": "outfile.cjs"
