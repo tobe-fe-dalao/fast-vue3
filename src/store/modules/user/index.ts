@@ -44,17 +44,17 @@ export const useUserStore = defineStore('user', {
         },
         // 获取用户信息
         async info() {
-            const res = await getUserProfile();
-            this.setInfo(res?.result);
+            const result = await getUserProfile();
+            this.setInfo(result);
         },
         // 异步登录并存储token
         async login(loginForm: LoginData) {
-            const res = await userLogin(loginForm);
-            const token = res?.result?.token
+            const result = await userLogin(loginForm);
+            const token = result?.token
             if (token) {
                 setToken(token);
             }
-            return res;
+            return result;
         },
         // Logout
         async logout() {
