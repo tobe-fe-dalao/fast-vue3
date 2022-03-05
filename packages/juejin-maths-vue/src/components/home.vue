@@ -49,12 +49,12 @@
         <el-row>
           <el-col :span="12">
             <p>
-              数字：<span class="is-bold">{{ shuZiInfo.nums }}</span>
+              数字：<span class="is-bold">{{ mathInfo.nums }}</span>
             </p>
           </el-col>
           <el-col :span="12">
             <p>
-              操作字符：<span class="is-bold">{{ shuZiInfo.options }}</span>
+              操作字符：<span class="is-bold">{{ mathInfo.options }}</span>
             </p>
           </el-col>
         </el-row>
@@ -62,7 +62,7 @@
         <el-row>
           <el-col :span="12">
             <p>
-              目标：<span class="is-bold">{{ shuZiInfo.target }}</span>
+              目标：<span class="is-bold">{{ mathInfo.target }}</span>
             </p>
           </el-col>
           <el-col :span="12">
@@ -128,7 +128,11 @@ export default {
       bug: 0,
       round: 0,
       cache: {},
-      shuZiInfo: {
+      type: 2, //第二代
+      needNum: 5, //正确解的数量
+      result: '',
+      nowNum: 0,
+      mathInfo: {
         nums: [],
         options: [],
         target: 0,
@@ -233,24 +237,37 @@ export default {
       if (cha) {
         options.push(...'.'.repeat(cha))
       }
+      this.nowNum = 0
       options.sort()
-      for (let i of nums) {
-        i = Number(i)
-        this.cache[i] = {
-          value: i,
-          formula: i,
+      let len = nums.length
+      nums.sort()
+      for (let i = 0; i < len; i++) {
+        let num = nums[i]
+        nums[i] = {
+          value: num,
+          formula: '' + num,
         }
       }
-      target = Number(target)
       this.calcLoop(nums, options, target)
+      this.cache = {}
     },
     calcLoop(nums, options, target) {
-      if (nums.length === 1 && options.length == 0 && this.cache[nums[0]].value == target) {
-        // console.log(nums[0]);
-        return
+      if (nums.length === 1 && options.length == 0 && nums[0].value == target) {
+        this.logData.unshift({
+          msg: '答案：' + nums[0].formula,
+        })
+        this.nowNum++
+        if (this.nowNum >= this.needNum) {
+          this.logData.unshift({
+            msg: '扫地盲僧第三代算法--运行结束--!',
+          })
+          return true
+        }
+        return // nums[0]
       }
-      nums.sort()
-      let key = [...nums].join() + '|' + nums.join()
+      let nums2 = nums.map((v) => v.value)
+      nums2.sort()
+      let key = nums2.join() + '|' + options.join()
       if (this.cache[key]) {
         return
       }
@@ -263,24 +280,22 @@ export default {
           let len = nums.length
           for (let j = 0; j < len - 1; j++) {
             let newNums = [...nums]
-            newNums.splice(nums.indexOf(nums[j]), 1)
+            newNums.splice(j, 1)
             for (let k = j + 1; k < len; k++) {
               let newNums2 = [...newNums]
-              newNums2.splice(newNums2.indexOf(nums[k]), 1)
-              let newNum = this.calc(this.cache[nums[j]], i, this.cache[nums[k]])
+              //newNums2.splice(newNums2.indexOf(nums[k]), 1);
+              let newNum = this.calc(nums[j], i, nums[k])
               if (isNaN(newNum.value)) {
               } else {
-                this.cache[newNum.formula] = newNum
-                let t = [newNum.formula, ...newNums2]
-                this.calcLoop(t, newOptions, target)
+                newNums2[k - 1] = newNum //[newNum.formula, ...newNums2]
+                if (this.calcLoop(newNums2, newOptions, target)) return true
               }
               if (i != '+' && i != '*') {
-                let newNum = this.calc(this.cache[nums[k]], i, this.cache[nums[j]])
+                let newNum = this.calc(nums[k], i, nums[j])
                 if (isNaN(newNum.value)) {
                 } else {
-                  this.cache[newNum.formula] = newNum
-                  let t = [newNum.formula, ...newNums2]
-                  this.calcLoop(t, newOptions, target)
+                  newNums2[k - 1] = newNum
+                  if (this.calcLoop(newNums2, newOptions, target)) return true
                 }
               }
             }
@@ -296,17 +311,17 @@ export default {
         (res) => {
           const { data } = res
           this.logData.unshift({
-            msg: res.message,
+            msg: '成功获取游戏数据',
           })
           this.author = data.author
           this.bug = data.bug
           this.round = data.round
-          this.shuZiInfo.target = data.target
+          this.mathInfo.target = data.target
           this.manualForm.manualTarget = data.target
           const { nums, options } = this.operatorArr(data.map)
-          this.shuZiInfo.nums = nums
+          this.mathInfo.nums = nums
           this.manualForm.manualNumber = nums
-          this.shuZiInfo.options = options
+          this.mathInfo.options = options
           this.manualForm.manualOptions = options
         },
         () => {},
@@ -317,6 +332,9 @@ export default {
       this.manualForm.manualNumber = '4,14,24,34,44,54'
       this.manualForm.manualOptions = '+/*-+'
       this.manualForm.manualTarget = 24
+      this.mathInfo.nums = '4,14,24,34,44,54'
+      this.mathInfo.options = '+/*-+'
+      this.mathInfo.target = 24
     },
     manual() {
       this.clearLog()
@@ -324,56 +342,30 @@ export default {
       let manualOptions = []
       manualNums = String(this.manualForm.manualNumber).trim().split(',')
       var numArr = []
-      var fuhaoArr = []
+      var optionsArr = []
       for (var i = 0; i < manualNums.length; i++) {
         numArr.push(Number(manualNums[i]))
       }
-      this.shuZiInfo.nums = numArr
+      this.mathInfo.nums = numArr
       manualOptions = String(this.manualForm.manualOptions).trim().split('')
       for (var i = 0; i < manualOptions.length; i++) {
         var currChar = manualOptions[i]
         if (currChar === '+' || currChar === '-' || currChar === '*' || currChar === '/') {
-          fuhaoArr.push(currChar)
+          optionsArr.push(currChar)
         }
       }
-      this.shuZiInfo.options = fuhaoArr
-      this.shuZiInfo.target = Number(this.manualForm.manualTarget)
+      this.mathInfo.options = optionsArr
+      this.mathInfo.target = Number(this.manualForm.manualTarget)
       this.command()
     },
     // 发出指令
     command() {
       this.clearLog()
-      const nums = this.shuZiInfo.nums
-      const options = this.shuZiInfo.options
-      const target = this.shuZiInfo.target
+      let nums = JSON.parse(JSON.stringify(this.mathInfo.nums))
+      let options = JSON.parse(JSON.stringify(this.mathInfo.options))
+      let target = JSON.parse(JSON.stringify(this.mathInfo.target))
+      console.log(nums)
       this.calcSum(nums, options, target)
-      const objs = Object.values(this.cache)
-      let resArr = []
-      objs.forEach((val) => {
-        //正确答案和前50
-        if (val.value === target && resArr.length < 50) {
-          //尽可能过滤出正确的答案
-          val.formula = val.formula.toString()
-          if (
-            nums.every((num) => {
-              return val.formula.indexOf(num) != -1
-            })
-          ) {
-            resArr.push(val)
-          }
-        }
-      })
-      if (resArr.length <= 0) {
-        this.logData.unshift({
-          msg: '无解',
-        })
-      }
-      resArr.forEach((element) => {
-        this.answer = element
-        this.logData.unshift({
-          msg: this.answer.formula,
-        })
-      })
     },
     clearLog() {
       this.logData = []
