@@ -13,6 +13,7 @@
   "dependencies": {
     "async": "^3.2.3",
     "axios": "^0.21.1",
+    "colors": "^1.4.0",
     "dayjs": "^1.10.6",
     "dotenv": "^16.0.0",
     "got": "^11.8.2",
