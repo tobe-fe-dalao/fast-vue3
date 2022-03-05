@@ -11,10 +11,36 @@
       </el-form>
       <el-row class="margin-top-20">
         <el-col :span="8">
-          <el-button type="primary" @click="submitForm('start')">开始</el-button>
+          <el-button type="primary" @click="submitForm('start')">自动开始</el-button>
         </el-col>
         <el-col :span="8">
           <el-button type="primary" @click="submitForm('command')">发起指令</el-button>
+        </el-col>
+      </el-row>
+      <el-form
+        ref="form"
+        :model="form"
+        :rules="formRule"
+        label-width="80px"
+        size="mini"
+        class="margin-top-20"
+      >
+        <el-form-item label="数字" prop="manualNumber">
+          <el-input v-model="manualForm.manualNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="操作" prop="manualOptions">
+          <el-input v-model="manualForm.manualOptions"></el-input>
+        </el-form-item>
+        <el-form-item label="目标值" prop="manualTarget">
+          <el-input v-model="manualForm.manualTarget"></el-input>
+        </el-form-item>
+      </el-form>
+      <el-row class="margin-top-20">
+        <el-col :span="8">
+          <el-button type="primary" @click="submitForm('manual')">手动开始</el-button>
+        </el-col>
+        <el-col :span="8">
+          <el-button type="primary" @click="submitForm('test')">测试案例</el-button>
         </el-col>
       </el-row>
     </el-aside>
@@ -39,12 +65,17 @@
               目标：<span class="is-bold">{{ shuZiInfo.target }}</span>
             </p>
           </el-col>
+          <el-col :span="12">
+            <p>
+              游戏共建者：<span class="is-bold">{{ author }}</span>
+            </p>
+          </el-col>
         </el-row>
         <div class="border-bottom"></div>
         <el-row>
           <el-col :span="12">
             <p>
-              游戏共建者：<span class="is-bold">{{ author }}</span>
+              当前关卡：<span class="is-bold">{{ round }}</span>
             </p>
           </el-col>
           <el-col :span="12">
@@ -52,12 +83,8 @@
               剩余BUG：<span class="is-bold">{{ bug }}</span>
             </p>
           </el-col>
-          <el-col :span="12">
-            <p>
-              当前关卡：<span class="is-bold">{{ round }}</span>
-            </p>
-          </el-col>
         </el-row>
+        <div class="border-bottom"></div>
       </div>
       <div class="log-container left-text">
         <h3 class="left-text">日志:</h3>
@@ -79,6 +106,11 @@ export default {
   components: {},
   data() {
     return {
+      manualForm: {
+        manualNumber: '',
+        manualOptions: '',
+        manualTarget: '',
+      },
       form: {
         uid: '',
         token: '',
@@ -92,8 +124,8 @@ export default {
         token: [{ required: true, message: '请输入token', trigger: 'blur' }],
       },
       logData: [],
-      author: '', // 当前作者
-      bug: '',
+      author: 'wangscaler', // 当前作者
+      bug: 0,
       round: 0,
       cache: {},
       shuZiInfo: {
@@ -203,11 +235,13 @@ export default {
       }
       options.sort()
       for (let i of nums) {
+        i = Number(i)
         this.cache[i] = {
           value: i,
           formula: i,
         }
       }
+      target = Number(target)
       this.calcLoop(nums, options, target)
     },
     calcLoop(nums, options, target) {
@@ -255,7 +289,7 @@ export default {
       }
     },
     start() {
-      this.clearLog();
+      this.clearLog()
       const time = new Date().getTime()
       const params = {}
       start(params, this.form.uid, time, this.form.token).then(
@@ -268,18 +302,49 @@ export default {
           this.bug = data.bug
           this.round = data.round
           this.shuZiInfo.target = data.target
+          this.manualForm.manualTarget = data.target
           const { nums, options } = this.operatorArr(data.map)
           this.shuZiInfo.nums = nums
+          this.manualForm.manualNumber = nums
           this.shuZiInfo.options = options
+          this.manualForm.manualOptions = options
         },
         () => {},
       )
     },
+    test() {
+      this.clearLog()
+      this.manualForm.manualNumber = '4,14,24,34,44,54'
+      this.manualForm.manualOptions = '+/*-+'
+      this.manualForm.manualTarget = 24
+    },
+    manual() {
+      this.clearLog()
+      let manualNums = []
+      let manualOptions = []
+      manualNums = String(this.manualForm.manualNumber).trim().split(',')
+      var numArr = []
+      var fuhaoArr = []
+      for (var i = 0; i < manualNums.length; i++) {
+        numArr.push(Number(manualNums[i]))
+      }
+      this.shuZiInfo.nums = numArr
+      manualOptions = String(this.manualForm.manualOptions).trim().split('')
+      for (var i = 0; i < manualOptions.length; i++) {
+        var currChar = manualOptions[i]
+        if (currChar === '+' || currChar === '-' || currChar === '*' || currChar === '/') {
+          fuhaoArr.push(currChar)
+        }
+      }
+      this.shuZiInfo.options = fuhaoArr
+      this.shuZiInfo.target = Number(this.manualForm.manualTarget)
+      this.command()
+    },
     // 发出指令
     command() {
-      this.clearLog();
-      const nums = this.shuZiInfo.nums 
-      const options = this.shuZiInfo.options 
+      this.clearLog()
+      const nums = this.shuZiInfo.nums
+      const options = this.shuZiInfo.options
       const target = this.shuZiInfo.target
       this.calcSum(nums, options, target)
       const objs = Object.values(this.cache)
@@ -298,6 +363,11 @@ export default {
           }
         }
       })
+      if (resArr.length <= 0) {
+        this.logData.unshift({
+          msg: '无解',
+        })
+      }
       resArr.forEach((element) => {
         this.answer = element
         this.logData.unshift({
