@@ -95,10 +95,10 @@ async function init() {
         {
           name: 'template',
           type: 'select',
-          message: 'Choice a Template for scene:',
+          message: 'Choice a Template:',
           choices: [
-            { title: 'Web', description: 'This will generate template for web scene', value: 'web' },
-            { title: 'Mobile', description: 'This will generate template for mobile scene', value: 'mobile' }
+            { title: 'template-pc', description: 'This will generate template for web scene', value: 'web' },
+            { title: 'template-mobile', description: 'This will generate template for mobile scene', value: 'mobile' }
           ],
           initial: 0
         },
