@@ -4,10 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
 import { ConfigEnv, UserConfigExport } from 'vite';
 import eslintPlugin from 'vite-plugin-eslint';
-import styleImport, {
-  NutuiResolve,
-  VantResolve
-} from 'vite-plugin-style-import';
+import styleImport, { NutuiResolve, VantResolve } from 'vite-plugin-style-import';
 import { viteMockServe } from 'vite-plugin-mock';
 import eruda from 'vite-plugin-eruda';
 
@@ -20,7 +17,9 @@ export default function ({ command }: ConfigEnv): UserConfigExport {
   const isProduction = command === 'build';
   return {
     server: {
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      strictPort: false,
+      open: '/home'
     },
     plugins: [
       vue(),

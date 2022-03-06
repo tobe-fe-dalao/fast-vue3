@@ -3,9 +3,11 @@
 import {
   Button,
   Cell,
+  CellGroup,
   Icon,
   Input,
   Tabbar,
+  TabbarItem,
   Toast,
   ShortPassword,
   Price,
@@ -26,17 +28,23 @@ import {
   Popover,
   Pagination,
   Form,
-  FormItem
+  FormItem,
+  Navbar,
+  Card,
+  Grid,
+  GridItem
 } from '@nutui/nutui';
 
 export const nutUiComponents = [
   Button,
   Cell,
+  CellGroup,
   Form,
   FormItem,
   Icon,
   Input,
   Tabbar,
+  TabbarItem,
   Toast,
   ShortPassword,
   Price,
@@ -55,5 +63,9 @@ export const nutUiComponents = [
   Menu,
   MenuItem,
   Popover,
-  Pagination
+  Pagination,
+  Navbar,
+  Card,
+  Grid,
+  GridItem
 ];
