@@ -11,41 +11,25 @@
   </nut-tabbar>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue';
-import { useUserStore } from '@/store/modules/user';
+<script lang="ts" setup>
 import { useRouter } from 'vue-router';
-export default defineComponent({
-  name: 'Tabbar',
-  setup() {
-    const router = useRouter();
-    const userStore = useUserStore();
-    const getUserInfo = computed(() => {
-      const { name = '' } = userStore.getUserInfo || {};
-      return name;
-    });
 
-    function tabSwitch(item, index) {
-      console.log(item, index);
-      switch (index) {
-        case 0:
-          router.push('/home');
-          break;
-        case 1:
-          router.push('/list');
-          break;
-        case 2:
-          router.push('/member');
-          break;
-      }
-    }
+const router = useRouter();
 
-    return {
-      getUserInfo,
-      tabSwitch
-    };
+function tabSwitch(item, index) {
+  console.log(item, index);
+  switch (index) {
+    case 0:
+      router.push('/home');
+      break;
+    case 1:
+      router.push('/list');
+      break;
+    case 2:
+      router.push('/member');
+      break;
   }
-});
+}
 </script>
 
 <style scoped lang="scss">

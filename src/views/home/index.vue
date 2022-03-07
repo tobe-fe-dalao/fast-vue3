@@ -23,33 +23,23 @@
     <nut-button shape="square" size="small" type="default" @click="changeLang('zh-cn')"> {{ $t('language.zh') }} </nut-button>
     <nut-button shape="square" size="small" type="default" @click="changeLang('en-us')"> {{ $t('language.en') }} </nut-button>
   </div>
-
+  {{ getUserInfo }}
   <Tabbar />
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue';
+<script lang="ts" setup>
+import { computed } from 'vue';
 import { useUserStore } from '@/store/modules/user';
 import { setLang } from '@/i18n';
 
-export default defineComponent({
-  name: 'Home',
-  setup() {
-    const userStore = useUserStore();
-    const getUserInfo = computed(() => {
-      const { name = '' } = userStore.getUserInfo || {};
-      return name;
-    });
-    const changeLang = (type) => {
-      setLang(type);
-    };
-
-    return {
-      getUserInfo,
-      changeLang
-    };
-  }
+const userStore = useUserStore();
+const getUserInfo = computed(() => {
+  const { name = '' } = userStore.getUserInfo || {};
+  return name;
 });
+const changeLang = (type) => {
+  setLang(type);
+};
 </script>
 <style lang="scss">
 .header {
