@@ -13,40 +13,30 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import router from '@/router';
-import { ComponentInternalInstance, defineComponent, getCurrentInstance, reactive, ref } from 'vue';
+import { ComponentInternalInstance, getCurrentInstance, reactive, ref } from 'vue';
 import { useUserStore } from '@/store/modules/user';
+
 const userStore = useUserStore();
-
-export default defineComponent({
-  setup() {
-    const formData = reactive({
-      name: '',
-      pwd: ''
-    });
-    const ruleForm = ref<any>(null);
-    const { proxy } = getCurrentInstance() as ComponentInternalInstance;
-    const submit = () => {
-      ruleForm.value.validate().then(async ({ valid, errors }: any) => {
-        if (valid) {
-          const userInfo = await userStore.login();
-          if (userInfo) {
-            router.push({ name: 'Home' });
-          }
-        } else {
-          console.log('error submit!!', errors);
-        }
-      });
-    };
-
-    return {
-      ruleForm,
-      formData,
-      submit
-    };
-  }
+const formData = reactive({
+  name: '',
+  pwd: ''
 });
+const ruleForm = ref<any>(null);
+const { proxy } = getCurrentInstance() as ComponentInternalInstance;
+const submit = () => {
+  ruleForm.value.validate().then(async ({ valid, errors }: any) => {
+    if (valid) {
+      const userInfo = await userStore.login();
+      if (userInfo) {
+        router.push({ name: 'Home' });
+      }
+    } else {
+      console.log('error submit!!', errors);
+    }
+  });
+};
 </script>
 
 <style scoped lang="scss">

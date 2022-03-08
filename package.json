@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint:fix": "eslint --ext .ts,.tsx,.vue --fix ."
   },
   "dependencies": {
     "@nutui/nutui": "^3.1.16",
