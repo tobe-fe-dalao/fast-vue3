@@ -4,7 +4,9 @@
 某个夜黑风高的晚上，某程序员摸鱼时无意间发现到了JJ的新游戏，玩了一会不得不佩服JJ运营和技术的头脑，太烧脑了。  
 模式上采用`共建`方式，既能收集题目又能调动参与，复杂的解体再加上变态的陷阱路线，简直SaoD不能再Sao。
 
-基于某位掘友的算法，进行进一步改良和加工，仓库[juejin-maths-game](https://github.com/study-vue3/fast-vue3)备注了地址  
+基于某位掘友的算法，进行进一步改良和加工，仓库地址[juejin-maths-game](https://github.com/study-vue3/fast-vue3)  
+
+感谢[wangscaler](https://github.com/wangscaler)提供的可视化地址：[http://shuzi.wangscaler.com/](http://shuzi.wangscaler.com/)
 
 # 加强版
 <a>
