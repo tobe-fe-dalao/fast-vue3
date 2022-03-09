@@ -6,7 +6,7 @@
 
 基于某位掘友的算法，进行进一步改良和加工，仓库地址[juejin-maths-game](https://github.com/study-vue3/fast-vue3)  
 
-感谢[wangscaler](https://github.com/wangscaler)提供的可视化地址：[http://shuzi.wangscaler.com/](http://shuzi.wangscaler.com/)
+感谢[wangscaler](https://github.com/wangscaler)提供的可视化地址：[http://math.wangscaler.com/](http://math.wangscaler.com/)
 
 # 加强版
 <a>
