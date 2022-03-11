@@ -21,7 +21,7 @@
 [English](./README.md) | [简体中文](./README-zh_CN.md) | 日本語
 
 # 特徴
-ここでは、いくつかのコアパーツの簡単な紹介を示しますが、インストールパーツについては詳しく説明しません。 公式ドキュメントまたは[ビジュアルウェアハウス]（https://github1s.com/MaleWeb/fast-vue3）を直接読むことをお勧めします。
+ここでは、いくつかのコアパーツの簡単な紹介を示しますが、インストールパーツについては詳しく説明しません。 公式ドキュメントまたは[ビジュアルウェアハウス]（https://github1s.com/tobe-fe-dalao/fast-vue3）を直接読むことをお勧めします。
 
 ## 🪂技術巨人のコラボレーション-コード仕様
 🪁 現在、多くのハイテク巨人チームは、一般的に [husky](https://github.com/typicode/husky) と [lint-staged](https://github.com/okonet/lint-staged)を使用してコード仕様を制約しています。
@@ -403,7 +403,7 @@ export default init;
 
 
 # 使用する
-スターとフォロー：スターまたはフォークまたは[ビジュアルウェアハウス](https://github1s.com/MaleWeb/fast-vue3) 
+スターとフォロー：スターまたはフォークまたは[ビジュアルウェアハウス](https://github1s.com/tobe-fe-dalao/fast-vue3) 
 
 ```shell
 # リポジトリコードをプルする
@@ -420,11 +420,11 @@ pnpm run dev
 ```
 エラーが報告されない場合は、点火に成功しました。それ以外の場合は、以下のFAQを参照してください.
 
-このテンプレートをすでに知っている場合は、プロジェクト開発のために `テンプレート`ブランチをプルすることをお勧めします。このブランチには、サンプルコードは含まれていません。
+このテンプレートをすでに知っている場合は、プロジェクト開発のために `主要`ブランチをプルすることをお勧めします。このブランチには、サンプルコードは含まれていません。
 
 ```
-# テンプレートブランチのクローン
-git clone -b template https://github.com/MaleWeb/fast-vue3.git
+# 主要ブランチのクローン
+git clone -b main https://github.com/MaleWeb/fast-vue3.git
 ```
 
 # ツール ライブラリ
