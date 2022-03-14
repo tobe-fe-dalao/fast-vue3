@@ -1,6 +1,6 @@
 /* ./src/index.css */
 @tailwind base;
-@tailwind components;
+/* @tailwind components; */
 @tailwind utilities;
 
 @font-face {
