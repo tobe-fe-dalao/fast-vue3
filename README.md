@@ -419,11 +419,11 @@ pnpm run dev
 ```
 If no error is reported, congratulations on your successful ignition。Otherwise，Please see the FAQ below。
 
-If you already know this template, it is recommended that you pull the `main` branch for project development, this branch does not contain any sample code.
+If you already know this template, it is recommended that you pull the `template` branch for project development, this branch does not contain any sample code.
 
 ```
-# clone main branch
-git clone -b main https://github.com/tobe-fe-dalao/fast-vue3.git
+# clone template branch
+git clone -b template https://github.com/tobe-fe-dalao/fast-vue3.git
 ```
 
 # Tool Library

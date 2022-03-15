@@ -425,11 +425,11 @@ pnpm run dev
 ```
 如果不报错，恭喜你点火成功。否则，请看下面常见问题。
 
-如果你已经了解本模板，建议你拉取 `main` 分支进行项目开发，该分支不含任何示例代码。
+如果你已经了解本模板，建议你拉取 `template` 分支进行项目开发，该分支不含任何示例代码。
 
 ```
-# clone main 分支
-git clone -b main https://github.com/tobe-fe-dalao/fast-vue3.git
+# clone template 分支
+git clone -b template https://github.com/tobe-fe-dalao/fast-vue3.git
 ```
 
 # 工具库
