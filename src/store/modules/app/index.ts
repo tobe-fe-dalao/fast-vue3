@@ -25,10 +25,12 @@ export const useAppStore = defineStore(
                     this.theme = 'dark';
                     document.documentElement.classList.add('dark');
                     document.body.setAttribute('arco-theme', 'dark');
+                    localStorage.setItem('theme',this.theme)
                 } else {
                     this.theme = 'light';
                     document.documentElement.classList.remove('dark');
                     document.body.removeAttribute('arco-theme');
+                    localStorage.setItem('theme',this.theme)
                 }
             },
         }
