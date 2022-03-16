@@ -119,7 +119,7 @@ importers:
       vite-plugin-svg-icons: registry.npmmirror.com/vite-plugin-svg-icons/1.1.0_vite@2.7.13
       vue-tsc: registry.npmmirror.com/vue-tsc/0.29.8_typescript@4.5.5
 
-  packages/create-adv-base-front:
+  packages/create-fast-vue3:
     specifiers:
       esbuild: ^0.14.14
       git-clone: ^0.2.0
