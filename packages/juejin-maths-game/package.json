@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "掘金数字谜题游戏算法解析",
   "main": "./src/index",
-  "homepage": "https://github.com/study-vue3/fast-vue3/tree/main/packages/juejin-maths-game",
+  "homepage": "https://github.com/study-vue3/adv-base-front/tree/main/packages/juejin-maths-game",
   "scripts": {
     "start": "node ./src/index",
     "test": "echo \"Error: no test specified\" && exit 1"

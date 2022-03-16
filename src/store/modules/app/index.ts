@@ -7,8 +7,8 @@ export const useAppStore = defineStore(
     'app',
     {
         state: () => ({
-            title: "FastVue3,一个快速开箱即用的Vue3+Vite模板",
-            h1: 'Vue3+Vite2.x+Ts+Pinia大厂开发必备',
+            title: "AdvBaseFront研华Vue3+Vite模板工程",
+            h1: 'Vue3+Vite2.x+Ts+Pinia',
             theme: 'dark'
         }),
         getters: {},

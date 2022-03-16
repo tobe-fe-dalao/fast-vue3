@@ -1,9 +1,9 @@
-# create-fast-vue3
+# create-adv-base-front
 
-a scanffold to create vue3 project that use fast-vue3 template
+a scanffold to create vue3 project that use adv-base-front template
 
 ## Usage
 
 ```bash
-npm init fast-vue3
+npm init adv-base-front
 ```

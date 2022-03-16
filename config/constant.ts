@@ -4,7 +4,7 @@
  */
 
 // 应用名
-export const APP_TITLE = 'Fast-Vue3';
+export const APP_TITLE = 'adv-base-front';
 
 // 本地服务端口
 export const VITE_PORT = 3000;

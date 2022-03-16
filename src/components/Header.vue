@@ -50,7 +50,7 @@ const ThemeChange = (val: string | number | boolean) => {
             <router-link
               to="/"
               class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200"
-            >Fast-Vue3</router-link>
+            >ADV-BF</router-link>
             <div class="relative items-center hidden ml-auto lg:flex">
               <nav class="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
@@ -98,7 +98,7 @@ const ThemeChange = (val: string | number | boolean) => {
                   </a-button>
                 </a-tooltip>
                 <a
-                  href="https://github.com/MaleWeb/fast-vue3"
+                  href="https://github.com/MaleWeb/adv-base-front"
                   target="_bank"
                   class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
                 >

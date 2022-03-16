@@ -1,5 +1,5 @@
 <p align="center">
-    <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="340" />
+    <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/adv-base-front.svg" width="340" />
 </p>  
 
 
@@ -16,12 +16,12 @@
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white" alt="Taiwind">
     <img src="" alt="">
 <p>   
-すぐに使えるVue3 + Vite2 + TypeScriptなど。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメントを更新するには、ここをクリックしてください](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
+すぐに使えるVue3 + Vite2 + TypeScriptなど。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメントを更新するには、ここをクリックしてください](https://github.com/MaleWeb/adv-base-front/blob/main/docs/update.md)
 
 [English](./README.md) | [简体中文](./README-zh_CN.md) | 日本語
 
 # 特徴
-ここでは、いくつかのコアパーツの簡単な紹介を示しますが、インストールパーツについては詳しく説明しません。 公式ドキュメントまたは[ビジュアルウェアハウス]（https://github1s.com/MaleWeb/fast-vue3）を直接読むことをお勧めします。
+ここでは、いくつかのコアパーツの簡単な紹介を示しますが、インストールパーツについては詳しく説明しません。 公式ドキュメントまたは[ビジュアルウェアハウス]（https://github1s.com/MaleWeb/adv-base-front）を直接読むことをお勧めします。
 
 ## 🪂技術巨人のコラボレーション-コード仕様
 🪁 現在、多くのハイテク巨人チームは、一般的に [husky](https://github.com/typicode/husky) と [lint-staged](https://github.com/okonet/lint-staged)を使用してコード仕様を制約しています。
@@ -98,7 +98,7 @@ export const AutoRegistryComponents = () => {
 
 ## 🧩Viteプラグインのモジュール性
 プラグインの管理を容易にするために、すべての `config`を` config / vite / plugins`に入れてください。 将来的には、非常にクリーンに管理するために、フォルダーに直接分割されたプラグインが増える予定です。
-`Fast-Vue3`は、特定のプラグインの動的なオープンを区別するために、統合された環境変数管理を追加することは言及する価値があります。
+`adv-base-front`は、特定のプラグインの動的なオープンを区別するために、統合された環境変数管理を追加することは言及する価値があります。
 ```typescript
 // vite/plugins/index.ts
 /**
@@ -403,14 +403,14 @@ export default init;
 
 
 # 使用する
-スターとフォロー：スターまたはフォークまたは[ビジュアルウェアハウス](https://github1s.com/MaleWeb/fast-vue3) 
+スターとフォロー：スターまたはフォークまたは[ビジュアルウェアハウス](https://github1s.com/MaleWeb/adv-base-front) 
 
 ```shell
 # リポジトリコードをプルする
-git clone  https://github.com/MaleWeb/fast-vue3.git
+git clone  https://github.com/MaleWeb/adv-base-front.git
 
 # プロジェクトフォルダに入る
-cd fast-vue3 
+cd adv-base-front 
 
 # プロジェクトの依存関係をインストールする
 pnpm install
@@ -424,7 +424,7 @@ pnpm run dev
 
 ```
 # テンプレートブランチのクローン
-git clone -b template https://github.com/MaleWeb/fast-vue3.git
+git clone -b template https://github.com/MaleWeb/adv-base-front.git
 ```
 
 # ツール ライブラリ
@@ -454,7 +454,7 @@ git clone -b template https://github.com/MaleWeb/fast-vue3.git
 
 
 # UI ライブラリ
-- [arco-design](https://github.com/arco-design/arco-design)，Byte Danceチームの新しいUIフレームワークには、より柔軟な構成レベルがあります。 `fast-vue3`はそれを使用します。 気に入らない場合は削除できます。
+- [arco-design](https://github.com/arco-design/arco-design)，Byte Danceチームの新しいUIフレームワークには、より柔軟な構成レベルがあります。 `adv-base-front`はそれを使用します。 気に入らない場合は削除できます。
 - [semi-design](https://github.com/DouyinFE/semi-design)，Douyinのフロントエンドのフレームワークは、UIとFEを絶えず引き裂くことを目的としており、試してみることができます。
 - [nutui](https://github.com/jdf2e/nutui)，JDのフロントエンドチームによって開発されたUIフレームワークが3.Xにアップグレードされました。 個人的には見た目が一番高く、反論も受けられると思います。
 - [naive-ui](https://github.com/TuSimple/naive-ui)，Evan Youが推奨する、TypeScript構文、調整可能なテーマ、この会社は非常に強力です。

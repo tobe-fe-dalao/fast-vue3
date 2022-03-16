@@ -1,6 +1,6 @@
 <template>
     <div class="login-form-wrapper">
-        <div class="login-form-title">欢迎登录Fast-Vue3</div>
+        <div class="login-form-title">欢迎登录adv-base-front</div>
         <div class="login-form-sub-title">一个开箱即用的Vue3+Vite+...模板</div>
         <div class="login-form-error-msg">{{ errorMessage }}</div>
         <a-form

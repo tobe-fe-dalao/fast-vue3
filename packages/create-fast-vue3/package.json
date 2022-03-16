@@ -1,10 +1,10 @@
 {
-  "name": "create-fast-vue3",
+  "name": "create-adv-base-front",
   "type": "module",
   "version": "0.0.13",
-  "description": "a easy way to create vue3 project based of fast-vue3 template",
+  "description": "a easy way to create vue3 project based of adv-base-front template",
   "bin": {
-    "create-fast-vue3": "outfile.cjs"
+    "create-adv-base-front": "outfile.cjs"
   },
   "files": [
     "outfile.cjs"
@@ -16,13 +16,13 @@
   "keywords": [
     "vue3",
     "vite",
-    "fast-vue3"
+    "adv-base-front"
   ],
-  "homepage": "https://github.com/study-vue3/fast-vue3/tree/main/packages/create-fast-vue3#readme",
+  "homepage": "https://github.com/study-vue3/adv-base-front/tree/main/packages/create-adv-base-front#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/study-vue3/fast-vue3.git",
-    "directory": "packages/create-fast-vue3"
+    "url": "git+https://github.com/study-vue3/adv-base-front.git",
+    "directory": "packages/create-adv-base-front"
   },
   "author": "liulei",
   "license": "MIT",

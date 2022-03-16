@@ -1,4 +1,4 @@
-const TokenKey = 'fast-token';
+const TokenKey = 'access_token';
 const TokenPrefix = 'Bearer '
 const isLogin = () => {
     return !!localStorage.getItem(TokenKey);

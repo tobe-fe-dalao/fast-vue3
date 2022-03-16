@@ -78,12 +78,12 @@ function emptyDir(dir) {
 }
 
 async function init() {
-  const downloadUrl = 'https://gitee.com/maleweb/fast-vue3.git'
+  const downloadUrl = 'https://gitee.com/maleweb/adv-base-front.git'
   const cwd = process.cwd()
   const argv = minimist(process.argv.slice(2))
 
   let targetDir = argv._[0]
-  const defaultProjectName = !targetDir ? 'fast-vue3-demo' : targetDir
+  const defaultProjectName = !targetDir ? 'adv-base-front-demo' : targetDir
 
   const forceOverwrite = argv.force
 

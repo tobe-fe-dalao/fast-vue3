@@ -5,7 +5,7 @@ import { IResponse, ILogin, RequestOptions } from './type'
 import { API_BASE_URL } from '../../../../config/constant'
 import { getToken, TokenPrefix } from '@/utils/auth'
 
-// 如果请求话费了超过 `timeout` 的时间，请求将被中断
+// 如果请求花费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 5000
 // 表示跨域请求时是否需要使用凭证
 axios.defaults.withCredentials = false
@@ -28,11 +28,11 @@ const axiosInstance: AxiosInstance = axios.create({
 // axios实例拦截响应
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
-    // if (response.headers.authorization) {
-    //   localStorage.setItem('app_token', response.headers.authorization)
-    // } else if (response.data && response.data.token) {
-    //   localStorage.setItem('app_token', response.data.token)
-    // }
+    if (response.headers.authorization) {
+      localStorage.setItem('app_token', response.headers.authorization)
+    } else if (response.data && response.data.token) {
+      localStorage.setItem('app_token', response.data.token)
+    }
 
     if (response.status === 200) {
       return response

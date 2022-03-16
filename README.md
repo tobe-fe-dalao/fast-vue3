@@ -1,5 +1,5 @@
 <p align="center">
-    <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="340" />
+    <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/adv-base-front.svg" width="340" />
 </p>  
 
 
@@ -16,11 +16,11 @@
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white" alt="Taiwind">
 <p>    
 
-An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
+An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/MaleWeb/adv-base-front/blob/main/docs/update.md)
 
 English |  [简体中文](./README-zh_CN.md) | [日本語](./README.ja-JP.md)
 # Feature
-Here is a brief introduction to some core parts and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/MaleWeb/fast-vue3) directly.
+Here is a brief introduction to some core parts and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/MaleWeb/adv-base-front) directly.
 
 ## 🪂Tech giants collaboration-code specification
 🪁 Many tech giants teams generally use [husky](https://github.com/typicode/husky) and  [lint-staged](https://github.com/okonet/lint-staged)  to constrain code specifications at present.
@@ -97,7 +97,7 @@ export const AutoRegistryComponents = () => {
 
 ## 🧩Vite plugin modularity
 In order to facilitate the management of plugins, put all `config` into `config/vite/plugins`. In the future, there will be more plugins directly divided into folders to manage very cleanly。
-It is worth mentioning that `Fast-Vue3` adds unified environment variable management to distinguish dynamic opening of certain plugins.
+It is worth mentioning that `adv-base-front` adds unified environment variable management to distinguish dynamic opening of certain plugins.
 ```typescript
 // vite/plugins/index.ts
 /**
@@ -402,14 +402,14 @@ export default init;
 
 
 # ✏️ Use 
-One key three links: Star or Fork or [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
+One key three links: Star or Fork or [Visual warehouse](https://github1s.com/MaleWeb/adv-base-front) 
 
 ```shell
 # Pull repository code
-git clone  https://github.com/MaleWeb/fast-vue3.git
+git clone  https://github.com/MaleWeb/adv-base-front.git
 
 # enter the project folder
-cd fast-vue3 
+cd adv-base-front 
 
 # Install project dependencies
 pnpm install
@@ -423,7 +423,7 @@ If you already know this template, it is recommended that you pull the `template
 
 ```
 # clone  template branch
-git clone -b template https://github.com/MaleWeb/fast-vue3.git
+git clone -b template https://github.com/MaleWeb/adv-base-front.git
 ```
 
 # Tool Library
@@ -453,7 +453,7 @@ Learn to use the appropriate tool library to make `coding` do more with less. Es
 
 
 # UI library
-- [arco-design](https://github.com/arco-design/arco-design)，The new UI framework of the Byte Dance team has a more flexible configuration level.  `fast-vue3` uses it. if you don't like it can be removed.
+- [arco-design](https://github.com/arco-design/arco-design)，The new UI framework of the Byte Dance team has a more flexible configuration level.  `adv-base-front` uses it. if you don't like it can be removed.
 - [semi-design](https://github.com/DouyinFE/semi-design)，The framework from the front end of Douyin is aimed at constantly tearing UI and FE, and you can try it out.
 - [nutui](https://github.com/jdf2e/nutui)，The UI framework developed by the front-end team of JD.com has been upgraded to 3.X. Personally, I think it has the highest appearance and accepts the rebuttal.
 - [naive-ui](https://github.com/TuSimple/naive-ui)，Recommended by Evan You, TypeScript syntax, adjustable theme, this company is very powerful.
@@ -470,8 +470,8 @@ This project exists thanks to all the people who contribute.
 
 And thank you to all our backers! 🙏  
     
-<a href="https://github.com/study-vue3/fast-vue3/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=study-vue3/fast-vue3" />
+<a href="https://github.com/study-vue3/adv-base-front/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=study-vue3/adv-base-front" />
 </a>
     
 

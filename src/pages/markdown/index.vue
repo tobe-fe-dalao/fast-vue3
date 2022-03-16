@@ -5,9 +5,10 @@ import Header from '@components/Header.vue'
 
 <template>
   <div>
-    <!-- <Header /> -->
+    <Header />
     <div class="w-full flex justify-center">
-      <!-- <ReadMe /> -->
+<!--       <ReadMe />-->
+      dddd
     </div>
   </div>
 </template>
