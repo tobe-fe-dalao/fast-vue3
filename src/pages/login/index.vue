@@ -32,7 +32,8 @@ import logo from '@/assets/icons/svg/logo.svg'
 
     .banner {
         width: 550px;
-        background: linear-gradient(163.85deg, #1d2129 0%, #00308f 100%);
+        //background: linear-gradient(163.85deg, #1d2129 0%, #00308f 100%);
+      background: linear-gradient(163.85deg, #ffffff 0%, #0155f7 100%);
     }
 
     .content {

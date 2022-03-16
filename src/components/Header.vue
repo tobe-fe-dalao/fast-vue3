@@ -97,13 +97,13 @@ const ThemeChange = (val: string | number | boolean) => {
                     </template>
                   </a-button>
                 </a-tooltip>
-                <a
-                  href="https://github.com/MaleWeb/adv-base-front"
-                  target="_bank"
-                  class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
-                >
-                  <SvgIcon name="svg-github" size="small" color="#999999" />
-                </a>
+<!--                <a-->
+<!--                  href="#"-->
+<!--                  target="_bank"-->
+<!--                  class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"-->
+<!--                >-->
+<!--                  <SvgIcon name="svg-github" size="small" color="#999999" />-->
+<!--                </a>-->
               </div>
             </div>
           </div>

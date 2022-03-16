@@ -1,7 +1,7 @@
 {
   "name": "adv-base-front",
-  "version": "0.1.1",
-  "author": "扫地盲僧",
+  "version": "1.0.0",
+  "author": "xhyc",
   "scripts": {
     "dev": "vite --mode development",
     "build": "vue-tsc --noEmit && vite build",

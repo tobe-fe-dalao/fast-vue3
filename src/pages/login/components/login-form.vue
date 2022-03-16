@@ -1,7 +1,7 @@
 <template>
     <div class="login-form-wrapper">
-        <div class="login-form-title">欢迎登录adv-base-front</div>
-        <div class="login-form-sub-title">一个开箱即用的Vue3+Vite+...模板</div>
+        <div class="login-form-title text-center">欢迎登录ADV-BF</div>
+        <div class="login-form-sub-title"></div>
         <div class="login-form-error-msg">{{ errorMessage }}</div>
         <a-form
             ref="loginForm"
@@ -18,7 +18,7 @@
             >
                 <a-input
                     v-model="userFormData.username"
-                    placeholder="saodimangseng"
+                    placeholder="账号：xhadmin"
                     @keyup.enter="handleSubmit"
                 >
                     <template #prefix>
@@ -34,7 +34,7 @@
             >
                 <a-input-password
                     v-model="userFormData.password"
-                    placeholder="密码：saodimangseng"
+                    placeholder="密码：xhadmin"
                     allow-clear
                     @keyup.enter="handleSubmit"
                 >

@@ -5,7 +5,7 @@
                 <a-carousel-item v-for="item in carouselItem" :key="item.slogan">
                     <div :key="item.slogan" class="carousel-item">
                         <div class="carousel-title">{{ item.slogan }}</div>
-                        <div class="carousel-sub-title">{{ item.subSlogan }}</div>
+                        <div class="carousel-sub-title text-blue-600	">{{ item.subSlogan }}</div>
                         <img class="carousel-image" :src="item.image" />
                     </div>
                 </a-carousel-item>
@@ -17,7 +17,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import bannerImage from '@/assets/images/login-banner.png';
-import qunErweima from '@/assets/images/qunerweima.jpg'
+import introduce from '@/assets/images/introduce.png'
 import bannerImage02 from '@/assets/images/banner2.svg'
 
 export default defineComponent({
@@ -34,9 +34,9 @@ export default defineComponent({
                 image: bannerImage02,
             },
             {
-                slogan: '社区维护，来芜湖四海大厂核心大牛',
-                subSlogan: '扫码进入社区微信群',
-                image: qunErweima,
+                slogan: '研华科技',
+                subSlogan: '驱动智慧城市创新，共建物联产业典范',
+                image: introduce,
             },
         ]);
         return {
@@ -78,7 +78,7 @@ export default defineComponent({
 
     &-sub-title {
         margin-top: 8px;
-        color: var(--color-text-3);
+        //color: var(--color-text-3);
         font-size: 14px;
         line-height: 22px;
     }

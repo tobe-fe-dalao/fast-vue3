@@ -24,7 +24,7 @@ const data = ref(framework)
             class="absolute text-2xl tracking-wide version lg:text-4xl bg-gradient-to-br from-fuchsia-500 to-purple-600"
           >{{ `V${version}` }}</span>
         </h1>
-        <p class="text-2xl text-slate-800 dark:text-slate-400">最新Vue3技术流，超全配置，大厂协作规范，大佬必备神器</p>
+        <p class="text-2xl text-slate-800 dark:text-slate-400">最新Vue3技术流，超全配置，协作规范</p>
       </div>
     </main>
     <article class="space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44">
