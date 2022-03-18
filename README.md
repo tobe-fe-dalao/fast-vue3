@@ -16,11 +16,11 @@
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white" alt="Taiwind">
 <p>    
 
-An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
+An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
 
 English |  [简体中文](./README-zh_CN.md) | [日本語](./README.ja-JP.md)
 # Feature
-Here is a brief introduction to some core parts and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/MaleWeb/fast-vue3) directly.
+Here is a brief introduction to some core parts and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/tobe-fe-dalao/fast-vue3) directly.
 
 ## 🪂Tech giants collaboration-code specification
 🪁 Many tech giants teams generally use [husky](https://github.com/typicode/husky) and  [lint-staged](https://github.com/okonet/lint-staged)  to constrain code specifications at present.
@@ -402,11 +402,11 @@ export default init;
 
 
 # ✏️ Use 
-One key three links: Star or Fork or [Visual warehouse](https://github1s.com/MaleWeb/fast-vue3) 
+One key three links: Star or Fork or [Visual warehouse](https://github1s.com/tobe-fe-dalao/fast-vue3) 
 
 ```shell
 # Pull repository code
-git clone  https://github.com/MaleWeb/fast-vue3.git
+git clone  https://github.com/tobe-fe-dalao/fast-vue3.git
 
 # enter the project folder
 cd fast-vue3 
@@ -423,7 +423,7 @@ If you already know this template, it is recommended that you pull the `template
 
 ```
 # clone  template branch
-git clone -b template https://github.com/MaleWeb/fast-vue3.git
+git clone -b template https://github.com/tobe-fe-dalao/fast-vue3.git
 ```
 
 # Tool Library

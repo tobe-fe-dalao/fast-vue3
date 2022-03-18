@@ -98,7 +98,7 @@ const ThemeChange = (val: string | number | boolean) => {
                   </a-button>
                 </a-tooltip>
                 <a
-                  href="https://github.com/MaleWeb/fast-vue3"
+                  href="https://github.com/tobe-fe-dalao/fast-vue3"
                   target="_bank"
                   class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
                 >

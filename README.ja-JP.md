@@ -16,12 +16,12 @@
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white" alt="Taiwind">
     <img src="" alt="">
 <p>   
-すぐに使えるVue3 + Vite2 + TypeScriptなど。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメントを更新するには、ここをクリックしてください](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
+すぐに使えるVue3 + Vite2 + TypeScriptなど。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメントを更新するには、ここをクリックしてください](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
 
 [English](./README.md) | [简体中文](./README-zh_CN.md) | 日本語
 
 # 特徴
-ここでは、いくつかのコアパーツの簡単な紹介を示しますが、インストールパーツについては詳しく説明しません。 公式ドキュメントまたは[ビジュアルウェアハウス]（https://github1s.com/MaleWeb/fast-vue3）を直接読むことをお勧めします。
+ここでは、いくつかのコアパーツの簡単な紹介を示しますが、インストールパーツについては詳しく説明しません。 公式ドキュメントまたは[ビジュアルウェアハウス]（https://github1s.com/tobe-fe-dalao/fast-vue3）を直接読むことをお勧めします。
 
 ## 🪂技術巨人のコラボレーション-コード仕様
 🪁 現在、多くのハイテク巨人チームは、一般的に [husky](https://github.com/typicode/husky) と [lint-staged](https://github.com/okonet/lint-staged)を使用してコード仕様を制約しています。
@@ -403,11 +403,11 @@ export default init;
 
 
 # 使用する
-スターとフォロー：スターまたはフォークまたは[ビジュアルウェアハウス](https://github1s.com/MaleWeb/fast-vue3) 
+スターとフォロー：スターまたはフォークまたは[ビジュアルウェアハウス](https://github1s.com/tobe-fe-dalao/fast-vue3) 
 
 ```shell
 # リポジトリコードをプルする
-git clone  https://github.com/MaleWeb/fast-vue3.git
+git clone  https://github.com/tobe-fe-dalao/fast-vue3.git
 
 # プロジェクトフォルダに入る
 cd fast-vue3 
@@ -424,7 +424,7 @@ pnpm run dev
 
 ```
 # テンプレートブランチのクローン
-git clone -b template https://github.com/MaleWeb/fast-vue3.git
+git clone -b template https://github.com/tobe-fe-dalao/fast-vue3.git
 ```
 
 # ツール ライブラリ
