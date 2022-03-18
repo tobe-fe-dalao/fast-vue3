@@ -18,13 +18,13 @@
 <p>    
 
     
-一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/MaleWeb/fast-vue3/blob/main/docs/update.md)
+一个开箱即用，快速搭建大型应用的Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
 
 [English](./README.md) | 简体中文 | [日本語](./README.ja-JP.md)
     
     
 # 功能亮点
-这里简单介绍一些核心部分，安装部分不再细讲，建议大家直接阅读官方文档或[可视化仓库](https://github1s.com/MaleWeb/fast-vue3)
+这里简单介绍一些核心部分，安装部分不再细讲，建议大家直接阅读官方文档或[可视化仓库](https://github1s.com/tobe-fe-dalao/fast-vue3)
 
 ## 🪂大厂协作-代码规范
 🪁 目前多数大厂团队一般使用[husky](https://github.com/typicode/husky)和 [lint-staged](https://github.com/okonet/lint-staged)  来约束代码规范，
@@ -408,11 +408,11 @@ export default init;
 
 
 # 使用 
-一键三连: Star 或 Fork 或 [可视化仓库](https://github1s.com/MaleWeb/fast-vue3) 
+一键三连: Star 或 Fork 或 [可视化仓库](https://github1s.com/tobe-fe-dalao/fast-vue3) 
 
 ```shell
 # 拉取仓库代码
-git clone  https://github.com/MaleWeb/fast-vue3.git
+git clone  https://github.com/tobe-fe-dalao/fast-vue3.git
 
 # 进入项目文件夹
 cd fast-vue3 
@@ -429,7 +429,7 @@ pnpm run dev
 
 ```
 # clone  template 分支
-git clone -b template https://github.com/MaleWeb/fast-vue3.git
+git clone -b template https://github.com/tobe-fe-dalao/fast-vue3.git
 ```
 
 # 工具库
