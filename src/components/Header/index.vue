@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SvgIcon from './SvgIcon/index.vue'
+import SvgIcon from '../SvgIcon/index.vue'
 import { ref } from 'vue'
 import { useDark, useToggle } from '@vueuse/core';
 import { useAppStore, useUserStore } from '@/store';
@@ -56,12 +56,6 @@ const ThemeChange = (val: string | number | boolean) => {
                 <ul class="flex space-x-8">
                   <li>
                     <router-link
-                      to="/markdown"
-                      class="hover:text-sky-500 dark:hover:text-sky-400"
-                    >markdown</router-link>
-                  </li>
-                  <li>
-                    <router-link
                       to="/demo"
                       class="hover:text-sky-500 dark:hover:text-sky-400"
                     >GithubDemo</router-link>
@@ -98,7 +92,7 @@ const ThemeChange = (val: string | number | boolean) => {
                   </a-button>
                 </a-tooltip>
                 <a
-                  href="https://github.com/tobe-fe-dalao/fast-vue3"
+                  href="https://github.com/MaleWeb/fast-vue3"
                   target="_bank"
                   class="block ml-6 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
                 >

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Header from "@components/Header.vue"
 import { version } from "../../package.json"
 import SvgIcon from "@components/SvgIcon/index.vue"
 import { useAppStore } from '@/store/modules/app'
 import { framework } from "./data"
+import Header from "@components/Header/index.vue"
 
 const appStore = useAppStore()
 const data = ref(framework)
@@ -72,8 +72,6 @@ const data = ref(framework)
       </ul>
     </article>
   </div>
-
-  <!-- Readme -->
 </template>
 
 <style lang="less" scoped>
