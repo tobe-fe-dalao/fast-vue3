@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import Header from '@/components/Header.vue'
+import Header from '@/components/Header/index.vue'
 const title = `通过TailWind快速实现<br>Github2021年年度
                     <a traget="_blank" href="https://octoverse.github.com/"><font>octoverse</font></a>`
 const datav = reactive([
