@@ -4,11 +4,8 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AButton: typeof import('@arco-design/web-vue')['Button']
-    ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
     Footer: typeof import('./components/footer/index.vue')['default']
     Header: typeof import('./components/Header/index.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
   }
 }
