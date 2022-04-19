@@ -32,7 +32,7 @@ import {
   Navbar,
   Card,
   Grid,
-  GridItem
+  GridItem,
 } from '@nutui/nutui';
 
 export const nutUiComponents = [
@@ -67,5 +67,5 @@ export const nutUiComponents = [
   Navbar,
   Card,
   Grid,
-  GridItem
+  GridItem,
 ];

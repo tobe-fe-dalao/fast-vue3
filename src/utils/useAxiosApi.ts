@@ -5,7 +5,7 @@ import { Toast } from 'vant';
 // create an axios instance
 const instance = axios.create({
   withCredentials: false,
-  timeout: 5000
+  timeout: 5000,
 });
 
 // request interceptor
@@ -27,7 +27,7 @@ instance.interceptors.request.use(
     // do something with request error
     console.log(error); // for debug
     return Promise.reject(error);
-  }
+  },
 );
 
 // response interceptor
@@ -60,7 +60,7 @@ instance.interceptors.response.use(
     console.log('err' + error);
     Toast(error.message);
     return Promise.reject(error.message);
-  }
+  },
 );
 
 /**

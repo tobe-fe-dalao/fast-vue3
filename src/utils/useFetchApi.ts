@@ -8,7 +8,7 @@ const useFetchApi = createFetch({
       const myToken = 'token';
       options.headers = {
         ...options.headers,
-        Authorization: `Bearer ${myToken}`
+        Authorization: `Bearer ${myToken}`,
       };
       return { options };
     },
@@ -34,8 +34,8 @@ const useFetchApi = createFetch({
       }
 
       return ctx;
-    }
-  }
+    },
+  },
 });
 
 export default useFetchApi;

@@ -3,7 +3,7 @@ import routes from './routes';
 
 const router: Router = createRouter({
   history: createWebHistory(),
-  routes: routes
+  routes: routes,
 });
 
 router.beforeEach(async (to, from, next) => {

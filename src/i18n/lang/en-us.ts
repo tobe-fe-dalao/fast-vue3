@@ -2,11 +2,11 @@ export const lang = {
   tabbar: {
     home: 'Home',
     list: 'List',
-    member: 'Member'
+    member: 'Member',
   },
   language: {
     en: 'English',
-    zh: 'Chinese'
+    zh: 'Chinese',
   },
-  introduction: 'A rapid development vue3 of mobile terminal template'
+  introduction: 'A rapid development vue3 of mobile terminal template',
 };

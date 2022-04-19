@@ -21,7 +21,7 @@ export const i18n = createI18n({
   // legacy: false,
   locale: 'zh-cn',
   fallbackLocale: 'zh-cn',
-  messages: loadLang()
+  messages: loadLang(),
 });
 
 export const i18nt = i18n.global.t;

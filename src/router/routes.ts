@@ -1,6 +1,4 @@
-import { RouteRecordRaw } from 'vue-router';
-
-const routes: RouteRecordRaw[] = [
+const routes = [
   {
     path: '/',
     component: () => import('@/components/Basic/index.vue'),
@@ -10,35 +8,35 @@ const routes: RouteRecordRaw[] = [
         path: 'home',
         component: () => import('@/views/Home/index.vue'),
         meta: {
-          keepAlive: true
-        }
+          keepAlive: true,
+        },
       },
       {
         name: 'List',
         path: 'list',
         component: () => import('@/views/List/index.vue'),
         meta: {
-          keepAlive: true
-        }
+          keepAlive: true,
+        },
       },
       {
         name: 'Member',
         path: 'member',
         component: () => import('@/views/Member/index.vue'),
         meta: {
-          keepAlive: true
-        }
-      }
-    ]
+          keepAlive: true,
+        },
+      },
+    ],
   },
   {
     name: 'Login',
     path: '/login',
     component: () => import('@/views/Login/index.vue'),
     meta: {
-      keepAlive: true
-    }
-  }
+      keepAlive: true,
+    },
+  },
 ];
 
 export default routes;

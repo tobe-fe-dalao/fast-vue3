@@ -15,19 +15,19 @@ export const useUserStore = defineStore({
   id: 'app-user',
   state: (): StoreUser => ({
     token: token,
-    info: {}
+    info: {},
   }),
   getters: {
     getUserInfo(): any {
       return this.info || {};
-    }
+    },
   },
   actions: {
     setInfo(info: any) {
       this.info = info ? info : '';
     },
     login() {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         const { data } = loginPassword();
         watch(data, () => {
           this.setInfo(data.value);
@@ -35,6 +35,6 @@ export const useUserStore = defineStore({
           resolve(data.value);
         });
       });
-    }
-  }
+    },
+  },
 });

@@ -7,6 +7,6 @@ import useAxiosApi from '@/utils/useAxiosApi';
 export function loginPassword() {
   return useAxiosApi(`/api/login`, {
     method: 'POST',
-    data: { name: '123' }
+    data: { name: '123' },
   });
 }
