@@ -1,6 +1,8 @@
 const routes = [
   {
+    name: 'root',
     path: '/',
+    redirect: '/home',
     component: () => import('@/components/Basic/index.vue'),
     children: [
       {
@@ -8,6 +10,7 @@ const routes = [
         path: 'home',
         component: () => import('@/views/Home/index.vue'),
         meta: {
+          title: '',
           keepAlive: true,
         },
       },
@@ -16,6 +19,7 @@ const routes = [
         path: 'list',
         component: () => import('@/views/List/index.vue'),
         meta: {
+          title: '',
           keepAlive: true,
         },
       },
@@ -24,6 +28,7 @@ const routes = [
         path: 'member',
         component: () => import('@/views/Member/index.vue'),
         meta: {
+          title: '',
           keepAlive: true,
         },
       },
@@ -34,6 +39,7 @@ const routes = [
     path: '/login',
     component: () => import('@/views/Login/index.vue'),
     meta: {
+      title: '',
       keepAlive: true,
     },
   },

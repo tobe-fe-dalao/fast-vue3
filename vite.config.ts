@@ -16,8 +16,6 @@ export default function ({ command }: ConfigEnv): UserConfigExport {
   return {
     server: {
       host: '0.0.0.0',
-      strictPort: false,
-      open: '/home',
     },
     plugins: [
       vue(),
