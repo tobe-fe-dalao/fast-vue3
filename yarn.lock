@@ -4353,6 +4353,11 @@ plop@^3.1.0:
     ora "^6.0.1"
     v8flags "^4.0.0"
 
+pnpm@^6.32.11:
+  version "6.32.11"
+  resolved "https://registry.npmmirror.com/pnpm/-/pnpm-6.32.11.tgz#cc60fcbfef83f7d56d12f6c2084b5194bdff1ffb"
+  integrity sha512-KIb3ImAEGl03aJNy0pai7J0mWn52GJwRrUllxUZwibhLdUoeOuDjXhNSgRxxW9BH2gR91b3UadxzdAvhehmM8w==
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.npmmirror.com/posix-character-classes/download/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
