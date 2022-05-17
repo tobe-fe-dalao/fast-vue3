@@ -57,7 +57,7 @@ axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const token = getToken();
     if (token) {
-      config.headers.Authorization = `${TokenPrefix}${token}`
+      // config.headers.Authorization = `${TokenPrefix}${token}`
     }
     return config
   },
