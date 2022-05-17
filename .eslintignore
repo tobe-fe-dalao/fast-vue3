@@ -1,7 +1,0 @@
-# eslint 忽略检查
-node_modules
-dist
-!.prettierrc.js
-/src/assets/fonts
-/src/assets/icons
-/src/assets/images

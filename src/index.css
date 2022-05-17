@@ -1,9 +1,0 @@
-/* ./src/index.css */
-@tailwind base;
-/* @tailwind components; */
-@tailwind utilities;
-
-@font-face {
-    font-family: 'Blimone';
-    src        : local('Blimone'), url(../src/assets/fonts/Blimone-Light.woff);
-}
