@@ -16,7 +16,7 @@
     <img src="" alt="">
 <p>
 
-一个开箱即用，快速搭建大型应用的 Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
+一个开箱即用，快速搭建大型应用的 Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md) |  [在线运行](https://stackblitz.com/github/tobe-fe-dalao/fast-vue3?terminal=dev)
 
  简体中文| [English](./README.en.md)  | [日本語](./README.ja-JP.md)
 
