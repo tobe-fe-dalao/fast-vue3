@@ -1,7 +1,6 @@
 <p align="center">
     <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="340" />
-</p>  
-
+</p>
 
 <p align="center">  
     <img src="https://img.shields.io/badge/-Vue3-34495e?logo=vue.j" />
@@ -14,54 +13,58 @@
     <img src="https://img.shields.io/badge/-Prettier-ef9421?logo=Prettier&logoColor=white" alt="Prettier">
     <img src="https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white" alt="Less">
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white" alt="Taiwind">
-<p>    
+    <img src="" alt="">
+<p>
 
-An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
+一个开箱即用，快速搭建大型应用的 Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档在此](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
 
-English |  [简体中文](./README-zh_CN.md) | [日本語](./README.ja-JP.md)
-# Feature
-Here is a brief introduction to some core parts and the installation part will not be discussed in detail. It is recommended that you read the official documentation or [visual warehouse](https://github1s.com/tobe-fe-dalao/fast-vue3) directly.
+ 简体中文| [English](./README.en.md)  | [日本語](./README.ja-JP.md)
 
-## 🪂Tech giants collaboration-code specification
-🪁 Many tech giants teams generally use [husky](https://github.com/typicode/husky) and  [lint-staged](https://github.com/okonet/lint-staged)  to constrain code specifications at present.
-- Through `pre-commit` to implement  lint check,unit test,code formatting,etc.。 
-- Combined with the VsCode（formatting automatically when saving：editor.formatOnSave: true）
-- Combined with the Git hooks（execute before commit：pre-commit => npm run lint:lint-staged）
-- IDE configuration（`.editorconfig`）,ESLint configuration（`.eslintrc.js` 和 `.eslintignore`）,StyleLint configuration（`.stylelintrc` 和 `.stylelintignore`）,for details, please refer to the corresponding configuration file。  
+# 功能亮点
 
-🔌 Close code specification 
-add `.eslintignore`  and  `.stylelintignore`  to `src/`  directory respectively to ignore 
+这里简单介绍一些核心部分，安装部分不再细讲，建议大家直接阅读官方文档或[可视化仓库](https://github1s.com/tobe-fe-dalao/fast-vue3)
 
+## 🪂 大厂协作-代码规范
 
-## Directory Structure
+🪁 目前多数大厂团队一般使用[husky](https://github.com/typicode/husky)和  [lint-staged](https://github.com/okonet/lint-staged) 来约束代码规范，
 
-The following is the directory structure of the system
+- 通过`pre-commit`实现 lint 检查、单元测试、代码格式化等。
+- 结合 VsCode 编辑器（保存时自动执行格式化：editor.formatOnSave: true）
+- 配合 Git hooks 钩子（commit 前或提交前执行：pre-commit => npm run lint:lint-staged）
+- IDE 配置（`.editorconfig`）、ESLint 配置（`.eslintrc.js`  和  `.eslintignore`）、StyleLint 配置（`.stylelintrc`  和  `.stylelintignore`），详细请看对应的配置文件。
+
+🔌 关闭代码规范  
+将  `src/`  目录分别加入  `.eslintignore`  和  `.stylelintignore`  进行忽略即可。
+
+## 目录结构
+
+以下是系统的目录结构
 
 ```
 ├── config
-│   ├── vite             // vite configuration
-│   ├── constant         // system constant 
-|   └── themeConfig      // theme configuration
-├── docs                 // document related
-├── mock                 // mock data    
-├── plop-tpls            // plop template   
-├── src     
-│    ├── api             // api request   
-│    ├── assets          // static files   
-│    ├── components      // Common Components   
-│    ├── page            // page
-│    ├── router          // routing file   
-│    ├── store           // state management   
-│    ├── utils           // tools   
-│    ├── App.vue         // vue template entry   
-│    ├── main.ts         // vue template js
-├── .d.ts                // type definition   
-├── tailwind.config.js   // tailwind global configuration 
-├── tsconfig.json        // ts configuration
-└── vite.config.ts       // vite global configuration  
+│   ├── vite             // vite配置
+│   ├── constant         // 系统常量
+|   └── themeConfig      // 主题配置
+├── docs                 // 文档相关
+├── mock                 // mock数据
+├── plop-tpls            // plop模板
+├── src
+│    ├── api             // api请求
+│    ├── assets          // 静态文件
+│    ├── components      // 业务通用组件
+│    ├── page            // 业务页面
+│    ├── router          // 路由文件
+│    ├── store           // 状态管理
+│    ├── utils           // 工具类
+│    ├── App.vue         // vue模板入口
+│    ├── main.ts         // vue模板js
+├── .d.ts                // 类型定义
+├── tailwind.config.js   // tailwind全局配置
+├── tsconfig.json        // ts配置
+└── vite.config.ts       // vite全局配置
 ```
 
-## 💕Support JSX syntax
+## 💕 支持 JSX 语法
 
 ```json
 {
@@ -70,82 +73,87 @@ The following is the directory structure of the system
     ...
 }
 ```
-## 🎸 UI components are loaded on demand and imported automatically
+
+## 🎸UI 组件按需加载，自动导入
+
 ```typescript
-//Modular writing
+//模块化写法
 import Components from 'unplugin-vue-components/vite'
 export const AutoRegistryComponents = () => {
-    return Components({
-        extensions: ['vue', 'md'],
-        deep: true,
-        dts: 'src/components.d.ts',
-        directoryAsNamespace: false,
-        globalNamespaces: [],
-        directives: true,
-        include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-        exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
-        resolvers: [
-            IconsResolver({
-                componentPrefix: '',
-            }),
-            ArcoResolver({ importStyle: 'less' }),// Add UI framework according to your needs
-            VueUseComponentsResolver(),// VueUse component is used by default
-        ],
-    })
+  return Components({
+    extensions: ['vue', 'md'],
+    deep: true,
+    dts: 'src/components.d.ts',
+    directoryAsNamespace: false,
+    globalNamespaces: [],
+    directives: true,
+    include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
+    resolvers: [
+      IconsResolver({
+        componentPrefix: '',
+      }),
+      ArcoResolver({ importStyle: 'less' }), //根据你需要增加UI框架
+      VueUseComponentsResolver(), //默认使用VueUse组件
+    ],
+  })
 }
 ```
 
-## 🧩Vite plugin modularity
-In order to facilitate the management of plugins, put all `config` into `config/vite/plugins`. In the future, there will be more plugins directly divided into folders to manage very cleanly。
-It is worth mentioning that `Fast-Vue3` adds unified environment variable management to distinguish dynamic opening of certain plugins.
+## 🧩Vite 插件模块化
+
+为了方便管理插件，将所有的`config`统一放入`config/vite/plugins`里面，未来还会有更多插件直接分文件夹管理十分干净。值得一提的是，`Fast-Vue3`增加了统一环境变量管理，来区分动态开启某些插件。
+
 ```typescript
 // vite/plugins/index.ts
 /**
  * @name createVitePlugins
- * @description Encapsulate the plugins array to call uniformly
+ * @description 封装plugins数组统一调用
  */
-import type { Plugin } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import { ConfigSvgIconsPlugin } from './svgIcons';
-import { AutoRegistryComponents } from './component';
-import { AutoImportDeps } from './autoImport';
-import { ConfigMockPlugin } from './mock';
-import { ConfigVisualizerConfig } from './visualizer';
-import { ConfigCompressPlugin } from './compress';
+import type { Plugin } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import { ConfigSvgIconsPlugin } from './svgIcons'
+import { AutoRegistryComponents } from './component'
+import { AutoImportDeps } from './autoImport'
+import { ConfigMockPlugin } from './mock'
+import { ConfigVisualizerConfig } from './visualizer'
+import { ConfigCompressPlugin } from './compress'
 import { ConfigPagesPlugin } from './pages'
 import { ConfigMarkDownPlugin } from './markdown'
 import { ConfigRestartPlugin } from './restart'
 
 export function createVitePlugins(isBuild: boolean) {
-    const vitePlugins: (Plugin | Plugin[])[] = [
-        // vue support
-        vue(),
-        // JSX support
-        vueJsx(),
-        // Automatically import components on demand
-        AutoRegistryComponents(),
-        // Automatically import dependencies as needed
-        AutoImportDeps(),
-        // Automatically generate routes
-        ConfigPagesPlugin(),
-        // Enable .gz compression  rollup-plugin-gzip
-        ConfigCompressPlugin(),
-        // markdown support
-        ConfigMarkDownPlugin(),
-        // Monitor configuration file changes and restart
-        ConfigRestartPlugin(),
-    ];
-    // vite-plugin-svg-icons
-    vitePlugins.push(ConfigSvgIconsPlugin(isBuild));
-    // vite-plugin-mock
-    vitePlugins.push(ConfigMockPlugin(isBuild));
-    // rollup-plugin-visualizer
-    vitePlugins.push(ConfigVisualizerConfig());
-    return vitePlugins;
+  const vitePlugins: (Plugin | Plugin[])[] = [
+    // vue支持
+    vue(),
+    // JSX支持
+    vueJsx(),
+    // 自动按需引入组件
+    AutoRegistryComponents(),
+    // 自动按需引入依赖
+    AutoImportDeps(),
+    // 自动生成路由
+    ConfigPagesPlugin(),
+    // 开启.gz压缩  rollup-plugin-gzip
+    ConfigCompressPlugin(),
+    //支持markdown
+    ConfigMarkDownPlugin(),
+    // 监听配置文件改动重启
+    ConfigRestartPlugin(),
+  ]
+  // vite-plugin-svg-icons
+  vitePlugins.push(ConfigSvgIconsPlugin(isBuild))
+  // vite-plugin-mock
+  vitePlugins.push(ConfigMockPlugin(isBuild))
+  // rollup-plugin-visualizer
+  vitePlugins.push(ConfigVisualizerConfig())
+  return vitePlugins
 }
 ```
-`vite.config.ts` is much cleaner
+
+而`vite.config.ts`便干净多了
+
 ```typescript
 import { createVitePlugins } from './config/vite/plugins'
 ...
@@ -164,73 +172,85 @@ return {
 }
 ...
 ```
-## 📱 Support for `Pinia`, the next generation of `Vuex5`
-Create a file `src/store/index.ts`
+
+## 📱 支持`Pinia` ,下一代`Vuex5`
+
+创建文件`src/store/index.ts`
+
 ```typescript
-// Supports modularization, and can be generated with one click from the command line with plop
-import { createPinia } from 'pinia';
-import { useAppStore } from './modules/app';
-import { useUserStore } from './modules/user';
-const pinia = createPinia();
-export { useAppStore, useUserStore };
-export default pinia;
+// 支持模块化，配合plop可以通过命令行一键生成
+import { createPinia } from 'pinia'
+import { useAppStore } from './modules/app'
+import { useUserStore } from './modules/user'
+const pinia = createPinia()
+export { useAppStore, useUserStore }
+export default pinia
 ```
-Create a file `src/store/modules/user/index.ts`
+
+创建文件`src/store/modules/user/index.ts`
 
 ```typescript
 import { defineStore } from 'pinia'
 import piniaStore from '@/store'
 export const useUserStore = defineStore(
-    // unique id
-    'user',
-    {
-        state: () => ({}),
-        getters: {},
-        actions: {}
-    }
+  // 唯一ID
+  'user',
+  {
+    state: () => ({}),
+    getters: {},
+    actions: {},
+  },
 )
 ```
-## 🤖 Support `Plop` to automatically generate files
- ⚙️ The code files are automatically generated, providing three preset templates `pages`, `components`, `store`, you can also design more automatic generation scripts according to your needs. Generally, back-end engineer use this form, which is very efficient.。
+
+## 🤖 支持`Plop`自动生成文件
+
+⚙️ 代码文件自动生成，提供三种预设模板`pages`,`components`,`store`，也可以根据自己需要设计更多自动生成脚本。一般后端同学惯用此形式，十分高效。
 
 ```shell
-# install plop
+# 安装plop
 pnpm add plop
 ```
-Create in the root directory `plopfile.ts`
+
+根目录创建`plopfile.ts`
+
 ```typescript
-import { NodePlopAPI } from 'plop';
+import { NodePlopAPI } from 'plop'
 export default function (plop: NodePlopAPI) {
-    plop.setWelcomeMessage('Please select the pattern you want to create')
-    plop.setGenerator('page', require('./plop-tpls/page/prompt'))
-    plop.setGenerator('component', require('./plop-tpls/component/prompt'))
-    plop.setGenerator('store', require('./plop-tpls/store/prompt'))
+  plop.setWelcomeMessage('请选择需要创建的模式：')
+  plop.setGenerator('page', require('./plop-tpls/page/prompt'))
+  plop.setGenerator('component', require('./plop-tpls/component/prompt'))
+  plop.setGenerator('store', require('./plop-tpls/store/prompt'))
 }
 ```
 
 ```shell
-# start command
+# 启动命令
 pnpm run plop
 ```
+
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a6756aebd4d6407e8545eed41b6e5864~tplv-k3u1fbpfcp-watermark.image?)
 
+## 🖼️ 支持`SVG`图标
 
-## 🖼️ Support for `SVG` icons
-With the improvement of browser compatibility, the performance of SVG has gradually become prominent. Many tech giants teams are creating their own SVG management library, and the tool library will be recommended later.
+随着浏览器兼容性的提升，SVG 的性能逐渐凸显，很多大厂团队都在创建自己的 SVG 管理库，后面工具库会有推荐。
+
 ```shell
-#  install svg dependencies
+# 安装svg依赖
 pnpm add vite-plugin-svg-icons
 ```
-configure `vite.config.ts`
+
+配置`vite.config.ts`
+
 ```typescript
 import viteSvgIcons from 'vite-plugin-svg-icons';
 export default defineConfig({
 plugins:[
 ...
  viteSvgIcons({
-    // Specify the icon folder that needs to be cached
+    // 指定需要缓存的图标文件夹
     iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-    // Specify symbolId format
+    // 指定symbolId格式
     symbolId: 'icon-[dir]-[name]',
   }),
 ]
@@ -238,7 +258,7 @@ plugins:[
 })
 ```
 
-A simple `SvgIcon` component has been encapsulated, which can directly read the `svg` under the file, and can automatically find the file according to the folder directory.
+已封装一个简单的`SvgIcon`组件，可以直接读取文件下的`svg`，可以根据文件夹目录自动查找文件。
 
 ```html
 <template>
@@ -248,63 +268,71 @@ A simple `SvgIcon` component has been encapsulated, which can directly read the 
 </template>
 
 <script lang="ts" setup>
-const props = defineProps({
-  prefix: {
-    type: String,
-    default: 'icon',
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  color: {
-    type: String,
-    default: '#333',
-  },
-  size: {
-    type: String,
-    default: 'default',
-  },
-})
-const symbolId = computed(() => `#${props.prefix}-${props.name}`)
-const calsses = computed(() => {
-  return {
-    [`sdms-size-${props.size}`]: props.size,
-  }
-})
-const fontSize = reactive({ default: '32px', small: '20px', large: '48px' })
+  const props = defineProps({
+    prefix: {
+      type: String,
+      default: 'icon',
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      default: '#333',
+    },
+    size: {
+      type: String,
+      default: 'default',
+    },
+  })
+  const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+  const calsses = computed(() => {
+    return {
+      [`sdms-size-${props.size}`]: props.size,
+    }
+  })
+  const fontSize = reactive({ default: '32px', small: '20px', large: '48px' })
 </script>
 ```
-## 📦 Support `axios (ts version)`
-It has encapsulated mainstream interceptors, request calls and other methods, distinguishing modules `index.ts`/`status.ts`/`type.ts`
+
+## 📦 支持`axios(ts版)`
+
+已封装了主流的拦截器，请求调用等方法，区分了模块`index.ts`/`status.ts`/`type.ts`
+
 ```typescript
-//encapsulate src/api/user/index.ts
+//封装src/api/user/index.ts
 import request from '@utils/http/axios'
 import { IResponse } from '@utils/http/axios/type'
-import { ReqAuth, ReqParams, ResResult } from './type';
+import { ReqAuth, ReqParams, ResResult } from './type'
 enum URL {
-    login = '/v1/user/login',
-    userProfile = 'mock/api/userProfile'
+  login = '/v1/user/login',
+  permission = '/v1/user/permission',
+  userProfile = 'mock/api/userProfile',
 }
-const getUserProfile = async () => request<ReqAuth>({ url: URL.userProfile });
-const login = async (data: ReqParams) => request({ url: URL.login, data });
-export default { getUserProfile, login };
+const getUserProfile = async () => request<ReqAuth>({ url: URL.userProfile })
+const login = async (data: ReqParams) => request({ url: URL.login, data })
+const permission = async () => request<ReqAuth>({ url: URL.permission })
+export default { getUserProfile, login, permission }
 ```
+
 ```typescript
-// transfer
-import userApi from "@api/user"
-// Components can be directly referenced in setup mode
+//调用
+import userApi from '@api/user'
+// setup模式下组件可以直接引用
 const res = await userApi.profile()
 ```
-## 👽 Automatically generate `router`, filter `components` components
-Supports the modularization of `vue-router4.0`, automatically generates routes by retrieving the pages folder, and supports dynamic routes
+
+## 👽 自动生成`router`，过滤`components`组件
+
+支持`vue-router4.0`的模块化，通过检索 pages 文件夹可自动生成路由，并支持动态路由
 
 ```typescript
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import routes from 'virtual:generated-pages'
 
-console.log(routes,'print generate auto-generated routes')
-// Import generated routing data
+console.log(routes, '打印生成自动生成的路由')
+//导入生成的路由数据
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
@@ -312,176 +340,185 @@ const router = createRouter({
 
 export default router
 ```
-## 🧬 Support Mock data
-Use the `vite-plugin-mock` plug-in to support automatic distinction and start-stop environment configuration 
+
+## 🧬 支持 Mock 数据
+
+使用`vite-plugin-mock`插件，支持自动区分和启停的环境配置
 
 ```javascript
 // vite config
 viteMockServe({
-    ignore: /^\_/,
-    mockPath: 'mock',
-    localEnabled: !isBuild,
-    prodEnabled: false,
-    // https://github.com/anncwb/vite-plugin-mock/issues/9
-    injectCode: `
+  ignore: /^\_/,
+  mockPath: 'mock',
+  localEnabled: !isBuild,
+  prodEnabled: false,
+  // https://github.com/anncwb/vite-plugin-mock/issues/9
+  injectCode: `
        import { setupProdMockServer } from '../mock/_createProdMockServer';
        setupProdMockServer();
-       `
-    })
+       `,
+})
 ```
-Create a `_createProductionServer.ts` file in the root directory, files not starting with `_` will be automatically loaded into mock files
+
+根目录下创建 `_createProductionServer.ts`文件,非`_`开头文件会被自动加载成 mock 文件
 
 ```typescript
-import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
-// Bulk load
-const modules = import.meta.globEager('./mock/*.ts');
+import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer'
+// 批量加载
+const modules = import.meta.globEager('./mock/*.ts')
 
-const mockModules: Array<string> = [];
+const mockModules: Array<string> = []
 Object.keys(modules).forEach((key) => {
-    if (key.includes('/_')) {
-        return;
-    }
-    mockModules.push(...modules[key].default);
-});
+  if (key.includes('/_')) {
+    return
+  }
+  mockModules.push(...modules[key].default)
+})
 export function setupProdMockServer() {
-    createProdMockServer(mockModules);
+  createProdMockServer(mockModules)
 }
 ```
-## 🎎 Proxy
+
+## 🎎Proxy 代理
+
 ```typescript
 // vite config
 import proxy from '@config/vite/proxy';
 export default defineConfig({
     ...
     server: {
-        hmr: { overlay: false }, // Disable or configure HMR connections and set server.hmr.overlay to false to `disable` the server error masking layer
-        // Service configuration
-        port: VITE_PORT, // type:number Specify the server port;
-        open: false, // type:boolean | string Automatically open the application in the browser when the server starts;
-        cors: false, // type:boolean | CorsOptions configure CORS for the development server. Enabled by default and allows any origin
-        host: '0.0.0.0', // IP configuration, support boot from IP
+        hmr: { overlay: false }, // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
+        // 服务配置
+        port: VITE_PORT, // 类型： number 指定服务器端口;
+        open: false, // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
+        cors: false, // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
+        host: '0.0.0.0', // IP配置，支持从IP启动
         proxy,
     }
     ...
 })
 ```
+
 ```typescript
 // proxy.ts
 import {
-    API_BASE_URL,
-    API_TARGET_URL,
-    MOCK_API_BASE_URL,
-    MOCK_API_TARGET_URL,
-} from '@config/constant';
-import { ProxyOptions } from 'vite';
-type ProxyTargetList = Record<string, ProxyOptions>;
+  API_BASE_URL,
+  API_TARGET_URL,
+  MOCK_API_BASE_URL,
+  MOCK_API_TARGET_URL,
+} from '@config/constant'
+import { ProxyOptions } from 'vite'
+type ProxyTargetList = Record<string, ProxyOptions>
 
 const init: ProxyTargetList = {
-    // test
-    [API_BASE_URL]: {
-        target: API_TARGET_URL,
-        changeOrigin: true,
-        rewrite: (path) => path.replace(new RegExp(`^${API_BASE_URL}`), ''),
-    },
-    // mock
-    [MOCK_API_BASE_URL]: {
-        target: MOCK_API_TARGET_URL,
-        changeOrigin: true,
-        rewrite: (path) => path.replace(new RegExp(`^${MOCK_API_BASE_URL}`), '/api'),
-    },
-};
+  // test
+  [API_BASE_URL]: {
+    target: API_TARGET_URL,
+    changeOrigin: true,
+    rewrite: (path) => path.replace(new RegExp(`^${API_BASE_URL}`), ''),
+  },
+  // mock
+  [MOCK_API_BASE_URL]: {
+    target: MOCK_API_TARGET_URL,
+    changeOrigin: true,
+    rewrite: (path) => path.replace(new RegExp(`^${MOCK_API_BASE_URL}`), '/api'),
+  },
+}
 
-export default init;
-
+export default init
 ```
 
-## 🎉 Other
+## 🎉 其他
 
-- 🏗 Support `vw/vh` mobile terminal layout compatibility, you can also use `plop` to configure the generated file yourself
-- There are more new features added in `commiting`, if you have a better solution, welcome `PR`
+- 🏗 支持`vw/vh`移动端布局兼容，也可以使用`plop`自己配置生成文件
+- 还有更多新功能增在`commiting`,如果你有更好的方案欢迎`PR`
 
+# 使用
 
-# ✏️ Use 
-One key three links: Star or Fork or [Visual warehouse](https://github1s.com/tobe-fe-dalao/fast-vue3) 
+一键三连: Star 或 Fork 或 [可视化仓库](https://github1s.com/tobe-fe-dalao/fast-vue3)
 
 ```shell
-# Pull repository code
+# 拉取仓库代码
 git clone  https://github.com/tobe-fe-dalao/fast-vue3.git
 
-# enter the project folder
-cd fast-vue3 
+# 进入项目文件夹
+cd fast-vue3
 
-# Install project dependencies
+# 安装项目依赖
 pnpm install
 
-# run
+# 运行
 pnpm run dev
 ```
-If no error is reported, congratulations on your successful ignition。Otherwise，Please see the FAQ below。
 
-If you already know this template, it is recommended that you pull the `template` branch for project development, this branch does not contain any sample code.
+如果不报错，恭喜你点火成功。否则，请看下面常见问题。
+
+如果你已经了解本模板，建议你拉取  `template`  分支进行项目开发，该分支不含任何示例代码。
 
 ```
-# clone  template branch
+# clone  template 分支
 git clone -b template https://github.com/tobe-fe-dalao/fast-vue3.git
 ```
 
-# Tool Library
-Learn to use the appropriate tool library to make `coding` do more with less. Especially the open source tool library, it is worth everyone to learn, because this is the level you should reach. Here are some class libraries commonly used by major manufacturers, because I like new ones... The following tools can be imported directly.
+# 工具库
 
-## JS library
-- [pnpm](https://pnpm.io/)，A tool that relies on the global management of packages, the boss no longer has to worry that my C drive is not enough. Vite official recommendation, Byte Dance official front-end team large-scale project test
-  
+学会使用适当的工具库，让`coding`事半功倍。尤其是开源的工具库，值得每个人学习，因为这本身就是你应该达到的层次。这里推荐一些大厂常用的类库，因为我喜新...，以下工具均可直接引入。
+
+## JS 库
+
+- [pnpm](https://pnpm.io/)，一个依赖包全局管理的工具，老板再也不用担心我的 C 盘不够用。Vite 官方推荐，字节官方前端团队大规模项目考验
+
 ![image-20220110125758056](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125758056.png)
-- [mitt Global event listener library](https://github.com/developit/mitt)，Vue3 official recommendation
-- [Hammer](http://hammerjs.github.io/)，Can recognize gestures made by touch, mouse and pointer events, only 7.34kb
-- [outils](https://github.com/proYang/outils)，A set of functions commonly used in development, you can also use `lodash`
 
-- [tailwindcss](https://tailwindcss.com/)，Oh my Jesus, without writing a line of CSS, a page is created in 3 minutes. It is not suitable for junior and intermediate front-ends. It is recommended to learn the basics first and then use the framework.
+- [mitt 全局事件监听库](https://github.com/developit/mitt)，Vue3 官方推荐
+- [Hammer](http://hammerjs.github.io/)，可以识别由触摸、鼠标和指针事件做出的手势,只有 7.34kb
+- [outils](https://github.com/proYang/outils)，开发中常用的函数集，也可以使用`lodash`
+
+- [tailwindcss](https://tailwindcss.com/)，艾玛香的一塌糊涂，一行 css 不写，3 分钟出一个页面。不适合初中级前端，建议还是先踏实学基础再用框架。
 
   ![tailwindcss-1](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/tailwindcss-1.gif)
 
   ![tailwindcss-2](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/tailwindcss-2.gif)
 
-- [Vue I18n](https://vue-i18n.intlify.dev/)  an internationalization plugin for Vue.js. If you want to make an open source framework, the preferred plugin for internationalization.
+- [Vue I18n](https://vue-i18n.intlify.dev/) 是 Vue.js 的国际化插件，如果你想做开源框架，国际化首选插件。
 
-- [ViteSSG](https://github.com/antfu/vite-ssg)，SEO optimization, this project is interesting, you can play with this solution, I used to do SEO through server-side rendering before, and later learned that this can be generated directly on the Vue3 server.
+- [ViteSSG](https://github.com/antfu/vite-ssg)，SEO 优化，这个项目有点意思，大家可以玩玩这个方案，之前我都是通过服务端渲染搞 SEO，后来了解到这个可以直接在 Vue3 的服务器上生成。
 
-- [Vitest](https://github.com/vitest-dev/vitest),The unit testing tool based on Vite, the iteration is relatively fast at present, and is sponsored by Evan You. You can continue to pay attention, and it is not recommended to use it in small projects.
+- [Vitest](https://github.com/vitest-dev/vitest),基于 Vite 的单元测试工具，目前迭代比较快，尤大金牌赞助。可以持续关注，不建议使用在小项目中。
 
   ![image-20220110125605172](https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/image-20220110125605172.png)
 
+# UI 库
 
-# UI library
-- [arco-design](https://github.com/arco-design/arco-design)，The new UI framework of the Byte Dance team has a more flexible configuration level.  `fast-vue3` uses it. if you don't like it can be removed.
-- [semi-design](https://github.com/DouyinFE/semi-design)，The framework from the front end of Douyin is aimed at constantly tearing UI and FE, and you can try it out.
-- [nutui](https://github.com/jdf2e/nutui)，The UI framework developed by the front-end team of JD.com has been upgraded to 3.X. Personally, I think it has the highest appearance and accepts the rebuttal.
-- [naive-ui](https://github.com/TuSimple/naive-ui)，Recommended by Evan You, TypeScript syntax, adjustable theme, this company is very powerful.
-- That's all for now and I'll make up later.
+- [arco-design](https://github.com/arco-design/arco-design)，字节团队新出的 UI 框架,配置层面更为灵活,`fast-vue3`使用的就是这个,不喜欢的小伙伴可以移除
+- [semi-design](https://github.com/DouyinFE/semi-design)，抖音前端出的框架，面向经常撕逼 UI 和 FE，可以尝鲜玩玩
+- [nutui](https://github.com/jdf2e/nutui)，京东前端团队出的 UI 框架，已升级到 3.X，个人认为颜值最高并接受反驳
+- [naive-ui](https://github.com/TuSimple/naive-ui)，尤大推荐，TypeScript 语法，主题可调，这家公司挺厉害
+- 暂时就这些吧，困了,回头再补
 
-# Reference
-- Official configuration document entry[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
-- More detailed configuration manual:https://juejin.cn/post/7036745610954801166
-- vu3 writing component practice case:https://juejin.cn/post/7052717075168493598 
-    
-# Contributors
+# 资料
 
-This project exists thanks to all the people who contribute.
+- 官方配置文档入口[vite](https://vitejs.cn/config/)、[pinia](https://pinia.vuejs.org/introduction.html)、[vue-router4](https://next.router.vuejs.org/zh/introduction.html)、[plop](https://github.com/plopjs/plop)...
+- 更详细的配置手册:https://juejin.cn/post/7036745610954801166
+- vu3 写组件实践案例:https://juejin.cn/post/7052717075168493598  
 
-And thank you to all our backers! 🙏  
-    
+
+# 贡献者
+
+这个项目的存在要感谢所有做出贡献的人。
+
+并感谢我们所有的支持者! 🙏
+
 <a href="https://github.com/study-vue3/fast-vue3/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=study-vue3/fast-vue3" />
 </a>
-    
 
-# Last
+# 最后
 
--   Welcome to join the group [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image")，goof off, let's goof off together, and now the fan group rarely discusses technology, so let's goof off together. Welcome to pay attention to Wechat public number [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22")。  
-  
--   Cutting-edge technologies, technologies related to various experiences and interactions, and advance perspectives of various translations and research reports.
--   Free to use, all the paid resources promised to be released, all the fan groups are free for using.Otherwise, who would have time to play with you, interesting.
+- 欢迎加群[前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image 'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image')，划水，大家一起划水，现在粉丝群甚少讨论技术，那么我们就一起水吧。欢迎关注我的公众号[扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22')。
 
+- 前沿技术，各类体验、互动相关的技术，各类译文、研报的提前透视。
+- 白嫖，承诺发布的所有付费资源，粉丝群统统免费白嫖，不然大家谁有时间跟你玩，嘿嘿。
 
 <p>
 <img width="360" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/varqun.jpg">
@@ -489,5 +526,3 @@ And thank you to all our backers! 🙏
 <p>
 <img width="360" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/扫地盲僧公众号.png">
 </p>
-    
-    
