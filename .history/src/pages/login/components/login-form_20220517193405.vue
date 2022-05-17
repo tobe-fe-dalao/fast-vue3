@@ -4,7 +4,7 @@
     <div class="login-form-sub-title">一个开箱即用的Vue3+Vite+...模板</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <el-form
-      ref="ruleFormRef"
+      ref="loginForm"
       :model="userFormData"
       class="login-form"
       layout="vertical"
@@ -37,6 +37,7 @@
 
 <script lang="ts" setup>
   import { ElMessage, FormInstance, FormRules } from 'element-plus'
+  //   import { Lock, User } from '@element-plus/icons-vue'
   import { useUserStore } from '../../../store/index'
   import useLoading from '../../../hooks/loading'
   import { ReqParams } from '../../../api/user/types'
@@ -65,7 +66,6 @@
     ],
   })
   const handleSubmit = async (formEl: FormInstance | undefined) => {
-      console.log(formEl)
     if (!formEl) return
     await formEl.validate((valid, field) => {
       if (valid) {

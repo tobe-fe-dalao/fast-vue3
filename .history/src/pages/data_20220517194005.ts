@@ -46,7 +46,7 @@ export const framework = [
   },
   {
     content:
-      '饿了么团队，全网第一的UI框架，基于Vue 3，面向设计师和开发者的组件库',
+      '基于Vue 3，面向设计师和开发者的组件库',
     avatar: 'https://element-plus.gitee.io/images/element-plus-logo.svg',
     title: 'Element Plus',
     github: 'https://github.com/element-plus/element-plus',

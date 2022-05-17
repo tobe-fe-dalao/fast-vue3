@@ -4,7 +4,7 @@
     <div class="login-form-sub-title">一个开箱即用的Vue3+Vite+...模板</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <el-form
-      ref="ruleFormRef"
+      ref="loginForm"
       :model="userFormData"
       class="login-form"
       layout="vertical"
@@ -16,7 +16,15 @@
         :validate-trigger="['change', 'blur']"
         hide-label
       >
-        <el-input v-model="userFormData.username" placeholder="saodimangseng"> </el-input>
+        <el-input
+          v-model="userFormData.username"
+          placeholder="saodimangseng"
+          @keyup.enter="handleSubmit"
+        >
+          <template #prefix>
+            <icon-user />
+          </template>
+        </el-input>
       </el-form-item>
       <el-form-item
         field="password"
@@ -24,12 +32,29 @@
         :validate-trigger="['change', 'blur']"
         hide-label
       >
-        <el-input v-model="userFormData.password" placeholder="密码：saodimangseng" allow-clear>
+        <el-input
+          v-model="userFormData.password"
+          placeholder="密码：saodimangseng"
+          allow-clear
+          @keyup.enter="handleSubmit"
+        >
+          <template #prefix>
+            <icon-lock />
+          </template>
         </el-input>
       </el-form-item>
+      <a-space :size="16" direction="vertical">
+        <div class="login-form-password-actions">
+          <a-checkbox checked="rememberPassword" @change="setRememberPassword">记住密码</a-checkbox>
+          <a-link>忘记密码</a-link>
+        </div>
+        <a-button type="primary" html-type="submit" long :loading="loading">登录</a-button>
+        <a-button type="text" long class="login-form-register-btn">注册</a-button>
+      </a-space>
+
       <el-form-item>
-        <el-button type="primary" @click="handleSubmit(ruleFormRef)">登录</el-button>
-        <el-button @click="resetForm(ruleFormRef)">重置</el-button>
+        <el-button type="primary" @click="handleSubmit(ruleFormRef)">Create</el-button>
+        <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -37,6 +62,8 @@
 
 <script lang="ts" setup>
   import { ElMessage, FormInstance, FormRules } from 'element-plus'
+  import { Lock, User } from '@element-plus/icons-vue'
+  import { ValidatedError } from '@arco-design/web-vue/es/form/interface'
   import { useUserStore } from '../../../store/index'
   import useLoading from '../../../hooks/loading'
   import { ReqParams } from '../../../api/user/types'
@@ -65,7 +92,6 @@
     ],
   })
   const handleSubmit = async (formEl: FormInstance | undefined) => {
-      console.log(formEl)
     if (!formEl) return
     await formEl.validate((valid, field) => {
       if (valid) {

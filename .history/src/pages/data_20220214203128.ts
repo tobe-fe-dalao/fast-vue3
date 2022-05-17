@@ -46,10 +46,10 @@ export const framework = [
   },
   {
     content:
-      '饿了么团队，全网第一的UI框架，基于Vue 3，面向设计师和开发者的组件库',
-    avatar: 'https://element-plus.gitee.io/images/element-plus-logo.svg',
-    title: 'Element Plus',
-    github: 'https://github.com/element-plus/element-plus',
+      '字节跳动出品的企业级设计系统,主要服务于字节跳动旗下中后台产品的体验设计和技术实现，主要由UED设计和开发同学共同构建及维护',
+    avatar: 'https://avatars.githubusercontent.com/u/64576149?s=200&v=4',
+    title: 'Arco Design',
+    github: 'https://github.com/arco-design',
     color: ' from-blue-600 to-gray-700',
     author: '大厂出品',
   },

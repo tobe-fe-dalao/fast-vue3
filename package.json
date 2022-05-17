@@ -1,6 +1,6 @@
 {
   "name": "fast-vue3",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "扫地盲僧",
   "scripts": {
     "dev": "vite --mode development",
@@ -17,9 +17,11 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.25.2",
+    "@element-plus/icons-vue": "^1.1.4",
     "@vueuse/components": "^8.3.1",
     "@vueuse/core": "^8.3.1",
     "axios": "^0.27.2",
+    "element-plus": "^2.2.0",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.13",
@@ -55,7 +57,7 @@
     "typescript": "^4.6.3",
     "unplugin-auto-import": "^0.7.1",
     "unplugin-icons": "^0.14.1",
-    "unplugin-vue-components": "^0.19.3",
+    "unplugin-vue-components": "^0.19.5",
     "vite": "^2.9.6",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",

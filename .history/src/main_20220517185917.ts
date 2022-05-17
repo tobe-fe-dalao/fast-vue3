@@ -9,4 +9,4 @@ import 'element-plus/dist/index.css'
 
 // 支持SVG
 import 'virtual:svg-icons-register'
-createApp(App).use(router).use(ElementPlus).use(piniaStore).mount('#app')
+createApp(App).use(router).use().use(piniaStore).mount('#app')
