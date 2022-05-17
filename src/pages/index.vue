@@ -8,8 +8,6 @@ import Header from "@components/Header/index.vue"
 const appStore = useAppStore()
 const data = ref(framework)
 
-// const user = await userApi.getUserProfile()
-// console.log(user, '获取用户信息')
 </script>
 <template>
   <div class="dark:text-slate-400 dark:bg-slate-900">
@@ -75,6 +73,9 @@ const data = ref(framework)
 </template>
 
 <style lang="less" scoped>
+body{
+  
+}
 .version {
   display: inline-block;
   padding: 6px;
