@@ -16,7 +16,6 @@
     "deps": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "@arco-design/web-vue": "^2.25.2",
     "@element-plus/icons-vue": "^1.1.4",
     "@vueuse/components": "^8.5.0",
     "@vueuse/core": "^8.5.0",
