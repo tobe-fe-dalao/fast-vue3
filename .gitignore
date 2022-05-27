@@ -27,3 +27,4 @@ pnpm-lock.yaml*
 *.sln
 *.sw?
 ./packages
+./history
