@@ -2,7 +2,8 @@
   import SvgIcon from '../SvgIcon/index.vue'
   import { useDark, useToggle } from '@vueuse/core'
   import { useAppStore } from '@/store'
-  import { IconMoonFill, IconSunFill } from '@arco-design/web-vue/es/icon'
+  import { Sunny, Moon } from '@element-plus/icons-vue'
+
   // 检测浏览器系统主题
   const appStore = useAppStore()
   const theme = computed(() => {
@@ -19,9 +20,6 @@
     }
   })
   const toggleTheme = useToggle(isDark)
-  // const setVisible = () => {
-  //   appStore.updateSettings({ globalSettings: true });
-  // };
 </script>
 
 <template>
@@ -57,20 +55,18 @@
               <div
                 class="flex items-center pl-6 ml-6 border-l border-slate-200 dark:border-slate-800"
               >
-                <a-tooltip :content="theme === 'light' ? '设置暗黑主题' : '设置明亮主题'">
-                  <a-button
-                    size="mini"
+                <el-tooltip :content="theme === 'light' ? '设置暗黑主题' : '设置明亮主题'">
+                  <el-button
                     class="nav-btn"
-                    type="outline"
                     :shape="'circle'"
-                    @click="toggleTheme"
-                  >
-                    <template #icon>
-                      <icon-moon-fill v-if="theme === 'dark'" />
-                      <icon-sun-fill v-else />
-                    </template>
-                  </a-button>
-                </a-tooltip>
+                    type="info"
+                    plain
+                    :icon="theme === 'dark' ? Sunny : Moon"
+                    circle
+                    size="small"
+                    @click="toggleTheme()"
+                  />
+                </el-tooltip>
                 <a
                   href="https://github.com/MaleWeb/fast-vue3"
                   target="_bank"
