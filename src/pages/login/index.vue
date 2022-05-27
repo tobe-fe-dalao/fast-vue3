@@ -1,66 +1,66 @@
 <template>
-    <div class="container">
-        <div class="logo">
-            <img :src="logo" width="240" />
-            <!-- <div class="logo-text">Arco Design Pro</div> -->
-        </div>
-        <LoginBanner />
-        <div class="content">
-            <div class="content-inner">
-                <LoginForm />
-            </div>
-            <div class="footer">
-                <Footer />
-            </div>
-        </div>
+  <div class="container">
+    <div class="logo">
+      <img :src="logo" width="240" />
+      <!-- <div class="logo-text">Arco Design Pro</div> -->
     </div>
+    <LoginBanner />
+    <div class="content">
+      <div class="content-inner">
+        <LoginForm />
+      </div>
+      <div class="footer">
+        <Footer />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import Footer from '@components/footer/index.vue';
-import LoginBanner from './components/banner.vue';
-import LoginForm from './components/login-form.vue';
-import logo from '@/assets/icons/svg/logo.svg'
+  import Footer from '@components/footer/index.vue'
+  import LoginBanner from './components/banner.vue'
+  import LoginForm from './components/login-form.vue'
+  import logo from '@/assets/icons/svg/logo.svg'
 
-const theme = localStorage.getItem('theme')
+  const theme = localStorage.getItem('theme')
 
-if(theme == 'dark'){
-    document.documentElement.classList.add('dark');
-    document.body.setAttribute('arco-theme', 'dark');
-} else {
-    document.documentElement.classList.remove('dark');
-    document.body.removeAttribute('arco-theme');
-}
+  if (theme == 'dark') {
+    document.documentElement.classList.add('dark')
+    document.body.setAttribute('arco-theme', 'dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.body.removeAttribute('arco-theme')
+  }
 </script>
 
 <style lang="less" scoped>
-.container {
+  .container {
     display: flex;
     height: 100vh;
 
     .banner {
-        width: 550px;
-        background: linear-gradient(163.85deg, #1d2129 0%, #00308f 100%);
+      width: 550px;
+      background: linear-gradient(163.85deg, #1d2129 0%, #00308f 100%);
     }
 
     .content {
-        position: relative;
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 40px;
+      position: relative;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 40px;
     }
 
     .footer {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 100%;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 100%;
     }
-}
+  }
 
-.logo {
+  .logo {
     position: fixed;
     top: 24px;
     left: 22px;
@@ -69,10 +69,10 @@ if(theme == 'dark'){
     align-items: center;
 
     &-text {
-        margin-right: 4px;
-        margin-left: 4px;
-        color: var(--color-fill-1);
-        font-size: 20px;
+      margin-right: 4px;
+      margin-left: 4px;
+      color: var(--color-fill-1);
+      font-size: 20px;
     }
-}
+  }
 </style>

@@ -6,7 +6,7 @@ export const framework = [
     title: 'Vue3',
     github: 'https://github.com/vuejs/vue',
     color: 'from-green-400 to-cyan-500',
-    author: '渐进式JS框架',
+    author: '渐进式JS框架'
   },
   {
     content:
@@ -15,7 +15,7 @@ export const framework = [
     title: 'Vite2.7',
     github: 'https://github.com/vitejs/vite',
     color: 'from-orange-400 to-purple-600',
-    author: '新一代构建工具',
+    author: '新一代构建工具'
   },
   {
     content:
@@ -24,7 +24,7 @@ export const framework = [
     title: 'TypeScript4.5',
     github: 'https://github.com/Microsoft/TypeScript',
     color: 'from-cyan-400 to-light-blue-500',
-    author: 'JS的超集',
+    author: 'JS的超集'
   },
   {
     content:
@@ -33,7 +33,7 @@ export const framework = [
     title: 'Pinia',
     github: 'https://github.com/vuejs/pinia',
     color: ' from-yellow-400 to-orange-500',
-    author: 'Vuex最佳替代品',
+    author: 'Vuex最佳替代品'
   },
   {
     content:
@@ -42,7 +42,7 @@ export const framework = [
     title: 'Tailwind',
     github: 'https://github.com/tailwindlabs/tailwindcss',
     color: ' from-teal-400 to-cyan-300',
-    author: '原子式CSS',
+    author: '原子式CSS'
   },
   {
     content:
@@ -51,7 +51,7 @@ export const framework = [
     title: 'Element Plus',
     github: 'https://github.com/element-plus/element-plus',
     color: ' from-blue-600 to-gray-700',
-    author: '大厂出品',
+    author: '大厂出品'
   },
   {
     content:
@@ -60,6 +60,6 @@ export const framework = [
     title: 'Vue Use',
     github: 'https://github.com/vueuse/vueuse',
     color: 'from-green-600 to-gray-400',
-    author: 'Vue工具集',
-  },
+    author: 'Vue工具集'
+  }
 ]

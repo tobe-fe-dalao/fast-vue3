@@ -5,7 +5,7 @@ module.exports = defineConfig({
   env: {
     browser: true,
     node: true,
-    es6: true,
+    es6: true
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -14,19 +14,34 @@ module.exports = defineConfig({
     sourceType: 'module',
     jsxPragma: 'React',
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
+  },
+  settings: {
+    jest: {
+      version: 27
+    }
   },
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'plugin:prettier/recommended',
-    'plugin:jest/recommended',
+    'plugin:jest/recommended'
   ],
   rules: {
     'vue/script-setup-uses-vars': 'error',
-    'prettier/prettier': ['error', { endOfLine: 'off' }],
+    'prettier/prettier': [
+      process.env.NODE_ENV === 'production' ? 'off' : 'error',
+      {
+        printWidth: 100,
+        endOfLine: 'auto',
+        singleQuote: true,
+        arrowParens: 'always',
+        semi: false,
+        trailingComma: 'none'
+      }
+    ],
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -43,18 +58,18 @@ module.exports = defineConfig({
       'error',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
+        varsIgnorePattern: '^_'
+      }
     ],
     'no-unused-vars': [
       'error',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
+        varsIgnorePattern: '^_'
+      }
     ],
     'space-before-function-paren': 'off',
-
+    'vue/no-v-html': 'off',
     'vue/attributes-order': 'off',
     'vue/one-component-per-file': 'off',
     'vue/html-closing-bracket-newline': 'off',
@@ -70,12 +85,12 @@ module.exports = defineConfig({
         html: {
           void: 'always',
           normal: 'never',
-          component: 'always',
+          component: 'always'
         },
         svg: 'always',
-        math: 'always',
-      },
+        math: 'always'
+      }
     ],
-    'vue/multi-word-component-names': 'off',
-  },
+    'vue/multi-word-component-names': 'off'
+  }
 })

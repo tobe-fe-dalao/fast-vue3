@@ -1,6 +1,6 @@
 export interface RequestOptions {
   // Whether to process the request result
-  isTransformResponse?: boolean;
+  isTransformResponse?: boolean
 }
 
 // 返回res.data的interface

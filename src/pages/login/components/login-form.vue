@@ -16,7 +16,7 @@
         :validate-trigger="['change', 'blur']"
         hide-label
       >
-        <el-input v-model="userFormData.username" placeholder="saodimangseng"> </el-input>
+        <el-input v-model="userFormData.username" placeholder="saodimangseng" />
       </el-form-item>
       <el-form-item
         field="password"
@@ -24,8 +24,7 @@
         :validate-trigger="['change', 'blur']"
         hide-label
       >
-        <el-input v-model="userFormData.password" placeholder="密码：saodimangseng" allow-clear>
-        </el-input>
+        <el-input v-model="userFormData.password" placeholder="密码：saodimangseng" allow-clear />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="handleSubmit(ruleFormRef)">登录</el-button>
@@ -38,36 +37,33 @@
 <script lang="ts" setup>
   import { ElMessage, FormInstance, FormRules } from 'element-plus'
   import { useUserStore } from '../../../store/index'
-  import useLoading from '../../../hooks/loading'
-  import { ReqParams } from '../../../api/user/types'
 
   const router = useRouter()
   const errorMessage = ref('')
-  const { loading, setLoading } = useLoading()
   const userStore = useUserStore()
   const userFormData = reactive({
     username: 'test',
-    password: 'test',
+    password: 'test'
   })
   const ruleFormRef = ref<FormInstance>()
   const rules = reactive<FormRules>({
     username: [
       {
         required: true,
-        message: '用户名不能为空',
-      },
+        message: '用户名不能为空'
+      }
     ],
     password: [
       {
         required: true,
-        message: '密码不能为空',
-      },
-    ],
+        message: '密码不能为空'
+      }
+    ]
   })
   const handleSubmit = async (formEl: FormInstance | undefined) => {
-      console.log(formEl)
+    console.log(formEl)
     if (!formEl) return
-    await formEl.validate((valid, field) => {
+    await formEl.validate((valid) => {
       if (valid) {
         ElMessage.success('欢迎使用')
         router.push('/')

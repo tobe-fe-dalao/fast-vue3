@@ -1,9 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-import qs from 'qs'
 import { showMessage } from './status'
-import { IResponse, ILogin, RequestOptions } from './type'
-import { API_BASE_URL } from '../../../../config/constant'
-import { getToken, TokenPrefix } from '@/utils/auth'
+import { IResponse, RequestOptions } from './type'
+import { getToken } from '@/utils/auth'
 
 // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 5000
@@ -14,7 +12,7 @@ axios.defaults.withCredentials = false
 axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.BASE_URL+'',
+  baseURL: import.meta.env.BASE_URL + ''
   // transformRequest: [
   //   function (data) {
   //     //由于使用的 form-data传数据所以要格式化
@@ -55,7 +53,7 @@ axiosInstance.interceptors.response.use(
 // axios实例拦截请求
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = getToken();
+    const token = getToken()
     if (token) {
       // config.headers.Authorization = `${TokenPrefix}${token}`
     }
@@ -66,17 +64,19 @@ axiosInstance.interceptors.request.use(
   }
 )
 
-const request = <T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> => {
+const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
   const conf = config
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     axiosInstance
       .request<any, AxiosResponse<IResponse>>(conf)
       .then((res: AxiosResponse<IResponse>) => {
         // resolve(res as unknown as Promise<T>);
-        const { data: { result } } = res
+        const {
+          data: { result }
+        } = res
         resolve(result as T)
       })
-  });
+  })
 }
 
 // const request = <T = any>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
@@ -98,15 +98,15 @@ const request = <T = any>(config: AxiosRequestConfig, options?: RequestOptions):
 // };
 
 export function get<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-  return request({ ...config, method: 'GET' }, options);
+  return request({ ...config, method: 'GET' }, options)
 }
 
 export function post<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-  return request({ ...config, method: 'POST' }, options);
+  return request({ ...config, method: 'POST' }, options)
 }
 
-export default request;
-export type { AxiosInstance, AxiosResponse };
+export default request
+export type { AxiosInstance, AxiosResponse }
 /**
  * @description: 用户登录案例
  * @params {ILogin} params
