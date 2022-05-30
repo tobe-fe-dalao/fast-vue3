@@ -36,29 +36,29 @@
 
 <script lang="ts" setup>
   import { ElMessage, FormInstance, FormRules } from 'element-plus'
-  import { useUserStore } from '../../../store/index'
+  import { useUserStore } from '/@/store'
 
   const router = useRouter()
   const errorMessage = ref('')
   const userStore = useUserStore()
   const userFormData = reactive({
     username: 'test',
-    password: 'test'
+    password: 'test',
   })
   const ruleFormRef = ref<FormInstance>()
   const rules = reactive<FormRules>({
     username: [
       {
         required: true,
-        message: '用户名不能为空'
-      }
+        message: '用户名不能为空',
+      },
     ],
     password: [
       {
         required: true,
-        message: '密码不能为空'
-      }
-    ]
+        message: '密码不能为空',
+      },
+    ],
   })
   const handleSubmit = async (formEl: FormInstance | undefined) => {
     console.log(formEl)

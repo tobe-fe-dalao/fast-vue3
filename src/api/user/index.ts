@@ -1,11 +1,11 @@
 // 权限问题后期增加
-import { get, post } from '@utils/http/axios'
-import { UserState } from '@/store/modules/user/types'
+import { get, post } from '/@/utils/http/axios'
+import { UserState } from '/@/store/modules/user/types'
 // import axios from 'axios';
 enum URL {
   login = '/user/login',
   logout = '/user/logout',
-  profile = '/user/profile'
+  profile = '/user/profile',
 }
 interface LoginRes {
   token: string

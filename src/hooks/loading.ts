@@ -10,6 +10,6 @@ export default function useLoading(initValue = false) {
   return {
     loading,
     setLoading,
-    toggle
+    toggle,
   }
 }

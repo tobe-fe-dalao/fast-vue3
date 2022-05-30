@@ -1,17 +1,74 @@
 @txt-color: #fff;
 
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend, button,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, menu, nav, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   font-family: 'PingFang SC', 'Microsoft Yahei', 'Hiragino Sans GB', Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
@@ -25,7 +82,8 @@ input {
   margin: 0;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -34,7 +92,8 @@ table {
   border-spacing: 0;
 }
 
-html, body {
+html,
+body {
   font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', Arial, Helvetica, sans-serif;
   width: 100%;
   height: 100%;
@@ -63,9 +122,9 @@ a {
   text-align: center;
 }
 
-.clearfix:after,
-.clearfix:before {
-  content: " ";
+.clearfix::after,
+.clearfix::before {
+  content: ' ';
   display: table;
 }
 
@@ -76,11 +135,12 @@ a {
 .left-text {
   text-align: left;
 }
+
 .right-text {
   text-align: right;
 }
 
-.clearfix:after {
+.clearfix::after {
   clear: both;
 }
 
@@ -93,28 +153,29 @@ a {
 button {
   cursor: pointer;
 }
+
 button[disabled] {
   cursor: not-allowed;
 }
-
 
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-/*滚动条轨道 内阴影+圆角*/
+/* 滚动条轨道 内阴影+圆角 */
 ::-webkit-scrollbar-track {
   //-webkit-box-shadow: inset 0 0 6px @light-border;
   background-color: transparent;
 }
 
-/*滑块 内阴影+圆角*/
+/* 滑块 内阴影+圆角 */
 ::-webkit-scrollbar-thumb {
-  border-radius: 5px; /*滚动条的圆角*/
+  border-radius: 5px; /* 滚动条的圆角 */
   //-webkit-box-shadow: inset 0 0 6px @light-border;
-  background: rgba(44, 129, 224, 0.2);
+  background: rgb(44 129 224 / 20%);
+
   &:hover {
-    background: rgba(44, 129, 224, 0.5);
+    background: rgb(44 129 224 / 50%);
   }
 }

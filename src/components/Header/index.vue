@@ -1,11 +1,15 @@
 <script setup lang="ts">
   import SvgIcon from '../SvgIcon/index.vue'
+  // import { ref } from 'vue'
   import { useDark, useToggle } from '@vueuse/core'
-  import { useAppStore } from '@/store'
+  import { useAppStore } from '/@/store'
   import { Sunny, Moon } from '@element-plus/icons-vue'
 
+  // const title = ref('I want to study typescript')
   // 检测浏览器系统主题
+  // const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
   const appStore = useAppStore()
+  // const useStore = useUserStore()
   const theme = computed(() => {
     return appStore.theme
   })
@@ -17,7 +21,7 @@
     storageKey: 'arco-theme',
     onChanged(dark: boolean) {
       appStore.toggleTheme(dark)
-    }
+    },
   })
   const toggleTheme = useToggle(isDark)
 </script>
@@ -88,19 +92,24 @@
     color: #334155;
     font-size: 0.875em;
     font-variant-ligatures: none;
+
     code {
       color: #0f172a;
       font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         Liberation Mono, Courier New, monospace;
+
       &::before {
         content: '`';
       }
+
       &::after {
         content: '`';
       }
     }
+
     &.dark\:prose-dark {
       color: #94a3b8;
+
       code {
         color: #e2e8f0;
       }

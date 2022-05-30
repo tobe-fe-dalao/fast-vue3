@@ -6,7 +6,7 @@ export function successResult<T = Recoverable>(result: T, { message = 'Request s
     code: 200,
     result,
     message,
-    status: 'ok'
+    status: 'ok',
   }
 }
 export function errorResult(message = 'Request failed', { code = -1, result = null } = {}) {
@@ -14,7 +14,7 @@ export function errorResult(message = 'Request failed', { code = -1, result = nu
     code,
     result,
     message,
-    status: 'fail'
+    status: 'fail',
   }
 }
 
@@ -23,15 +23,15 @@ export function pageSuccessResult<T = any>(
   page: number,
   pageSize: number,
   list: T[],
-  { message = 'ok' } = {}
+  { message = 'ok' } = {},
 ) {
   const pageData = pagination(page, pageSize, list)
   return {
     ...successResult({
       items: pageData,
-      total: list.length
+      total: list.length,
     }),
-    message
+    message,
   }
 }
 

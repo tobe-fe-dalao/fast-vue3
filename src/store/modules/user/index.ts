@@ -3,9 +3,9 @@ import {
   login as userLogin,
   logout as userLogout,
   getUserProfile,
-  LoginData
-} from '@/api/user/index'
-import { setToken, clearToken } from '@/utils/auth'
+  LoginData,
+} from '/@/api/user/index'
+import { setToken, clearToken } from '/@/utils/auth'
 import { UserState } from './types'
 
 export const useUserStore = defineStore('user', {
@@ -20,12 +20,12 @@ export const useUserStore = defineStore('user', {
     blogGithub: undefined,
     profileBio: undefined,
     devLanguages: undefined,
-    role: ''
+    role: '',
   }),
   getters: {
     userProfile(state: UserState): UserState {
       return { ...state }
-    }
+    },
   },
   actions: {
     switchRoles() {
@@ -63,6 +63,6 @@ export const useUserStore = defineStore('user', {
       clearToken()
       // 路由表重置
       // location.reload();
-    }
-  }
+    },
+  },
 })

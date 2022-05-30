@@ -1,7 +1,15 @@
-# eslint 忽略检查
+
+*.sh
 node_modules
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
 dist
-!.prettierrc.js
-/src/assets/fonts
-/src/assets/icons
-/src/assets/images
+/public
+/docs
+.husky
+.local
+/bin
+Dockerfile

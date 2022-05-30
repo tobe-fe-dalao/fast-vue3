@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { showMessage } from './status'
-import { IResponse, RequestOptions } from './type'
-import { getToken } from '@/utils/auth'
+import { IResponse } from './type'
+import { getToken } from '/@/utils/auth'
 
 // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 5000
@@ -12,7 +12,7 @@ axios.defaults.withCredentials = false
 axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.BASE_URL + ''
+  baseURL: import.meta.env.BASE_URL + '',
   // transformRequest: [
   //   function (data) {
   //     //由于使用的 form-data传数据所以要格式化
@@ -47,7 +47,7 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(response.data)
     }
     showMessage('网络连接异常,请稍后再试!')
-  }
+  },
 )
 
 // axios实例拦截请求
@@ -61,7 +61,7 @@ axiosInstance.interceptors.request.use(
   },
   (error: any) => {
     return Promise.reject(error)
-  }
+  },
 )
 
 const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
@@ -72,7 +72,7 @@ const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
       .then((res: AxiosResponse<IResponse>) => {
         // resolve(res as unknown as Promise<T>);
         const {
-          data: { result }
+          data: { result },
         } = res
         resolve(result as T)
       })
@@ -97,12 +97,12 @@ const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
 //   }
 // };
 
-export function get<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-  return request({ ...config, method: 'GET' }, options)
+export function get<T = any>(config: AxiosRequestConfig): Promise<T> {
+  return request({ ...config, method: 'GET' })
 }
 
-export function post<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-  return request({ ...config, method: 'POST' }, options)
+export function post<T = any>(config: AxiosRequestConfig): Promise<T> {
+  return request({ ...config, method: 'POST' })
 }
 
 export default request

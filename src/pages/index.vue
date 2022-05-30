@@ -1,9 +1,9 @@
 <script setup lang="ts">
   import { version } from '../../package.json'
-  import SvgIcon from '@components/SvgIcon/index.vue'
-  import { useAppStore } from '@/store/modules/app'
+  import SvgIcon from '/@/components/SvgIcon/index.vue'
+  import { useAppStore } from '/@/store/modules/app'
   import { framework } from './data'
-  import Header from '@components/Header/index.vue'
+  import Header from '/@/components/Header/index.vue'
 
   const appStore = useAppStore()
   const data = ref(framework)
@@ -75,8 +75,6 @@
 </template>
 
 <style lang="less" scoped>
-  body {
-  }
   .version {
     display: inline-block;
     padding: 6px;

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import piniaStore from '@/store/index'
+import piniaStore from '/@/store/index'
 import { AppState } from './types'
 
 export const useAppStore = defineStore(
@@ -9,7 +9,7 @@ export const useAppStore = defineStore(
     state: () => ({
       title: 'FastVue3,一个快速开箱即用的Vue3+Vite模板',
       h1: 'Vue3+Vite2.x+Ts+Pinia大厂开发必备',
-      theme: 'dark'
+      theme: 'dark',
     }),
     getters: {},
     actions: {
@@ -32,9 +32,9 @@ export const useAppStore = defineStore(
           document.body.removeAttribute('arco-theme')
           localStorage.setItem('theme', this.theme)
         }
-      }
-    }
-  }
+      },
+    },
+  },
 )
 
 export function useAppOutsideStore() {

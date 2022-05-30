@@ -17,7 +17,7 @@
 
 An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
 
-English | [简体中文](./README-zh_CN.md) | [日本語](./README.ja-JP.md)
+English | [简体中文](./README.md) | [日本語](./README.ja-JP.md)
 
 # Feature
 
@@ -507,7 +507,6 @@ And thank you to all our backers! 🙏
 <a href="https://github.com/study-vue3/fast-vue3/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=study-vue3/fast-vue3" />
 </a>
-
 
 # Last
 

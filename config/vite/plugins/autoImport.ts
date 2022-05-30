@@ -7,8 +7,15 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export const AutoImportDeps = () => {
   return AutoImport({
-    dts: 'src/auto-imports.d.ts',
-    imports: ['vue', 'pinia', 'vue-router', '@vueuse/core'],
+    dts: 'types/auto-imports.d.ts',
+    imports: [
+      'vue',
+      'pinia',
+      'vue-router',
+      {
+        '@vueuse/core': [],
+      },
+    ],
     resolvers: [ElementPlusResolver()],
   })
 }
