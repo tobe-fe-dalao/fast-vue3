@@ -8,7 +8,7 @@ const routes = [
       {
         name: 'Home',
         path: 'home',
-        component: () => import('/@/views/Home/index.vue'),
+        component: () => import('/@/views/home/index.vue'),
         meta: {
           title: '',
           keepAlive: true,
@@ -17,7 +17,7 @@ const routes = [
       {
         name: 'List',
         path: 'list',
-        component: () => import('/@/views/List/index.vue'),
+        component: () => import('/@/views/list/index.vue'),
         meta: {
           title: '',
           keepAlive: true,
@@ -26,7 +26,7 @@ const routes = [
       {
         name: 'Member',
         path: 'member',
-        component: () => import('/@/views/Member/index.vue'),
+        component: () => import('/@/views/member/index.vue'),
         meta: {
           title: '',
           keepAlive: true,
@@ -37,7 +37,7 @@ const routes = [
   {
     name: 'Login',
     path: '/login',
-    component: () => import('/@/views/Login/index.vue'),
+    component: () => import('/@/views/login/index.vue'),
     meta: {
       title: '',
       keepAlive: true,
