@@ -1,8 +1,8 @@
-<p align="center">
+<p align="center" style="background:#e6e6e6;padding:20px">
     <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="340" />
 </p>
 
-<p align="center">  
+<p align="center">
     <img src="https://img.shields.io/badge/-Vue3-34495e?logo=vue.j" />
     <img src="https://img.shields.io/badge/-Vite2.7-646cff?logo=vite&logoColor=white" />
     <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" />
@@ -14,9 +14,9 @@
     <img src="https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white" alt="Less">
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white" alt="Taiwind">
     <img src="" alt="">
-<p>
+</p>
 
-一个开箱即用，快速搭建大型应用的 Vue3+Vite2+TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md) | [在线运行](https://stackblitz.com/github/tobe-fe-dalao/fast-vue3?terminal=dev)
+一个开箱即用，快速搭建大型应用的 Vue3 + Vite2 + TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [更新文档](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md) | [在线运行](https://stackblitz.com/github/tobe-fe-dalao/fast-vue3?terminal=dev)
 
 简体中文 | [English](./README-en.md) | [日本語](./README.ja-JP.md)
 
@@ -69,7 +69,7 @@
 ```json
 {
     ...
-    "@vitejs/plugin-vue-jsx": "^1.3.3"
+    "@vitejs/plugin-vue-jsx": "^1.3.10"
     ...
 }
 ```
@@ -79,23 +79,19 @@
 ```typescript
 //模块化写法
 import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
 export const AutoRegistryComponents = () => {
   return Components({
+    // dirs: ['src/components'],
     extensions: ['vue', 'md'],
     deep: true,
-    dts: 'src/components.d.ts',
+    dts: 'types/components.d.ts',
     directoryAsNamespace: false,
     globalNamespaces: [],
     directives: true,
     include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
     exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
-    resolvers: [
-      IconsResolver({
-        componentPrefix: '',
-      }),
-      ArcoResolver({ importStyle: 'less' }), //根据你需要增加UI框架
-      VueUseComponentsResolver(), //默认使用VueUse组件
-    ],
+    resolvers: [ElementPlusResolver(), VueUseComponentsResolver()],
   })
 }
 ```
@@ -159,13 +155,22 @@ import { createVitePlugins } from './config/vite/plugins'
 ...
 return {
     resolve: {
-      alias: {
-        "@": path.resolve(__dirname, './src'),
-        '@config': path.resolve(__dirname, './config'),
-        "@components": path.resolve(__dirname, './src/components'),
-        '@utils': path.resolve(__dirname, './src/utils'),
-        '@api': path.resolve(__dirname, './src/api'),
-      }
+      alias: [
+        {
+          find: 'vue-i18n',
+          replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
+        },
+        // /@/xxxx => src/xxxx
+        {
+          find: /\/@\//,
+          replacement: pathResolve('src') + '/',
+        },
+        // /#/xxxx => types/xxxx
+        {
+          find: /\/#\//,
+          replacement: pathResolve('types') + '/',
+        },
+      ],
     },
     // plugins
     plugins: createVitePlugins(isBuild)

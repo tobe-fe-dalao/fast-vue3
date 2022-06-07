@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center" style="background:#e6e6e6;padding:20px">
     <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="340" />
 </p>
 
@@ -14,8 +14,9 @@
     <img src="https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white" alt="Less">
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white" alt="Taiwind">
     <img src="" alt="">
-<p>   
-すぐに使えるVue3 + Vite2 + TypeScriptなど。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメントを更新するには、ここをクリックしてください](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
+</p>
+
+すぐに使える Vue3 + Vite2 + TypeScript など。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメントを更新するには、ここをクリックしてください](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
 
 [English](./README-en.md) | [简体中文](./README.md) | 日本語
 
@@ -67,7 +68,7 @@
 ```json
 {
     ...
-    "@vitejs/plugin-vue-jsx": "^1.3.3"
+    "@vitejs/plugin-vue-jsx": "^1.3.10"
     ...
 }
 ```
@@ -77,23 +78,19 @@
 ```typescript
 // モジュラーライティング
 import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
 export const AutoRegistryComponents = () => {
   return Components({
+    // dirs: ['src/components'],
     extensions: ['vue', 'md'],
     deep: true,
-    dts: 'src/components.d.ts',
+    dts: 'types/components.d.ts',
     directoryAsNamespace: false,
     globalNamespaces: [],
     directives: true,
     include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
     exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
-    resolvers: [
-      IconsResolver({
-        componentPrefix: '',
-      }),
-      ArcoResolver({ importStyle: 'less' }), // 必要に応じてUIフレームワークを追加します
-      VueUseComponentsResolver(), // VueUseコンポーネントがデフォルトで使用されます
-    ],
+    resolvers: [ElementPlusResolver(), VueUseComponentsResolver()],
   })
 }
 ```
@@ -157,13 +154,22 @@ import { createVitePlugins } from './config/vite/plugins'
 ...
 return {
     resolve: {
-      alias: {
-        "@": path.resolve(__dirname, './src'),
-        '@config': path.resolve(__dirname, './config'),
-        "@components": path.resolve(__dirname, './src/components'),
-        '@utils': path.resolve(__dirname, './src/utils'),
-        '@api': path.resolve(__dirname, './src/api'),
-      }
+      alias: [
+        {
+          find: 'vue-i18n',
+          replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
+        },
+        // /@/xxxx => src/xxxx
+        {
+          find: /\/@\//,
+          replacement: pathResolve('src') + '/',
+        },
+        // /#/xxxx => types/xxxx
+        {
+          find: /\/#\//,
+          replacement: pathResolve('types') + '/',
+        },
+      ],
     },
     // plugins
     plugins: createVitePlugins(isBuild)
@@ -171,7 +177,7 @@ return {
 ...
 ```
 
-## 📱 Support for `Pinia`, the next generation of `Vuex5`
+## 📱 `Pinia`のサポート、次世代の`Vuex5 である
 
 ファイルを作成する `src/store/index.ts`
 
@@ -319,7 +325,7 @@ import userApi from '@api/user'
 const res = await userApi.profile()
 ```
 
-## 👽 Automatically generate `router`, filter `components` components
+## 👽 自動生成 `router`、 コンポーネントをフィルタリングします
 
 `vue-router4.0`のモジュール化をサポートし、pages フォルダーを取得してルートを自動的に生成し、動的ルートをサポートします
 

@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center" style="background:#e6e6e6;padding:20px">
     <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="340" />
 </p>
 
@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/-Prettier-ef9421?logo=Prettier&logoColor=white" alt="Prettier">
     <img src="https://img.shields.io/badge/-Less-1D365D?logo=less&logoColor=white" alt="Less">
     <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?logo=Tailwind%20CSS&logoColor=white" alt="Taiwind">
-<p>
+</p>
 
 An out-of-the-box Vue3+Vite2+TypeScript,etc. template framework for quickly building large-scale applications. Various plugins are integrated and optimized for modularization and lead-on-demand, so you can use it with confidence. [Update documentation click here please](https://github.com/tobe-fe-dalao/fast-vue3/blob/main/docs/update.md)
 
@@ -67,7 +67,7 @@ The following is the directory structure of the system
 ```json
 {
     ...
-    "@vitejs/plugin-vue-jsx": "^1.3.3"
+    "@vitejs/plugin-vue-jsx": "^1.3.10"
     ...
 }
 ```
@@ -77,23 +77,19 @@ The following is the directory structure of the system
 ```typescript
 //Modular writing
 import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
 export const AutoRegistryComponents = () => {
   return Components({
+    // dirs: ['src/components'],
     extensions: ['vue', 'md'],
     deep: true,
-    dts: 'src/components.d.ts',
+    dts: 'types/components.d.ts',
     directoryAsNamespace: false,
     globalNamespaces: [],
     directives: true,
     include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
     exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
-    resolvers: [
-      IconsResolver({
-        componentPrefix: '',
-      }),
-      ArcoResolver({ importStyle: 'less' }), // Add UI framework according to your needs
-      VueUseComponentsResolver(), // VueUse component is used by default
-    ],
+    resolvers: [ElementPlusResolver(), VueUseComponentsResolver()],
   })
 }
 ```
@@ -157,13 +153,22 @@ import { createVitePlugins } from './config/vite/plugins'
 ...
 return {
     resolve: {
-      alias: {
-        "@": path.resolve(__dirname, './src'),
-        '@config': path.resolve(__dirname, './config'),
-        "@components": path.resolve(__dirname, './src/components'),
-        '@utils': path.resolve(__dirname, './src/utils'),
-        '@api': path.resolve(__dirname, './src/api'),
-      }
+      alias: [
+        {
+          find: 'vue-i18n',
+          replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
+        },
+        // /@/xxxx => src/xxxx
+        {
+          find: /\/@\//,
+          replacement: pathResolve('src') + '/',
+        },
+        // /#/xxxx => types/xxxx
+        {
+          find: /\/#\//,
+          replacement: pathResolve('types') + '/',
+        },
+      ],
     },
     // plugins
     plugins: createVitePlugins(isBuild)
