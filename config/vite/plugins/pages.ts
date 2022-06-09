@@ -4,10 +4,10 @@
  */
 import Pages from 'vite-plugin-pages'
 export const ConfigPagesPlugin = () => {
-    return Pages({
-        pagesDir: [{ dir: 'src/pages', baseRoute: '' }],
-        extensions: ['vue', 'md'],
-        exclude: ['**/components/*.vue'],
-        nuxtStyle: true,
-    })
+  return Pages({
+    pagesDir: [{ dir: 'src/pages', baseRoute: '' }],
+    extensions: ['vue', 'md'],
+    exclude: ['**/components/*.vue'],
+    nuxtStyle: true,
+  })
 }

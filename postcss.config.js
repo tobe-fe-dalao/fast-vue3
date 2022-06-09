@@ -1,6 +1,5 @@
 module.exports = {
   plugins: {
-    tailwindcss: {},
     autoprefixer: {},
     // 'postcss-px-to-viewport': {
     //   // 需要转换的单位，默认为 px
