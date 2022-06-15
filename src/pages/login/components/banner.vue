@@ -15,10 +15,10 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed } from 'vue'
-  import bannerImage from '/@/assets/images/login-banner.png'
-  import qunErweima from '/@/assets/images/qunerweima.jpg'
-  import bannerImage02 from '/@/assets/images/banner2.svg'
+  import { defineComponent, computed } from 'vue';
+  import bannerImage from '/@/assets/images/login-banner.png';
+  import qunErweima from '/@/assets/images/qunerweima.jpg';
+  import bannerImage02 from '/@/assets/images/banner2.svg';
 
   export default defineComponent({
     setup() {
@@ -38,12 +38,12 @@
           subSlogan: '扫码进入社区微信群',
           image: qunErweima,
         },
-      ])
+      ]);
       return {
         carouselItem,
-      }
+      };
     },
-  })
+  });
 </script>
 
 <style lang="less" scoped>

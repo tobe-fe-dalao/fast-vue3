@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { version } from '../../package.json'
-  import SvgIcon from '/@/components/SvgIcon/index.vue'
-  import { useAppStore } from '/@/store/modules/app'
-  import { framework } from './data'
-  import Header from '/@/components/Header/index.vue'
+  import { version } from '../../package.json';
+  import SvgIcon from '/@/components/SvgIcon/index.vue';
+  import { useAppStore } from '/@/store/modules/app';
+  import { framework } from './data';
+  import Header from '/@/components/Header/index.vue';
 
-  const appStore = useAppStore()
-  const data = ref(framework)
+  const appStore = useAppStore();
+  const data = ref(framework);
 </script>
 <template>
   <div class="dark:text-slate-400 dark:bg-slate-900">

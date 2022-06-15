@@ -22,14 +22,14 @@
       type: String,
       default: 'default',
     },
-  })
-  const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+  });
+  const symbolId = computed(() => `#${props.prefix}-${props.name}`);
   const calsses = computed(() => {
     return {
       [`sdms-size-${props.size}`]: props.size,
-    }
-  })
-  const fontSize = reactive({ default: '32px', small: '20px', large: '48px' })
+    };
+  });
+  const fontSize = reactive({ default: '32px', small: '20px', large: '48px' });
 </script>
 <style lang="less" scoped>
   .svg-icon-spin {

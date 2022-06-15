@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-  import SvgIcon from '/@/components/SvgIcon/index.vue'
+  import SvgIcon from '/@/components/SvgIcon/index.vue';
 </script>
 
 <style lang="less" scoped>

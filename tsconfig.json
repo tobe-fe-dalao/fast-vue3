@@ -20,7 +20,7 @@
     "lib": ["dom", "esnext"],
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "types": ["vite/client"],
+    "types": ["vite/client", "element-plus/global"],
     "removeComments": true,
     "paths": {
       "/@/*": ["src/*"],

@@ -1,5 +1,5 @@
-import visualizer from 'rollup-plugin-visualizer'
-import { ANALYSIS } from '../../constant'
+import visualizer from 'rollup-plugin-visualizer';
+import { ANALYSIS } from '../../constant';
 
 export function ConfigVisualizerConfig() {
   if (ANALYSIS) {
@@ -8,7 +8,7 @@ export function ConfigVisualizerConfig() {
       open: true,
       gzipSize: true,
       brotliSize: true,
-    })
+    });
   }
-  return []
+  return [];
 }

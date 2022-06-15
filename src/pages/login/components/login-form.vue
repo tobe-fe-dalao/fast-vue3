@@ -35,17 +35,17 @@
 </template>
 
 <script lang="ts" setup>
-  import { ElMessage, FormInstance, FormRules } from 'element-plus'
-  import { useUserStore } from '/@/store'
+  import { ElMessage, FormInstance, FormRules } from 'element-plus';
+  import { useUserStore } from '/@/store';
 
-  const router = useRouter()
-  const errorMessage = ref('')
-  const userStore = useUserStore()
+  const router = useRouter();
+  const errorMessage = ref('');
+  const userStore = useUserStore();
   const userFormData = reactive({
     username: 'test',
     password: 'test',
-  })
-  const ruleFormRef = ref<FormInstance>()
+  });
+  const ruleFormRef = ref<FormInstance>();
   const rules = reactive<FormRules>({
     username: [
       {
@@ -59,24 +59,24 @@
         message: '密码不能为空',
       },
     ],
-  })
+  });
   const handleSubmit = async (formEl: FormInstance | undefined) => {
-    console.log(formEl)
-    if (!formEl) return
+    console.log(formEl);
+    if (!formEl) return;
     await formEl.validate((valid) => {
       if (valid) {
-        ElMessage.success('欢迎使用')
-        router.push('/')
-        userStore.info()
+        ElMessage.success('欢迎使用');
+        router.push('/');
+        userStore.info();
       } else {
-        ElMessage.error('错误信息')
+        ElMessage.error('错误信息');
       }
-    })
-  }
+    });
+  };
   const resetForm = (formEl: FormInstance | undefined) => {
-    if (!formEl) return
-    formEl.resetFields()
-  }
+    if (!formEl) return;
+    formEl.resetFields();
+  };
 </script>
 
 <style lang="less" scoped>

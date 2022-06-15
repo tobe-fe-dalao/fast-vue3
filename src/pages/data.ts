@@ -62,4 +62,4 @@ export const framework = [
     color: 'from-green-600 to-gray-400',
     author: 'Vue工具集',
   },
-]
+];
