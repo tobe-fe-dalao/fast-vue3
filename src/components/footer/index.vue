@@ -1,8 +1,8 @@
 <template>
-  <a-layout-footer class="footer">
+  <div>
     <SvgIcon name="svg-github" size="24" style="margin-right: 10px" />
-    <router-link to="https://github.com/tobe-fe-dalao/fast-vue3">Fast-Vue3</router-link>
-  </a-layout-footer>
+    <router-link>Fast-Vue3</router-link>
+  </div>
 </template>
 
 <script setup lang="ts">
