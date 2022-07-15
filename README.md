@@ -1,4 +1,6 @@
-<table border=0  align=center><tr><td bgcolor=#e5e5e5 ><img class="intro" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" /></td></tr></table>
+<p align="center" style="background:#e6e6e6;padding:20px">
+    <img  src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="340" />
+</p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/-Vue3-34495e?logo=vue.j" />
@@ -528,10 +530,3 @@ git clone -b template https://github.com/tobe-fe-dalao/fast-vue3.git
 <p>
 <img width="360" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/扫地盲僧公众号.png">
 </p>
-
-<style>
-.intro{
-  width:100vw
-}
-
-</style>
