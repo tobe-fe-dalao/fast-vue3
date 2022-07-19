@@ -23,12 +23,7 @@
       <div class="flex w-1/2 p-20 bg-white">
         <h2 class="font-sans text-4xl" v-html="title"></h2>
       </div>
-      <div
-        v-for="(item, index) in datav"
-        :key="index"
-        class="flex w-1/2 p-20 bg-octo-violet-primary-light"
-        :class="item.bg"
-      >
+      <div v-for="(item, index) in datav" :key="index" class="flex w-1/2 p-20 bg-octo-violet-primary-light" :class="item.bg">
         <span class="inline-flex">
           <span class="font-blimone text-9xl stacked-fractions">{{ item.num }}</span>
           <span class="inline-flex flex-col">

@@ -32,33 +32,21 @@
       class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent"
     >
       <div class="mx-auto max-w-8xl">
-        <div
-          class="px-4 py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10"
-        >
+        <div class="px-4 py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10">
           <div class="relative flex items-center text-2xl sm:text-2xl font-blimone">
-            <router-link
-              to="/"
-              class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200"
-              >Fast-Vue3</router-link
-            >
+            <router-link to="/" class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200">Fast-Vue3</router-link>
             <div class="relative items-center hidden ml-auto lg:flex">
               <nav class="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8">
                   <li>
-                    <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400"
-                      >GithubDemo</router-link
-                    >
+                    <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400">GithubDemo</router-link>
                   </li>
                   <li>
-                    <router-link to="/login" class="hover:text-sky-500 dark:hover:text-sky-400"
-                      >Login</router-link
-                    >
+                    <router-link to="/login" class="hover:text-sky-500 dark:hover:text-sky-400">Login</router-link>
                   </li>
                 </ul>
               </nav>
-              <div
-                class="flex items-center pl-6 ml-6 border-l border-slate-200 dark:border-slate-800"
-              >
+              <div class="flex items-center pl-6 ml-6 border-l border-slate-200 dark:border-slate-800">
                 <el-tooltip :content="theme === 'light' ? '设置暗黑主题' : '设置明亮主题'">
                   <el-button
                     class="nav-btn"
@@ -95,8 +83,7 @@
 
     code {
       color: #0f172a;
-      font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        Liberation Mono, Courier New, monospace;
+      font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 
       &::before {
         content: '`';

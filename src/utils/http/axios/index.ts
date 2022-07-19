@@ -67,15 +67,13 @@ axiosInstance.interceptors.request.use(
 const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
   const conf = config;
   return new Promise((resolve) => {
-    axiosInstance
-      .request<any, AxiosResponse<IResponse>>(conf)
-      .then((res: AxiosResponse<IResponse>) => {
-        // resolve(res as unknown as Promise<T>);
-        const {
-          data: { result },
-        } = res;
-        resolve(result as T);
-      });
+    axiosInstance.request<any, AxiosResponse<IResponse>>(conf).then((res: AxiosResponse<IResponse>) => {
+      // resolve(res as unknown as Promise<T>);
+      const {
+        data: { result },
+      } = res;
+      resolve(result as T);
+    });
   });
 };
 

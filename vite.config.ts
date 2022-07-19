@@ -1,17 +1,17 @@
-import { UserConfig, ConfigEnv } from 'vite'
-import { createVitePlugins } from './config/vite/plugins'
-import { resolve } from 'path'
-import proxy from './config/vite/proxy'
-import { VITE_DROP_CONSOLE, VITE_PORT } from './config/constant'
+import { UserConfig, ConfigEnv } from 'vite';
+import { createVitePlugins } from './config/vite/plugins';
+import { resolve } from 'path';
+import proxy from './config/vite/proxy';
+import { VITE_PORT } from './config/constant';
 
 function pathResolve(dir: string) {
-  return resolve(process.cwd(), '.', dir)
+  return resolve(process.cwd(), '.', dir);
 }
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  const isBuild = command === 'build'
-  console.log(command, mode)
+  const isBuild = command === 'build';
+  console.log(command, mode);
   return {
     resolve: {
       alias: [
@@ -47,27 +47,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       host: '0.0.0.0', // IP配置，支持从IP启动
       proxy,
     },
-
-    // build
-    build: {
-      target: 'es2015',
-      terserOptions: {
-        compress: {
-          keep_infinity: true,
-          drop_console: VITE_DROP_CONSOLE,
-        },
-      },
-      rollupOptions: {
-        // 确保外部化处理那些你不想打包进库的依赖
-        external: [],
-        // https://rollupjs.org/guide/en/#big-list-of-options
-      },
-      watch: {
-        // https://rollupjs.org/guide/en/#watch-options
-      },
-      // Turning off brotliSize display can slightly reduce packaging time
-      brotliSize: false,
-      chunkSizeWarningLimit: 2000,
-    },
-  }
-}
+  };
+};

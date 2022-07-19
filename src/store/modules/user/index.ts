@@ -1,10 +1,5 @@
 import { defineStore } from 'pinia';
-import {
-  login as userLogin,
-  logout as userLogout,
-  getUserProfile,
-  LoginData,
-} from '/@/api/user/index';
+import { login as userLogin, logout as userLogout, getUserProfile, LoginData } from '/@/api/user/index';
 import { setToken, clearToken } from '/@/utils/auth';
 import { UserState } from './types';
 

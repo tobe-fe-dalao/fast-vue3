@@ -19,12 +19,7 @@ export function errorResult(message = 'Request failed', { code = -1, result = nu
 }
 
 //返回分页数据
-export function pageSuccessResult<T = any>(
-  page: number,
-  pageSize: number,
-  list: T[],
-  { message = 'ok' } = {},
-) {
+export function pageSuccessResult<T = any>(page: number, pageSize: number, list: T[], { message = 'ok' } = {}) {
   const pageData = pagination(page, pageSize, list);
   return {
     ...successResult({
@@ -39,9 +34,7 @@ export function pageSuccessResult<T = any>(
 export function pagination<T = any>(pageNo: number, pageSize: number, array: T[]): T[] {
   const offset = (pageNo - 1) * Number(pageSize);
   const res =
-    offset + Number(pageSize) >= array.length
-      ? array.slice(offset, array.length)
-      : array.slice(offset, offset + Number(pageSize));
+    offset + Number(pageSize) >= array.length ? array.slice(offset, array.length) : array.slice(offset, offset + Number(pageSize));
   return res;
 }
 

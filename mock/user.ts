@@ -52,9 +52,7 @@ export default [
     response: (request: requestParams) => {
       const token = getRequestToken(request);
       if (!token) return errorResult('Invalid token');
-      const checkUser = createFakeUserList().find(
-        (item) => `${TokenPrefix}${item.token}` === token,
-      );
+      const checkUser = createFakeUserList().find((item) => `${TokenPrefix}${item.token}` === token);
       if (!checkUser) {
         return errorResult('未获得相应的用户信息');
       }
@@ -67,9 +65,7 @@ export default [
     method: 'post',
     response: (request: requestParams) => {
       const { username, password } = request?.body;
-      const checkUser = createFakeUserList().find(
-        (item) => item.user_name === username && item.password === password,
-      );
+      const checkUser = createFakeUserList().find((item) => item.user_name === username && item.password === password);
       if (!checkUser) {
         return errorResult('不存在该用户');
       }
@@ -84,9 +80,7 @@ export default [
       console.dir(request);
       const token = getRequestToken(request);
       if (!token) return errorResult('token缺失!');
-      const checkUser = createFakeUserList().find(
-        (item) => `${TokenPrefix}${item.token}` === token,
-      );
+      const checkUser = createFakeUserList().find((item) => `${TokenPrefix}${item.token}` === token);
       if (!checkUser) {
         return errorResult('token缺失!');
       }

@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <SvgIcon name="svg-github" size="24" style="margin-right: 10px" />
-    <router-link>Fast-Vue3</router-link>
-  </div>
+  <SvgIcon name="svg-github" size="24" style="margin-right: 10px" />
 </template>
 
 <script setup lang="ts">
