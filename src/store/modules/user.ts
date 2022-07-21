@@ -1,4 +1,3 @@
-import { AnyObject } from '/#/global';
 import { loginPassword } from '/@/api';
 import { useCookies } from '@vueuse/integrations/useCookies';
 import { defineStore } from 'pinia';
@@ -9,7 +8,7 @@ const token = useCookies().get(VITE_TOKEN_KEY as string);
 
 interface StoreUser {
   token: string;
-  info: AnyObject;
+  info: Record<any, any>;
 }
 
 export const useUserStore = defineStore({
