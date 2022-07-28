@@ -17,6 +17,7 @@ import { ConfigCompressPlugin } from './compress';
 import { ConfigPagesPlugin } from './pages';
 import { ConfigRestartPlugin } from './restart';
 import { ConfigProgressPlugin } from './progress';
+import { ConfigImageminPlugin } from './imagemin';
 
 export function createVitePlugins(isBuild: boolean) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
@@ -29,7 +30,7 @@ export function createVitePlugins(isBuild: boolean) {
     // 提供https证书
     VitePluginCertificate({
       source: 'coding',
-    }),
+    }) as PluginOption,
   ];
 
   // 自动按需引入组件
@@ -61,6 +62,8 @@ export function createVitePlugins(isBuild: boolean) {
 
   // rollup-plugin-visualizer
   vitePlugins.push(ConfigVisualizerConfig());
+
+  vitePlugins.push(ConfigImageminPlugin());
 
   return vitePlugins;
 }
