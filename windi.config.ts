@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite-plugin-windicss'
+import { defineConfig } from 'vite-plugin-windicss';
 
 export default defineConfig({
   darkMode: 'class',
@@ -16,4 +16,4 @@ export default defineConfig({
       },
     },
   },
-})
+});

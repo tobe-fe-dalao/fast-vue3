@@ -117,6 +117,7 @@
     "mkcert",
     "mockjs",
     "nprogress",
+    "persistedstate",
     "pinia",
     "pnpm",
     "qrcode",

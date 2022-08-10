@@ -9,13 +9,11 @@ export const useAppStore = defineStore(
     state: () => ({
       title: 'FastVue3,一个快速开箱即用的Vue3+Vite模板',
       h1: 'Vue3+Vite2.x+Ts+Pinia大厂开发必备',
-      theme: 'dark',
+      theme: '',
     }),
     getters: {},
     actions: {
-      // Update app settings
       updateSettings(partial: Partial<AppState>) {
-        // @ts-ignore-next-line
         this.$patch(partial);
       },
 
@@ -25,14 +23,17 @@ export const useAppStore = defineStore(
           this.theme = 'dark';
           document.documentElement.classList.add('dark');
           document.body.setAttribute('arco-theme', 'dark');
-          localStorage.setItem('theme', this.theme);
         } else {
           this.theme = 'light';
           document.documentElement.classList.remove('dark');
           document.body.removeAttribute('arco-theme');
-          localStorage.setItem('theme', this.theme);
         }
       },
+    },
+    persist: {
+      key: 'theme',
+      storage: localStorage,
+      paths: ['theme'],
     },
   },
 );

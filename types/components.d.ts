@@ -12,7 +12,7 @@ declare module '@vue/runtime-core' {
     ElFormItem: typeof import('element-plus/es')['ElFormItem'];
     ElInput: typeof import('element-plus/es')['ElInput'];
     ElTooltip: typeof import('element-plus/es')['ElTooltip'];
-    Footer: typeof import('./../src/components/footer/index.vue')['default'];
+    Footer: typeof import('./../src/components/Footer/index.vue')['default'];
     Header: typeof import('./../src/components/Header/index.vue')['default'];
     RouterLink: typeof import('vue-router')['RouterLink'];
     RouterView: typeof import('vue-router')['RouterView'];

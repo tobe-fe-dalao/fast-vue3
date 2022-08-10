@@ -10,4 +10,5 @@ import './index.css';
 
 // 支持SVG
 import 'virtual:svg-icons-register';
+
 createApp(App).use(router).use(piniaStore).mount('#app');
