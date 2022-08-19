@@ -2,7 +2,7 @@ name: deploy
 
 on:
   push:
-    branches: [main] # master 分支有 push 时触发
+    branches: ['main'] # master 分支有 push 时触发
     paths-ignore: # 下列文件的变更不触发部署，可以自行添加
       - README.md
 
@@ -13,7 +13,7 @@ jobs:
       # 下载源码
       # 这一步就是检出你的仓库并下载里面的代码到runner中,actions/checkout@v2是官方自己造的轮子，直接拿来用就行
       - uses: actions/checkout@v2
-      -  uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
