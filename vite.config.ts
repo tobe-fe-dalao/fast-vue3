@@ -9,10 +9,16 @@ function pathResolve(dir: string) {
 }
 
 // https://vitejs.dev/config/
-export default ({ command, mode }: ConfigEnv): UserConfig => {
+export default ({ command }: ConfigEnv): UserConfig => {
   const isBuild = command === 'build';
-  console.log(command, mode);
+  let base: string;
+  if (command === 'build') {
+    base = '/fast-vue3/';
+  } else {
+    base = '/';
+  }
   return {
+    base,
     resolve: {
       alias: [
         {

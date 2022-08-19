@@ -22,8 +22,8 @@
     "@vueuse/components": "^9.1.0",
     "@vueuse/core": "^9.1.0",
     "axios": "^0.27.2",
-    "element-plus": "^2.2.13",
-    "pinia": "^2.0.18",
+    "element-plus": "^2.2.14",
+    "pinia": "^2.0.20",
     "pinia-plugin-persistedstate": "^2.1.1",
     "qs": "^6.11.0",
     "vue": "^3.2.37",
@@ -63,10 +63,10 @@
     "stylelint-config-standard": "^27.0.0",
     "stylelint-order": "^5.0.0",
     "typescript": "4.7.4",
-    "unplugin-auto-import": "^0.11.1",
+    "unplugin-auto-import": "^0.11.2",
     "unplugin-icons": "^0.14.8",
     "unplugin-vue-components": "^0.22.4",
-    "vite": "^3.0.8",
+    "vite": "^3.0.9",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-imagemin": "^0.6.1",
@@ -82,9 +82,7 @@
     "vue-tsc": "^0.40.1"
   },
   "resolutions": {
-    "bin-wrapper": "npm:bin-wrapper-china",
-    "rollup": "^2.56.3",
-    "gifsicle": "5.2.0"
+    "bin-wrapper": "npm:bin-wrapper-china"
   },
   "husky": {
     "hooks": {
