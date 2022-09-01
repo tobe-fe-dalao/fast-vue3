@@ -3,13 +3,7 @@
     <div class="login-form-title">欢迎登录Fast-Vue3</div>
     <div class="login-form-sub-title">一个开箱即用的Vue3+Vite+...模板</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
-    <el-form
-      ref="ruleFormRef"
-      :model="userFormData"
-      class="login-form"
-      layout="vertical"
-      :rules="rules"
-    >
+    <el-form ref="ruleFormRef" :model="userFormData" class="login-form" layout="vertical" :rules="rules">
       <el-form-item
         field="username"
         :rules="[{ required: true, message: '用户名不能为空' }]"

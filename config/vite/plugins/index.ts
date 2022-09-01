@@ -5,7 +5,6 @@
 import { PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import windiCSS from 'vite-plugin-windicss';
 import VitePluginCertificate from 'vite-plugin-mkcert';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { ConfigSvgIconsPlugin } from './svgIcons';
@@ -18,6 +17,7 @@ import { ConfigPagesPlugin } from './pages';
 import { ConfigRestartPlugin } from './restart';
 import { ConfigProgressPlugin } from './progress';
 import { ConfigImageminPlugin } from './imagemin';
+import { ConfigUnocssPlugin } from './unocss';
 
 export function createVitePlugins(isBuild: boolean) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
@@ -51,8 +51,11 @@ export function createVitePlugins(isBuild: boolean) {
   // 构建时显示进度条
   vitePlugins.push(ConfigProgressPlugin());
 
+  // unocss
+  vitePlugins.push(ConfigUnocssPlugin());
+
   // windCSS
-  vitePlugins.push(windiCSS());
+  // vitePlugins.push(windiCSS());
 
   // vite-plugin-svg-icons
   vitePlugins.push(ConfigSvgIconsPlugin(isBuild));

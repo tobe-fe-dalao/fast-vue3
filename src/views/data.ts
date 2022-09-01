@@ -1,7 +1,7 @@
 export const framework = [
   {
     content: '支持最新的Vue3.X版本🎆 配套新版Vue Router 4.X Proxy、Setup、Hooks等特性超前体验加强对TS的支持，快来开箱使用吧。🤣',
-    avatar: 'https://v3.cn.vuejs.org/logo.png',
+    avatar: 'https://vuejs.org/logo.svg',
     title: 'Vue3',
     github: 'https://github.com/vuejs/vue',
     color: 'from-green-400 to-cyan-500',
@@ -32,11 +32,11 @@ export const framework = [
     author: 'Vuex最佳替代品',
   },
   {
-    content: 'Tailwind CSS是一个功能类优先的CSS框架，它集成了原子式的css类名，它们能直接在脚本标记语言中组合起来，构建出任何设计。😛',
-    avatar: 'https://pbs.twimg.com/profile_images/1468993891584073729/a_op8KnL_200x200.jpg',
-    title: 'Tailwind',
-    github: 'https://github.com/tailwindlabs/tailwindcss',
-    color: ' from-teal-400 to-cyan-300',
+    content: 'UnoCss是一个功能类优先的CSS框架，它集成了原子式的css类名，它们能直接在脚本标记语言中组合起来，构建出任何设计。😛',
+    avatar: 'https://raw.githubusercontent.com/unocss/unocss/main/playground/public/icon-gray.svg',
+    title: 'UnoCss',
+    github: 'https://github.com/unocss/unocss',
+    color: 'bg-green',
     author: '原子式CSS',
   },
   {
