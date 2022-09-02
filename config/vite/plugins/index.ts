@@ -17,7 +17,8 @@ import { ConfigPagesPlugin } from './pages';
 import { ConfigRestartPlugin } from './restart';
 import { ConfigProgressPlugin } from './progress';
 import { ConfigImageminPlugin } from './imagemin';
-import { ConfigUnocssPlugin } from './unocss';
+// import { ConfigUnocssPlugin } from './unocss';
+import unocss from '@unocss/vite';
 
 export function createVitePlugins(isBuild: boolean) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
@@ -31,6 +32,7 @@ export function createVitePlugins(isBuild: boolean) {
     VitePluginCertificate({
       source: 'coding',
     }) as PluginOption,
+    unocss(),
   ];
 
   // 自动按需引入组件
@@ -52,10 +54,7 @@ export function createVitePlugins(isBuild: boolean) {
   vitePlugins.push(ConfigProgressPlugin());
 
   // unocss
-  vitePlugins.push(ConfigUnocssPlugin());
-
-  // windCSS
-  // vitePlugins.push(windiCSS());
+  // vitePlugins.push(ConfigUnocssPlugin());
 
   // vite-plugin-svg-icons
   vitePlugins.push(ConfigSvgIconsPlugin(isBuild));

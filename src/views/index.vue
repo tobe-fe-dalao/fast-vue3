@@ -19,7 +19,7 @@
               <SvgIcon name="svg-marks" />
               <p v-html="item.content"></p>
             </blockquote>
-            <figcaption class="flex items-center p-6 space-x-4 leading-6 text-white md:px-10 md:py-6 rounded-b-xl" :class="item.color">
+            <figcaption :class="`flex items-center p-6 space-x-4 leading-6 text-white md:px-10 md:py-6 rounded-b-xl bg-${[item.color]}`">
               <div class="flex items-center justify-center flex-none bg-white rounded-full w-14 h-14">
                 <img :src="item.avatar" class="w-12 h-12 rounded-full" loading="lazy" />
               </div>
@@ -58,9 +58,5 @@
     padding: 6px;
     margin-left: 6px;
     border-radius: 10px;
-  }
-
-  ul {
-    list-style: none;
   }
 </style>
