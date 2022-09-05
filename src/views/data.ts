@@ -4,7 +4,7 @@ export const framework = [
     avatar: 'https://vuejs.org/logo.svg',
     title: 'Vue3',
     github: 'https://github.com/vuejs/vue',
-    color: 'from-green-400 to-cyan-500',
+    color: '#7E4F66',
     author: '渐进式JS框架',
   },
   {
@@ -12,7 +12,7 @@ export const framework = [
     avatar: 'https://vitejs.cn/logo.svg',
     title: 'Vite2.7',
     github: 'https://github.com/vitejs/vite',
-    color: 'from-orange-400 to-purple-600',
+    color: 'bg-orange-400',
     author: '新一代构建工具',
   },
   {
@@ -20,7 +20,7 @@ export const framework = [
     avatar: 'https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png',
     title: 'TypeScript4.5',
     github: 'https://github.com/Microsoft/TypeScript',
-    color: 'from-cyan-400 to-light-blue-500',
+    color: 'bg-cyan',
     author: 'JS的超集',
   },
   {
@@ -28,7 +28,7 @@ export const framework = [
     avatar: 'https://pinia.vuejs.org/logo.svg',
     title: 'Pinia',
     github: 'https://github.com/vuejs/pinia',
-    color: ' from-yellow-400 to-orange-500',
+    color: 'bg-yellow-400',
     author: 'Vuex最佳替代品',
   },
   {
@@ -36,7 +36,7 @@ export const framework = [
     avatar: 'https://raw.githubusercontent.com/unocss/unocss/main/playground/public/icon-gray.svg',
     title: 'UnoCss',
     github: 'https://github.com/unocss/unocss',
-    color: 'bg-green',
+    color: '#22D3EE',
     author: '原子式CSS',
   },
   {
@@ -44,7 +44,7 @@ export const framework = [
     avatar: 'https://element-plus.gitee.io/images/element-plus-logo.svg',
     title: 'Element Plus',
     github: 'https://github.com/element-plus/element-plus',
-    color: ' from-blue-600 to-gray-700',
+    color: 'bg-blue-600',
     author: '大厂出品',
   },
   {
@@ -52,7 +52,7 @@ export const framework = [
     avatar: 'https://vueuse.org/logo-vertical.png',
     title: 'Vue Use',
     github: 'https://github.com/vueuse/vueuse',
-    color: 'from-green-600 to-gray-400',
+    color: 'bg-green-600',
     author: 'Vue工具集',
   },
 ];
