@@ -19,22 +19,22 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.9",
-    "@vueuse/components": "^9.1.1",
-    "@vueuse/core": "^9.1.1",
+    "@vueuse/components": "^9.2.0",
+    "@vueuse/core": "^9.2.0",
     "axios": "^0.27.2",
     "element-plus": "^2.2.16",
-    "pinia": "^2.0.21",
+    "pinia": "^2.0.22",
     "pinia-plugin-persistedstate": "^2.1.1",
     "qs": "^6.11.0",
-    "vue": "^3.2.38",
+    "vue": "^3.2.39",
     "vue-global-api": "^0.4.1",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
-    "@typescript-eslint/parser": "^5.36.1",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "autoprefixer": "^10.4.8",
@@ -64,7 +64,7 @@
     "stylelint-config-standard": "^28.0.0",
     "stylelint-order": "^5.0.0",
     "typescript": "4.8.2",
-    "unocss": "^0.45.15",
+    "unocss": "^0.45.18",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-icons": "^0.14.9",
     "unplugin-vue-components": "^0.22.4",
@@ -81,7 +81,7 @@
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-vue-images": "^0.6.1",
     "vite-plugin-vue-setup-extend": "^0.4.0",
-    "vue-tsc": "^0.40.7"
+    "vue-tsc": "^0.40.13"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china"
