@@ -5,7 +5,6 @@ import piniaStore from './store';
 import '/@/styles/index.less';
 import '/@/styles/reset.less';
 import 'uno.css';
-import 'vue-global-api';
 
 // 支持SVG
 import 'virtual:svg-icons-register';
