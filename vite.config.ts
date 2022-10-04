@@ -1,8 +1,8 @@
 import { UserConfig, ConfigEnv } from 'vite';
-import { createVitePlugins } from './config/vite/plugins';
+import { createVitePlugins } from './build/vite/plugins';
 import { resolve } from 'path';
-import proxy from './config/vite/proxy';
-import { VITE_PORT } from './config/constant';
+import proxy from './build/vite/proxy';
+import { VITE_PORT } from './build/constant';
 
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
