@@ -22,11 +22,9 @@ export const useAppStore = defineStore(
         if (dark) {
           this.theme = 'dark';
           document.documentElement.classList.add('dark');
-          document.body.setAttribute('arco-theme', 'dark');
         } else {
           this.theme = 'light';
           document.documentElement.classList.remove('dark');
-          document.body.removeAttribute('arco-theme');
         }
       },
     },
