@@ -5,7 +5,7 @@
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <el-form ref="ruleFormRef" :model="userFormData" class="login-form" layout="vertical" :rules="rules">
       <el-form-item
-        field="username"
+        prop="username"
         :rules="[{ required: true, message: '用户名不能为空' }]"
         :validate-trigger="['change', 'blur']"
         hide-label
@@ -13,7 +13,7 @@
         <el-input v-model="userFormData.username" placeholder="saodimangseng" />
       </el-form-item>
       <el-form-item
-        field="password"
+        prop="password"
         :rules="[{ required: true, message: '密码不能为空' }]"
         :validate-trigger="['change', 'blur']"
         hide-label
