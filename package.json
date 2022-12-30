@@ -18,9 +18,11 @@
     "deps": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
     "@element-plus/icons-vue": "^2.0.10",
     "@vueuse/components": "^9.10.0",
     "@vueuse/core": "^9.10.0",
+    "ant-design-vue": "^3.2.15",
     "axios": "^1.2.2",
     "dayjs": "^1.11.7",
     "element-plus": "^2.2.28",

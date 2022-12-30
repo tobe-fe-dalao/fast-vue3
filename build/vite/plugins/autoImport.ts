@@ -3,6 +3,7 @@
  * @description 按需加载，自动引入
  */
 import AutoImport from 'unplugin-auto-import/vite';
+import { ElementPlusResolver, AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 
 export const AutoImportDeps = () => {
   return AutoImport({
@@ -15,5 +16,6 @@ export const AutoImportDeps = () => {
         '@vueuse/core': [],
       },
     ],
+    resolvers: [ElementPlusResolver(), AntDesignVueResolver()],
   });
 };
