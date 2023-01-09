@@ -3,7 +3,7 @@
  * @description 按需加载，自动引入
  */
 import AutoImport from 'unplugin-auto-import/vite';
-import { ElementPlusResolver, AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
+import { ElementPlusResolver, AntDesignVueResolver, TDesignResolver } from 'unplugin-vue-components/resolvers';
 
 export const AutoImportDeps = () => {
   return AutoImport({
@@ -15,7 +15,16 @@ export const AutoImportDeps = () => {
       {
         '@vueuse/core': [],
       },
+      {
+        'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
+      },
     ],
-    resolvers: [ElementPlusResolver(), AntDesignVueResolver()],
+    resolvers: [
+      ElementPlusResolver(),
+      AntDesignVueResolver(),
+      TDesignResolver({
+        library: 'vue-next',
+      }),
+    ],
   });
 };

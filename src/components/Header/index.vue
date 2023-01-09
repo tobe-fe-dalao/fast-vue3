@@ -15,10 +15,6 @@
   });
   const isDark = useDark({
     selector: 'body',
-    attribute: 'arco-theme',
-    valueDark: 'dark',
-    valueLight: 'light',
-    storageKey: 'arco-theme',
     onChanged(dark: boolean) {
       appStore.toggleTheme(dark);
     },
@@ -37,7 +33,10 @@
             <router-link to="/" class="mr-3 flex-none w-[2.0625rem] md:w-auto leading-6 dark:text-slate-200">Fast-Vue3</router-link>
             <div class="relative items-center hidden ml-auto lg:flex">
               <nav class="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
-                <ul class="flex space-x-8">
+                <ul class="flex space-x-8 tag">
+                  <li>
+                    <router-link to="/Component-demo" class="hover:text-sky-500 dark:hover:text-sky-400">ComponentDemo</router-link>
+                  </li>
                   <li>
                     <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400">GithubDemo</router-link>
                   </li>
@@ -75,31 +74,20 @@
   </header>
 </template>
 
-<style lang="less">
-  .prose {
-    color: #334155;
-    font-size: 0.875em;
-    font-variant-ligatures: none;
+<style lang="less" scoped>
+  .tag {
+    margin-bottom: 0;
+  }
 
-    code {
-      color: #0f172a;
-      font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-
-      &::before {
-        content: '`';
-      }
-
-      &::after {
-        content: '`';
-      }
+  html.dark {
+    a {
+      color: white !important;
     }
+  }
 
-    &.dark\:prose-dark {
-      color: #94a3b8;
-
-      code {
-        color: #e2e8f0;
-      }
+  html {
+    a {
+      color: black !important;
     }
   }
 </style>

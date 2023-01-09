@@ -20,10 +20,8 @@
       >
         <el-input v-model="userFormData.password" placeholder="密码：saodimangseng" allow-clear />
       </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="handleSubmit(ruleFormRef)">登录</el-button>
-        <el-button @click="resetForm(ruleFormRef)">重置</el-button>
-      </el-form-item>
+      <el-button type="primary" @click="handleSubmit(ruleFormRef)">登录</el-button>
+      <el-button @click="resetForm(ruleFormRef)" block>重置</el-button>
     </el-form>
   </div>
 </template>
@@ -105,6 +103,16 @@
 
     &-register-btn {
       color: var(--color-text-3) !important;
+    }
+  }
+
+  /deep/ .el-button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+
+    & + .el-button {
+      margin-left: 0;
     }
   }
 </style>

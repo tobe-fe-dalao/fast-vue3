@@ -3,7 +3,13 @@
  * @description 按需加载，自动引入组件
  */
 import Components from 'unplugin-vue-components/vite';
-import { ElementPlusResolver, VueUseComponentsResolver, AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
+import {
+  ElementPlusResolver,
+  VueUseComponentsResolver,
+  AntDesignVueResolver,
+  TDesignResolver,
+  NaiveUiResolver,
+} from 'unplugin-vue-components/resolvers';
 export const AutoRegistryComponents = () => {
   return Components({
     dirs: ['src/components'],
@@ -17,6 +23,14 @@ export const AutoRegistryComponents = () => {
     allowOverrides: false,
     include: [/\.vue$/, /\.vue\?vue/],
     exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
-    resolvers: [ElementPlusResolver(), VueUseComponentsResolver(), AntDesignVueResolver()],
+    resolvers: [
+      ElementPlusResolver(),
+      VueUseComponentsResolver(),
+      AntDesignVueResolver(),
+      TDesignResolver({
+        library: 'vue-next',
+      }),
+      NaiveUiResolver(),
+    ],
   });
 };

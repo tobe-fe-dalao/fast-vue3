@@ -27,9 +27,11 @@
     "dayjs": "^1.11.7",
     "element-plus": "^2.2.28",
     "mitt": "^3.0.0",
+    "naive-ui": "^2.34.3",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.2",
     "qs": "^6.11.0",
+    "tdesign-vue-next": "^1.0.2",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
