@@ -16,7 +16,6 @@ declare module '@vue/runtime-core' {
     ElInput: typeof import('element-plus/es')['ElInput'];
     ElSpace: typeof import('element-plus/es')['ElSpace'];
     ElTooltip: typeof import('element-plus/es')['ElTooltip'];
-    Footer: typeof import('./../src/components/Footer/index.vue')['default'];
     Header: typeof import('./../src/components/Header/index.vue')['default'];
     NButton: typeof import('naive-ui')['NButton'];
     NSpace: typeof import('naive-ui')['NSpace'];
