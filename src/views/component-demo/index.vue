@@ -47,7 +47,7 @@
     height: 100vh;
   }
 
-  /deep/ .ant-descriptions {
+  :deep(.ant-descriptions) {
     margin-top: 40px;
 
     &-header {
@@ -61,7 +61,7 @@
 
   html.dark {
     .show {
-      /deep/ .ant-descriptions-title {
+      :deep(.ant-descriptions-title) {
         color: white !important;
       }
     }
