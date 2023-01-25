@@ -1,7 +1,7 @@
-<table align="center" cellpadding="50px">
+<table align="center">
   <tr>
-    <td bgcolor="#e7e7e7" padding="50">
-      <img src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="460" />
+    <td bgcolor=#e7e7e7>
+      <img src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="600" />
     </td>
   </tr>
 </table>
