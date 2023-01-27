@@ -1,10 +1,6 @@
-<table>
-  <tr align="center" >
-    <td bgcolor=#e7e7e7>
-      <img src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/fast-vue3.svg" width="600" />
-    </td>
-  </tr>
-</table>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/fonghehe/picture/fast-vue/fast-vue3.jpeg" width="450" />
+</div>
 
 <p align="center">
     <img src="https://img.shields.io/badge/-Vue3-34495e?logo=vue.j" />
