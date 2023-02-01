@@ -4,7 +4,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/-Vue3-34495e?logo=vue.j" />
-    <img src="https://img.shields.io/badge/-Vite2.7-646cff?logo=vite&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Vite4.0-646cff?logo=vite&logoColor=white" />
     <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" />
     <img src="https://img.shields.io/badge/-Pinia-yellow?logo=picpay&logoColor=white" />
     <img src="https://img.shields.io/badge/-ESLint-4b32c3?logo=eslint&logoColor=white" />
@@ -16,7 +16,7 @@
     <img src="" alt="">
 </p>
 
-すぐに使える Vue3 + Vite2 + TypeScript など。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメント](https://tobe-fe-dalao.github.io/fast-vue3-site/)
+すぐに使える Vue3 + Vite4.0 + TypeScript など。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメント](https://tobe-fe-dalao.github.io/fast-vue3-site/)
 
 [English](./README-en.md) | [简体中文](./README.md) | 日本語
 
