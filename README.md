@@ -4,7 +4,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/-Vue3-34495e?logo=vue.j" />
-    <img src="https://img.shields.io/badge/-Vite2.7-646cff?logo=vite&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Vite4.0-646cff?logo=vite&logoColor=white" />
     <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" />
     <img src="https://img.shields.io/badge/-Pinia-yellow?logo=picpay&logoColor=white" />
     <img src="https://img.shields.io/badge/-ESLint-4b32c3?logo=eslint&logoColor=white" />
@@ -16,7 +16,7 @@
     <img src="" alt="">
 </p>
 
-一个开箱即用，快速搭建大型应用的 Vue3 + Vite2 + TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [文档](https://tobe-fe-dalao.github.io/fast-vue3-site/)
+一个开箱即用，快速搭建大型应用的 Vue3 + Vite4.0 + TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。 [文档](https://tobe-fe-dalao.github.io/fast-vue3-site/)
 
 简体中文 | [English](./README-en.md) | [日本語](./README.ja-JP.md)
 
