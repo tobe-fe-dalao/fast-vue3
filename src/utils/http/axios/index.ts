@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { showMessage } from './status';
 import { IResponse } from './type';
 import { getToken } from '/@/utils/auth';
@@ -11,7 +11,7 @@ const service: AxiosInstance = axios.create({
 
 // axios实例拦截请求
 service.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
+  (config: AxiosRequestConfig) => {
     const token = getToken();
     if (token) {
       // config.headers.Authorization = `${TokenPrefix}${token}`
