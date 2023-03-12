@@ -19,7 +19,9 @@ import { ConfigProgressPlugin } from './progress';
 import { ConfigImageminPlugin } from './imagemin';
 import { ConfigUnocssPlugin } from './unocss';
 
-export function createVitePlugins(isBuild: boolean) {
+export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
+  const { VITE_USE_MOCK, VITE_USE_COMPRESS } = viteEnv;
+
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     // vue支持
     vue(),
@@ -58,12 +60,20 @@ export function createVitePlugins(isBuild: boolean) {
   vitePlugins.push(ConfigSvgIconsPlugin(isBuild));
 
   // vite-plugin-mock
-  vitePlugins.push(ConfigMockPlugin(isBuild));
+  VITE_USE_MOCK && vitePlugins.push(ConfigMockPlugin(isBuild));
 
   // rollup-plugin-visualizer
   vitePlugins.push(ConfigVisualizerConfig());
 
-  vitePlugins.push(ConfigImageminPlugin());
+  if (isBuild) {
+    // vite-plugin-imagemin
+    vitePlugins.push(ConfigImageminPlugin());
+
+    // 开启.gz压缩  rollup-plugin-gzip
+    VITE_USE_COMPRESS && vitePlugins.push(ConfigCompressPlugin());
+
+    vitePlugins.push(ConfigImageminPlugin());
+  }
 
   return vitePlugins;
 }

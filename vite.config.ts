@@ -1,15 +1,20 @@
-import { UserConfig, ConfigEnv } from 'vite';
+import { UserConfig, ConfigEnv, loadEnv } from 'vite';
 import { createVitePlugins } from './build/vite/plugins';
 import { resolve } from 'path';
 import proxy from './build/vite/proxy';
+import { wrapperEnv } from './build/utils';
 
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
 }
 
 // https://vitejs.dev/config/
-export default ({ command }: ConfigEnv): UserConfig => {
+export default ({ command, mode }: ConfigEnv): UserConfig => {
   const isBuild = command === 'build';
+  const root = process.cwd();
+  const env = loadEnv(mode, root);
+  const viteEnv = wrapperEnv(env);
+
   let base: string;
   if (command === 'build') {
     base = '/fast-vue3/';
@@ -37,7 +42,7 @@ export default ({ command }: ConfigEnv): UserConfig => {
       ],
     },
     // plugins
-    plugins: createVitePlugins(isBuild),
+    plugins: createVitePlugins(viteEnv, isBuild),
 
     // css
     css: {},
