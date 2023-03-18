@@ -32,7 +32,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     // 提供https证书
     VitePluginCertificate({
       source: 'coding',
-    }) as PluginOption,
+    }),
   ];
 
   // 自动按需引入组件
@@ -43,9 +43,6 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 
   // 自动生成路由
   vitePlugins.push(ConfigPagesPlugin());
-
-  // 开启.gz压缩  rollup-plugin-gzip
-  vitePlugins.push(ConfigCompressPlugin());
 
   // 监听配置文件改动重启
   vitePlugins.push(ConfigRestartPlugin());
@@ -71,8 +68,6 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 
     // 开启.gz压缩  rollup-plugin-gzip
     VITE_USE_COMPRESS && vitePlugins.push(ConfigCompressPlugin());
-
-    vitePlugins.push(ConfigImageminPlugin());
   }
 
   return vitePlugins;

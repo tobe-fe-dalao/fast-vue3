@@ -3,6 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "useDefineForClassFields": true,
     "strict": true,
     "noLib": false,
     "forceConsistentCasingInFileNames": true,
@@ -20,7 +21,7 @@
     "lib": ["dom", "esnext"],
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "types": ["vite/client", "element-plus/global"],
+    "types": ["element-plus/global", "naive-ui/volar"],
     "removeComments": true,
     "paths": {
       "/@/*": ["src/*"],
@@ -28,7 +29,6 @@
     }
   },
   "include": [
-    "tests/**/*.ts",
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
