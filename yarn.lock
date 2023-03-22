@@ -8338,10 +8338,10 @@ tdesign-icons-vue-next@^0.1.7:
   dependencies:
     "@babel/runtime" "^7.16.3"
 
-tdesign-vue-next@^1.1.1:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/tdesign-vue-next/-/tdesign-vue-next-1.2.2.tgz#b72a73d07a6020d4e291ff78f46bed3f53535b24"
-  integrity sha512-l1PiK8KyJH6qsag1QaxLlIsXzdcJ/73aPvXxCDo8jCEldccyd4caMyws7IfFtiTHubJ0+O0e8FIwqTbuKHOqxg==
+tdesign-vue-next@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/tdesign-vue-next/-/tdesign-vue-next-1.2.3.tgz#7892a3ad23b0a34c963c123706044f19336eef6c"
+  integrity sha512-S5PTEN6olfnK0mo4p7DduhuDK14/jpHR3Y7+/qO6BTk/iRjSN5nLkvaqk2DGTN/zqmtBLuPwlWcr1qj/hpprEQ==
   dependencies:
     "@babel/runtime" "^7.14.8"
     "@popperjs/core" "^2.9.3"

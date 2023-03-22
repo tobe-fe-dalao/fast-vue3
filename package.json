@@ -33,7 +33,7 @@
     "pinia": "^2.0.33",
     "pinia-plugin-persistedstate": "^3.1.0",
     "qs": "^6.11.1",
-    "tdesign-vue-next": "^1.1.1",
+    "tdesign-vue-next": "^1.2.3",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

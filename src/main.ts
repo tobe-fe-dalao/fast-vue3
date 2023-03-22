@@ -9,6 +9,8 @@ import 'uno.css';
 // 支持SVG
 import 'virtual:svg-icons-register';
 
+import 'tdesign-vue-next/es/style/index.css';
+
 const app = createApp(App);
 
 app.use(router);

@@ -15,14 +15,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
 
-  let base: string;
-  if (command === 'build') {
-    base = '/fast-vue3/';
-  } else {
-    base = '/';
-  }
   return {
-    base,
     resolve: {
       alias: [
         {
