@@ -5,15 +5,24 @@
 </template>
 
 <script lang="ts" setup>
-  const props = withDefaults(
-    defineProps<{
-      prefix: string;
-      name: string;
-      color: string;
-      size: string;
-    }>(),
-    { prefix: '', name: '', color: '', size: '' },
-  );
+  const props = defineProps({
+    prefix: {
+      type: String,
+      default: 'icon',
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      default: '#333',
+    },
+    size: {
+      type: String,
+      default: 'default',
+    },
+  });
   const symbolId = computed(() => `#${props.prefix}-${props.name}`);
   const calsses = computed(() => {
     return {
