@@ -1,4 +1,4 @@
-import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
+import { createProdMockServer } from 'vite-plugin-mock/dist/client';
 // 批量加载
 const modules: Record<string, any> = import.meta.glob('./mock/*.ts', { eager: true });
 
