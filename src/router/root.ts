@@ -1,10 +1,28 @@
 export default [
   {
     path: '/',
-    component: () => import('@/pages/login/index.vue'),
+    name: 'index',
+    meta: {
+      title: '首页',
+    },
+    component: () => import('../views/login/index.vue'),
   },
+
   {
-    path: 'shi',
-    component: () => import('@/pages/shi/index.vue'),
+    path: '/',
+    name: 'layout',
+    meta: {
+      title: '导航页',
+    },
+    children: [
+      {
+        path: '/contain',
+        name: 'menu',
+        meta: {
+          title: '导航页',
+        },
+        component: () => import('../views/contain/index.vue'),
+      },
+    ],
   },
 ];

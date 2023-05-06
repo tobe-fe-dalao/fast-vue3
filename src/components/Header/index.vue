@@ -35,6 +35,9 @@
               <nav class="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                 <ul class="flex space-x-8 tag">
                   <li>
+                    <router-link to="/contain" class="hover:text-sky-500 dark:hover:text-sky-400">echartsNav</router-link>
+                  </li>
+                  <li>
                     <router-link to="/Component-demo" class="hover:text-sky-500 dark:hover:text-sky-400">ComponentDemo</router-link>
                   </li>
                   <li>
