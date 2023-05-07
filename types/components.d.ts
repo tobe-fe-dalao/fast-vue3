@@ -12,11 +12,18 @@ declare module '@vue/runtime-core' {
     AButton: typeof import('ant-design-vue/es')['Button'];
     ADescriptions: typeof import('ant-design-vue/es')['Descriptions'];
     ASpace: typeof import('ant-design-vue/es')['Space'];
+    ElAside: typeof import('element-plus/es')['ElAside'];
     ElButton: typeof import('element-plus/es')['ElButton'];
+    ElContainer: typeof import('element-plus/es')['ElContainer'];
     ElForm: typeof import('element-plus/es')['ElForm'];
     ElFormItem: typeof import('element-plus/es')['ElFormItem'];
+    ElHeader: typeof import('element-plus/es')['ElHeader'];
     ElInput: typeof import('element-plus/es')['ElInput'];
+    ElMain: typeof import('element-plus/es')['ElMain'];
+    ElMenu: typeof import('element-plus/es')['ElMenu'];
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem'];
     ElSpace: typeof import('element-plus/es')['ElSpace'];
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu'];
     ElTooltip: typeof import('element-plus/es')['ElTooltip'];
     Header: typeof import('./../src/components/Header/index.vue')['default'];
     NButton: typeof import('naive-ui')['NButton'];

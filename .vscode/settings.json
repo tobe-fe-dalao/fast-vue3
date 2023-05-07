@@ -138,5 +138,6 @@
     "windi",
     "windicss",
     "zxcvbn"
-  ]
+  ],
+  "material-icon-theme.activeIconPack": "vue_vuex"
 }

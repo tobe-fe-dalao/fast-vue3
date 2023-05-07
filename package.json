@@ -27,6 +27,7 @@
     "ant-design-vue": "^3.2.19",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
+    "echarts": "^5.4.2",
     "element-plus": "^2.3.4",
     "mitt": "^3.0.0",
     "naive-ui": "^2.34.3",
