@@ -33,13 +33,6 @@ And thank you to all our backers! 🙏
 
 [![Star History Chart](https://api.star-history.com/svg?repos=tobe-fe-dalao/fast-vue3&type=Timeline)](https://star-history.com/#tobe-fe-dalao/fast-vue3&Timeline)
 
-# Last
-
-- Welcome to join the group [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image 'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image')，goof off, let's goof off together, and now the fan group rarely discusses technology, so let's goof off together. Welcome to pay attention to Wechat public number [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22')。
-
-- Cutting-edge technologies, technologies related to various experiences and interactions, and advance perspectives of various translations and research reports.
-- Free to use, all the paid resources promised to be released, all the fan groups are free for using.Otherwise, who would have time to play with you, interesting.
-
 <p>
 <img width="360" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/varqun.jpg">
 </p>

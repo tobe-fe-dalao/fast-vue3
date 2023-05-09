@@ -21,17 +21,18 @@
 简体中文 | [English](./README-en.md) | [日本語](./README.ja-JP.md)。
 
 # 快速开始
-推荐使用pnpm
+
+推荐使用 pnpm
 
 ```shell
 pnpm install
-```  
-运行命令  
+```
+
+运行命令
 
 ```shell
 pnpm run dev
 ```
-
 
 # 贡献者
 
@@ -43,8 +44,6 @@ pnpm run dev
   <img src="https://contrib.rocks/image?repo=study-vue3/fast-vue3" />
 </a>
 
-
 # Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=tobe-fe-dalao/fast-vue3&type=Timeline)](https://star-history.com/#tobe-fe-dalao/fast-vue3&Timeline)
-

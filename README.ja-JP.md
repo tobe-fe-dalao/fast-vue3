@@ -16,7 +16,7 @@
     <img src="" alt="">
 </p>
 
-すぐに使える Vue3 + Vite4.0 + TypeScript など。 大規模なアプリケーションを迅速に構築するためのテンプレートフレームワーク。 さまざまなプラグインが統合され、モジュール化とリードオンデマンド用に最適化されているため、自信を持って使用できます。 [ドキュメント](https://tobe-fe-dalao.github.io/fast-vue3-site/)
+大規模なアプリケーションを素早く構築するための、Vue3+Vite4.0+TypeScript などのテンプレートフレームワークがあります。さまざまなプラグインが統合され、モジュール化とオンデマンドリードに最適化されているため、安心して使用できます。 [ドキュメント](https://tobe-fe-dalao.github.io/fast-vue3-site/)
 
 [English](./README-en.md) | [简体中文](./README.md) | 日本語
 
@@ -29,12 +29,6 @@
 <a href="https://github.com/study-vue3/fast-vue3/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=study-vue3/fast-vue3" />
 </a>
-
-# 最後
-
-- グループへようこそ [前端水友群](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Ff2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image 'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2747d1a5fcf4d9894e997b140b8a0d8~tplv-k3u1fbpfcp-zoom-1.image')，さぼる、一緒にさぼるしましょう。今ではファングループがテクノロジーについて話し合うことはめったにないので、一緒にさぼるしましょう。 Wechat 公開番号に注目することを歓迎します [扫地盲僧](https://link.juejin.cn?target=https%3A%2F%2Fp3-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2Fa08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%2522 'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a08fd56556654baa86975b2a5ba6a8f0~tplv-k3u1fbpfcp-watermark.image%22')。
-- 最先端のテクノロジー、さまざまな経験や相互作用に関連するテクノロジー、さまざまな翻訳や調査レポートの高度な視点。
-- 無料で使用でき、すべての有料リソースがリリースされることが約束されており、すべてのファングループが無料で使用できます。それ以外の場合は、あなたと遊ぶ時間があります。本当に面白い。
 
 <p>
 <img width="360" src="https://cdn.jsdelivr.net/gh/MaleWeb/picture/images/techblog/varqun.jpg">
