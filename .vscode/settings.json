@@ -52,6 +52,9 @@
     "**/dist/**": true,
     "**/yarn.lock": true
   },
+  "material-icon-theme.folders.color": "#42a5f5",
+  "material-icon-theme.folders.theme": "specific",
+  "material-icon-theme.activeIconPack": "vue_vuex",
   "path-intellisense.mappings": {
     "/@/": "${workspaceRoot}/src"
   },
@@ -138,6 +141,5 @@
     "windi",
     "windicss",
     "zxcvbn"
-  ],
-  "material-icon-theme.activeIconPack": "vue_vuex"
+  ]
 }
