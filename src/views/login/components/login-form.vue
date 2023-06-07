@@ -52,19 +52,22 @@
       },
     ],
   });
+
   const handleSubmit = async (formEl: FormInstance | undefined) => {
-    console.log(formEl);
     if (!formEl) return;
     await formEl.validate((valid) => {
+      console.log(valid);
       if (valid) {
         ElMessage.success('欢迎使用');
-        router.push('/');
+        userStore.login(userFormData);
         userStore.info();
+        router.push('/');
       } else {
         ElMessage.error('错误信息');
       }
     });
   };
+
   const resetForm = (formEl: FormInstance | undefined) => {
     if (!formEl) return;
     formEl.resetFields();

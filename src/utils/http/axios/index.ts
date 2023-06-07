@@ -14,7 +14,7 @@ service.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = getToken();
     if (token) {
-      // config.headers.Authorization = `${TokenPrefix}${token}`
+      config.headers.authorization = `${token}`;
     }
     return config;
   },
