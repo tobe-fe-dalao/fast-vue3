@@ -6,7 +6,7 @@ import { getToken } from '/@/utils/auth';
 
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_BASEURL,
-  timeout: 15000,
+  timeout: 10000,
 });
 
 // axios实例拦截请求
@@ -64,6 +64,12 @@ export function post<T = any>(config: AxiosRequestConfig): Promise<T> {
   return request({ ...config, method: 'POST' });
 }
 
-export default request;
+export function put<T = any>(config: AxiosRequestConfig): Promise<T> {
+  return request({ ...config, method: 'put' });
+}
 
-export type { AxiosInstance, AxiosResponse };
+export function del<T = any>(config: AxiosRequestConfig): Promise<T> {
+  return request({ ...config, method: 'delete' });
+}
+
+export default request;

@@ -1,27 +1,3 @@
-<script setup lang="ts">
-  import SvgIcon from '../SvgIcon/index.vue';
-  // import { ref } from 'vue'
-  import { useDark, useToggle } from '@vueuse/core';
-  import { useAppStore } from '/@/store';
-  import { Sunny, Moon } from '@element-plus/icons-vue';
-
-  // const title = ref('I want to study typescript')
-  // 检测浏览器系统主题
-  // const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
-  const appStore = useAppStore();
-  // const useStore = useUserStore()
-  const theme = computed(() => {
-    return appStore.theme;
-  });
-  const isDark = useDark({
-    selector: 'body',
-    onChanged(dark: boolean) {
-      appStore.toggleTheme(dark);
-    },
-  });
-  const toggleTheme = useToggle(isDark);
-</script>
-
 <template>
   <header class="antialiased bg-white Male text-slate-500 dark:text-slate-400 dark:bg-slate-900">
     <div
@@ -76,6 +52,30 @@
     </div>
   </header>
 </template>
+
+<script setup lang="ts">
+  import SvgIcon from '../SvgIcon/index.vue';
+  // import { ref } from 'vue'
+  import { useDark, useToggle } from '@vueuse/core';
+  import { useAppStore } from '/@/store';
+  import { Sunny, Moon } from '@element-plus/icons-vue';
+
+  // const title = ref('I want to study typescript')
+  // 检测浏览器系统主题
+  // const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
+  const appStore = useAppStore();
+  // const useStore = useUserStore()
+  const theme = computed(() => {
+    return appStore.theme;
+  });
+  const isDark = useDark({
+    selector: 'body',
+    onChanged(dark: boolean) {
+      appStore.toggleTheme(dark);
+    },
+  });
+  const toggleTheme = useToggle(isDark);
+</script>
 
 <style lang="less" scoped>
   .tag {
