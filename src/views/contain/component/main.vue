@@ -1,12 +1,13 @@
 <template>
   <div class="echart">
-    <div id="myEChartsBar"></div>
-    <div id="myEChartsLine"></div>
+    <div id="my-echartsbar"></div>
+    <div id="my-echartsline"></div>
   </div>
 </template>
 
 <script setup lang="ts">
   import echarts from '../../../common/echarts';
+
   const changeBar = (bar) => {
     const myEChart = echarts.init(bar);
     const option = {
@@ -66,10 +67,11 @@
 </script>
 
 <style scoped>
-  #myEChartsBar {
+  #my-echartsbar {
     height: 300px;
   }
-  #myEChartsLine {
+
+  #my-echartsline {
     height: 300px;
   }
 </style>

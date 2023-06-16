@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { reactive } from 'vue';
   import Header from '/@/components/Header/index.vue';
+
   const title = `通过TailWind快速实现<br>Github2021年年度
                     <a traget="_blank" href="https://octoverse.github.com/"><font>octoverse</font></a>`;
   const datav = reactive([
@@ -45,11 +46,11 @@
   }
 
   .bg-2 {
-    background-color: rgba(244, 248, 253, 1);
+    background-color: rgb(244 248 253 / 100%);
   }
 
   .bg-3 {
-    background-color: rgba(240, 248, 246, 1);
+    background-color: rgb(240 248 246 / 100%);
   }
 
   font {

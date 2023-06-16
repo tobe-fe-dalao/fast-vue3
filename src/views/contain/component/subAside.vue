@@ -19,6 +19,7 @@
   // import { ref } from 'vue';
   // 拿到父组件传入的值
   import SubAside from './subAside.vue';
+
   defineProps({
     isCollapse: Boolean,
     menu: Object,

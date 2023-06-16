@@ -19,9 +19,11 @@
 <style lang="less" scoped>
   .common-layout {
     height: 100%;
+
     .el-container {
       height: 100%;
     }
+
     .el-header {
       padding: 0;
     }
