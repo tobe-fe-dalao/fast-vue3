@@ -19,26 +19,26 @@ async function loading(fn, message, ...args) {
     const result = await fn(...args)
     spinner.succeed()
     return result
-  } catch(error) {
+  } catch (error) {
     console.log(error)
     spinner.fail('Request failed, refetch...')
   }
 }
 
 function changePackageInfo(root, packageName) {
-    const pkgJSONPath = path.join(root, 'package.json')
-    const pkg = JSON.parse(fs.readFileSync(pkgJSONPath))
-    pkg.name = packageName
-    pkg.version = '0.0.0'
-    delete pkg.author
-    fs.writeFileSync(pkgJSONPath, JSON.stringify(pkg, null, 2) + '\n')
+  const pkgJSONPath = path.join(root, 'package.json')
+  const pkg = JSON.parse(fs.readFileSync(pkgJSONPath))
+  pkg.name = packageName
+  pkg.version = '0.0.0'
+  delete pkg.author
+  fs.writeFileSync(pkgJSONPath, JSON.stringify(pkg, null, 2) + '\n')
 }
 
 function removeDir(root, dir) {
-  const deleteFolderRecursive = function(path) {
+  const deleteFolderRecursive = function (path) {
     if (fs.existsSync(path)) {
-      fs.readdirSync(path).forEach(function(file) {
-        let curPath = path + "/" + file
+      fs.readdirSync(path).forEach(function (file) {
+        let curPath = path + '/' + file
         if (fs.lstatSync(curPath).isDirectory()) {
           deleteFolderRecursive(curPath)
         } else {
@@ -97,8 +97,16 @@ async function init() {
           type: 'select',
           message: 'Choice a Template:',
           choices: [
-            { title: 'template-pc', description: 'This will generate template for web scene', value: 'web' },
-            { title: 'template-mobile', description: 'This will generate template for mobile scene', value: 'mobile' }
+            {
+              title: 'template-pc',
+              description: 'This will generate template for web scene',
+              value: 'web'
+            },
+            {
+              title: 'template-mobile',
+              description: 'This will generate template for mobile scene',
+              value: 'mobile'
+            }
           ],
           initial: 0
         },
@@ -154,16 +162,18 @@ async function init() {
   }
 
   const templates = {
-    'web': 'main',
-    'mobile': 'mobile-template'
+    web: 'main',
+    mobile: 'mobile-template'
   }
 
   console.log(`\nScaffolding project in ${root}...`)
 
-  await loading(clone, 'waiting download template', downloadUrl, root, { checkout: templates[template] })
+  await loading(clone, 'waiting download template', downloadUrl, root, {
+    checkout: templates[template]
+  })
 
-  removeDir(root, "packages")
-  removeDir(root, ".git")
+  removeDir(root, 'packages')
+  removeDir(root, '.git')
   changePackageInfo(root, packageName)
 
   const packageManager = /pnpm/.test(process.env.npm_execpath)
