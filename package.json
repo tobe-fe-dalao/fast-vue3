@@ -39,6 +39,8 @@
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
     "@types/node": "^18.15.11",
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",
@@ -47,6 +49,7 @@
     "@vitejs/plugin-vue": "^4.2.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "autoprefixer": "^10.4.14",
+    "cz-git": "^1.7.0",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-define-config": "^1.20.0",
@@ -116,6 +119,11 @@
     "package.json": [
       "prettier --write"
     ],
+    "*.vue": [
+      "prettier --write",
+      "eslint --fix",
+      "stylelint --fix"
+    ],
     "*.{scss,less,styl,html}": [
       "stylelint --fix",
       "prettier --write"
@@ -123,5 +131,10 @@
     "*.md": [
       "prettier --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }
