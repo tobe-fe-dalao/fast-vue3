@@ -43,10 +43,10 @@
 </template>
 
 <script setup lang="ts">
-  import SvgIcon from '/@/components/SvgIcon/index.vue';
-  import { useAppStore } from '/@/store/modules/app';
+  import SvgIcon from '@/components/SvgIcon/index.vue';
+  import { useAppStore } from '@/store/modules/app';
   import { framework } from './data';
-  import Header from '/@/components/Header/index.vue';
+  import Header from '@/components/Header/index.vue';
 
   const appStore = useAppStore();
   const data = ref(framework);

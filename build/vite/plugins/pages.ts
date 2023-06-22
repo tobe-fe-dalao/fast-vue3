@@ -2,12 +2,13 @@
  * @name ConfigPagesPlugin
  * @description 动态生成路由
  */
-import Pages from 'vite-plugin-pages';
+import VueRouter from 'unplugin-vue-router/vite';
+
 export const ConfigPagesPlugin = () => {
-  return Pages({
-    pagesDir: [{ dir: 'src/views', baseRoute: '' }],
-    extensions: ['vue', 'md'],
-    exclude: ['**/components/*.vue'],
-    nuxtStyle: true,
+  return VueRouter({
+    routesFolder: ['src/views'],
+    dts: 'types/typed-router.d.ts',
+    dataFetching: true,
+    extensions: ['.page.vue', '.vue', '.md'],
   });
 };

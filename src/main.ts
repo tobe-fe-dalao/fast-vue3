@@ -3,8 +3,8 @@ import App from './App.vue';
 import router from './router';
 import piniaStore from './store';
 
-import '/@/styles/index.less';
-import '/@/styles/reset.less';
+import '@/styles/index.less';
+import '@/styles/reset.less';
 import 'uno.css';
 
 // 支持SVG

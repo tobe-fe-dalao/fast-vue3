@@ -1,15 +1,14 @@
 export default [
   {
-    path: '/',
+    path: '/login',
     name: 'index',
     meta: {
       title: '首页',
     },
-    component: () => import('../views/login/index.vue'),
+    component: () => import('@/views/login/index.vue'),
   },
-
   {
-    path: '/',
+    path: '/contain',
     name: 'layout',
     meta: {
       title: '导航页',
@@ -21,7 +20,7 @@ export default [
         meta: {
           title: '导航页',
         },
-        component: () => import('../views/contain/index.vue'),
+        component: () => import('@/views/contain/index.vue'),
       },
     ],
   },

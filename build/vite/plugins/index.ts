@@ -23,6 +23,8 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   const { VITE_USE_MOCK, VITE_USE_COMPRESS } = viteEnv;
 
   const vitePlugins: (PluginOption | PluginOption[])[] = [
+    // 自动生成路由
+    ConfigPagesPlugin(),
     // vue支持
     vue(),
     // JSX支持
@@ -40,9 +42,6 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 
   // 自动按需引入依赖
   vitePlugins.push(AutoImportDeps());
-
-  // 自动生成路由
-  vitePlugins.push(ConfigPagesPlugin());
 
   // 监听配置文件改动重启
   vitePlugins.push(ConfigRestartPlugin());

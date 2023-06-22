@@ -12,6 +12,8 @@ declare global {
   const customRef: typeof import('vue')['customRef'];
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent'];
   const defineComponent: typeof import('vue')['defineComponent'];
+  const defineLoader: typeof import('vue-router/auto')['defineLoader'];
+  const definePage: typeof import('unplugin-vue-router/runtime')['_definePage'];
   const defineStore: typeof import('pinia')['defineStore'];
   const effectScope: typeof import('vue')['effectScope'];
   const getActivePinia: typeof import('pinia')['getActivePinia'];
@@ -32,8 +34,8 @@ declare global {
   const nextTick: typeof import('vue')['nextTick'];
   const onActivated: typeof import('vue')['onActivated'];
   const onBeforeMount: typeof import('vue')['onBeforeMount'];
-  const onBeforeRouteLeave: typeof import('vue-router')['onBeforeRouteLeave'];
-  const onBeforeRouteUpdate: typeof import('vue-router')['onBeforeRouteUpdate'];
+  const onBeforeRouteLeave: typeof import('vue-router/auto')['onBeforeRouteLeave'];
+  const onBeforeRouteUpdate: typeof import('vue-router/auto')['onBeforeRouteUpdate'];
   const onBeforeUnmount: typeof import('vue')['onBeforeUnmount'];
   const onBeforeUpdate: typeof import('vue')['onBeforeUpdate'];
   const onDeactivated: typeof import('vue')['onDeactivated'];
@@ -66,12 +68,11 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule'];
   const useCssVars: typeof import('vue')['useCssVars'];
   const useDialog: typeof import('naive-ui')['useDialog'];
-  const useLink: typeof import('vue-router')['useLink'];
   const useLoadingBar: typeof import('naive-ui')['useLoadingBar'];
   const useMessage: typeof import('naive-ui')['useMessage'];
   const useNotification: typeof import('naive-ui')['useNotification'];
-  const useRoute: typeof import('vue-router')['useRoute'];
-  const useRouter: typeof import('vue-router')['useRouter'];
+  const useRoute: typeof import('vue-router/auto')['useRoute'];
+  const useRouter: typeof import('vue-router/auto')['useRouter'];
   const useSlots: typeof import('vue')['useSlots'];
   const watch: typeof import('vue')['watch'];
   const watchEffect: typeof import('vue')['watchEffect'];

@@ -11,9 +11,9 @@
 </template>
 
 <script setup lang="ts">
-  import Header from '/@/components/Header/index.vue';
-  import Layout from './component/layout.vue';
-  import Main from './component/main.vue';
+  import Header from '@/components/Header/index.vue';
+  import Layout from './components/layout.vue';
+  import Main from './components/main.vue';
 </script>
 
 <style lang="less" scoped>

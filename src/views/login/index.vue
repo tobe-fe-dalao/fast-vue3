@@ -15,7 +15,7 @@
 <script setup lang="ts">
   import LoginBanner from './components/banner.vue';
   import LoginForm from './components/login-form.vue';
-  import logo from '/@/assets/icons/svg/logo.svg';
+  import logo from '@/assets/icons/svg/logo.svg';
 
   const theme = localStorage.getItem('theme');
 

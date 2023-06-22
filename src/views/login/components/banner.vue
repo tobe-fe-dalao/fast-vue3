@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-  // import bannerImage from '/@/assets/images/login-banner.png';
-  // import qunErweima from '/@/assets/images/qunerweima.jpg';
-  // import bannerImage02 from '/@/assets/images/banner2.svg';
+  // import bannerImage from '@/assets/images/login-banner.png';
+  // import qunErweima from '@/assets/images/qunerweima.jpg';
+  // import bannerImage02 from '@/assets/images/banner2.svg';
 
   // export default defineComponent({
   //   setup() {

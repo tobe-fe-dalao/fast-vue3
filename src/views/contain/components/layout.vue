@@ -14,11 +14,12 @@
     <SubAside :isCollapse="isCollapse" v-for="item in navs" :key="item.path" :menu="item" :index="item.path" />
   </el-menu>
 </template>
+
 <script lang="ts" setup>
   import { ref } from 'vue';
   import * as router from '../../../router/root';
   import SubAside from './subAside.vue'; // 将子组件引入
-  import { useAppStore } from '/@/store/modules/app';
+  import { useAppStore } from '@/store/modules/app';
 
   const navs = router.default; // 过滤拿到数据
   const isCollapse = ref(false); // 是否收起，默认不收起
@@ -35,6 +36,7 @@
     console.log(key, keyPath);
   };
 </script>
+
 <style lang="less" scoped>
   .el-menu-vertical-demo {
     height: 100%;

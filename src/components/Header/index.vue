@@ -14,7 +14,7 @@
                     <router-link to="/contain" class="hover:text-sky-500 dark:hover:text-sky-400">echartsNav</router-link>
                   </li>
                   <li>
-                    <router-link to="/Component-demo" class="hover:text-sky-500 dark:hover:text-sky-400">ComponentDemo</router-link>
+                    <router-link to="/component" class="hover:text-sky-500 dark:hover:text-sky-400">ComponentDemo</router-link>
                   </li>
                   <li>
                     <router-link to="/demo" class="hover:text-sky-500 dark:hover:text-sky-400">GithubDemo</router-link>
@@ -57,7 +57,7 @@
   import SvgIcon from '../SvgIcon/index.vue';
   // import { ref } from 'vue'
   import { useDark, useToggle } from '@vueuse/core';
-  import { useAppStore } from '/@/store';
+  import { useAppStore } from '@/store';
   import { Sunny, Moon } from '@element-plus/icons-vue';
 
   // const title = ref('I want to study typescript')

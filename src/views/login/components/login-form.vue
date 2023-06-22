@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>
   import { ElMessage, FormInstance, FormRules } from 'element-plus';
-  import { useUserStore } from '/@/store';
+  import { useUserStore } from '@/store';
 
   const router = useRouter();
   const errorMessage = ref('');
@@ -61,7 +61,7 @@
         ElMessage.success('欢迎使用');
         userStore.login(userFormData);
         userStore.info();
-        router.push('/');
+        router.push('/demo');
       } else {
         ElMessage.error('错误信息');
       }

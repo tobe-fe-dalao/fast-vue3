@@ -24,7 +24,7 @@
     "types": ["element-plus/global", "naive-ui/volar"],
     "removeComments": true,
     "paths": {
-      "/@/*": ["src/*"],
+      "@/*": ["src/*"],
       "/#/*": ["types/*"]
     }
   },

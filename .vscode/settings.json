@@ -1,5 +1,6 @@
 {
   "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.preferences.autoImportFileExcludePatterns": ["vue-router"],
   "npm.packageManager": "pnpm",
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -56,7 +57,7 @@
   "material-icon-theme.folders.theme": "specific",
   "material-icon-theme.activeIconPack": "vue_vuex",
   "path-intellisense.mappings": {
-    "/@/": "${workspaceRoot}/src"
+    "@/": "${workspaceRoot}/src"
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
