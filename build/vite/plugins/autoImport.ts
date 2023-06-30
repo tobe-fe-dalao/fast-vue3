@@ -27,6 +27,7 @@ export const AutoImportDeps = () => {
       TDesignResolver({
         library: 'vue-next',
       }),
+      // ArcoResolver(),
     ],
   });
 };

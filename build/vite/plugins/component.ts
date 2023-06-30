@@ -10,7 +10,11 @@ import {
   AntDesignVueResolver,
   TDesignResolver,
   NaiveUiResolver,
+  // ArcoResolver,
+  DevUiResolver,
+  IduxResolver,
 } from 'unplugin-vue-components/resolvers';
+
 export const AutoRegistryComponents = () => {
   return Components({
     dirs: ['src/components'],
@@ -25,11 +29,16 @@ export const AutoRegistryComponents = () => {
     resolvers: [
       ElementPlusResolver(),
       VueUseComponentsResolver(),
-      AntDesignVueResolver(),
+      AntDesignVueResolver({ resolveIcons: true }),
       TDesignResolver({
         library: 'vue-next',
       }),
+      // ArcoResolver({
+      //   sideEffect: true,
+      // }),
       NaiveUiResolver(),
+      DevUiResolver({ importStyle: true }),
+      IduxResolver({ importStyle: 'css', importStyleTheme: 'default' }),
     ],
   });
 };
