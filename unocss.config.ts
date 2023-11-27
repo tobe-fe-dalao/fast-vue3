@@ -1,7 +1,19 @@
+/*
+ * @Author: shiwanyu shi.wy@neusoft.com
+ * @Date: 2023-11-27 10:00:12
+ * @LastEditors: shiwanyu shi.wy@neusoft.com
+ * @LastEditTime: 2023-11-27 11:24:59
+ * @FilePath: \fast-vue3\unocss.config.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss';
 
 export default defineConfig({
-  exclude: ['node_modules', '.git', '.github', '.husky', '.vscode', 'build', 'dist', 'mock', 'public', './stats.html'],
+  content: {
+    pipeline: {
+      exclude: ['node_modules', '.git', '.github', '.husky', '.vscode', 'build', 'dist', 'mock', 'public', './stats.html'],
+    },
+  },
   presets: [presetUno(), presetAttributify(), presetIcons()],
   shortcuts: [],
   rules: [],

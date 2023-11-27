@@ -11,7 +11,6 @@ declare module 'vue' {
     ADescriptions: typeof import('ant-design-vue/es')['Descriptions'];
     ASpace: typeof import('ant-design-vue/es')['Space'];
     DButton: typeof import('vue-devui/button/index.es.js')['Button'];
-    DSpace: typeof import('vue-devui/space/index.es.js')['Space'];
     ElAside: typeof import('element-plus/es')['ElAside'];
     ElButton: typeof import('element-plus/es')['ElButton'];
     ElContainer: typeof import('element-plus/es')['ElContainer'];
