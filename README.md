@@ -31,7 +31,7 @@ pnpm install
 运行命令
 
 ```shell
-pnpm run dev
+pnpm dev
 ```
 
 # 贡献者
