@@ -8,7 +8,6 @@ export const ConfigPagesPlugin = () => {
   return VueRouter({
     routesFolder: ['src/views'],
     dts: 'types/typed-router.d.ts',
-    dataFetching: true,
     extensions: ['.page.vue', '.vue', '.md'],
   });
 };

@@ -1,4 +1,4 @@
-import visualizer from 'rollup-plugin-visualizer';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export function ConfigVisualizerConfig() {
   return visualizer({
@@ -7,6 +7,4 @@ export function ConfigVisualizerConfig() {
     gzipSize: true,
     brotliSize: true,
   });
-
-  return [];
 }

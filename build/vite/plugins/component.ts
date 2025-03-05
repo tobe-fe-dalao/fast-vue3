@@ -29,7 +29,7 @@ export const AutoRegistryComponents = () => {
     resolvers: [
       ElementPlusResolver(),
       VueUseComponentsResolver(),
-      AntDesignVueResolver({ resolveIcons: true }),
+      AntDesignVueResolver({ resolveIcons: true, importStyle: false }),
       TDesignResolver({
         library: 'vue-next',
       }),

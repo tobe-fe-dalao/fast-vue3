@@ -17,7 +17,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
         '#': fileURLToPath(new URL('./types', import.meta.url)),
       },
+
+      extensions: ['.ts', '.js', '.mjs', '.mts'],
     },
+
     // plugins
     plugins: createVitePlugins(viteEnv, isBuild),
 
