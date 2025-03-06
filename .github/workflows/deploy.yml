@@ -14,15 +14,15 @@ jobs:
       # 下载源码
       # 这一步就是检出你的仓库并下载里面的代码到runner中,actions/checkout@v3是官方自己造的轮子，直接拿来用就行
       - name: 检出代码
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Node 环境
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      - uses: pnpm/action-setup@v2
-        name: 安装pnpm
+      - name: 安装pnpm
+        uses: pnpm/action-setup@v2
         id: pnpm-install
         with:
           version: 9
@@ -34,8 +34,8 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
