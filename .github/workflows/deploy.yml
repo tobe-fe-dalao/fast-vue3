@@ -9,19 +9,19 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
+   steps:
       # 下载源码
       # 这一步就是检出你的仓库并下载里面的代码到runner中,actions/checkout@v2是官方自己造的轮子，直接拿来用就行
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install
 
       - name: Build
-        run: yarn build
-
+        run: pnpm build
+        
       # 部署到 GitHub pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3 # 使用部署到 GitHub pages 的 action
