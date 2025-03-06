@@ -50,10 +50,8 @@ jobs:
         run: pnpm run build
 
       - name: 部署
-        uses: appleboy/scp-action@master
+        uses: peaceiris/actions-gh-pages@v3 # 使用部署到 GitHub pages 的 action
         with:
-          host: ${{ secrets.USER_HOST }}
-          username: ${{ secrets.USER_NAME }}
-          key: ${{ secrets.KEY }}
-          source: './dist'
-          target: ${{ secrets.USER_TARGET }}
+          github_token: ${{ secrets.GITHUB_TOKEN }} # secret 名
+          commit_message: 自动部署 # 部署时的 git 提交信息，自由填写
+          publish_dir: ./dist # 部署打包后的 dist 目录
