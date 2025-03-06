@@ -56,6 +56,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   vitePlugins.push(ConfigSvgIconsPlugin(isBuild));
 
   // vite-plugin-mock
+
   VITE_USE_MOCK && vitePlugins.push(ConfigMockPlugin(isBuild));
 
   // rollup-plugin-visualizer

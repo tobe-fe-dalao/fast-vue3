@@ -50,6 +50,8 @@ export default typescriptEslint.config(
           math: 'always',
         },
       ],
+
+      '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
