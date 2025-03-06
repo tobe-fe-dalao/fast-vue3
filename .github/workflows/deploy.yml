@@ -17,9 +17,14 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-      - run: pnpm install
+      # 手动安装 pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      - name: Build
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
         run: pnpm build
         
       # 部署到 GitHub pages
