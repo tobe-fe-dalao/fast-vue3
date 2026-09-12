@@ -30,7 +30,20 @@ export default defineEventHandler(async (event) => {
   const requiresOperatingDataPermission =
     path === '/api/v1/analytics/overview' || path === '/api/v1/data/overview';
   const username = authorization.replace(/^Bearer mock-access-token-/, '');
-  if (requiresOperatingDataPermission && username !== 'admin') {
+  const requiresEnterprisePermission = [
+    '/api/v1/tenants',
+    '/api/v1/organizations',
+    '/api/v1/departments',
+    '/api/v1/projects',
+    '/api/v1/tasks',
+    '/api/v1/approvals',
+    '/api/v1/audit',
+    '/api/v1/files',
+  ].some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
+  if (
+    (requiresOperatingDataPermission || requiresEnterprisePermission) &&
+    username !== 'admin'
+  ) {
     setResponseStatus(event, 403);
     return {
       code: 403,

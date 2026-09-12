@@ -129,4 +129,38 @@ describe('createApi', () => {
     });
     expect(get).toHaveBeenNthCalledWith(4, { url: '/monitor/server' });
   });
+
+  it('sends enterprise idempotency keys, versions and nested routes', async () => {
+    await api.project.create({ name: 'Project', code: 'P1' }, 'request-1');
+    await api.project.archive(7, 3);
+    await api.task.update(12, { status: 'IN_PROGRESS', version: 2 });
+    await api.task.comment(12, 'started');
+    await api.approval.submit(5, 'request-2');
+    await api.department.assign(4, 9);
+    await api.notification.readAll();
+
+    expect(post).toHaveBeenCalledWith({
+      data: { name: 'Project', code: 'P1' },
+      headers: { 'Idempotency-Key': 'request-1' },
+      url: '/projects',
+    });
+    expect(put).toHaveBeenCalledWith({
+      params: { version: 3 },
+      url: '/projects/7/archive',
+    });
+    expect(put).toHaveBeenCalledWith({
+      data: { status: 'IN_PROGRESS', version: 2 },
+      url: '/tasks/12',
+    });
+    expect(post).toHaveBeenCalledWith({
+      data: { content: 'started' },
+      url: '/tasks/12/comments',
+    });
+    expect(post).toHaveBeenCalledWith({
+      headers: { 'Idempotency-Key': 'request-2' },
+      url: '/approvals/5/submit',
+    });
+    expect(put).toHaveBeenCalledWith({ url: '/departments/4/members/9' });
+    expect(put).toHaveBeenCalledWith({ url: '/notifications/read-all' });
+  });
 });

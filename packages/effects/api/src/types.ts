@@ -20,6 +20,209 @@ export interface PageQuery {
   keyword?: string;
 }
 
+/* Enterprise domains exposed by fast-vue3-server V9. */
+export interface TenantItem {
+  id: number;
+  name: string;
+  code: string;
+  status: 'active' | 'disabled';
+  plan: string;
+  expiredAt: null | string;
+  createdAt: string;
+}
+
+export interface CreateTenantParams {
+  name: string;
+  code: string;
+  plan: string;
+  expiredAt?: null | string;
+  adminUsername: string;
+  adminPassword: string;
+  adminEmail: string;
+}
+
+export interface OrganizationItem {
+  id: number;
+  tenantId: number;
+  name: string;
+  code: string;
+  status: 'active' | 'disabled';
+}
+
+export interface DepartmentItem {
+  id: number;
+  parentId: null | number;
+  name: string;
+  code: string;
+  leaderId: null | number;
+  sort: number;
+  status: 'active' | 'disabled';
+  children: DepartmentItem[];
+}
+
+export interface SaveDepartmentParams {
+  parentId?: null | number;
+  name: string;
+  code: string;
+  leaderId?: null | number;
+  sort?: number;
+  status?: 'active' | 'disabled';
+}
+
+export interface DepartmentMember {
+  id: number;
+  username: string;
+  nickname: string;
+  status: string;
+}
+
+export interface ProjectItem {
+  id: number;
+  name: string;
+  code: string;
+  description: null | string;
+  ownerId: number;
+  status: 'ACTIVE' | 'ARCHIVED';
+  startDate: null | string;
+  endDate: null | string;
+  version: number;
+  memberIds: number[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateProjectParams {
+  name: string;
+  code: string;
+  description?: string;
+  startDate?: null | string;
+  endDate?: null | string;
+}
+
+export interface ProjectActivity {
+  id: number;
+  projectId: number;
+  actorId: number;
+  action: string;
+  detail: null | string;
+  createdAt: string;
+}
+
+export type TaskPriority = 'HIGH' | 'LOW' | 'MEDIUM' | 'URGENT';
+export type TaskStatus =
+  | 'BLOCKED'
+  | 'CANCELLED'
+  | 'DONE'
+  | 'IN_PROGRESS'
+  | 'TODO';
+
+export interface TaskItem {
+  id: number;
+  projectId: number;
+  title: string;
+  description: null | string;
+  assigneeId: null | number;
+  reporterId: number;
+  priority: TaskPriority;
+  status: TaskStatus;
+  dueDate: null | string;
+  version: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateTaskParams {
+  title: string;
+  description?: string;
+  assigneeId?: null | number;
+  priority?: TaskPriority;
+  dueDate?: null | string;
+}
+
+export interface TaskComment {
+  id: number;
+  taskId: number;
+  authorId: number;
+  content: string;
+  createdAt: string;
+}
+
+export interface TaskActivity {
+  id: number;
+  taskId: number;
+  actorId: number;
+  action: string;
+  fieldName: null | string;
+  oldValue: null | string;
+  newValue: null | string;
+  createdAt: string;
+}
+
+export interface ApprovalStep {
+  id: number;
+  stepOrder: number;
+  approverType: string;
+  approverId: null | number;
+  status: string;
+  actedAt: null | string;
+}
+
+export interface ApprovalItem {
+  id: number;
+  type: string;
+  title: string;
+  businessKey: null | string;
+  applicantId: number;
+  departmentId: null | number;
+  status: 'APPROVED' | 'CANCELLED' | 'DRAFT' | 'PENDING' | 'REJECTED';
+  currentStep: number;
+  payload: null | string;
+  version: number;
+  steps: ApprovalStep[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateApprovalParams {
+  type: string;
+  title: string;
+  businessKey?: string;
+  departmentId?: number;
+  payload?: string;
+}
+
+export interface NotificationItem {
+  id: number;
+  type: string;
+  title: string;
+  content: null | string;
+  receiverId: number;
+  read: boolean;
+  createdAt: string;
+}
+
+export interface AuditOperationItem {
+  id: number;
+  requestId: string;
+  tenantId: number;
+  userId: null | number;
+  method: string;
+  path: string;
+  ip: string;
+  userAgent: string;
+  duration: number;
+  status: number;
+  createdAt: string;
+}
+
+export interface StoredFile {
+  key: string;
+  originalName: string;
+  contentType: string;
+  size: number;
+  url: string;
+}
+
 /** 资源状态，全站统一取值 */
 export type EnableStatus = 'active' | 'inactive';
 
@@ -56,6 +259,7 @@ export interface UserInfo {
   nickname: string;
   permissions: string[];
   roles: string[];
+  tenantId: number;
   username: string;
 }
 

@@ -210,6 +210,107 @@ describe('nitro v1 API integration', () => {
     ]);
   });
 
+  it('serves the enterprise project, task, approval and notification workflow', async () => {
+    const project = await request<{ id: number; version: number }>(
+      '/projects',
+      {
+        method: 'POST',
+        headers: { 'Idempotency-Key': 'integration-project-1' },
+        body: JSON.stringify({ name: '集成项目', code: 'INTEGRATION' }),
+      },
+    );
+    const task = await request<{ id: number; status: string; version: number }>(
+      `/projects/${project.data.id}/tasks`,
+      { method: 'POST', body: JSON.stringify({ title: '接入任务' }) },
+    );
+    expect(task.data.status).toBe('TODO');
+
+    const updated = await request<{ status: string; version: number }>(
+      `/tasks/${task.data.id}`,
+      {
+        method: 'PUT',
+        body: JSON.stringify({
+          status: 'IN_PROGRESS',
+          version: task.data.version,
+        }),
+      },
+    );
+    expect(updated.data.status).toBe('IN_PROGRESS');
+    const comment = await request<{ content: string }>(
+      `/tasks/${task.data.id}/comments`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ content: '开始处理' }),
+      },
+    );
+    expect(comment.data.content).toBe('开始处理');
+
+    const stale = await fetch(`${baseUrl}/tasks/${task.data.id}`, {
+      method: 'PUT',
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ status: 'DONE', version: task.data.version }),
+    });
+    expect(stale.status).toBe(409);
+
+    const approval = await request<{ id: number; status: string }>(
+      '/approvals',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          type: 'GENERAL',
+          title: '审批接入',
+          departmentId: 1,
+        }),
+      },
+    );
+    const submitted = await request<{ status: string }>(
+      `/approvals/${approval.data.id}/submit`,
+      {
+        method: 'POST',
+        headers: { 'Idempotency-Key': 'integration-approval-1' },
+      },
+    );
+    expect(submitted.data.status).toBe('PENDING');
+    const unread = await request<{ count: number }>(
+      '/notifications/unread-count',
+    );
+    expect(unread.data.count).toBeGreaterThan(0);
+    await request<undefined>('/notifications/read-all', { method: 'PUT' });
+    const readCount = await request<{ count: number }>(
+      '/notifications/unread-count',
+    );
+    expect(readCount.data.count).toBe(0);
+    const otherUser = await fetch(`${baseUrl}/notifications`, {
+      headers: { authorization: 'Bearer mock-access-token-user' },
+    });
+    const otherBody = (await otherUser.json()) as ApiResponse<unknown[]>;
+    expect(otherBody.data).toEqual([]);
+  });
+
+  it('uploads and downloads a private file with the bearer token', async () => {
+    const data = new FormData();
+    data.append(
+      'file',
+      new File(['hello'], 'note.txt', { type: 'text/plain' }),
+    );
+    const upload = await fetch(`${baseUrl}/files`, {
+      method: 'POST',
+      headers: { authorization: `Bearer ${accessToken}` },
+      body: data,
+    });
+    expect(upload.status).toBe(200);
+    const body = (await upload.json()) as ApiResponse<{ url: string }>;
+    const anonymous = await fetch(new URL(body.data.url, baseUrl));
+    expect(anonymous.status).toBe(401);
+    const download = await fetch(new URL(body.data.url, baseUrl), {
+      headers: { authorization: `Bearer ${accessToken}` },
+    });
+    expect(await download.text()).toBe('hello');
+  });
+
   it('enforces operating-data permissions for non-admin users', async () => {
     const loginResponse = await fetch(`${baseUrl}/auth/login`, {
       body: JSON.stringify({ password: '123456', username: 'user' }),

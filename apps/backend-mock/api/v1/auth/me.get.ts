@@ -11,6 +11,7 @@ export default defineEventHandler((event) => {
     MOCK_USERS.find((item) => item.username === username) ?? MOCK_USERS[0];
   return useResponseSuccess({
     id: user.id,
+    tenantId: 1,
     username: user.username,
     nickname: user.realName,
     roles: user.roles,

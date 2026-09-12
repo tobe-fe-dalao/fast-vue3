@@ -19,6 +19,8 @@ import type {
   UserItem,
 } from './types';
 
+import { createStaticEnterpriseApi } from './static-enterprise';
+
 const clone = <T>(value: T): T => structuredClone(value);
 const resolved = <T>(value: T) => Promise.resolve(clone(value));
 const now = () => new Date().toISOString().replace('T', ' ').slice(0, 19);
@@ -81,6 +83,20 @@ const seedPermissions: PermissionItem[] = [
     name: '数据分析',
     description: '查看经营分析',
   },
+  ...[
+    'tenant:list',
+    'department:list',
+    'department:manage',
+    'project:list',
+    'project:create',
+    'project:update',
+    'task:create',
+    'task:update',
+    'approval:create',
+    'approval:action',
+    'audit:view',
+    'file:upload',
+  ].map((code, index) => ({ id: index + 11, code, name: code })),
 ];
 
 const seedUsers: UserItem[] = [
@@ -530,6 +546,7 @@ export function createStaticMockApi(): Api {
   const categoryList = () => resolved(categories);
 
   const api = {
+    ...createStaticEnterpriseApi(),
     analytics: {
       dashboardStats: () =>
         resolved({
@@ -675,6 +692,7 @@ export function createStaticMockApi(): Api {
       me: () =>
         resolved({
           id: 1,
+          tenantId: 1,
           username: 'admin',
           nickname: '管理员',
           roles: ['admin'],

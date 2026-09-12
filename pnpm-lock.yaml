@@ -473,6 +473,9 @@ importers:
 
   apps/backend-mock:
     dependencies:
+      '@fast-vue3/api':
+        specifier: workspace:*
+        version: link:../../packages/effects/api
       nitropack:
         specifier: 'catalog:'
         version: 2.13.4(oxc-parser@0.124.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0))(rolldown@1.0.2)

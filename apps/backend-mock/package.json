@@ -10,6 +10,7 @@
     "test": "nitro build && vitest run"
   },
   "dependencies": {
+    "@fast-vue3/api": "workspace:*",
     "nitropack": "catalog:"
   },
   "devDependencies": {

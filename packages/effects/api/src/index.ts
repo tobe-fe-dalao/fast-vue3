@@ -3,6 +3,7 @@ import type { RequestClient } from '@fast-vue3/request';
 import { createAnalyticsApi } from './modules/analytics';
 import { createAuthApi } from './modules/auth';
 import { createContentApi } from './modules/content';
+import { createEnterpriseApi } from './modules/enterprise';
 import { createLogApi } from './modules/log';
 import { createMenuApi } from './modules/menu';
 import { createMonitorApi } from './modules/monitor';
@@ -19,7 +20,9 @@ import { createUserApi } from './modules/user';
  * 即可在任意页面复用同一套接口定义，切换 mock / 真实后端无需改动业务代码。
  */
 export function createApi(http: RequestClient) {
+  const enterprise = createEnterpriseApi(http);
   return {
+    ...enterprise,
     analytics: createAnalyticsApi(http),
     auth: createAuthApi(http),
     content: createContentApi(http),
@@ -36,6 +39,7 @@ export function createApi(http: RequestClient) {
 
 export type Api = ReturnType<typeof createApi>;
 
+export { createStaticEnterpriseApi } from './static-enterprise';
 export { createStaticMockApi } from './static-mock';
 
 export * from './types';

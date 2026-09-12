@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import type { NotificationItem } from '@/api';
+
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
+import { api } from '@/api';
 import {
   ApartmentOutlined,
   AppstoreOutlined,
@@ -42,6 +45,9 @@ const { isDark } = storeToRefs(prefs);
 const { setThemeMode } = prefs;
 
 const collapsed = ref(false);
+const permissions = ref<string[]>([]);
+const hasPermission = (code: string) =>
+  permissions.value.includes('*') || permissions.value.includes(code);
 const selectedKeys = computed(() => [route.path]);
 const openKeys = ref<string[]>([]);
 
@@ -70,6 +76,14 @@ watch(
     }
     if (path.startsWith('/error') && !openKeys.value.includes('error')) {
       openKeys.value = [...openKeys.value, 'error'];
+    }
+    if (
+      (path.startsWith('/enterprise') ||
+        path.startsWith('/projects') ||
+        path.startsWith('/approvals')) &&
+      !openKeys.value.includes('enterprise')
+    ) {
+      openKeys.value = [...openKeys.value, 'enterprise'];
     }
   },
   { immediate: true },
@@ -101,6 +115,13 @@ const ROUTE_TITLES: Record<string, string> = {
   '/about': '关于项目',
   '/user': '用户管理(旧)',
   '/role': '角色管理(旧)',
+  '/projects': '项目管理',
+  '/approvals': '审批',
+  '/notifications': '我的通知',
+  '/enterprise/organization': '组织信息',
+  '/enterprise/tenants': '租户管理',
+  '/enterprise/audit': '操作审计',
+  '/enterprise/files': '文件管理',
   '/error/403': '403 禁止访问',
   '/error/404': '404 未找到',
   '/error/500': '500 服务错误',
@@ -111,6 +132,7 @@ function resolveTitle(path: string): string {
   if (/^\/system\/user\/\d+$/.test(path)) return '用户详情';
   if (/^\/content\/article\/\d+$/.test(path)) return '文章详情';
   if (/^\/system\/role\/\d+\/permission$/.test(path)) return '权限配置';
+  if (/^\/projects\/\d+$/.test(path)) return '项目详情';
   if (path === '/content/article/edit') return '文章编辑';
   return '';
 }
@@ -148,11 +170,41 @@ function closeTab(path: string) {
 }
 
 const isFullscreen = ref(false);
-const notifications = [
-  { id: 1, title: '系统更新 v2.1.0 已发布', time: '10 分钟前' },
-  { id: 2, title: '您有 3 条未读消息', time: '1 小时前' },
-  { id: 3, title: '每周数据报告已生成', time: '今天 09:00' },
-];
+const notifications = ref<NotificationItem[]>([]);
+const unreadCount = ref(0);
+
+async function loadNotifications() {
+  try {
+    const [items, unread] = await Promise.all([
+      api.notification.list(),
+      api.notification.unreadCount(),
+    ]);
+    notifications.value = items;
+    unreadCount.value = unread.count;
+  } catch (error) {
+    message.error((error as Error).message);
+  }
+}
+
+async function markNotificationRead(id: number) {
+  try {
+    await api.notification.read(id);
+    await loadNotifications();
+  } catch (error) {
+    message.error((error as Error).message);
+  }
+}
+
+onMounted(() => {
+  loadNotifications();
+  api.auth
+    .me()
+    .then((profile) => {
+      permissions.value = profile.permissions;
+      userStore.setUserInfo({ userId: String(profile.id) });
+    })
+    .catch((error: Error) => message.error(error.message));
+});
 
 function toggleFullscreen() {
   if (document.fullscreenElement) {
@@ -240,6 +292,52 @@ async function handleLogout() {
             <template #icon> <ControlOutlined /> </template>参数设置
           </AMenuItem>
         </ASubMenu>
+        <ASubMenu
+          v-if="
+            hasPermission('project:list') ||
+            hasPermission('approval:create') ||
+            hasPermission('approval:action') ||
+            hasPermission('department:list') ||
+            hasPermission('file:upload')
+          "
+          key="enterprise"
+        >
+          <template #icon><ApartmentOutlined /></template>
+          <template #title>企业协作</template>
+          <AMenuItem v-if="hasPermission('project:list')" key="/projects">
+            项目任务
+          </AMenuItem>
+          <AMenuItem
+            v-if="
+              hasPermission('approval:create') ||
+              hasPermission('approval:action')
+            "
+            key="/approvals"
+          >
+            审批
+          </AMenuItem>
+          <AMenuItem
+            v-if="hasPermission('department:list')"
+            key="/enterprise/organization"
+          >
+            组织信息
+          </AMenuItem>
+          <AMenuItem
+            v-if="userStore.isAdmin && hasPermission('tenant:list')"
+            key="/enterprise/tenants"
+          >
+            租户管理
+          </AMenuItem>
+          <AMenuItem v-if="hasPermission('audit:view')" key="/enterprise/audit">
+            操作审计
+          </AMenuItem>
+          <AMenuItem
+            v-if="hasPermission('file:upload')"
+            key="/enterprise/files"
+          >
+            文件上传
+          </AMenuItem>
+        </ASubMenu>
         <ASubMenu key="monitor">
           <template #icon> <DesktopOutlined /> </template>
           <template #title>系统监控</template>
@@ -323,10 +421,13 @@ async function handleLogout() {
         </div>
         <div style="display: flex; gap: 4px; align-items: center">
           <!-- Notifications -->
-          <ADropdown trigger="click">
+          <ADropdown
+            trigger="click"
+            @open-change="(open: boolean) => open && loadNotifications()"
+          >
             <ATooltip title="通知" placement="bottom">
               <div class="header-icon-btn">
-                <ABadge :count="3" :offset="[-2, 2]">
+                <ABadge :count="unreadCount" :offset="[-2, 2]">
                   <BellOutlined class="header-icon" />
                 </ABadge>
               </div>
@@ -350,7 +451,7 @@ async function handleLogout() {
                   通知
                 </div>
                 <div
-                  v-for="n in notifications"
+                  v-for="n in notifications.slice(0, 5)"
                   :key="n.id"
                   style="
                     padding: 12px 16px;
@@ -359,6 +460,7 @@ async function handleLogout() {
                     transition: background 0.2s;
                   "
                   class="notification-item"
+                  @click="markNotificationRead(n.id)"
                 >
                   <div style="font-size: 0.9rem; color: #111827">
                     {{ n.title }}
@@ -366,8 +468,14 @@ async function handleLogout() {
                   <div
                     style="margin-top: 4px; font-size: 0.75rem; color: #9ca3af"
                   >
-                    {{ n.time }}
+                    {{ n.createdAt }}{{ n.read ? '' : ' · 未读' }}
                   </div>
+                </div>
+                <div
+                  v-if="notifications.length === 0"
+                  style="padding: 12px 16px"
+                >
+                  暂无通知
                 </div>
                 <div
                   style="
@@ -377,6 +485,7 @@ async function handleLogout() {
                     text-align: center;
                     cursor: pointer;
                   "
+                  @click="router.push('/notifications')"
                 >
                   查看全部
                 </div>

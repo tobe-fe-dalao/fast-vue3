@@ -1,4 +1,23 @@
 export const permissions = [
+  ...[
+    'tenant:list',
+    'department:list',
+    'department:manage',
+    'project:list',
+    'project:create',
+    'project:update',
+    'task:create',
+    'task:update',
+    'approval:create',
+    'approval:action',
+    'audit:view',
+    'file:upload',
+  ].map((code, index) => ({
+    id: index + 23,
+    name: code,
+    code,
+    description: code,
+  })),
   { id: 1, name: '用户查询', code: 'user:list', description: '查看用户列表' },
   { id: 2, name: '用户创建', code: 'user:create', description: '新增用户' },
   { id: 3, name: '用户更新', code: 'user:update', description: '修改用户' },

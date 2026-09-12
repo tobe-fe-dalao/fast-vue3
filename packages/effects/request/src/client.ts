@@ -87,6 +87,15 @@ export function createRequest(client: AxiosInstance) {
   }
 
   return {
+    /** Authenticated binary response, such as a private file download. */
+    download: async (config: AxiosRequestConfig): Promise<Blob> => {
+      const response = await client.request<Blob>({
+        ...config,
+        method: 'GET',
+        responseType: 'blob',
+      });
+      return response.data;
+    },
     get: <T = any>(config: AxiosRequestConfig) =>
       request<T>({ ...config, method: 'GET' }),
     post: <T = any>(config: AxiosRequestConfig) =>
