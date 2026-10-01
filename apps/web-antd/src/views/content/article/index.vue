@@ -120,11 +120,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4" style="margin: 0 0 16px">
-      文章管理
-    </ATypographyTitle>
-
+  <div class="admin-page">
     <!-- Search -->
     <ACard :bordered="false" class="mb-4 shadow-sm">
       <ARow :gutter="16" align="middle">

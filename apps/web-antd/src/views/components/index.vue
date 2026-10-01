@@ -26,13 +26,9 @@ const tableData = [
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4" class="mb-6">
-      组件展示 · Ant Design Vue
-    </ATypographyTitle>
-
+  <div class="components-page">
     <!-- 按钮 -->
-    <ACard title="按钮 Button" :bordered="false" class="mb-4 shadow-sm">
+    <ACard title="按钮 Button" :bordered="false" class="shadow-sm">
       <ASpace wrap>
         <AButton type="primary"> 主要按钮 </AButton>
         <AButton>默认按钮</AButton>
@@ -48,7 +44,7 @@ const tableData = [
     </ACard>
 
     <!-- 标签 -->
-    <ACard title="标签 Tag" :bordered="false" class="mb-4 shadow-sm">
+    <ACard title="标签 Tag" :bordered="false" class="shadow-sm">
       <ASpace wrap>
         <ATag>Default</ATag>
         <ATag color="success"> Success </ATag>
@@ -67,7 +63,7 @@ const tableData = [
     </ACard>
 
     <!-- 输入框 -->
-    <ACard title="输入框 Input" :bordered="false" class="mb-4 shadow-sm">
+    <ACard title="输入框 Input" :bordered="false" class="shadow-sm">
       <ARow :gutter="16">
         <ACol :span="8">
           <AInput v-model:value="inputVal" placeholder="基础输入框" />
@@ -91,7 +87,7 @@ const tableData = [
     </ACard>
 
     <!-- 选择器 -->
-    <ACard title="选择器 Select" :bordered="false" class="mb-4 shadow-sm">
+    <ACard title="选择器 Select" :bordered="false" class="shadow-sm">
       <ARow :gutter="16">
         <ACol :span="8">
           <ASelect
@@ -115,7 +111,7 @@ const tableData = [
     </ACard>
 
     <!-- 进度条 -->
-    <ACard title="进度条 Progress" :bordered="false" class="mb-4 shadow-sm">
+    <ACard title="进度条 Progress" :bordered="false" class="shadow-sm">
       <ARow :gutter="16">
         <ACol :span="12">
           <AProgress :percent="progressVal" />
@@ -128,7 +124,7 @@ const tableData = [
     </ACard>
 
     <!-- 表格 -->
-    <ACard title="表格 Table" :bordered="false" class="mb-4 shadow-sm">
+    <ACard title="表格 Table" :bordered="false" class="shadow-sm">
       <ATable
         :data-source="tableData"
         :columns="columns"
@@ -148,3 +144,19 @@ const tableData = [
     </ACard>
   </div>
 </template>
+
+<style scoped>
+.components-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 8px;
+}
+
+@media (max-width: 767px) {
+  .components-page {
+    padding: 0;
+  }
+}
+</style>

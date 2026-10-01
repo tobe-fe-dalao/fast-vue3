@@ -98,15 +98,12 @@ onMounted(loadForEdit);
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 880px">
+  <div class="admin-page" style="max-width: 880px">
     <!-- Page Header -->
     <div class="mb-4 flex items-center gap-3">
-      <a-button type="text" class="!p-1" @click="goBack">
+      <a-button aria-label="返回" type="text" class="!p-1" @click="goBack">
         <template #icon><IconArrowLeft /></template>
       </a-button>
-      <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-        {{ isEdit ? '编辑文章' : '新建文章' }}
-      </h4>
     </div>
 
     <a-card :bordered="false">
@@ -183,7 +180,7 @@ onMounted(loadForEdit);
             >
               保存
             </a-button>
-            <a-button @click="goBack">取消</a-button>
+            <a-button aria-label="返回" @click="goBack">取消</a-button>
           </a-space>
         </a-form-item>
       </a-form>

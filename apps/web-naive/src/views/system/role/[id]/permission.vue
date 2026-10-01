@@ -133,7 +133,7 @@ onMounted(fetchRole);
 </script>
 
 <template>
-  <div style="padding: 24px">
+  <div class="admin-page">
     <div
       style="
         display: flex;
@@ -142,11 +142,8 @@ onMounted(fetchRole);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
-        <NButton text @click="goBack">← 返回</NButton>
-        <h3 style="margin: 0; font-size: 18px; font-weight: 600">
-          角色权限配置
-        </h3>
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
+        <NButton aria-label="返回" text @click="goBack">← 返回</NButton>
       </div>
       <NButton type="primary" :loading="saving" @click="handleSave">
         保存配置

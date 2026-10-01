@@ -32,11 +32,7 @@ const depColumns = [
 </script>
 
 <template>
-  <div style="max-width: 800px; padding: 24px">
-    <h2 style="margin: 0 0 20px; font-size: 1.25rem; font-weight: 600">
-      关于项目
-    </h2>
-
+  <div class="admin-page" style="max-width: 800px">
     <t-card title="项目信息" :bordered="false" class="mb-4">
       <t-descriptions :column="2">
         <t-descriptions-item

@@ -80,11 +80,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div class="p-6">
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      错误日志
-    </h4>
-
+  <div class="admin-page">
     <Toast />
 
     <Card style="margin-bottom: 16px">

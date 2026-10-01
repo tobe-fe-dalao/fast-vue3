@@ -107,14 +107,13 @@ onMounted(fetchUser);
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="admin-page">
     <!-- Page Header -->
     <div class="mb-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a-button type="text" class="!p-1" @click="goBack">
+      <div class="mb-4 flex items-center gap-3">
+        <a-button aria-label="返回" type="text" class="!p-1" @click="goBack">
           <template #icon><IconArrowLeft /></template>
         </a-button>
-        <h4 style="margin: 0; font-size: 18px; font-weight: 600">用户详情</h4>
       </div>
       <a-space>
         <a-button @click="goEdit">

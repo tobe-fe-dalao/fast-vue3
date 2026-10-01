@@ -103,15 +103,13 @@ onMounted(loadForEdit);
 </script>
 
 <template>
-  <div style="max-width: 880px; padding: 24px">
+  <div class="admin-page" style="max-width: 880px">
     <!-- Page Header -->
     <div
+      class="mb-4"
       style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px"
     >
       <IxButton mode="text" @click="goBack">← 返回</IxButton>
-      <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-        {{ isEdit ? '编辑文章' : '新建文章' }}
-      </h4>
     </div>
 
     <IxCard shadow="never">
@@ -183,7 +181,7 @@ onMounted(loadForEdit);
           <IxButton mode="primary" :loading="submitting" @click="handleSubmit">
             保存
           </IxButton>
-          <IxButton style="margin-left: 8px" @click="goBack">取消</IxButton>
+          <IxButton style="margin-left: 8px" @click="goBack"> 取消 </IxButton>
         </IxFormItem>
       </IxForm>
     </IxCard>

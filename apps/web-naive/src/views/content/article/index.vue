@@ -212,11 +212,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div style="padding: 24px">
-    <h3 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      文章管理
-    </h3>
-
+  <div class="admin-page">
     <NCard style="margin-bottom: 16px">
       <div
         style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center"

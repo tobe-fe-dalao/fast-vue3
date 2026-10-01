@@ -126,15 +126,12 @@ onMounted(fetchRole);
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="admin-page">
     <div class="mb-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <AButton type="text" class="!p-1" @click="goBack">
+      <div class="mb-4 flex items-center gap-3">
+        <AButton aria-label="返回" type="text" class="!p-1" @click="goBack">
           <ArrowLeftOutlined class="text-lg" />
         </AButton>
-        <ATypographyTitle :level="4" style="margin: 0">
-          角色权限配置
-        </ATypographyTitle>
       </div>
       <AButton type="primary" :loading="saving" @click="handleSave">
         <SaveOutlined />保存配置

@@ -70,19 +70,18 @@ export const usePreferences = defineStore(
       { immediate: true },
     );
 
-    // Apply color modes
+    // Both modes share one CSS property, so apply them together.
     watch(
-      () => preferences.value.colorWeakMode,
-      (weak) => {
-        document.documentElement.style.filter = weak ? 'invert(80%)' : '';
+      () => [preferences.value.colorWeakMode, preferences.value.colorGrayMode],
+      ([weak, gray]) => {
+        document.documentElement.style.filter = [
+          weak && 'invert(80%)',
+          gray && 'grayscale(100%)',
+        ]
+          .filter(Boolean)
+          .join(' ');
       },
-    );
-
-    watch(
-      () => preferences.value.colorGrayMode,
-      (gray) => {
-        document.documentElement.style.filter = gray ? 'grayscale(100%)' : '';
-      },
+      { immediate: true },
     );
 
     return {

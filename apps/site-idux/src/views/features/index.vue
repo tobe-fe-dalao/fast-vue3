@@ -123,7 +123,7 @@ onMounted(async () => {
       </div>
     </section>
     <section class="page-cta">
-      <div class="page-cta-inner" v-reveal-zoom>
+      <div class="page-cta-inner" v-reveal:zoom>
         <h2 class="page-cta-title">开始使用 Fast Vue3</h2>
         <div class="site-btn-row" style="margin-top: 20px">
           <IxButton mode="primary" class="cta-btn">

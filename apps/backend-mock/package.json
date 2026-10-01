@@ -8,7 +8,8 @@
     "dev": "nitro dev --port 5320",
     "start": "nitro dev --port 5320",
     "build": "nitro build",
-    "test": "nitro build && vitest run"
+    "test": "nitro build && vitest run",
+    "type-check": "nitro prepare && tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
     "@fast-vue3/api": "workspace:*",

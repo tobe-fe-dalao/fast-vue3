@@ -129,11 +129,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div style="padding: 24px">
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      文章管理
-    </h4>
-
+  <div class="admin-page">
     <!-- Search -->
     <IxCard shadow="never" style="margin-bottom: 16px">
       <div

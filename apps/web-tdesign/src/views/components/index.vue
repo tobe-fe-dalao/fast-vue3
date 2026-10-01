@@ -41,11 +41,9 @@ function triggerLoading() {
 </script>
 
 <template>
-  <div class="p-6">
-    <h4 class="mb-6 text-lg font-semibold">组件展示 · TDesign Vue Next</h4>
-
+  <div class="components-page">
     <!-- 按钮 -->
-    <t-card title="按钮 Button" :bordered="false" class="mb-4 shadow-sm">
+    <t-card title="按钮 Button" :bordered="false" class="shadow-sm">
       <t-space wrap>
         <t-button theme="primary"> 主要按钮 </t-button>
         <t-button>默认按钮</t-button>
@@ -61,7 +59,7 @@ function triggerLoading() {
     </t-card>
 
     <!-- 标签 -->
-    <t-card title="标签 Tag" :bordered="false" class="mb-4 shadow-sm">
+    <t-card title="标签 Tag" :bordered="false" class="shadow-sm">
       <t-space wrap>
         <t-tag>Default</t-tag>
         <t-tag theme="primary"> Primary </t-tag>
@@ -72,7 +70,7 @@ function triggerLoading() {
     </t-card>
 
     <!-- 输入框 -->
-    <t-card title="输入框 Input" :bordered="false" class="mb-4 shadow-sm">
+    <t-card title="输入框 Input" :bordered="false" class="shadow-sm">
       <t-row :gutter="16">
         <t-col :span="8">
           <t-input v-model="inputVal" placeholder="基础输入框" />
@@ -92,7 +90,7 @@ function triggerLoading() {
     </t-card>
 
     <!-- 选择器 -->
-    <t-card title="选择器 Select" :bordered="false" class="mb-4 shadow-sm">
+    <t-card title="选择器 Select" :bordered="false" class="shadow-sm">
       <t-row :gutter="16">
         <t-col :span="8">
           <t-select
@@ -119,7 +117,7 @@ function triggerLoading() {
     </t-card>
 
     <!-- 进度条 -->
-    <t-card title="进度条 Progress" :bordered="false" class="mb-4 shadow-sm">
+    <t-card title="进度条 Progress" :bordered="false" class="shadow-sm">
       <t-row :gutter="16">
         <t-col :span="12">
           <t-progress :percentage="progressVal" />
@@ -132,7 +130,7 @@ function triggerLoading() {
     </t-card>
 
     <!-- 表格 -->
-    <t-card title="表格 Table" :bordered="false" class="mb-4 shadow-sm">
+    <t-card title="表格 Table" :bordered="false" class="shadow-sm">
       <t-table
         :data="tableData"
         :columns="columns"
@@ -159,3 +157,19 @@ function triggerLoading() {
     </t-card>
   </div>
 </template>
+
+<style scoped>
+.components-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 8px;
+}
+
+@media (max-width: 767px) {
+  .components-page {
+    padding: 0;
+  }
+}
+</style>

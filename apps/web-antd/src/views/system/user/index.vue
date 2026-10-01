@@ -191,11 +191,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4" style="margin: 0 0 16px">
-      用户管理
-    </ATypographyTitle>
-
+  <div class="admin-page">
     <!-- 搜索区域 -->
     <ACard :bordered="false" class="mb-4 shadow-sm">
       <ARow :gutter="16">

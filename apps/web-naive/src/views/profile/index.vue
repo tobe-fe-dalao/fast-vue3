@@ -14,8 +14,8 @@ function handleSave() {
 }
 </script>
 <template>
-  <div class="p-6">
-    <n-grid :cols="3" :x-gap="24">
+  <div class="admin-page">
+    <n-grid :cols="3" :x-gap="16">
       <n-gi>
         <n-card>
           <div class="flex flex-col items-center gap-4">

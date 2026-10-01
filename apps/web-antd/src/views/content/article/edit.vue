@@ -118,15 +118,12 @@ onMounted(loadForEdit);
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 880px">
+  <div class="admin-page" style="max-width: 880px">
     <!-- Page Header -->
     <div class="mb-4 flex items-center gap-3">
-      <AButton type="text" class="!p-1" @click="goBack">
+      <AButton aria-label="返回" type="text" class="!p-1" @click="goBack">
         <ArrowLeftOutlined class="text-lg" />
       </AButton>
-      <ATypographyTitle :level="4" style="margin: 0">
-        {{ isEdit ? '编辑文章' : '新建文章' }}
-      </ATypographyTitle>
     </div>
 
     <ACard :bordered="false" class="shadow-sm">
@@ -204,7 +201,7 @@ onMounted(loadForEdit);
             <AButton type="primary" :loading="submitting" @click="handleSubmit">
               保存
             </AButton>
-            <AButton @click="goBack">取消</AButton>
+            <AButton aria-label="返回" @click="goBack">取消</AButton>
           </ASpace>
         </AFormItem>
       </AForm>

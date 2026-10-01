@@ -3,10 +3,11 @@ import type {
   CreateProjectParams,
   CreateTaskParams,
   CreateTenantParams,
+  PageQuery,
   SaveDepartmentParams,
 } from '@fast-vue3/api';
 
-import { createStaticEnterpriseApi } from '@fast-vue3/api';
+import { createStaticEnterpriseApi, paginate } from '@fast-vue3/api';
 
 import { MOCK_USERS } from '~/utils/mock-data';
 import { useResponseError, useResponseSuccess } from '~/utils/response';
@@ -71,7 +72,14 @@ export default defineEventHandler(async (event) => {
       if (method === 'DELETE' && idText && !action)
         return ok(await enterprise.department.delete(id));
     }
+    const query = getQuery(event) as PageQuery;
     if (domain === 'projects') {
+      if (method === 'GET' && idText === 'page')
+        return ok(await enterprise.project.page(query));
+      if (method === 'GET' && action === 'activities' && detail === 'page')
+        return ok(await enterprise.project.activitiesPage(id, query));
+      if (method === 'GET' && action === 'tasks' && detail === 'page')
+        return ok(await enterprise.task.page(id, query));
       if (method === 'GET' && !idText)
         return ok(await enterprise.project.list());
       if (method === 'POST' && !idText) {
@@ -109,6 +117,10 @@ export default defineEventHandler(async (event) => {
         return ok(await enterprise.project.update(id, await readBody(event)));
     }
     if (domain === 'tasks' && idText) {
+      if (method === 'GET' && action === 'comments' && detail === 'page')
+        return ok(await enterprise.task.commentsPage(id, query));
+      if (method === 'GET' && action === 'activities' && detail === 'page')
+        return ok(await enterprise.task.activitiesPage(id, query));
       if (method === 'GET' && !action) return ok(await enterprise.task.get(id));
       if (method === 'PUT' && !action)
         return ok(await enterprise.task.update(id, await readBody(event)));
@@ -122,6 +134,8 @@ export default defineEventHandler(async (event) => {
         return ok(await enterprise.task.activities(id));
     }
     if (domain === 'approvals') {
+      if (method === 'GET' && idText === 'page')
+        return ok(await enterprise.approval.page(query));
       if (method === 'GET' && !idText)
         return ok(await enterprise.approval.list());
       if (method === 'POST' && !idText)
@@ -158,6 +172,8 @@ export default defineEventHandler(async (event) => {
       const own = allNotifications.filter(
         (item) => item.receiverId === receiverId,
       );
+      if (method === 'GET' && idText === 'page')
+        return ok(paginate(own, query));
       if (method === 'GET' && !idText) return ok(own);
       if (method === 'GET' && idText === 'unread-count')
         return ok({ count: own.filter((item) => !item.read).length });

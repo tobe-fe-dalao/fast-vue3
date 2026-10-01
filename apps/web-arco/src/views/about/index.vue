@@ -32,11 +32,7 @@ const depColumns = [
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 800px">
-    <a-typography-title :heading="4" :style="{ marginBottom: '24px' }">
-      关于项目
-    </a-typography-title>
-
+  <div class="admin-page" style="max-width: 800px">
     <a-card title="项目信息" :bordered="false" class="mb-4 shadow-sm">
       <a-descriptions :column="2">
         <a-descriptions-item label="项目名称">

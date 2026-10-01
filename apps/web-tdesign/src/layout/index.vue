@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
-import { FullscreenIcon, NotificationIcon } from 'tdesign-icons-vue-next';
+import { storeToRefs } from 'pinia';
+import {
+  FullscreenIcon,
+  MoonIcon,
+  NotificationIcon,
+  SunnyIcon,
+} from 'tdesign-icons-vue-next';
 import { MessagePlugin } from 'tdesign-vue-next';
 
 const router = useRouter();
@@ -9,7 +16,8 @@ const route = useRoute();
 const userStore = useUserStore();
 const collapsed = ref(false);
 const isFullscreen = ref(false);
-const isDark = ref(false);
+const prefs = usePreferences();
+const { isDark } = storeToRefs(prefs);
 const notifications = [
   { id: 1, title: '系统更新 v2.1.0 已发布', time: '10 分钟前' },
   { id: 2, title: '您有 3 条未读消息', time: '1 小时前' },
@@ -27,8 +35,7 @@ function toggleFullscreen() {
 }
 
 function toggleTheme() {
-  isDark.value = !isDark.value;
-  document.documentElement.classList.toggle('dark', isDark.value);
+  prefs.setThemeMode(isDark.value ? 'light' : 'dark');
 }
 
 const ROUTE_TITLES: Record<string, string> = {
@@ -280,9 +287,15 @@ async function handleDropdown(item: {
             :content="isDark ? '亮色模式' : '暗色模式'"
             placement="bottom"
           >
-            <div class="header-icon-btn" @click="toggleTheme">
-              <!-- <SunIcon class="header-icon" /> -->
-            </div>
+            <button
+              type="button"
+              class="header-icon-btn"
+              :aria-label="isDark ? '亮色模式' : '暗色模式'"
+              @click="toggleTheme"
+            >
+              <MoonIcon v-if="isDark" class="header-icon" />
+              <SunnyIcon v-else class="header-icon" />
+            </button>
           </t-tooltip>
         </div>
         <t-dropdown :options="userMenuOptions" @click="handleDropdown">
@@ -355,7 +368,10 @@ async function handleDropdown(item: {
   justify-content: center;
   width: 36px;
   height: 36px;
+  padding: 0;
   cursor: pointer;
+  background: transparent;
+  border: 0;
   border-radius: 6px;
   transition: background 0.2s;
 }

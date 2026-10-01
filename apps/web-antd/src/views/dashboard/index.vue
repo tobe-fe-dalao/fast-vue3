@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { useChartResize } from '@fast-vue3/layout';
+import * as echarts from '@fast-vue3/layout/charts';
+
 import { api } from '@/api';
-import * as echarts from 'echarts';
 
 const lineChartRef = ref<HTMLElement>();
 const pieChartRef = ref<HTMLElement>();
@@ -9,14 +11,6 @@ let lineChart: echarts.ECharts | null = null;
 let pieChart: echarts.ECharts | null = null;
 let barChart: echarts.ECharts | null = null;
 
-const stats = ref<{ action: string; id: number; time: string; user: string }[]>(
-  [],
-);
-const trendDays = ref<string[]>([]);
-const trendVisits = ref<number[]>([]);
-const trendUsers = ref<number[]>([]);
-const roleDistribution = ref<{ name: string; value: number }[]>([]);
-const topPages = ref<{ path: string; title: string; visits: number }[]>([]);
 const statCards = ref<
   { color: string; suffix: string; title: string; value: number }[]
 >([
@@ -26,14 +20,18 @@ const statCards = ref<
   { title: '系统正常率', value: 0, suffix: '%', color: '#fa8c16' },
 ]);
 
+const loadError = ref('');
+let disposed = false;
+
 onMounted(async () => {
-  const data = await api.analytics.dashboardStats();
-  stats.value = data.recentActivities;
-  trendDays.value = data.weeklyTrend.days;
-  trendVisits.value = data.weeklyTrend.visits;
-  trendUsers.value = data.weeklyTrend.users;
-  roleDistribution.value = data.roleDistribution;
-  topPages.value = data.topPages;
+  let data;
+  try {
+    data = await api.analytics.dashboardStats();
+  } catch {
+    if (!disposed) loadError.value = '仪表盘加载失败，请稍后重试';
+    return;
+  }
+  if (disposed) return;
   statCards.value = [
     {
       title: '今日访问',
@@ -66,21 +64,21 @@ onMounted(async () => {
     lineChart.setOption({
       tooltip: { trigger: 'axis' },
       legend: { data: ['访问量', '用户数'] },
-      xAxis: { type: 'category', data: trendDays.value },
+      xAxis: { type: 'category', data: data.weeklyTrend.days },
       yAxis: { type: 'value' },
       series: [
         {
           name: '访问量',
           type: 'line',
           smooth: true,
-          data: trendVisits.value,
+          data: data.weeklyTrend.visits,
           areaStyle: { opacity: 0.1 },
         },
         {
           name: '用户数',
           type: 'line',
           smooth: true,
-          data: trendUsers.value,
+          data: data.weeklyTrend.users,
           areaStyle: { opacity: 0.1 },
         },
       ],
@@ -98,7 +96,7 @@ onMounted(async () => {
           avoidLabelOverlap: false,
           label: { show: false },
           emphasis: { label: { show: true, fontSize: 14, fontWeight: 'bold' } },
-          data: roleDistribution.value,
+          data: data.roleDistribution,
         },
       ],
     });
@@ -109,13 +107,13 @@ onMounted(async () => {
       tooltip: { trigger: 'axis' },
       xAxis: {
         type: 'category',
-        data: topPages.value.map((p) => p.title),
+        data: data.topPages.map((p) => p.title),
       },
       yAxis: { type: 'value' },
       series: [
         {
           type: 'bar',
-          data: topPages.value.map((p) => p.visits),
+          data: data.topPages.map((p) => p.visits),
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: '#1890ff' },
@@ -126,17 +124,16 @@ onMounted(async () => {
       ],
     });
   }
-  window.addEventListener('resize', handleResize);
 });
 
-function handleResize() {
+useChartResize([lineChartRef, pieChartRef, barChartRef], () => {
   lineChart?.resize();
   pieChart?.resize();
   barChart?.resize();
-}
+});
 
 onUnmounted(() => {
-  window.removeEventListener('resize', handleResize);
+  disposed = true;
   lineChart?.dispose();
   pieChart?.dispose();
   barChart?.dispose();
@@ -144,7 +141,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="admin-page">
+    <p v-if="loadError" role="alert">{{ loadError }}</p>
     <ARow :gutter="16" class="mb-4">
       <ACol v-for="card in statCards" :key="card.title" :span="6">
         <ACard :bordered="false" class="shadow-sm">

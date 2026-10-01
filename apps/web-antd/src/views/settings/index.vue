@@ -70,11 +70,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 960px">
-    <ATypographyTitle :level="4" style="margin: 0 0 16px">
-      系统设置
-    </ATypographyTitle>
-
+  <div class="admin-page" style="max-width: 960px">
     <!-- 基础设置 -->
     <ACard title="基础设置" :bordered="false" class="mb-4 shadow-sm">
       <AForm :model="form" layout="vertical">

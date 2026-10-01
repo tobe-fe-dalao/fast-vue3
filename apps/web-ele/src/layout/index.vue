@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
 import {
@@ -19,13 +20,15 @@ import {
   User,
 } from '@element-plus/icons-vue';
 import { ElMessage } from 'element-plus';
+import { storeToRefs } from 'pinia';
 
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
 const collapsed = ref(false);
 const isFullscreen = ref(false);
-const isDark = ref(false);
+const prefs = usePreferences();
+const { isDark } = storeToRefs(prefs);
 const notifications = [
   { id: 1, title: '系统更新 v2.1.0 已发布', time: '10 分钟前' },
   { id: 2, title: '您有 3 条未读消息', time: '1 小时前' },
@@ -43,8 +46,7 @@ function toggleFullscreen() {
 }
 
 function toggleTheme() {
-  isDark.value = !isDark.value;
-  document.documentElement.classList.toggle('dark', isDark.value);
+  prefs.setThemeMode(isDark.value ? 'light' : 'dark');
 }
 
 const ROUTE_TITLES: Record<string, string> = {

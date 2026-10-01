@@ -142,7 +142,7 @@ onMounted(async () => {
       </div>
     </section>
     <section class="page-cta">
-      <div class="page-cta-inner" v-reveal-zoom>
+      <div class="page-cta-inner" v-reveal:zoom>
         <h2 class="page-cta-title">立即体验</h2>
         <p class="page-cta-desc">只需一条命令，即可启动完整后台管理系统</p>
         <div class="site-btn-row" style="margin-top: 24px">

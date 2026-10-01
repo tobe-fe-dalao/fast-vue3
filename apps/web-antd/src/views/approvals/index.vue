@@ -139,9 +139,8 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="p-6">
-    <div class="flex-between mb-4">
-      <ATypographyTitle :level="4" style="margin: 0">审批</ATypographyTitle>
+  <div class="admin-page">
+    <div class="admin-page-actions">
       <AButton
         v-if="can('approval:create')"
         type="primary"

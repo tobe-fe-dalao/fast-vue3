@@ -21,9 +21,8 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4">操作审计</ATypographyTitle
-    ><ACard :bordered="false">
+  <div class="admin-page">
+    <ACard :bordered="false">
       <ATable
         :data-source="items"
         :loading="loading"

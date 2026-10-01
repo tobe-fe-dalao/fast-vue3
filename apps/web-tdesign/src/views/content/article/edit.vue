@@ -102,17 +102,21 @@ onMounted(loadForEdit);
 </script>
 
 <template>
-  <div style="max-width: 880px">
+  <div class="admin-page" style="max-width: 880px">
     <!-- Page Header -->
     <div
+      class="mb-4"
       style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px"
     >
-      <t-button theme="default" variant="text" shape="square" @click="goBack">
+      <t-button
+        aria-label="返回"
+        theme="default"
+        variant="text"
+        shape="square"
+        @click="goBack"
+      >
         <ChevronLeftIcon />
       </t-button>
-      <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-        {{ isEdit ? '编辑文章' : '新建文章' }}
-      </h4>
     </div>
 
     <t-card :bordered="false">
@@ -181,7 +185,7 @@ onMounted(loadForEdit);
             >
               保存
             </t-button>
-            <t-button theme="default" @click="goBack">取消</t-button>
+            <t-button theme="default" @click="goBack"> 取消 </t-button>
           </t-space>
         </t-form-item>
       </t-form>

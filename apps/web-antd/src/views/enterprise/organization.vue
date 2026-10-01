@@ -40,8 +40,7 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4">组织信息</ATypographyTitle>
+  <div class="admin-page">
     <ACard v-if="organization" :bordered="false">
       <AForm layout="vertical" style="max-width: 480px">
         <AFormItem label="组织编码">

@@ -31,7 +31,7 @@ function triggerLoading() {
 }
 </script>
 <template>
-  <div class="p-4 flex flex-col gap-4">
+  <div class="components-page">
     <Card>
       <template #title> 按钮 Button </template>
       <template #content>
@@ -107,3 +107,19 @@ function triggerLoading() {
     <Toast />
   </div>
 </template>
+
+<style scoped>
+.components-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 8px;
+}
+
+@media (max-width: 767px) {
+  .components-page {
+    padding: 0;
+  }
+}
+</style>

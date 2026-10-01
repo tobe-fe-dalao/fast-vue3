@@ -102,10 +102,9 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="p-6">
-    <div class="flex-between mb-4">
-      <ATypographyTitle :level="4" style="margin: 0">项目</ATypographyTitle
-      ><AButton type="primary" @click="openModal()">新建项目</AButton>
+  <div class="admin-page">
+    <div class="admin-page-actions">
+      <AButton type="primary" @click="openModal()">新建项目</AButton>
     </div>
     <ACard :bordered="false">
       <ATable :data-source="projects" :loading="loading" row-key="id">

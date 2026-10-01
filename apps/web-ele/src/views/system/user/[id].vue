@@ -94,7 +94,7 @@ onMounted(fetchUser);
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="admin-page">
     <!-- Page Header -->
     <div
       style="
@@ -104,9 +104,8 @@ onMounted(fetchUser);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
-        <el-button text :icon="ArrowLeft" @click="goBack">返回</el-button>
-        <h4 style="margin: 0; font-size: 18px; font-weight: 600">用户详情</h4>
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
+        <el-button text :icon="ArrowLeft" @click="goBack"> 返回 </el-button>
       </div>
       <div style="display: flex; gap: 8px">
         <el-button :icon="Edit" @click="goEdit">编辑</el-button>

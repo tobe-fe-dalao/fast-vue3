@@ -142,16 +142,16 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div style="padding: 24px">
+  <div class="admin-page">
     <div
+      class="admin-page-actions"
       style="
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
         margin-bottom: 16px;
       "
     >
-      <h4 style="margin: 0; font-size: 18px; font-weight: 600">菜单管理</h4>
       <IxButton mode="primary" @click="openDialog()">+ 新增菜单</IxButton>
     </div>
 

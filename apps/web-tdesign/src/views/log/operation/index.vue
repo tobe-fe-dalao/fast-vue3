@@ -88,11 +88,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div>
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      操作日志
-    </h4>
-
+  <div class="admin-page">
     <t-card style="margin-bottom: 16px">
       <t-row :gutter="16">
         <t-col :span="6">

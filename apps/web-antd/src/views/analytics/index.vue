@@ -41,9 +41,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4" class="mb-6">数据分析</ATypographyTitle>
-
+  <div class="admin-page">
     <ARow :gutter="16" class="mb-4">
       <ACol v-for="card in stats" :key="card.title" :span="6">
         <ACard :bordered="false" class="shadow-sm">

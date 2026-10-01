@@ -132,11 +132,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div class="p-6">
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      角色管理
-    </h4>
-
+  <div class="admin-page">
     <a-card :bordered="false" class="mb-4">
       <a-row :gutter="16">
         <a-col :span="8">

@@ -130,7 +130,7 @@ onMounted(fetchRole);
 </script>
 
 <template>
-  <div>
+  <div class="admin-page">
     <div
       style="
         display: flex;
@@ -139,13 +139,16 @@ onMounted(fetchRole);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
-        <t-button theme="default" variant="text" shape="square" @click="goBack">
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
+        <t-button
+          aria-label="返回"
+          theme="default"
+          variant="text"
+          shape="square"
+          @click="goBack"
+        >
           <ChevronLeftIcon />
         </t-button>
-        <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-          角色权限配置
-        </h4>
       </div>
       <t-button theme="primary" :loading="saving" @click="handleSave">
         保存配置

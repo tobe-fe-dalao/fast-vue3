@@ -12,6 +12,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "catalog:",
     "@fast-vue3/api": "workspace:*",
+    "@fast-vue3/layout": "workspace:*",
     "@fast-vue3/request": "workspace:*",
     "@fast-vue3/styles": "workspace:*",
     "@fast-vue3/utils": "workspace:*",

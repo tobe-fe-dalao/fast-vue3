@@ -129,7 +129,7 @@ onMounted(fetchRole);
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="admin-page">
     <div
       style="
         display: flex;
@@ -138,11 +138,8 @@ onMounted(fetchRole);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
-        <el-button text :icon="ArrowLeft" @click="goBack">返回</el-button>
-        <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-          角色权限配置
-        </h4>
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
+        <el-button text :icon="ArrowLeft" @click="goBack"> 返回 </el-button>
       </div>
       <el-button
         type="primary"

@@ -11,6 +11,8 @@ import type {
   DepartmentMember,
   NotificationItem,
   OrganizationItem,
+  PageQuery,
+  PageResult,
   ProjectActivity,
   ProjectItem,
   SaveDepartmentParams,
@@ -59,9 +61,16 @@ export function createEnterpriseApi(http: RequestClient) {
     },
     project: {
       list: () => http.get<ProjectItem[]>({ url: '/projects' }),
+      page: (params: PageQuery = {}) =>
+        http.get<PageResult<ProjectItem>>({ params, url: '/projects/page' }),
       get: (id: number) => http.get<ProjectItem>({ url: `/projects/${id}` }),
       activities: (id: number) =>
         http.get<ProjectActivity[]>({ url: `/projects/${id}/activities` }),
+      activitiesPage: (id: number, params: PageQuery = {}) =>
+        http.get<PageResult<ProjectActivity>>({
+          params,
+          url: `/projects/${id}/activities/page`,
+        }),
       create: (data: CreateProjectParams, key: string) =>
         http.post<ProjectItem>({
           data,
@@ -85,6 +94,11 @@ export function createEnterpriseApi(http: RequestClient) {
     task: {
       list: (projectId: number) =>
         http.get<TaskItem[]>({ url: `/projects/${projectId}/tasks` }),
+      page: (projectId: number, params: PageQuery = {}) =>
+        http.get<PageResult<TaskItem>>({
+          params,
+          url: `/projects/${projectId}/tasks/page`,
+        }),
       get: (id: number) => http.get<TaskItem>({ url: `/tasks/${id}` }),
       create: (projectId: number, data: CreateTaskParams) =>
         http.post<TaskItem>({ data, url: `/projects/${projectId}/tasks` }),
@@ -97,6 +111,11 @@ export function createEnterpriseApi(http: RequestClient) {
       ) => http.put<TaskItem>({ data, url: `/tasks/${id}` }),
       comments: (id: number) =>
         http.get<TaskComment[]>({ url: `/tasks/${id}/comments` }),
+      commentsPage: (id: number, params: PageQuery = {}) =>
+        http.get<PageResult<TaskComment>>({
+          params,
+          url: `/tasks/${id}/comments/page`,
+        }),
       comment: (id: number, content: string) =>
         http.post<TaskComment>({
           data: { content },
@@ -104,9 +123,16 @@ export function createEnterpriseApi(http: RequestClient) {
         }),
       activities: (id: number) =>
         http.get<TaskActivity[]>({ url: `/tasks/${id}/activities` }),
+      activitiesPage: (id: number, params: PageQuery = {}) =>
+        http.get<PageResult<TaskActivity>>({
+          params,
+          url: `/tasks/${id}/activities/page`,
+        }),
     },
     approval: {
       list: () => http.get<ApprovalItem[]>({ url: '/approvals' }),
+      page: (params: PageQuery = {}) =>
+        http.get<PageResult<ApprovalItem>>({ params, url: '/approvals/page' }),
       create: (data: CreateApprovalParams) =>
         http.post<ApprovalItem>({ data, url: '/approvals' }),
       submit: (id: number, key: string) =>
@@ -129,6 +155,11 @@ export function createEnterpriseApi(http: RequestClient) {
     },
     notification: {
       list: () => http.get<NotificationItem[]>({ url: '/notifications' }),
+      page: (params: PageQuery = {}) =>
+        http.get<PageResult<NotificationItem>>({
+          params,
+          url: '/notifications/page',
+        }),
       unreadCount: () =>
         http.get<{ count: number }>({ url: '/notifications/unread-count' }),
       read: (id: number) =>

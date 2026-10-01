@@ -22,11 +22,7 @@ onMounted(async () => {
 
 <template>
   <p v-if="loadError" role="alert">{{ loadError }}</p>
-  <div class="p-6">
-    <h2 style="margin: 0 0 24px; font-size: 1.25rem; font-weight: 600">
-      数据分析
-    </h2>
-
+  <div class="admin-page">
     <el-row :gutter="16" class="mb-4">
       <el-col v-for="card in stats" :key="card.title" :span="6">
         <el-card shadow="never">

@@ -163,4 +163,31 @@ describe('createApi', () => {
     expect(put).toHaveBeenCalledWith({ url: '/departments/4/members/9' });
     expect(put).toHaveBeenCalledWith({ url: '/notifications/read-all' });
   });
+  it('keeps bounded pagination paths aligned with the Java server', async () => {
+    await api.project.page({ page: 2, pageSize: 10 });
+    await api.task.page(7, { pageSize: 5 });
+    await api.approval.page();
+    await api.notification.page();
+    await api.portal.blogCommentsPage(12);
+    expect(get).toHaveBeenNthCalledWith(1, {
+      params: { page: 2, pageSize: 10 },
+      url: '/projects/page',
+    });
+    expect(get).toHaveBeenNthCalledWith(2, {
+      params: { pageSize: 5 },
+      url: '/projects/7/tasks/page',
+    });
+    expect(get).toHaveBeenNthCalledWith(3, {
+      params: {},
+      url: '/approvals/page',
+    });
+    expect(get).toHaveBeenNthCalledWith(4, {
+      params: {},
+      url: '/notifications/page',
+    });
+    expect(get).toHaveBeenNthCalledWith(5, {
+      params: {},
+      url: '/public/blog/12/comments/page',
+    });
+  });
 });

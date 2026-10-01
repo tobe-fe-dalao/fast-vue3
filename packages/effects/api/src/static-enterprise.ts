@@ -12,6 +12,7 @@ import type {
 } from './types';
 
 import { createEnterpriseApi } from './modules/enterprise';
+import { paginate } from './pagination';
 
 type EnterpriseApi = ReturnType<typeof createEnterpriseApi>;
 
@@ -257,6 +258,14 @@ export function createStaticEnterpriseApi(): EnterpriseApi {
       },
     },
     project: {
+      page: (query = {}) => done(paginate(projects, query)),
+      activitiesPage: (id, query = {}) =>
+        done(
+          paginate(
+            projectActivities.filter((item) => item.projectId === id),
+            query,
+          ),
+        ),
       list: () => done(projects),
       get: (id) => done(project(id)),
       activities: (id) =>
@@ -330,6 +339,27 @@ export function createStaticEnterpriseApi(): EnterpriseApi {
       },
     },
     task: {
+      page: (projectId, query = {}) =>
+        done(
+          paginate(
+            tasks.filter((item) => item.projectId === projectId),
+            query,
+          ),
+        ),
+      commentsPage: (id, query = {}) =>
+        done(
+          paginate(
+            taskComments.filter((item) => item.taskId === id),
+            query,
+          ),
+        ),
+      activitiesPage: (id, query = {}) =>
+        done(
+          paginate(
+            taskActivities.filter((item) => item.taskId === id),
+            query,
+          ),
+        ),
       list: (projectId) =>
         done(tasks.filter((item) => item.projectId === projectId)),
       get: (id) => done(task(id)),
@@ -403,6 +433,7 @@ export function createStaticEnterpriseApi(): EnterpriseApi {
         done(taskActivities.filter((item) => item.taskId === id)),
     },
     approval: {
+      page: (query = {}) => done(paginate(approvals, query)),
       list: () => done(approvals),
       create: (data) => {
         const item: ApprovalItem = {
@@ -487,6 +518,7 @@ export function createStaticEnterpriseApi(): EnterpriseApi {
       },
     },
     notification: {
+      page: (query = {}) => done(paginate(notifications, query)),
       list: () => done(notifications),
       unreadCount: () =>
         done({ count: notifications.filter((item) => !item.read).length }),

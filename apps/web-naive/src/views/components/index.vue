@@ -34,11 +34,9 @@ const tableData = [
 </script>
 
 <template>
-  <div class="p-6">
-    <n-h3 prefix="bar" class="mb-6"> 组件展示 · Naive UI </n-h3>
-
+  <div class="components-page">
     <!-- 按钮 -->
-    <n-card title="按钮 Button" class="mb-4">
+    <n-card title="按钮 Button">
       <n-space wrap>
         <n-button type="primary"> 主要按钮 </n-button>
         <n-button type="info"> 信息按钮 </n-button>
@@ -55,7 +53,7 @@ const tableData = [
     </n-card>
 
     <!-- 标签 -->
-    <n-card title="标签 Tag" class="mb-4">
+    <n-card title="标签 Tag">
       <n-space wrap>
         <n-tag>Default</n-tag>
         <n-tag type="success"> Success </n-tag>
@@ -71,7 +69,7 @@ const tableData = [
     </n-card>
 
     <!-- 输入框 -->
-    <n-card title="输入框 Input" class="mb-4">
+    <n-card title="输入框 Input">
       <n-grid :cols="3" :x-gap="16">
         <n-gi>
           <n-input v-model:value="inputVal" placeholder="基础输入框" />
@@ -111,7 +109,7 @@ const tableData = [
     </n-card>
 
     <!-- 选择器 -->
-    <n-card title="选择器 Select + DatePicker + Switch" class="mb-4">
+    <n-card title="选择器 Select + DatePicker + Switch">
       <n-grid :cols="3" :x-gap="16">
         <n-gi>
           <n-select
@@ -133,7 +131,7 @@ const tableData = [
     </n-card>
 
     <!-- 进度条 -->
-    <n-card title="进度条 Progress + Slider" class="mb-4">
+    <n-card title="进度条 Progress + Slider">
       <n-grid :cols="2" :x-gap="16">
         <n-gi>
           <n-progress
@@ -152,7 +150,7 @@ const tableData = [
     </n-card>
 
     <!-- 表格 -->
-    <n-card title="表格 Table" class="mb-4">
+    <n-card title="表格 Table">
       <n-data-table
         :columns="columns"
         :data="tableData"
@@ -173,3 +171,19 @@ const tableData = [
     </n-card>
   </div>
 </template>
+
+<style scoped>
+.components-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 8px;
+}
+
+@media (max-width: 767px) {
+  .components-page {
+    padding: 0;
+  }
+}
+</style>

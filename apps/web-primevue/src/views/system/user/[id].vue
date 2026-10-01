@@ -125,7 +125,7 @@ onMounted(fetchUser);
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="admin-page">
     <Toast />
 
     <!-- Page Header -->
@@ -137,7 +137,7 @@ onMounted(fetchUser);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
         <Button
           icon="pi pi-arrow-left"
           text
@@ -145,7 +145,6 @@ onMounted(fetchUser);
           aria-label="返回"
           @click="goBack"
         />
-        <h4 style="margin: 0; font-size: 18px; font-weight: 600">用户详情</h4>
       </div>
       <div style="display: flex; gap: 8px">
         <Button label="编辑" icon="pi pi-pencil" @click="goEdit" />

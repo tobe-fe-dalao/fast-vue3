@@ -34,11 +34,7 @@ const depColumns = [
 </script>
 
 <template>
-  <div style="max-width: 800px; padding: 24px">
-    <h2 style="margin: 0 0 20px; font-size: 1.25rem; font-weight: 600">
-      关于项目
-    </h2>
-
+  <div class="admin-page" style="max-width: 800px">
     <IxCard title="项目信息" class="mb-4">
       <div class="info-list">
         <div v-for="item in info" :key="item.label" class="info-row">

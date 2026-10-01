@@ -180,11 +180,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div class="p-6">
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      用户管理
-    </h4>
-
+  <div class="admin-page">
     <!-- 搜索区域 -->
     <el-card shadow="never" class="mb-4">
       <el-row :gutter="16">

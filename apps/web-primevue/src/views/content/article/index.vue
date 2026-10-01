@@ -148,13 +148,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="admin-page">
     <Toast />
     <ConfirmDialog />
-
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      文章管理
-    </h4>
 
     <!-- Search -->
     <Card style="margin-bottom: 16px">

@@ -39,11 +39,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div style="max-width: 720px; padding: 24px">
-    <h2 style="margin-bottom: 20px; font-size: 1.25rem; font-weight: 600">
-      系统设置
-    </h2>
-
+  <div class="admin-page" style="max-width: 720px">
     <IxCard title="基础设置" class="mb-4">
       <IxFormItem label="站点名称" label-col="100px">
         <IxInput v-model:value="form.siteName" />

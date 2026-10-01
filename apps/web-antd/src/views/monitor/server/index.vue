@@ -28,11 +28,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4" style="margin: 0 0 16px">
-      服务器监控
-    </ATypographyTitle>
-
+  <div class="admin-page">
     <ASpin :spinning="loading">
       <ARow :gutter="[16, 16]">
         <!-- CPU -->

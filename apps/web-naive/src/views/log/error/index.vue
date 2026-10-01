@@ -134,10 +134,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div style="padding: 24px">
-    <h3 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      错误日志
-    </h3>
+  <div class="admin-page">
     <NCard style="margin-bottom: 16px">
       <NSelect
         v-model:value="statusFilter"

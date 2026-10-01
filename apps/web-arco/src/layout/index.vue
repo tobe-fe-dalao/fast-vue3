@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
 import { Message } from '@arco-design/web-vue';
@@ -19,13 +20,15 @@ import {
   IconSun,
   IconUser,
 } from '@arco-design/web-vue/es/icon';
+import { storeToRefs } from 'pinia';
 
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
 const collapsed = ref(false);
 const isFullscreen = ref(false);
-const isDark = ref(false);
+const prefs = usePreferences();
+const { isDark } = storeToRefs(prefs);
 const openKeys = ref<string[]>([]);
 const notifications = [
   { id: 1, title: '系统更新 v2.1.0 已发布', time: '10 分钟前' },
@@ -44,8 +47,7 @@ function toggleFullscreen() {
 }
 
 function toggleTheme() {
-  isDark.value = !isDark.value;
-  document.documentElement.classList.toggle('dark', isDark.value);
+  prefs.setThemeMode(isDark.value ? 'light' : 'dark');
 }
 
 // Auto-open submenu based on current route

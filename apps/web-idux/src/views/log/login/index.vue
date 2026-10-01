@@ -67,11 +67,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div style="padding: 24px">
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      登录日志
-    </h4>
-
+  <div class="admin-page">
     <IxCard shadow="never" style="margin-bottom: 16px">
       <div style="display: flex; gap: 12px; align-items: center">
         <IxInput

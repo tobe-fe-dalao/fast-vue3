@@ -31,11 +31,7 @@ const dependencies = [
 </script>
 
 <template>
-  <div style="max-width: 800px; padding: 24px">
-    <h2 style="margin: 0 0 20px; font-size: 1.25rem; font-weight: 600">
-      关于项目
-    </h2>
-
+  <div class="admin-page" style="max-width: 800px">
     <Card class="mb-4">
       <template #title>项目信息</template>
       <template #content>

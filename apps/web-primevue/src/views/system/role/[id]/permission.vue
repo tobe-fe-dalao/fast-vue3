@@ -156,7 +156,7 @@ onMounted(fetchRole);
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="admin-page">
     <Toast />
 
     <div
@@ -167,7 +167,7 @@ onMounted(fetchRole);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
         <Button
           icon="pi pi-arrow-left"
           text
@@ -175,9 +175,6 @@ onMounted(fetchRole);
           aria-label="返回"
           @click="goBack"
         />
-        <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-          角色权限配置
-        </h4>
       </div>
       <Button
         label="保存配置"

@@ -28,11 +28,9 @@ const tableData: TableData[] = [
 </script>
 
 <template>
-  <div class="p-6">
-    <h4 class="mb-6 text-lg font-semibold">组件展示 · Arco Design Vue</h4>
-
+  <div class="components-page">
     <!-- 按钮 -->
-    <a-card title="按钮 Button" :bordered="false" class="mb-4 shadow-sm">
+    <a-card title="按钮 Button" :bordered="false" class="shadow-sm">
       <a-space wrap>
         <a-button type="primary">主要按钮</a-button>
         <a-button>默认按钮</a-button>
@@ -48,7 +46,7 @@ const tableData: TableData[] = [
     </a-card>
 
     <!-- 标签 -->
-    <a-card title="标签 Tag" :bordered="false" class="mb-4 shadow-sm">
+    <a-card title="标签 Tag" :bordered="false" class="shadow-sm">
       <a-space wrap>
         <a-tag>Default</a-tag>
         <a-tag color="green">Green</a-tag>
@@ -64,7 +62,7 @@ const tableData: TableData[] = [
     </a-card>
 
     <!-- 输入框 -->
-    <a-card title="输入框 Input" :bordered="false" class="mb-4 shadow-sm">
+    <a-card title="输入框 Input" :bordered="false" class="shadow-sm">
       <a-row :gutter="16">
         <a-col :span="8">
           <a-input v-model="inputVal" placeholder="基础输入框" />
@@ -86,7 +84,7 @@ const tableData: TableData[] = [
     <a-card
       title="选择器 Select + DatePicker + Switch"
       :bordered="false"
-      class="mb-4 shadow-sm"
+      class="shadow-sm"
     >
       <a-row :gutter="16">
         <a-col :span="8">
@@ -110,7 +108,7 @@ const tableData: TableData[] = [
     <a-card
       title="进度条 Progress + Slider"
       :bordered="false"
-      class="mb-4 shadow-sm"
+      class="shadow-sm"
     >
       <a-row :gutter="16">
         <a-col :span="12">
@@ -128,7 +126,7 @@ const tableData: TableData[] = [
     </a-card>
 
     <!-- 表格 -->
-    <a-card title="表格 Table" :bordered="false" class="mb-4 shadow-sm">
+    <a-card title="表格 Table" :bordered="false" class="shadow-sm">
       <a-table
         :data="tableData"
         :columns="columns"
@@ -147,3 +145,19 @@ const tableData: TableData[] = [
     </a-card>
   </div>
 </template>
+
+<style scoped>
+.components-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 8px;
+}
+
+@media (max-width: 767px) {
+  .components-page {
+    padding: 0;
+  }
+}
+</style>

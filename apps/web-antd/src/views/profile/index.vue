@@ -16,8 +16,8 @@ function handleSave() {
 </script>
 
 <template>
-  <div class="p-6">
-    <ARow :gutter="24">
+  <div class="admin-page">
+    <ARow :gutter="16">
       <ACol :span="8">
         <ACard :bordered="false" class="shadow-sm">
           <div class="flex flex-col items-center gap-4">

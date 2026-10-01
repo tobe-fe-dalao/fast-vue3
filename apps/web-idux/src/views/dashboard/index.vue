@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { useChartResize } from '@fast-vue3/layout';
+import * as echarts from '@fast-vue3/layout/charts';
+
 import { api } from '@/api';
-import * as echarts from 'echarts';
 
 const lineChartRef = ref<HTMLElement>();
 const pieChartRef = ref<HTMLElement>();
@@ -23,7 +25,7 @@ onMounted(async () => {
   try {
     dashboard = await api.analytics.dashboardStats();
   } catch {
-    loadError.value = '仪表盘加载失败，请稍后重试';
+    if (!disposed) loadError.value = '仪表盘加载失败，请稍后重试';
     return;
   }
   if (disposed) return;
@@ -117,18 +119,16 @@ onMounted(async () => {
       ],
     });
   }
-  window.addEventListener('resize', handleResize);
 });
 
-function handleResize() {
+useChartResize([lineChartRef, pieChartRef, barChartRef], () => {
   lineChart?.resize();
   pieChart?.resize();
   barChart?.resize();
-}
+});
 
 onUnmounted(() => {
   disposed = true;
-  window.removeEventListener('resize', handleResize);
   lineChart?.dispose();
   pieChart?.dispose();
   barChart?.dispose();
@@ -136,8 +136,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <p v-if="loadError" role="alert">{{ loadError }}</p>
-  <div class="p-6">
+  <div class="admin-page">
+    <p v-if="loadError" role="alert">{{ loadError }}</p>
     <IxRow gutter="16" class="mb-4">
       <IxCol v-for="card in statCards" :key="card.title" span="6">
         <IxCard class="shadow-sm">

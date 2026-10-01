@@ -106,7 +106,7 @@ onMounted(fetchUser);
 </script>
 
 <template>
-  <div style="padding: 24px">
+  <div class="admin-page">
     <!-- Page Header -->
     <div
       style="
@@ -116,9 +116,8 @@ onMounted(fetchUser);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
-        <NButton text @click="goBack">← 返回</NButton>
-        <h3 style="margin: 0; font-size: 18px; font-weight: 600">用户详情</h3>
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
+        <NButton aria-label="返回" text @click="goBack">← 返回</NButton>
       </div>
       <div style="display: flex; gap: 8px">
         <NButton @click="goEdit">编辑</NButton>

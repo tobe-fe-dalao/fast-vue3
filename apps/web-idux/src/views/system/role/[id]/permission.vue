@@ -131,7 +131,7 @@ onMounted(fetchRole);
 </script>
 
 <template>
-  <div style="padding: 24px">
+  <div class="admin-page">
     <div
       style="
         display: flex;
@@ -140,11 +140,8 @@ onMounted(fetchRole);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
-        <IxButton mode="text" @click="goBack">← 返回</IxButton>
-        <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-          角色权限配置
-        </h4>
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
+        <IxButton mode="text" @click="goBack"> ← 返回 </IxButton>
       </div>
       <IxButton mode="primary" :loading="saving" @click="handleSave">
         保存配置

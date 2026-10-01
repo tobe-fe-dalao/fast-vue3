@@ -24,7 +24,7 @@ const tableData = [
 ];
 </script>
 <template>
-  <div class="p-6 flex flex-col gap-6">
+  <div class="components-page">
     <el-card header="按钮 Button" shadow="never">
       <el-space wrap>
         <el-button>默认</el-button><el-button type="primary"> 主要 </el-button>
@@ -113,3 +113,19 @@ const tableData = [
     </el-card>
   </div>
 </template>
+
+<style scoped>
+.components-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 8px;
+}
+
+@media (max-width: 767px) {
+  .components-page {
+    padding: 0;
+  }
+}
+</style>

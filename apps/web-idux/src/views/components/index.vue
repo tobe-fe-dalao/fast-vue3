@@ -41,11 +41,9 @@ function triggerLoading() {
 </script>
 
 <template>
-  <div class="p-6">
-    <h4 class="mb-6 text-lg font-semibold">组件展示 · iDux</h4>
-
+  <div class="components-page">
     <!-- 按钮 -->
-    <IxCard class="mb-4 shadow-sm">
+    <IxCard class="shadow-sm">
       <template #header>
         <span class="font-semibold">按钮 Button</span>
       </template>
@@ -61,7 +59,7 @@ function triggerLoading() {
     </IxCard>
 
     <!-- 标签 -->
-    <IxCard class="mb-4 shadow-sm">
+    <IxCard class="shadow-sm">
       <template #header>
         <span class="font-semibold">标签 Tag</span>
       </template>
@@ -75,7 +73,7 @@ function triggerLoading() {
     </IxCard>
 
     <!-- 输入框 -->
-    <IxCard class="mb-4 shadow-sm">
+    <IxCard class="shadow-sm">
       <template #header>
         <span class="font-semibold">输入框 Input</span>
       </template>
@@ -102,7 +100,7 @@ function triggerLoading() {
     </IxCard>
 
     <!-- 选择器 -->
-    <IxCard class="mb-4 shadow-sm">
+    <IxCard class="shadow-sm">
       <template #header>
         <span class="font-semibold">选择器 Select</span>
       </template>
@@ -126,7 +124,7 @@ function triggerLoading() {
     </IxCard>
 
     <!-- 进度条 -->
-    <IxCard class="mb-4 shadow-sm">
+    <IxCard class="shadow-sm">
       <template #header>
         <span class="font-semibold">进度条 Progress</span>
       </template>
@@ -134,7 +132,7 @@ function triggerLoading() {
     </IxCard>
 
     <!-- 表格 -->
-    <IxCard class="mb-4 shadow-sm">
+    <IxCard class="shadow-sm">
       <template #header>
         <span class="font-semibold">表格 Table</span>
       </template>
@@ -159,3 +157,19 @@ function triggerLoading() {
     </IxCard>
   </div>
 </template>
+
+<style scoped>
+.components-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 8px;
+}
+
+@media (max-width: 767px) {
+  .components-page {
+    padding: 0;
+  }
+}
+</style>

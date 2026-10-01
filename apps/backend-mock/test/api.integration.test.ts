@@ -372,4 +372,32 @@ describe('nitro v1 API integration', () => {
     expect(checkout.data.orderNo).toMatch(/^FV/);
     expect(checkout.data.status).toBe('pending');
   });
+  it('serves the bounded page contract without replacing array routes', async () => {
+    for (const path of [
+      '/projects/page',
+      '/approvals/page',
+      '/notifications/page',
+    ]) {
+      const result = await request<PageResult<unknown>>(
+        `${path}?page=1&pageSize=2`,
+      );
+      expect(result.data).toMatchObject({ page: 1, pageSize: 2 });
+      expect(result.data.items.length).toBeLessThanOrEqual(2);
+      expect(result.data.total).toBeGreaterThanOrEqual(
+        result.data.items.length,
+      );
+    }
+    const comments = await request<PageResult<unknown>>(
+      '/public/blog/1/comments/page?pageSize=1',
+      undefined,
+      false,
+    );
+    expect(comments.data.pageSize).toBe(1);
+    const legacy = await request<unknown[]>('/projects');
+    expect(Array.isArray(legacy.data)).toBe(true);
+    const invalid = await fetch(`${baseUrl}/projects/page?pageSize=101`, {
+      headers: { authorization: `Bearer ${accessToken}` },
+    });
+    expect(invalid.status).toBe(400);
+  });
 });

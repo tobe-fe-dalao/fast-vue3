@@ -131,11 +131,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4" style="margin: 0 0 16px">
-      角色管理
-    </ATypographyTitle>
-
+  <div class="admin-page">
     <ACard :bordered="false" class="mb-4 shadow-sm">
       <ARow :gutter="16">
         <ACol :span="8">

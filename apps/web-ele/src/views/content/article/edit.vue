@@ -99,15 +99,13 @@ onMounted(loadForEdit);
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 880px">
+  <div class="admin-page" style="max-width: 880px">
     <!-- Page Header -->
     <div
+      class="mb-4"
       style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px"
     >
-      <el-button text :icon="ArrowLeft" @click="goBack">返回</el-button>
-      <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-        {{ isEdit ? '编辑文章' : '新建文章' }}
-      </h4>
+      <el-button text :icon="ArrowLeft" @click="goBack"> 返回 </el-button>
     </div>
 
     <el-card shadow="never">

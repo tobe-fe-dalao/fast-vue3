@@ -115,11 +115,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="p-6">
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      文章管理
-    </h4>
-
+  <div class="admin-page">
     <!-- Search -->
     <el-card shadow="never" class="mb-4">
       <el-row :gutter="16" align="middle">

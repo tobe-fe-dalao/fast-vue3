@@ -19,7 +19,7 @@ function handleSave() {
 }
 </script>
 <template>
-  <div class="p-4">
+  <div class="admin-page">
     <div class="grid grid-cols-3 gap-4">
       <Card>
         <template #content>

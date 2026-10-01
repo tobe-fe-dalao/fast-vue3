@@ -40,11 +40,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4" style="margin: 0 0 16px">
-      在线用户
-    </ATypographyTitle>
-
+  <div class="admin-page">
     <ACard :bordered="false" class="shadow-sm">
       <ASpin :spinning="loading">
         <ATable

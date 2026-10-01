@@ -113,15 +113,13 @@ onMounted(loadForEdit);
 </script>
 
 <template>
-  <div style="max-width: 880px; padding: 24px">
+  <div class="admin-page" style="max-width: 880px">
     <!-- Page Header -->
     <div
+      class="mb-4"
       style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px"
     >
       <NButton text @click="goBack">← 返回</NButton>
-      <h3 style="margin: 0; font-size: 18px; font-weight: 600">
-        {{ isEdit ? '编辑文章' : '新建文章' }}
-      </h3>
     </div>
 
     <NCard>
@@ -199,7 +197,7 @@ onMounted(loadForEdit);
           <NButton type="primary" :loading="submitting" @click="handleSubmit">
             保存
           </NButton>
-          <NButton style="margin-left: 12px" @click="goBack">取消</NButton>
+          <NButton style="margin-left: 12px" @click="goBack"> 取消 </NButton>
         </NFormItem>
       </NForm>
     </NCard>

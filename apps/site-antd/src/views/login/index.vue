@@ -46,7 +46,7 @@ async function handleLogin() {
 
 <template>
   <div class="auth-page">
-    <div v-reveal-zoom class="auth-container">
+    <div v-reveal:zoom class="auth-container">
       <div class="auth-side">
         <div class="brand">
           <h1 class="brand-title">Fast Vue3</h1>

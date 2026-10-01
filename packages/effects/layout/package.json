@@ -2,16 +2,32 @@
   "name": "@fast-vue3/layout",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
       "types": "./src/index.ts",
       "default": "./src/index.ts"
+    },
+    "./reveal": {
+      "types": "./src/reveal.ts",
+      "default": "./src/reveal.ts"
+    },
+    "./charts": {
+      "types": "./src/charts.ts",
+      "default": "./src/charts.ts"
     }
   },
   "dependencies": {
     "@fast-vue3/stores": "workspace:*",
+    "echarts": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "happy-dom": "catalog:",
+    "vitest": "catalog:"
   }
 }

@@ -150,9 +150,8 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="p-6">
-    <div class="flex-between mb-4">
-      <ATypographyTitle :level="4" style="margin: 0">部门管理</ATypographyTitle>
+  <div class="admin-page">
+    <div class="admin-page-actions">
       <AButton type="primary" @click="openModal()">新增部门</AButton>
     </div>
     <ACard :bordered="false">

@@ -100,10 +100,9 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="p-6">
-    <div class="flex-between mb-4">
-      <ATypographyTitle :level="4" style="margin: 0">租户管理</ATypographyTitle
-      ><AButton type="primary" @click="openModal()">创建租户</AButton>
+  <div class="admin-page">
+    <div class="admin-page-actions">
+      <AButton type="primary" @click="openModal()">创建租户</AButton>
     </div>
     <ACard :bordered="false">
       <ATable :data-source="items" row-key="id">

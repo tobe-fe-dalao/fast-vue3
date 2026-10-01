@@ -13,8 +13,8 @@ function handleSave() {
 }
 </script>
 <template>
-  <div class="p-6">
-    <el-row :gutter="24">
+  <div class="admin-page">
+    <el-row :gutter="16">
       <el-col :span="8">
         <el-card shadow="never">
           <div class="flex flex-col items-center gap-4">

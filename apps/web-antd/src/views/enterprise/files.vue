@@ -52,9 +52,8 @@ async function download(item: StoredFile) {
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4">文件上传</ATypographyTitle
-    ><ACard :bordered="false">
+  <div class="admin-page">
+    <ACard :bordered="false">
       <AAlert
         message="上传记录仅保留在当前页面。下载操作使用当前登录身份访问文件。"
         type="info"

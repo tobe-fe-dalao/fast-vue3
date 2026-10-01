@@ -29,11 +29,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div style="max-width: 720px; padding: 24px">
-    <h2 style="margin-bottom: 20px; font-size: 1.25rem; font-weight: 600">
-      系统设置
-    </h2>
-
+  <div class="admin-page" style="max-width: 720px">
     <t-card title="基础设置" :bordered="false" class="mb-4">
       <t-form :data="form" :label-width="100">
         <t-form-item label="站点名称" name="siteName">

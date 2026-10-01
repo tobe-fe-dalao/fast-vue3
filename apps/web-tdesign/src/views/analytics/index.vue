@@ -36,11 +36,7 @@ onMounted(async () => {
 
 <template>
   <p v-if="loadError" role="alert">{{ loadError }}</p>
-  <div style="padding: 24px">
-    <h2 style="margin: 0 0 20px; font-size: 1.25rem; font-weight: 600">
-      数据分析
-    </h2>
-
+  <div class="admin-page">
     <t-row :gutter="[16, 16]" class="mb-4">
       <t-col v-for="card in stats" :key="card.title" :span="3">
         <t-card :bordered="false" hover-shadow>

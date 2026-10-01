@@ -190,11 +190,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div>
-    <h4 style="margin: 0 0 16px; font-size: 18px; font-weight: 600">
-      用户管理
-    </h4>
-
+  <div class="admin-page">
     <!-- 搜索区域 -->
     <t-card style="margin-bottom: 16px">
       <t-row :gutter="16">

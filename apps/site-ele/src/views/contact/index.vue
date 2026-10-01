@@ -56,7 +56,7 @@ async function handleSubmit() {
     <section class="site-section">
       <div class="site-container contact-layout">
         <!-- Info -->
-        <aside v-reveal-left class="site-card contact-info">
+        <aside v-reveal:left class="site-card contact-info">
           <h3 class="info-title">联系方式</h3>
           <div v-for="c in contactInfo" :key="c.label" class="info-item">
             <span class="info-icon-wrap">
@@ -73,7 +73,7 @@ async function handleSubmit() {
         </aside>
 
         <!-- Form -->
-        <div v-reveal-right class="site-card contact-form">
+        <div v-reveal:right class="site-card contact-form">
           <ElForm ref="formRef" :model="form" label-position="top">
             <div class="form-row">
               <ElFormItem

@@ -40,10 +40,9 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="p-6">
-    <div class="flex-between mb-4">
-      <ATypographyTitle :level="4" style="margin: 0">我的通知</ATypographyTitle
-      ><AButton @click="readAll">全部标为已读</AButton>
+  <div class="admin-page">
+    <div class="admin-page-actions">
+      <AButton @click="readAll">全部标为已读</AButton>
     </div>
     <ACard :bordered="false">
       <AList :data-source="items" :loading="loading" bordered>

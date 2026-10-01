@@ -39,7 +39,9 @@ export function createApi(http: RequestClient) {
 
 export type Api = ReturnType<typeof createApi>;
 
+export { paginate } from './pagination';
 export { createStaticEnterpriseApi } from './static-enterprise';
+
 export { createStaticMockApi } from './static-mock';
 
 export * from './types';

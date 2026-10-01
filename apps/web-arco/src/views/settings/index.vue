@@ -18,9 +18,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 720px">
-    <a-typography-title :heading="4">系统设置</a-typography-title>
-
+  <div class="admin-page" style="max-width: 720px">
     <a-card title="基础设置" :bordered="false" class="mb-4 shadow-sm">
       <a-form
         :model="form"

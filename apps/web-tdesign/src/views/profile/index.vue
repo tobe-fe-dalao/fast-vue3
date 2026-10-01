@@ -13,9 +13,9 @@ function handleSave() {
 }
 </script>
 <template>
-  <div class="p-6">
-    <t-row :gutter="24">
-      <t-col :span="3">
+  <div class="admin-page">
+    <t-row :gutter="16">
+      <t-col :span="4">
         <t-card :bordered="false">
           <div class="flex flex-col items-center gap-4">
             <t-avatar size="80px" class="bg-blue-500">
@@ -38,7 +38,7 @@ function handleSave() {
           </div>
         </t-card>
       </t-col>
-      <t-col :span="9">
+      <t-col :span="8">
         <t-card title="个人信息" :bordered="false">
           <t-descriptions title="" :column="2" bordered>
             <t-descriptions-item label="用户名">

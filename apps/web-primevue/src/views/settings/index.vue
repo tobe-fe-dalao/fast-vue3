@@ -36,11 +36,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div style="max-width: 720px; padding: 24px">
-    <h2 style="margin-bottom: 20px; font-size: 1.25rem; font-weight: 600">
-      系统设置
-    </h2>
-
+  <div class="admin-page" style="max-width: 720px">
     <Card class="mb-4">
       <template #title>基础设置</template>
       <template #content>

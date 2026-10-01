@@ -1,4 +1,6 @@
-import { execaCommand, getPackages, Package } from '@fast-vue3/node-utils';
+import type { Package } from '@fast-vue3/node-utils';
+
+import { execaCommand, getPackages } from '@fast-vue3/node-utils';
 
 import { cancel, isCancel, select } from '@clack/prompts';
 
@@ -41,14 +43,18 @@ function parseFrameworkApp(packageName: string): FrameworkApp | null {
   }
 
   const [, type, framework] = matched;
-  if (!UI_FRAMEWORKS.has(framework)) {
+  if (
+    (type !== 'site' && type !== 'web') ||
+    !framework ||
+    !UI_FRAMEWORKS.has(framework)
+  ) {
     return null;
   }
 
   return {
     framework,
     packageName,
-    type: type as AppType,
+    type,
   };
 }
 

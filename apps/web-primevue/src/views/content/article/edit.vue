@@ -116,10 +116,11 @@ onMounted(loadForEdit);
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 880px">
+  <div class="admin-page" style="max-width: 880px">
     <Toast />
 
     <div
+      class="mb-4"
       style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px"
     >
       <Button
@@ -129,9 +130,6 @@ onMounted(loadForEdit);
         aria-label="返回"
         @click="goBack"
       />
-      <h4 style="margin: 0; font-size: 18px; font-weight: 600">
-        {{ isEdit ? '编辑文章' : '新建文章' }}
-      </h4>
     </div>
 
     <Card>
@@ -248,7 +246,12 @@ onMounted(loadForEdit);
               :loading="submitting"
               @click="handleSubmit"
             />
-            <Button label="取消" severity="secondary" @click="goBack" />
+            <Button
+              aria-label="返回"
+              label="取消"
+              severity="secondary"
+              @click="goBack"
+            />
           </div>
         </div>
       </template>

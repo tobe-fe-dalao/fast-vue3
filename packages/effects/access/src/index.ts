@@ -21,21 +21,21 @@ export function setupAccessGuard(
 ): void {
   const { whiteList = DEFAULT_WHITE_LIST, loginRoute = '/login' } = options;
 
-  router.beforeEach((to, _from, next) => {
+  router.beforeEach((to) => {
     const userStore = useUserStore();
     const isLoggedIn = userStore.isLoggedIn;
 
     // 白名单直接放行
     if (whiteList.some((path) => to.path.startsWith(path))) {
-      return next();
+      return true;
     }
 
     // 未登录跳转登录页
     if (!isLoggedIn) {
-      return next({ path: loginRoute, query: { redirect: to.fullPath } });
+      return { path: loginRoute, query: { redirect: to.fullPath } };
     }
 
-    next();
+    return true;
   });
 }
 

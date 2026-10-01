@@ -32,9 +32,7 @@ const depColumns = [
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 800px">
-    <ATypographyTitle :level="4">关于项目</ATypographyTitle>
-
+  <div class="admin-page" style="max-width: 800px">
     <ACard title="项目信息" :bordered="false" class="mb-4 shadow-sm">
       <ADescriptions :column="2">
         <ADescriptionsItem label="项目名称">{{ info.name }}</ADescriptionsItem>

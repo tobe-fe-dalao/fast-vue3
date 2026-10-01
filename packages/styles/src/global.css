@@ -1,21 +1,48 @@
 @import 'tailwindcss';
 
-/* Custom utilities (migrated from UnoCSS shortcuts) */
-@utility flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Shared utility classes use the same cascade layer as Tailwind utilities. */
+@layer utilities {
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wh-full {
+    width: 100%;
+    height: 100%;
+  }
 }
 
-@utility flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Admin pages already have module names in the sidebar and breadcrumb. */
+.admin-page {
+  min-width: 0;
+  padding: 8px;
 }
 
-@utility wh-full {
-  width: 100%;
-  height: 100%;
+.admin-page > .mb-4 {
+  margin-bottom: 16px;
+}
+
+.admin-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 767px) {
+  .admin-page {
+    padding: 0;
+  }
 }
 
 /* Scrollbar styling */

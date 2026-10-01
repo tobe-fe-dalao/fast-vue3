@@ -51,11 +51,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="p-6">
-    <ATypographyTitle :level="4" style="margin: 0 0 16px">
-      数据业务
-    </ATypographyTitle>
-
+  <div class="admin-page">
     <ASpin :spinning="loading">
       <!-- Stats -->
       <ARow :gutter="16" class="mb-4">

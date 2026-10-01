@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
   "exports": {
     ".": {
       "types": "./src/index.ts",
@@ -14,5 +17,9 @@
     "pinia": "catalog:",
     "pinia-plugin-persistedstate": "catalog:",
     "vue": "catalog:"
+  },
+  "devDependencies": {
+    "happy-dom": "catalog:",
+    "vitest": "catalog:"
   }
 }

@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
+
+import { storeToRefs } from 'pinia';
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
 const isFullscreen = ref(false);
-const isDark = ref(false);
+const prefs = usePreferences();
+const { isDark } = storeToRefs(prefs);
 
 function toggleFullscreen() {
   if (document.fullscreenElement) {
@@ -17,8 +21,7 @@ function toggleFullscreen() {
 }
 
 function toggleTheme() {
-  isDark.value = !isDark.value;
-  document.documentElement.classList.toggle('dark', isDark.value);
+  prefs.setThemeMode(isDark.value ? 'light' : 'dark');
 }
 const ROUTE_TITLES: Record<string, string> = {
   '/home': '首页',

@@ -27,11 +27,7 @@ const dependencies = [
 </script>
 
 <template>
-  <div class="p-6" style="max-width: 800px">
-    <h2 style="margin: 0 0 24px; font-size: 1.25rem; font-weight: 600">
-      关于项目
-    </h2>
-
+  <div class="admin-page" style="max-width: 800px">
     <el-card shadow="never" class="mb-4">
       <template #header>项目信息</template>
       <el-descriptions :column="2" border>

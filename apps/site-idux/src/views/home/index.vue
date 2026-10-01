@@ -318,7 +318,7 @@ onMounted(async () => {
     </section>
 
     <section class="cta-section">
-      <div class="cta-inner" v-reveal-zoom>
+      <div class="cta-inner" v-reveal:zoom>
         <h2 class="cta-title">开始使用 Fast Vue3</h2>
         <p class="cta-desc">一行命令，即可启动你的下一个项目</p>
         <div class="cta-code">pnpm create fast-vue3</div>

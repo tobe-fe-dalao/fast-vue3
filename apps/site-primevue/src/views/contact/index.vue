@@ -63,7 +63,7 @@ async function handleSubmit() {
     </section>
     <section class="site-section">
       <div class="site-container contact-layout">
-        <aside v-reveal-left class="site-card contact-info">
+        <aside v-reveal:left class="site-card contact-info">
           <h3 class="info-title">联系方式</h3>
           <div v-for="c in contactInfo" :key="c.label" class="info-item">
             <span class="info-icon-wrap"
@@ -78,7 +78,7 @@ async function handleSubmit() {
             我们会在 1 个工作日内回复你的留言，企业客户可获得专属架构咨询。
           </p>
         </aside>
-        <div v-reveal-right class="site-card contact-form">
+        <div v-reveal:right class="site-card contact-form">
           <div class="form-fields">
             <div class="form-row">
               <div class="form-field">

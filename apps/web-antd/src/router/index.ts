@@ -37,7 +37,7 @@ export function setupRouter(app: App) {
     scrollBehavior: () => ({ top: 0 }),
   });
 
-  router.beforeEach((to, _from, next) => {
+  router.beforeEach((to) => {
     NProgress.start();
     const token = localStorage.getItem(`fast-vue3-user`) ?? '{}';
     let isLoggedIn = false;
@@ -46,12 +46,12 @@ export function setupRouter(app: App) {
     } catch {}
 
     if (WHITE_LIST.some((p) => to.path.startsWith(p))) {
-      if (isLoggedIn && to.path === '/login') return next({ path: '/' });
-      return next();
+      if (isLoggedIn && to.path === '/login') return { path: '/' };
+      return true;
     }
     if (!isLoggedIn)
-      return next({ path: '/login', query: { redirect: to.fullPath } });
-    next();
+      return { path: '/login', query: { redirect: to.fullPath } };
+    return true;
   });
 
   router.afterEach(() => NProgress.done());

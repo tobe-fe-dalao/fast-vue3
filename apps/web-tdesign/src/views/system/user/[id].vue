@@ -104,7 +104,7 @@ onMounted(fetchUser);
 </script>
 
 <template>
-  <div>
+  <div class="admin-page">
     <!-- Page Header -->
     <div
       style="
@@ -114,11 +114,16 @@ onMounted(fetchUser);
         margin-bottom: 16px;
       "
     >
-      <div style="display: flex; gap: 12px; align-items: center">
-        <t-button theme="default" variant="text" shape="square" @click="goBack">
+      <div class="mb-4" style="display: flex; gap: 12px; align-items: center">
+        <t-button
+          aria-label="返回"
+          theme="default"
+          variant="text"
+          shape="square"
+          @click="goBack"
+        >
           <ChevronLeftIcon />
         </t-button>
-        <h4 style="margin: 0; font-size: 18px; font-weight: 600">用户详情</h4>
       </div>
       <t-space>
         <t-button @click="goEdit">编辑</t-button>

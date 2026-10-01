@@ -19,6 +19,7 @@ import type {
   UserItem,
 } from './types';
 
+import { paginate as boundedPaginate } from './pagination';
 import { createStaticEnterpriseApi } from './static-enterprise';
 
 const clone = <T>(value: T): T => structuredClone(value);
@@ -899,6 +900,13 @@ export function createStaticMockApi(): Api {
           team: [{ name: 'Fast Vue3 Team', role: 'Maintainer' }],
         }),
       blog: (id) => resolved(requireRecord(blogPosts, id)),
+      blogCommentsPage: (id, query = {}) =>
+        resolved(
+          boundedPaginate(
+            blogComments.filter((item) => item.articleId === id),
+            query,
+          ),
+        ),
       blogComments: (id) =>
         resolved(blogComments.filter((item) => item.articleId === id)),
       blogList: (query = {}) => {

@@ -14,6 +14,8 @@ import type {
   FaqItem,
   FeatureItem,
   HomeInfo,
+  PageQuery,
+  PageResult,
   PaymentOrder,
   PricingPlan,
   ProductInfo,
@@ -31,6 +33,12 @@ export function createPortalApi(http: RequestClient) {
 
     blogComments: (id: number) =>
       http.get<BlogComment[]>({ url: `/public/blog/${id}/comments` }),
+
+    blogCommentsPage: (id: number, params: PageQuery = {}) =>
+      http.get<PageResult<BlogComment>>({
+        params,
+        url: `/public/blog/${id}/comments/page`,
+      }),
 
     checkout: (data: CreateCheckoutParams) =>
       http.post<PaymentOrder>({ data, url: '/payments/checkout' }),
