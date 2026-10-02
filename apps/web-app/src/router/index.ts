@@ -1,4 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+} from 'vue-router';
 
 const routes = [
   {
@@ -30,7 +34,10 @@ const routes = [
 ];
 
 export const router = createRouter({
-  history: createWebHistory(),
+  history:
+    import.meta.env.VITE_STATIC_MOCK === 'true'
+      ? createWebHashHistory(import.meta.env.BASE_URL)
+      : createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior: () => ({ top: 0 }),
 });

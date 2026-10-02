@@ -2,6 +2,8 @@
 
 **語言：** [English](./README.md) | [简体中文](./README.zh-CN.md) | 繁體中文（台灣） | [繁體中文（香港）](./README.zh-HK.md) | [日本語](./README.ja.md)
 
+示範建置：`pnpm build:demo`；本機預覽：`pnpm preview:demo`，開啟 `http://127.0.0.1:4173/fast-vue3/`。包含全部 `web-*` / `site-*` 應用，使用瀏覽器內 Mock 資料。[部署說明](https://tobe-fe-dalao.github.io/fast-vue3-site/zh-TW/monorepo/development#多應用示範)。
+
 Fast Vue3 是 Vue 3 + TypeScript Monorepo，在 Ant Design Vue、Arco Design、Element Plus、iDux、Naive UI、PrimeVue 與 TDesign 七套 UI 生態中提供一致的後台與公開網站功能。
 
 線上文件：<https://tobe-fe-dalao.github.io/fast-vue3-site/> · [Spring Boot 後端文件](https://tobe-fe-dalao.github.io/fast-vue3-site/zh-TW/server/)

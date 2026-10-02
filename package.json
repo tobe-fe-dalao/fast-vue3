@@ -53,7 +53,9 @@
     "preinstall": "npx only-allow pnpm",
     "reinstall": "pnpm clean --del-lock && pnpm install",
     "test": "pnpm -r --if-present run test",
-    "typecheck": "node scripts/generate-auto-import-types.mjs && tsc --noEmit -p tsconfig.json && pnpm -r --if-present run type-check && turbo typecheck"
+    "typecheck": "node scripts/generate-auto-import-types.mjs && tsc --noEmit -p tsconfig.json && pnpm -r --if-present run type-check && turbo typecheck",
+    "build:demo": "node scripts/build-demo.mjs",
+    "preview:demo": "vite preview --outDir dist/demo --base /fast-vue3/ --host 127.0.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",

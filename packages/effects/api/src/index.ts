@@ -43,5 +43,6 @@ export { paginate } from './pagination';
 export { createStaticEnterpriseApi } from './static-enterprise';
 
 export { createStaticMockApi } from './static-mock';
+export { createStaticMockRequest } from './static-request';
 
 export * from './types';

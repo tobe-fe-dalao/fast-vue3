@@ -24,6 +24,8 @@ const naiveOverrides = computed(() => ({
     :theme="naiveTheme"
     :theme-overrides="naiveOverrides"
   >
-    <RouterView />
+    <NMessageProvider>
+      <RouterView />
+    </NMessageProvider>
   </NConfigProvider>
 </template>

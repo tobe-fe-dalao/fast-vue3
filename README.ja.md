@@ -2,6 +2,8 @@
 
 **言語：** [English](./README.md) | [简体中文](./README.zh-CN.md) | [繁體中文（台灣）](./README.zh-TW.md) | [繁體中文（香港）](./README.zh-HK.md) | 日本語
 
+デモのビルドは `pnpm build:demo`、ローカル確認は `pnpm preview:demo` で、`http://127.0.0.1:4173/fast-vue3/` を開きます。すべての `web-*` / `site-*` アプリでブラウザー内 Mock を使用します。[公開手順](https://tobe-fe-dalao.github.io/fast-vue3-site/ja/monorepo/development#複数アプリのデモ)。
+
 > 7 種類の Vue UI エコシステムで、同じ管理画面と公開サイト体験を提供する Vue 3 + TypeScript モノレポです。
 
 オンラインドキュメント: <https://tobe-fe-dalao.github.io/fast-vue3-site/> · [Spring Boot サーバーガイド](https://tobe-fe-dalao.github.io/fast-vue3-site/ja/server/)

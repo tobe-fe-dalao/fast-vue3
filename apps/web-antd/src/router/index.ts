@@ -23,7 +23,7 @@ export function setupRouter(app: App) {
   );
 
   const router = createRouter({
-    history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
+    history: createWebHashHistory(import.meta.env.BASE_URL),
     routes: [
       {
         path: '/',

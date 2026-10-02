@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Fast Vue3 多 UI 框架在线演示，体验各框架的后台管理与门户应用。"
+    />
+    <title>Fast Vue3 · 应用演示</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, sans-serif;
+        background: #f6f8fb;
+        color: #17243b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        max-width: 1120px;
+        margin: auto;
+        padding: 40px 24px;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+      nav {
+        display: flex;
+        gap: 20px;
+      }
+      a {
+        color: #2458c7;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      a:focus-visible {
+        outline: 3px solid #4779eb;
+        outline-offset: 5px;
+      }
+      main {
+        padding-top: 64px;
+      }
+      h1 {
+        font-size: clamp(32px, 6vw, 48px);
+        margin: 0 0 16px;
+        letter-spacing: -1px;
+      }
+      .intro {
+        color: #526179;
+        line-height: 1.8;
+        max-width: 680px;
+      }
+      .notice {
+        margin: 28px 0;
+        padding: 18px 22px;
+        border-left: 3px solid #4475d9;
+        background: #eaf0fc;
+        line-height: 1.8;
+      }
+      code {
+        font-family: ui-monospace, monospace;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 20px;
+        margin-top: 32px;
+      }
+      article {
+        padding: 24px;
+        border: 1px solid #dce3ed;
+        border-radius: 12px;
+        background: white;
+      }
+      h2 {
+        margin: 0 0 24px;
+        font-size: 20px;
+      }
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .links a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 6px;
+        background: #f3f6fc;
+      }
+      .links span {
+        font-size: 12px;
+      }
+      footer {
+        padding: 36px 0 8px;
+        color: #526179;
+        font-size: 13px;
+        line-height: 1.8;
+      }
+      @media (max-width: 420px) {
+        body {
+          padding: 24px 16px;
+        }
+        main {
+          padding-top: 24px;
+        }
+        .notice {
+          margin: 20px 0;
+          padding: 14px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          background: #101725;
+          color: #e5ebf7;
+        }
+        article {
+          background: #182235;
+          border-color: #31405a;
+        }
+        a {
+          color: #9bbaff;
+        }
+        .intro,
+        footer {
+          color: #adbdd4;
+        }
+        .notice,
+        .links a {
+          background: #202f49;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>Fast Vue3</strong>
+      <nav aria-label="相关资源">
+        <a href="https://tobe-fe-dalao.github.io/fast-vue3-site/zh/">文档</a>
+        <a href="https://github.com/tobe-fe-dalao/fast-vue3">源码 ↗</a>
+      </nav>
+    </header>
+    <main>
+      <h1>选择框架，体验应用。</h1>
+      <p class="intro">
+        7 套 Vue UI 框架，{{APP_COUNT}}
+        个独立应用。后台与门户在新标签页打开，方便并排对比。
+      </p>
+      <aside class="notice" aria-label="演示说明">
+        后台账号：<code>admin</code> / <code>123456</code><br />
+        浏览器内 Mock，业务数据刷新后重置。支付与上传均为模拟流程。
+      </aside>
+      <section class="grid" aria-label="应用列表">
+        <!-- DEMO_CARDS -->
+      </section>
+    </main>
+    <footer>
+      后台覆盖系统管理、内容与数据分析；门户覆盖产品、博客、价格与联系表单。通用站点提供基础页面模板。
+    </footer>
+  </body>
+</html>

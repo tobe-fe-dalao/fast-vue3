@@ -6,6 +6,8 @@
 
 在线文档：<https://tobe-fe-dalao.github.io/fast-vue3-site/> · [Spring Boot 后端文档](https://tobe-fe-dalao.github.io/fast-vue3-site/zh/server/)
 
+演示构建：`pnpm build:demo`；本地预览：`pnpm preview:demo`，访问 `http://127.0.0.1:4173/fast-vue3/`。包含全部 `web-*` / `site-*` 应用，使用浏览器内 Mock 数据。[演示部署说明](https://tobe-fe-dalao.github.io/fast-vue3-site/zh/monorepo/development#多应用演示)。
+
 ---
 
 ## 📦 项目概览

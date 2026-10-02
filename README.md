@@ -2,6 +2,8 @@
 
 **Languages:** English | [简体中文](./README.zh-CN.md) | [繁體中文（台灣）](./README.zh-TW.md) | [繁體中文（香港）](./README.zh-HK.md) | [日本語](./README.ja.md)
 
+Demo build: `pnpm build:demo`; preview: `pnpm preview:demo` at `http://127.0.0.1:4173/fast-vue3/`. All `web-*` / `site-*` apps use browser-only Mock data. [Deployment guide](https://tobe-fe-dalao.github.io/fast-vue3-site/en/monorepo/development#multi-app-demo).
+
 > A Vue 3 + TypeScript monorepo that delivers the same admin and public-site experience across seven Vue UI ecosystems.
 
 Documentation: <https://tobe-fe-dalao.github.io/fast-vue3-site/> · [Spring Boot server guide](https://tobe-fe-dalao.github.io/fast-vue3-site/en/server/)
