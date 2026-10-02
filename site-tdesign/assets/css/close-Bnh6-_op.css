@@ -1,0 +1,1 @@
+@keyframes t-spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.t-icon{vertical-align:middle;width:1em;height:1em;display:inline-block}.t-icon:before{font-family:unset}.t-icon-loading{animation:1s linear infinite t-spin}.t-icon.t-size-s,i.t-size-s{font-size:14px}.t-icon.t-size-m,i.t-size-m{font-size:16px}.t-icon.t-size-l,i.t-size-l{font-size:18px}

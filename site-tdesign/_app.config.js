@@ -1,0 +1,1 @@
+window._Vh5_APP_CONF_={};Object.freeze(window._Vh5_APP_CONF_);Object.defineProperty(window,"_Vh5_APP_CONF_",{configurable:false,writable:false,});

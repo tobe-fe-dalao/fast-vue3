@@ -1,0 +1,1 @@
+import{Pr as e,kr as t,qr as n}from"./index-index-Vl7atQja.js";import{t as r}from"./user-BPiEIni9.js";var i=e({__name:`index`,setup(e){return(e,i)=>(n(),t(r))}});export{i as default};

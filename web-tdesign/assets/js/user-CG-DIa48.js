@@ -1,0 +1,1 @@
+import{ar as e,ur as t,wr as n}from"./index-index-BiNA24xj.js";import{t as r}from"./user-CJCskrCV.js";var i=t({__name:`index`,setup(t){return(t,i)=>(n(),e(r))}});export{i as default};

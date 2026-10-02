@@ -1,0 +1,1 @@
+import{Dt as e,Zt as t}from"./index-index-CZYP7cqP.js";function n(n,r){return t(n,e=>{e!==void 0&&(r.value=e)}),e(()=>n.value===void 0?r.value:n.value)}export{n as t};

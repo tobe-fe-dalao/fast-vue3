@@ -1,0 +1,1 @@
+import{n as e,r as t,t as n}from"./RadioButton-C_ZKb8Bd.js";t.Group=e,t.Button=n,t.install=function(e){return e.component(t.name,t),e.component(t.Group.name,t.Group),e.component(t.Button.name,t.Button),e};var r=t;export{r as t};

@@ -1,0 +1,1 @@
+import{Cr as e,Vr as t,kr as n}from"./index-index-D26HR75-.js";import{t as r}from"./user-DOIU-ujD.js";var i=n({__name:`index`,setup(n){return(n,i)=>(t(),e(r))}});export{i as default};

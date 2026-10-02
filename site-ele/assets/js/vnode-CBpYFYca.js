@@ -1,0 +1,1 @@
+import{Er as e,Jt as t}from"./index-index-DoLbtw79.js";var n=r=>{let i=e(r)?r:[r],a=[];return i.forEach(r=>{var i;e(r)?a.push(...n(r)):t(r)&&(i=r.component)!=null&&i.subTree?a.push(r,...n(r.component.subTree)):t(r)&&e(r.children)?a.push(...n(r.children)):t(r)&&r.shapeFlag===2?a.push(...n(r.type())):a.push(r)}),a};export{n as t};

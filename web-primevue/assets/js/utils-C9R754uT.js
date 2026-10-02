@@ -1,0 +1,1 @@
+import{O as e,at as t,dt as n}from"./index-index-CU8LOYKL.js";function r(){n({variableName:e(`scrollbar.width`).name})}function i(){t({variableName:e(`scrollbar.width`).name})}export{i as n,r as t};

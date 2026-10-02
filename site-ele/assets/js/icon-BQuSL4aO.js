@@ -1,0 +1,5 @@
+import{E as e,Gt as t,M as n,O as r,P as i,S as a,U as o,b as s,bt as c,gt as l,kn as u,ot as d,qt as f,st as p,x as m,y as h}from"./index-index-DoLbtw79.js";var g={prefix:Math.floor(Math.random()*1e4),current:0},_=Symbol(`elIdInjection`),v=()=>t()?f(_,g):g,y=e=>{let t=v();!p&&t===g&&l(`IdInjection`,`Looks like you are using server rendering, you must provide a id provider to ensure the hydration process to be succeed
+usage: app.provide(ID_INJECTION_KEY, {
+  prefix: number,
+  current: number,
+})`);let n=o();return d(()=>u(e)||`${n.value}-id-${t.prefix}-${t.current++}`)},b=c([String,Object,Function]),x={Close:a,SuccessFilled:n,InfoFilled:e,WarningFilled:i,CircleCloseFilled:m},S={primary:e,success:n,warning:i,error:m,info:e},C={validating:r,success:h,error:s};export{y as a,b as i,S as n,v as o,C as r,x as t};

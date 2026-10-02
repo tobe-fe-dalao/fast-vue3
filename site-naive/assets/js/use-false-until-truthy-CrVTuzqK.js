@@ -1,0 +1,1 @@
+import{Zt as e,in as t,rn as n}from"./index-index-CZYP7cqP.js";function r(e,t){let{target:n}=e;for(;n;){if(n.dataset&&n.dataset[t]!==void 0)return!0;n=n.parentElement}return!1}function i(r){let i=t(!!r.value);if(i.value)return n(i);let a=e(r,e=>{e&&(i.value=!0,a())});return n(i)}export{r as n,i as t};

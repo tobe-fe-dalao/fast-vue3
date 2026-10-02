@@ -1,0 +1,1 @@
+import{E as e,F as t,j as n}from"./index-index-BbuMdaoV.js";import{t as r}from"./user-CYI4M8Lm.js";var i=n({__name:`index`,setup(n){return(n,i)=>(t(),e(r))}});export{i as default};

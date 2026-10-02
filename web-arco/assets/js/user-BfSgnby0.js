@@ -1,0 +1,1 @@
+import{Jt as e,en as t,fn as n}from"./index-index-k8_n_YEO.js";import{t as r}from"./user-6KTZajyg.js";var i=t({__name:`index`,setup(t){return(t,i)=>(n(),e(r))}});export{i as default};

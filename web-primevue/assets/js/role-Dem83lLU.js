@@ -1,0 +1,1 @@
+import{Qt as e,Vt as t,qt as n}from"./index-index-CU8LOYKL.js";import{t as r}from"./role-DmRnERMp.js";var i=n({__name:`index`,setup(n){return(n,i)=>(e(),t(r))}});export{i as default};
