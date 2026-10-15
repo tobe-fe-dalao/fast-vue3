@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ArticleItem } from '@/api';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
@@ -62,7 +64,10 @@ async function loadCategories() {
   categoryOptions.value = categories.map(({ id, name }) => ({ id, name }));
 }
 
+const listRequests = useLatestRequest();
+
 async function fetchData() {
+  const isCurrent = listRequests.start();
   loading.value = true;
   try {
     const categoryId = categoryOptions.value.find(
@@ -75,16 +80,18 @@ async function fetchData() {
       pageSize: pageSize.value,
       status: statusFilter.value as ArticleItem['status'] | undefined,
     });
+    if (!isCurrent()) return;
     pagedArticles.value = result.items.map((article) => toRecord(article));
     total.value = result.total;
   } catch {
+    if (!isCurrent()) return;
     toast.add({
       severity: 'error',
       summary: '错误',
       detail: '加载文章列表失败',
     });
   } finally {
-    loading.value = false;
+    if (isCurrent()) loading.value = false;
   }
 }
 

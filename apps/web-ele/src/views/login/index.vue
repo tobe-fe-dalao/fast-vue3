@@ -2,7 +2,6 @@
 import type { FormInstance } from 'element-plus';
 
 import { useUserStore } from '@fast-vue3/stores';
-import { setRefreshToken } from '@fast-vue3/utils';
 
 import { userApi } from '@/api/user';
 import { ElMessage } from 'element-plus';
@@ -18,14 +17,19 @@ const rules = {
 };
 
 async function onLogin() {
-  await formRef.value?.validate();
+  if (loading.value) return;
   loading.value = true;
   try {
-    const res = await userApi.login(form);
-    userStore.setToken(res.accessToken);
-    setRefreshToken(res.refreshToken);
-    const profile = await userApi.getProfile();
-    userStore.setUserInfo(profile);
+    try {
+      await formRef.value?.validate();
+    } catch {
+      return;
+    }
+    const loggedIn = await userStore.login(
+      () => userApi.login({ ...form }),
+      userApi.getProfile,
+    );
+    if (!loggedIn) return;
     ElMessage.success('登录成功');
     const redirect =
       (router.currentRoute.value.query.redirect as string) || '/';

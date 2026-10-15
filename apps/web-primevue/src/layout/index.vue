@@ -2,6 +2,7 @@
 import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
+import { userApi } from '@/api/user';
 import { storeToRefs } from 'pinia';
 import { useToast } from 'primevue/usetoast';
 
@@ -185,7 +186,7 @@ function closeTab(path: string) {
 }
 
 async function handleLogout() {
-  userStore.logout();
+  if (!(await userStore.logoutWithRevoke(userApi.logout))) return;
   toast.add({
     severity: 'success',
     summary: '成功',

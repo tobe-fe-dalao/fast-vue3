@@ -2,6 +2,7 @@
 import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
+import { userApi } from '@/api/user';
 import {
   Bell,
   DataBoard,
@@ -111,10 +112,10 @@ function closeTab(path: string) {
   }
 }
 
-function handleDropdown(cmd: string) {
+async function handleDropdown(cmd: string) {
   if (cmd === 'profile') router.push('/profile');
   else if (cmd === 'logout') {
-    userStore.logout();
+    if (!(await userStore.logoutWithRevoke(userApi.logout))) return;
     ElMessage.success('已退出登录');
     tabs.value = [];
     router.push('/login');

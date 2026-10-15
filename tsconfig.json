@@ -9,7 +9,8 @@
     "apps/*/vite.config.ts",
     "internal/**/*.ts",
     "packages/**/*.ts",
-    "scripts/**/*.ts"
+    "scripts/**/*.ts",
+    "tests/e2e/**/*.ts"
   ],
   "exclude": [
     "**/node_modules/**",

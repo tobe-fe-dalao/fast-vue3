@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import { Message } from '@arco-design/web-vue';
 import {
@@ -8,6 +10,7 @@ import {
 } from '@arco-design/web-vue/es/icon';
 
 const submitting = ref(false);
+const submitRequests = useLatestRequest();
 const form = reactive({
   name: '',
   email: '',
@@ -22,26 +25,38 @@ const contactInfo = [
 ];
 
 async function handleSubmit() {
-  if (!form.name || !form.email || !form.subject || !form.message) {
-    Message.warning('请完善必填项');
-    return;
-  }
+  if (submitting.value) return;
+  const isCurrent = submitRequests.start();
   submitting.value = true;
   try {
+    if (!form.name || !form.email || !form.subject || !form.message) {
+      Message.warning('请完善必填项');
+      return;
+    }
+    if (!isCurrent()) return;
+    const submitted = { ...form };
     await api.portal.contact({
-      email: form.email,
-      name: form.name,
-      message: `[${form.subject}] ${form.message}`,
+      email: submitted.email,
+      name: submitted.name,
+      message: `[${submitted.subject}] ${submitted.message}`,
     });
+    if (!isCurrent()) return;
     Message.success('演示提交成功；当前接口不会保存留言');
-    form.name = '';
-    form.email = '';
-    form.subject = '';
-    form.message = '';
+    if (
+      Object.entries(submitted).every(
+        ([key, value]) => form[key as keyof typeof form] === value,
+      )
+    ) {
+      form.name = '';
+      form.email = '';
+      form.subject = '';
+      form.message = '';
+    }
   } catch {
+    if (!isCurrent()) return;
     Message.error('提交失败，请稍后重试');
   } finally {
-    submitting.value = false;
+    if (isCurrent()) submitting.value = false;
   }
 }
 </script>

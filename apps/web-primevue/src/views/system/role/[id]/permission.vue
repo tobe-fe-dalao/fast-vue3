@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { PermissionItem } from '@/api';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
@@ -87,7 +89,16 @@ const treeNodes = permissionTree.map((group) => ({
   })),
 }));
 
+const detailRequests = useLatestRequest();
+const saveRequests = useLatestRequest();
+
 async function fetchRole() {
+  const isCurrent = detailRequests.start();
+  saveRequests.invalidate();
+  saving.value = false;
+  role.value = null;
+  selectedKeys.value = {};
+  availablePermissions.value = [];
   loading.value = true;
   try {
     const id = Number(route.params.id);
@@ -95,6 +106,7 @@ async function fetchRole() {
       api.role.detail(id),
       api.permission.list(),
     ]);
+    if (!isCurrent()) return;
     availablePermissions.value = permissions;
     role.value = {
       ...found,
@@ -109,13 +121,14 @@ async function fetchRole() {
       selectedKeys.value[key] = true;
     });
   } catch {
+    if (!isCurrent()) return;
     toast.add({
       severity: 'error',
       summary: '错误',
       detail: '加载角色信息失败',
     });
   } finally {
-    loading.value = false;
+    if (isCurrent()) loading.value = false;
   }
 }
 
@@ -125,26 +138,31 @@ const selectedCount = computed(
 );
 
 async function handleSave() {
-  if (!role.value) return;
+  if (!role.value || loading.value || saving.value) return;
+  const target = role.value;
+  const count = selectedCount.value;
+  const isCurrent = saveRequests.start();
   saving.value = true;
   try {
     const permissionIds = availablePermissions.value
       .filter(({ code }) => selectedKeys.value[code])
       .map(({ id }) => id);
-    await api.role.update(role.value.id, { permissionIds });
+    await api.role.update(target.id, { permissionIds });
+    if (!isCurrent()) return;
     toast.add({
       severity: 'success',
       summary: '成功',
-      detail: `已保存「${role.value?.name ?? ''}」的权限配置（${selectedCount.value} 项）`,
+      detail: `已保存「${target.name}」的权限配置（${count} 项）`,
     });
   } catch {
+    if (!isCurrent()) return;
     toast.add({
       severity: 'error',
       summary: '错误',
       detail: '权限配置保存失败',
     });
   } finally {
-    saving.value = false;
+    if (isCurrent()) saving.value = false;
   }
 }
 
@@ -152,7 +170,7 @@ function goBack() {
   router.push('/system/role');
 }
 
-onMounted(fetchRole);
+watch(() => route.params.id, fetchRole, { immediate: true, flush: 'sync' });
 </script>
 
 <template>

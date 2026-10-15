@@ -27,15 +27,7 @@ const resolved = <T>(value: T) => Promise.resolve(clone(value));
 const now = () => new Date().toISOString().replace('T', ' ').slice(0, 19);
 
 function paginate<T>(items: T[], query: PageQuery = {}) {
-  const page = Number(query.page) || 1;
-  const pageSize = Number(query.pageSize) || 10;
-  const start = (page - 1) * pageSize;
-  return {
-    items: clone(items.slice(start, start + pageSize)),
-    page,
-    pageSize,
-    total: items.length,
-  };
+  return boundedPaginate(items, { ...query, pageSize: query.pageSize ?? 10 });
 }
 
 function filterKeyword<T>(
@@ -1006,7 +998,7 @@ export function createStaticMockApi(): Api {
           name: body.name,
           code: body.code,
           description: body.description,
-          menuIds: body.menuIds ?? [],
+          menuIds: [...(body.menuIds ?? [])],
           permissions: permissions
             .filter((item) => body.permissionIds?.includes(item.id))
             .map((item) => item.code),
@@ -1030,10 +1022,12 @@ export function createStaticMockApi(): Api {
         ),
       update: (id, body) => {
         const record = requireRecord(roles, id);
-        Object.assign(record, body, { updatedAt: now() });
-        if (body.permissionIds) {
+        const { menuIds, permissionIds, ...fields } = body;
+        Object.assign(record, fields, { updatedAt: now() });
+        if (menuIds !== undefined) record.menuIds = [...menuIds];
+        if (permissionIds !== undefined) {
           record.permissions = permissions
-            .filter((item) => body.permissionIds?.includes(item.id))
+            .filter((item) => permissionIds.includes(item.id))
             .map((item) => item.code);
         }
         return resolved(record);
@@ -1082,10 +1076,10 @@ export function createStaticMockApi(): Api {
           id: nextId(),
           username: body.username,
           email: body.email,
-          nickname: body.nickname,
+          nickname: body.nickname ?? body.realName ?? body.username,
           phone: body.phone,
-          realName: body.realName,
-          roles: ['user'],
+          realName: body.realName ?? body.username,
+          roles: body.roleIds?.map(String) ?? [],
           status: body.status ?? 'active',
           createdAt: now(),
         };
@@ -1095,12 +1089,16 @@ export function createStaticMockApi(): Api {
       delete: (id) => removeRecord(users, id),
       detail: (id) => resolved(requireRecord(users, id)),
       list: (query = {}) => {
+        const { role } = query;
         const byStatus = query.status
           ? users.filter((item) => item.status === query.status)
           : users;
+        const byRole = role
+          ? byStatus.filter((item) => item.roles?.includes(role))
+          : byStatus;
         return resolved(
           paginate(
-            filterKeyword(byStatus, query.keyword, (item) => [
+            filterKeyword(byRole, query.keyword, (item) => [
               item.username,
               item.realName,
               item.email,
@@ -1111,7 +1109,12 @@ export function createStaticMockApi(): Api {
       },
       update: (id, body) => {
         const record = requireRecord(users, id);
-        Object.assign(record, body);
+        if (body.email !== undefined) record.email = body.email;
+        if (body.nickname !== undefined) record.nickname = body.nickname;
+        if (body.phone !== undefined) record.phone = body.phone;
+        if (body.realName !== undefined) record.realName = body.realName;
+        if (body.status !== undefined) record.status = body.status;
+        if (body.roleIds !== undefined) record.roles = body.roleIds.map(String);
         return resolved(record);
       },
     },

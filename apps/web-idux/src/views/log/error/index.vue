@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TableColumn } from '@idux/components/table';
+
 import { http } from '@/api/http';
 import { useMessage } from '@idux/components/message';
 
@@ -26,15 +28,15 @@ const statusFilter = ref('');
 const drawerVisible = ref(false);
 const detailRecord = ref<ErrorLog | null>(null);
 
-const columns = [
+const columns: TableColumn<ErrorLog>[] = [
   { title: 'ID', dataKey: 'id', width: 60 },
-  { title: '错误类型', key: 'type', width: 130, customCell: true },
+  { title: '错误类型', key: 'type', width: 130, customCell: 'typeCell' },
   { title: '错误信息', dataKey: 'message' },
   { title: '页面', dataKey: 'page', width: 150 },
   { title: '浏览器', dataKey: 'browser', width: 110 },
-  { title: '状态', key: 'status', width: 90, customCell: true },
+  { title: '状态', key: 'status', width: 90, customCell: 'statusCell' },
   { title: '时间', dataKey: 'createdAt', width: 170 },
-  { title: '操作', key: 'actions', width: 130, customCell: true },
+  { title: '操作', key: 'actions', width: 130, customCell: 'actionsCell' },
 ];
 
 async function fetchData() {
@@ -106,30 +108,26 @@ onMounted(fetchData);
         :borderless="false"
         stripe
       >
-        <template #cell="{ record, column }">
-          <template v-if="column.key === 'type'">
-            <IxTag color="error">{{ record.type }}</IxTag>
-          </template>
-          <template v-else-if="column.key === 'status'">
-            <IxTag
-              :color="record.status === 'resolved' ? 'success' : 'warning'"
-            >
-              {{ record.status === 'resolved' ? '已解决' : '待处理' }}
-            </IxTag>
-          </template>
-          <template v-else-if="column.key === 'actions'">
-            <IxButton mode="link" size="sm" @click="openDetail(record)">
-              详情
-            </IxButton>
-            <IxButton
-              v-if="record.status === 'pending'"
-              mode="link"
-              size="sm"
-              @click="handleResolve(record)"
-            >
-              解决
-            </IxButton>
-          </template>
+        <template #typeCell="{ record }">
+          <IxTag color="error">{{ record.type }}</IxTag>
+        </template>
+        <template #statusCell="{ record }">
+          <IxTag :color="record.status === 'resolved' ? 'success' : 'warning'">
+            {{ record.status === 'resolved' ? '已解决' : '待处理' }}
+          </IxTag>
+        </template>
+        <template #actionsCell="{ record }">
+          <IxButton mode="link" size="sm" @click="openDetail(record)">
+            详情
+          </IxButton>
+          <IxButton
+            v-if="record.status === 'pending'"
+            mode="link"
+            size="sm"
+            @click="handleResolve(record)"
+          >
+            解决
+          </IxButton>
         </template>
       </IxTable>
       <div style="display: flex; justify-content: flex-end; margin-top: 16px">

@@ -5,6 +5,7 @@ import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
 import { api } from '@/api';
+import { userApi } from '@/api/user';
 import {
   ApartmentOutlined,
   AppstoreOutlined,
@@ -217,7 +218,7 @@ function toggleTheme() {
 }
 
 async function handleLogout() {
-  userStore.logout();
+  if (!(await userStore.logoutWithRevoke(userApi.logout))) return;
   message.success('已退出登录');
   tabs.value = [];
   await router.push('/login');

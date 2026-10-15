@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ArticleItem } from '@/api';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import {
   DeleteOutlined,
@@ -40,7 +42,10 @@ async function loadCategories() {
   }
 }
 
+const listRequests = useLatestRequest();
+
 async function fetchData() {
+  const isCurrent = listRequests.start();
   loading.value = true;
   try {
     const res = await api.content.articleList({
@@ -50,12 +55,14 @@ async function fetchData() {
       status: statusFilter.value as ArticleItem['status'] | undefined,
       categoryId: categoryFilter.value,
     });
+    if (!isCurrent()) return;
     dataSource.value = res.items;
     total.value = res.total;
   } catch {
+    if (!isCurrent()) return;
     message.error('加载文章列表失败');
   } finally {
-    loading.value = false;
+    if (isCurrent()) loading.value = false;
   }
 }
 

@@ -2,6 +2,7 @@
 import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
+import { userApi } from '@/api/user';
 import { storeToRefs } from 'pinia';
 import {
   FullscreenIcon,
@@ -111,7 +112,7 @@ async function handleDropdown(item: {
   const value = String(item.value ?? '');
   if (value === 'profile') router.push('/profile');
   else if (value === 'logout') {
-    userStore.logout();
+    if (!(await userStore.logoutWithRevoke(userApi.logout))) return;
     await MessagePlugin.success('已退出登录');
     tabs.value = [];
     await router.push('/login');

@@ -2,6 +2,9 @@
   "name": "@fast-vue3/request",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
@@ -12,5 +15,8 @@
   "dependencies": {
     "@fast-vue3/utils": "workspace:*",
     "axios": "catalog:"
+  },
+  "devDependencies": {
+    "vitest": "catalog:"
   }
 }

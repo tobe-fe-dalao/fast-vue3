@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TableColumn } from '@idux/components/table';
+
 import { http } from '@/api/http';
 import { useMessage } from '@idux/components/message';
 
@@ -54,16 +56,16 @@ const roleOptions = [
 
 const departments = ['技术部', '产品部', '运营部', '设计部', '市场部'];
 
-const columns = [
+const columns: TableColumn<UserRecord>[] = [
   { title: 'ID', dataKey: 'id', width: 60 },
   { title: '用户名', dataKey: 'username', width: 110 },
   { title: '姓名', dataKey: 'realName', width: 100 },
   { title: '邮箱', dataKey: 'email' },
   { title: '部门', dataKey: 'department', width: 100 },
-  { title: '角色', key: 'roles', width: 150, customCell: true },
-  { title: '状态', key: 'status', width: 90, customCell: true },
+  { title: '角色', key: 'roles', width: 150, customCell: 'rolesCell' },
+  { title: '状态', key: 'status', width: 90, customCell: 'statusCell' },
   { title: '创建时间', dataKey: 'createdAt', width: 170 },
-  { title: '操作', key: 'actions', width: 220, customCell: true },
+  { title: '操作', key: 'actions', width: 220, customCell: 'actionsCell' },
 ];
 
 async function fetchData() {
@@ -150,6 +152,7 @@ async function handleSave() {
     const data = {
       email: form.email,
       nickname: form.realName,
+      realName: form.realName,
       phone: form.phone,
       status: form.status === 'active' ? 'active' : 'disabled',
     };
@@ -246,39 +249,37 @@ onMounted(fetchData);
         :borderless="false"
         stripe
       >
-        <template #cell="{ record, column }">
-          <template v-if="column.key === 'roles'">
-            <IxTag
-              v-for="role in record.roles"
-              :key="role"
-              color="blue"
-              style="margin-right: 4px"
-            >
-              {{ roleOptions.find((r) => r.value === role)?.label || role }}
-            </IxTag>
-          </template>
-          <template v-else-if="column.key === 'status'">
-            <IxTag :color="record.status === 'active' ? 'success' : 'info'">
-              {{ record.status === 'active' ? '启用' : '禁用' }}
-            </IxTag>
-          </template>
-          <template v-else-if="column.key === 'actions'">
-            <IxButton mode="link" size="sm" @click="openDetail(record)">
-              详情
-            </IxButton>
-            <IxButton mode="link" size="sm" @click="openDialog(record)">
-              编辑
-            </IxButton>
-            <IxButton mode="link" size="sm" @click="handleToggleStatus(record)">
-              {{ record.status === 'active' ? '禁用' : '启用' }}
-            </IxButton>
-            <IxPopconfirm
-              title="确定删除该用户？"
-              @confirm="handleDelete(record)"
-            >
-              <IxButton mode="link" size="sm" danger>删除</IxButton>
-            </IxPopconfirm>
-          </template>
+        <template #rolesCell="{ record }">
+          <IxTag
+            v-for="role in record.roles"
+            :key="role"
+            color="blue"
+            style="margin-right: 4px"
+          >
+            {{ roleOptions.find((r) => r.value === role)?.label || role }}
+          </IxTag>
+        </template>
+        <template #statusCell="{ record }">
+          <IxTag :color="record.status === 'active' ? 'success' : 'info'">
+            {{ record.status === 'active' ? '启用' : '禁用' }}
+          </IxTag>
+        </template>
+        <template #actionsCell="{ record }">
+          <IxButton mode="link" size="sm" @click="openDetail(record)">
+            详情
+          </IxButton>
+          <IxButton mode="link" size="sm" @click="openDialog(record)">
+            编辑
+          </IxButton>
+          <IxButton mode="link" size="sm" @click="handleToggleStatus(record)">
+            {{ record.status === 'active' ? '禁用' : '启用' }}
+          </IxButton>
+          <IxPopconfirm
+            title="确定删除该用户？"
+            @confirm="handleDelete(record)"
+          >
+            <IxButton mode="link" size="sm" danger>删除</IxButton>
+          </IxPopconfirm>
         </template>
       </IxTable>
       <div style="display: flex; justify-content: flex-end; margin-top: 16px">

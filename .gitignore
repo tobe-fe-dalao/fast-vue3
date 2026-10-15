@@ -33,6 +33,8 @@ stats.html
 # Test / Coverage
 coverage
 dev-dist
+playwright-report
+test-results
 
 # Local env files
 .env.local

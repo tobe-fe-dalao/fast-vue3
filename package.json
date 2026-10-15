@@ -53,9 +53,13 @@
     "preinstall": "npx only-allow pnpm",
     "reinstall": "pnpm clean --del-lock && pnpm install",
     "test": "pnpm -r --if-present run test",
+    "test:e2e": "playwright test --project chromium",
+    "test:e2e:all": "playwright test",
     "typecheck": "node scripts/generate-auto-import-types.mjs && tsc --noEmit -p tsconfig.json && pnpm -r --if-present run type-check && turbo typecheck",
     "build:demo": "node scripts/build-demo.mjs",
-    "preview:demo": "vite preview --outDir dist/demo --base /fast-vue3/ --host 127.0.0.1"
+    "preview:demo": "vite preview --outDir dist/demo --base /fast-vue3/ --host 127.0.0.1",
+    "catalog": "pnpm dlx codemod pnpm/catalog",
+    "test:e2e:http": "node scripts/build-e2e.mjs && playwright test --config playwright.http.config.ts --project chromium"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
@@ -79,6 +83,7 @@
     "lint-staged": "catalog:",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
+    "playwright": "catalog:",
     "postcss-html": "catalog:",
     "postcss-scss": "catalog:",
     "prettier": "catalog:",

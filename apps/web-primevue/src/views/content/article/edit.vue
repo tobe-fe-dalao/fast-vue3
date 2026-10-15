@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ArticleItem } from '@/api';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
@@ -16,9 +18,12 @@ const router = useRouter();
 const toast = useToast();
 
 const editId = computed(() => Number(route.query.id) || 0);
-const isEdit = computed(() => editId.value > 0);
 
 const submitting = ref(false);
+const loading = ref(true);
+const loadedId = ref<null | number>(null);
+const detailRequests = useLatestRequest();
+const saveRequests = useLatestRequest();
 
 interface ArticleForm {
   title: string;
@@ -53,11 +58,32 @@ const tagOptions = [
 ];
 
 async function loadForEdit() {
+  const id = editId.value;
+  const isCurrent = detailRequests.start();
+  saveRequests.invalidate();
+  submitting.value = false;
+  loading.value = true;
+  loadedId.value = null;
+  Object.assign(form, {
+    title: '',
+    categoryId: undefined,
+    author: '',
+    summary: '',
+    cover: '',
+    content: '',
+    status: 'draft',
+    tags: [],
+  });
   try {
     const categories = await api.content.categoryList();
+    if (!isCurrent()) return;
     categoryOptions.value = categories.map(({ id, name }) => ({ id, name }));
-    if (!isEdit.value) return;
-    const article = await api.content.articleDetail(editId.value);
+    if (id === 0) {
+      loadedId.value = 0;
+      return;
+    }
+    const article = await api.content.articleDetail(id);
+    if (!isCurrent()) return;
     form.title = article.title;
     form.categoryId = article.categoryId;
     form.author = article.author;
@@ -66,22 +92,36 @@ async function loadForEdit() {
     form.content = article.content.join('\n\n');
     form.status = article.status;
     form.tags = [...article.tags];
+    loadedId.value = id;
   } catch {
+    if (!isCurrent()) return;
     toast.add({ severity: 'error', summary: '错误', detail: '文章加载失败' });
+  } finally {
+    if (isCurrent()) loading.value = false;
   }
 }
 
 async function handleSubmit() {
-  if (!form.title) {
-    toast.add({ severity: 'warn', summary: '提示', detail: '请输入文章标题' });
+  if (submitting.value || loading.value || loadedId.value !== editId.value)
     return;
-  }
-  if (!form.categoryId) {
-    toast.add({ severity: 'warn', summary: '提示', detail: '请选择分类' });
-    return;
-  }
+  const id = editId.value;
+  const isCurrent = saveRequests.start();
   submitting.value = true;
   try {
+    if (!form.title) {
+      toast.add({
+        severity: 'warn',
+        summary: '提示',
+        detail: '请输入文章标题',
+      });
+      return;
+    }
+    if (!form.categoryId) {
+      toast.add({ severity: 'warn', summary: '提示', detail: '请选择分类' });
+      return;
+    }
+
+    if (!isCurrent() || loadedId.value !== id || editId.value !== id) return;
     const payload = {
       author: form.author,
       categoryId: form.categoryId,
@@ -89,22 +129,24 @@ async function handleSubmit() {
       cover: form.cover,
       status: form.status,
       summary: form.summary,
-      tags: form.tags,
+      tags: [...form.tags],
       title: form.title,
     };
-    await (isEdit.value
-      ? api.content.articleUpdate(editId.value, payload)
+    await (id > 0
+      ? api.content.articleUpdate(id, payload)
       : api.content.articleCreate(payload));
+    if (!isCurrent()) return;
     toast.add({
       severity: 'success',
       summary: '成功',
-      detail: isEdit.value ? '文章已更新' : '文章已创建',
+      detail: id > 0 ? '文章已更新' : '文章已创建',
     });
     router.push('/content/article');
   } catch {
+    if (!isCurrent()) return;
     toast.add({ severity: 'error', summary: '错误', detail: '保存失败' });
   } finally {
-    submitting.value = false;
+    if (isCurrent()) submitting.value = false;
   }
 }
 
@@ -112,7 +154,7 @@ function goBack() {
   router.push('/content/article');
 }
 
-onMounted(loadForEdit);
+watch(editId, loadForEdit, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
@@ -244,6 +286,7 @@ onMounted(loadForEdit);
               label="保存"
               icon="pi pi-check"
               :loading="submitting"
+              :disabled="loading || loadedId !== editId"
               @click="handleSubmit"
             />
             <Button

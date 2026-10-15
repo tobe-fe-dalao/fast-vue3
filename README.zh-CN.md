@@ -247,6 +247,10 @@ pnpm build:site-antd
 pnpm build:web-antd
 ```
 
+浏览器回归使用生产演示构建：先运行 `pnpm build:demo` 和 `pnpm exec playwright install chromium`，再运行 `pnpm test:e2e`。 `pnpm test:e2e:all` 同时覆盖 Firefox 和 WebKit（需先安装对应浏览器）。测试会自动在 4176 端口启动预览服务，每个用例使用独立浏览器上下文。
+
+`pnpm test:e2e:http` 额外构建 HTTP 模式的 Ant Design Vue 后台和门户，在 4177–4178 端口用受控接口响应验证会话错误和慢请求。
+
 ---
 
 ## 📄 License

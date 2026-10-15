@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { IxMessage } from '@idux/components';
+import { useMessage } from '@idux/components/message';
+
+const message = useMessage();
 
 const loading = ref(false);
 const inputVal = ref('');
@@ -35,7 +37,7 @@ function triggerLoading() {
   loading.value = true;
   window.setTimeout(() => {
     loading.value = false;
-    IxMessage.success('加载完成！');
+    message.success('加载完成！');
   }, 1500);
 }
 </script>
@@ -149,10 +151,10 @@ function triggerLoading() {
         <span class="font-semibold">通知反馈</span>
       </template>
       <div class="flex gap-2">
-        <IxButton @click="IxMessage.success('操作成功！')"> 成功消息 </IxButton>
-        <IxButton @click="IxMessage.error('操作失败！')"> 错误消息 </IxButton>
-        <IxButton @click="IxMessage.warn('请注意！')"> 警告消息 </IxButton>
-        <IxButton @click="IxMessage.info('提示信息')"> 普通消息 </IxButton>
+        <IxButton @click="message.success('操作成功！')"> 成功消息 </IxButton>
+        <IxButton @click="message.error('操作失败！')"> 错误消息 </IxButton>
+        <IxButton @click="message.warning('请注意！')"> 警告消息 </IxButton>
+        <IxButton @click="message.info('提示信息')"> 普通消息 </IxButton>
       </div>
     </IxCard>
   </div>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TableColumn } from '@idux/components/table';
+
 import { http } from '@/api/http';
 import { useMessage } from '@idux/components/message';
 
@@ -22,13 +24,13 @@ const currentPage = ref(1);
 const pageSize = ref(10);
 const keyword = ref('');
 
-const columns = [
+const columns: TableColumn<LoginLog>[] = [
   { title: 'ID', dataKey: 'id', width: 60 },
   { title: '用户名', dataKey: 'username', width: 110 },
   { title: 'IP 地址', dataKey: 'ip', width: 140 },
   { title: '浏览器', dataKey: 'browser', width: 120 },
   { title: '操作系统', dataKey: 'os', width: 130 },
-  { title: '状态', key: 'status', width: 90, customCell: true },
+  { title: '状态', key: 'status', width: 90, customCell: 'statusCell' },
   { title: '消息', dataKey: 'message' },
   { title: '登录时间', dataKey: 'createdAt', width: 170 },
 ];
@@ -89,12 +91,10 @@ onMounted(fetchData);
         :borderless="false"
         stripe
       >
-        <template #cell="{ record, column }">
-          <template v-if="column.key === 'status'">
-            <IxTag :color="record.status === 'success' ? 'success' : 'error'">
-              {{ record.status === 'success' ? '成功' : '失败' }}
-            </IxTag>
-          </template>
+        <template #statusCell="{ record }">
+          <IxTag :color="record.status === 'success' ? 'success' : 'error'">
+            {{ record.status === 'success' ? '成功' : '失败' }}
+          </IxTag>
         </template>
       </IxTable>
       <div style="display: flex; justify-content: flex-end; margin-top: 16px">

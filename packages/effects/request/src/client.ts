@@ -6,7 +6,11 @@ import type {
   InternalAxiosRequestConfig,
 } from 'axios';
 
-import { getAuthHeader, getHttpStatusMessage } from '@fast-vue3/utils';
+import {
+  expireSession,
+  getAuthHeader,
+  getHttpStatusMessage,
+} from '@fast-vue3/utils';
 
 import axios from 'axios';
 
@@ -23,6 +27,16 @@ export interface IResponse<T = any> {
 export interface RequestOptions {
   /** 是否处理响应结果，默认 true */
   isTransformResponse?: boolean;
+}
+
+export class HttpRequestError extends Error {
+  constructor(
+    message: string,
+    public readonly status?: number,
+  ) {
+    super(message);
+    this.name = 'HttpRequestError';
+  }
 }
 
 /**
@@ -56,7 +70,13 @@ export function createHttpClient(
       if (response) {
         const data = response.data as IResponse;
         const msg = data?.message || getHttpStatusMessage(response.status);
-        return Promise.reject(new Error(msg));
+        if (response.status === 401) {
+          const authorization = error.config?.headers.get('authorization');
+          expireSession(
+            typeof authorization === 'string' ? authorization : null,
+          );
+        }
+        return Promise.reject(new HttpRequestError(msg, response.status));
       }
       return Promise.reject(new Error('网络连接异常，请稍后再试！'));
     },

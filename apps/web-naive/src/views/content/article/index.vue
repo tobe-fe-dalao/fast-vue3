@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ArticleItem } from '@/api';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import {
   NButton,
@@ -55,7 +57,10 @@ async function loadCategories() {
   }));
 }
 
+const listRequests = useLatestRequest();
+
 async function fetchData() {
+  const isCurrent = listRequests.start();
   loading.value = true;
   try {
     const categoryId = categoryOptions.value.find(
@@ -68,12 +73,14 @@ async function fetchData() {
       pageSize: pageSize.value,
       status: statusFilter.value as ArticleItem['status'] | undefined,
     });
+    if (!isCurrent()) return;
     dataSource.value = result.items.map((article) => toRecord(article));
     total.value = result.total;
   } catch {
+    if (!isCurrent()) return;
     message.error('加载文章列表失败');
   } finally {
-    loading.value = false;
+    if (isCurrent()) loading.value = false;
   }
 }
 

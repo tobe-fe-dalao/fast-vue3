@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { BlogComment, BlogPost } from '@/api';
 
+import { useLatestRequest } from '@fast-vue3/shared';
 import { isLoggedIn } from '@fast-vue3/utils';
 
 import { api } from '@/api';
@@ -17,18 +18,34 @@ const commentContent = ref('');
 const commentSubmitting = ref(false);
 const commentError = ref('');
 
+const postRequests = useLatestRequest();
+const commentsRequests = useLatestRequest();
+const commentRequests = useLatestRequest();
+
 async function loadComments() {
+  const isCurrent = commentsRequests.start();
   commentsLoading.value = true;
   try {
-    comments.value = await api.portal.blogComments(Number(route.params.id));
+    const result = await api.portal.blogComments(Number(route.params.id));
+    if (isCurrent()) comments.value = result;
   } catch {
+    if (!isCurrent()) return;
     commentError.value = '评论加载失败，请稍后重试';
   } finally {
-    commentsLoading.value = false;
+    if (isCurrent()) commentsLoading.value = false;
   }
 }
 
 async function submitComment() {
+  if (
+    commentSubmitting.value ||
+    loading.value ||
+    commentsLoading.value ||
+    !post.value
+  )
+    return;
+  const id = Number(route.params.id);
+  const draft = commentContent.value;
   if (!isLoggedIn()) {
     await router.push({
       path: '/login',
@@ -41,37 +58,54 @@ async function submitComment() {
     commentError.value = '请输入评论内容';
     return;
   }
+  const isCurrent = commentRequests.start();
   commentSubmitting.value = true;
   commentError.value = '';
   try {
-    const comment = await api.portal.createBlogComment(
-      Number(route.params.id),
-      { content },
-    );
+    const comment = await api.portal.createBlogComment(id, { content });
+    if (!isCurrent()) return;
     comments.value.unshift(comment);
-    commentContent.value = '';
+    if (commentContent.value === draft) commentContent.value = '';
   } catch (error) {
+    if (!isCurrent()) return;
     commentError.value =
       error instanceof Error ? error.message : '评论发布失败';
   } finally {
-    commentSubmitting.value = false;
+    if (isCurrent()) commentSubmitting.value = false;
   }
 }
 
-onMounted(loadComments);
-
 const coverText = computed(() => (post.value?.category ?? '封面').slice(0, 2));
 
-onMounted(async () => {
+async function loadPost() {
+  const isCurrent = postRequests.start();
+  loading.value = true;
   const id = Number(route.params.id);
   try {
-    post.value = await api.portal.blog(id);
+    const result = await api.portal.blog(id);
+    if (isCurrent()) post.value = result;
   } catch {
+    if (!isCurrent()) return;
     post.value = null;
   } finally {
-    loading.value = false;
+    if (isCurrent()) loading.value = false;
   }
-});
+}
+
+watch(
+  () => route.params.id,
+  () => {
+    commentRequests.invalidate();
+    commentSubmitting.value = false;
+    commentError.value = '';
+    commentContent.value = '';
+    comments.value = [];
+    post.value = null;
+    void loadPost();
+    void loadComments();
+  },
+  { immediate: true, flush: 'sync' },
+);
 
 function goBack() {
   router.push('/blog');
@@ -151,7 +185,9 @@ function goBack() {
             <button
               class="comment-submit"
               type="button"
-              :disabled="commentSubmitting"
+              :disabled="
+                commentSubmitting || loading || commentsLoading || !post
+              "
               @click="submitComment"
             >
               {{

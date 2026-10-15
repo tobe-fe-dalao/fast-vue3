@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TableColumn } from '@idux/components/table';
+
 import { http } from '@/api/http';
 import { useMessage } from '@idux/components/message';
 
@@ -37,14 +39,14 @@ const form = reactive({
   status: 'active',
 });
 
-const columns = [
+const columns: TableColumn<RoleRecord>[] = [
   { title: 'ID', dataKey: 'id', width: 60 },
   { title: '角色名称', dataKey: 'name', width: 140 },
   { title: '角色编码', dataKey: 'code', width: 140 },
   { title: '描述', dataKey: 'description' },
-  { title: '状态', key: 'status', width: 90, customCell: true },
+  { title: '状态', key: 'status', width: 90, customCell: 'statusCell' },
   { title: '创建时间', dataKey: 'createdAt', width: 170 },
-  { title: '操作', key: 'actions', width: 200, customCell: true },
+  { title: '操作', key: 'actions', width: 200, customCell: 'actionsCell' },
 ];
 
 async function fetchData() {
@@ -166,26 +168,24 @@ onMounted(fetchData);
         :borderless="false"
         stripe
       >
-        <template #cell="{ record, column }">
-          <template v-if="column.key === 'status'">
-            <IxTag :color="record.status === 'active' ? 'success' : 'info'">
-              {{ record.status === 'active' ? '启用' : '禁用' }}
-            </IxTag>
-          </template>
-          <template v-else-if="column.key === 'actions'">
-            <IxButton mode="link" size="sm" @click="openDialog(record)">
-              编辑
-            </IxButton>
-            <IxButton mode="link" size="sm" @click="goPerm(record)">
-              权限
-            </IxButton>
-            <IxPopconfirm
-              title="确定删除该角色？"
-              @confirm="handleDelete(record)"
-            >
-              <IxButton mode="link" size="sm" danger>删除</IxButton>
-            </IxPopconfirm>
-          </template>
+        <template #statusCell="{ record }">
+          <IxTag :color="record.status === 'active' ? 'success' : 'info'">
+            {{ record.status === 'active' ? '启用' : '禁用' }}
+          </IxTag>
+        </template>
+        <template #actionsCell="{ record }">
+          <IxButton mode="link" size="sm" @click="openDialog(record)">
+            编辑
+          </IxButton>
+          <IxButton mode="link" size="sm" @click="goPerm(record)">
+            权限
+          </IxButton>
+          <IxPopconfirm
+            title="确定删除该角色？"
+            @confirm="handleDelete(record)"
+          >
+            <IxButton mode="link" size="sm" danger>删除</IxButton>
+          </IxPopconfirm>
         </template>
       </IxTable>
       <div style="display: flex; justify-content: flex-end; margin-top: 16px">

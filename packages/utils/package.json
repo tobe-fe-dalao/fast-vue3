@@ -2,6 +2,9 @@
   "name": "@fast-vue3/utils",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
   "exports": {
     ".": {
       "types": "./src/index.ts",
@@ -12,5 +15,8 @@
     "@fast-vue3/shared": "workspace:*",
     "dayjs": "catalog:",
     "qs": "catalog:"
+  },
+  "devDependencies": {
+    "vitest": "catalog:"
   }
 }

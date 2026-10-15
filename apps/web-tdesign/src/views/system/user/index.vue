@@ -145,6 +145,7 @@ async function handleSave() {
     const data = {
       email: form.email,
       nickname: form.realName,
+      realName: form.realName,
       phone: form.phone,
       status: form.status === 'active' ? 'active' : 'disabled',
     };

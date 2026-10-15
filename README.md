@@ -161,6 +161,10 @@ pnpm build
 
 Build one application with `pnpm build:web-antd` or `pnpm build:site-antd`.
 
+Browser regression tests use the production demo: run `pnpm build:demo`, `pnpm exec playwright install chromium`, then `pnpm test:e2e`. `pnpm test:e2e:all` also covers Firefox and WebKit (install those browsers first). The runner starts its own preview server on port 4176 and uses isolated browser contexts.
+
+`pnpm test:e2e:http` builds the Ant Design Vue admin and portal in HTTP mode and checks session errors and delayed responses through controlled API fixtures on ports 4177–4178.
+
 ## Create an application
 
 ```bash

@@ -20,6 +20,7 @@ const form = reactive({
 });
 
 async function handleLogin() {
+  if (loading.value) return;
   if (!form.username || !form.password) {
     msgWarning('请填写用户名和密码');
     return;
@@ -72,7 +73,8 @@ async function handleLogin() {
               />
             </IxFormItem>
             <IxFormItem label="密码" required>
-              <IxInputPassword
+              <IxInput
+                type="password"
                 v-model:value="form.password"
                 placeholder="请输入密码"
                 size="lg"

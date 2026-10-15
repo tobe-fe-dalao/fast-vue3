@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import type { ArticleItem } from '@/api';
+import type { TableColumn } from '@idux/components/table';
+
+import { useLatestRequest } from '@fast-vue3/shared';
 
 import { api } from '@/api';
 import { useMessage } from '@idux/components/message';
@@ -52,7 +55,10 @@ async function loadCategories() {
   categoryOptions.value = categories.map(({ id, name }) => ({ id, name }));
 }
 
+const listRequests = useLatestRequest();
+
 async function fetchData() {
+  const isCurrent = listRequests.start();
   loading.value = true;
   try {
     const categoryId = categoryOptions.value.find(
@@ -65,12 +71,14 @@ async function fetchData() {
       pageSize: pageSize.value,
       status: statusFilter.value as ArticleItem['status'] | undefined,
     });
+    if (!isCurrent()) return;
     dataSource.value = result.items.map((article) => toRecord(article));
     total.value = result.total;
   } catch {
+    if (!isCurrent()) return;
     messageError('加载文章列表失败');
   } finally {
-    loading.value = false;
+    if (isCurrent()) loading.value = false;
   }
 }
 
@@ -108,15 +116,15 @@ async function handleDelete(record: ArticleRecord) {
   }
 }
 
-const columns = [
+const columns: TableColumn<ArticleRecord>[] = [
   { title: 'ID', dataKey: 'id', width: 60 },
-  { title: '标题', key: 'title', width: 300, customCell: true },
+  { title: '标题', key: 'title', width: 300, customCell: 'titleCell' },
   { title: '分类', dataKey: 'category', width: 110 },
   { title: '作者', dataKey: 'author', width: 90 },
-  { title: '状态', key: 'status', width: 90, customCell: true },
+  { title: '状态', key: 'status', width: 90, customCell: 'statusCell' },
   { title: '浏览量', dataKey: 'views', width: 100 },
   { title: '发布时间', dataKey: 'publishedAt', width: 170 },
-  { title: '操作', key: 'actions', width: 140, customCell: true },
+  { title: '操作', key: 'actions', width: 140, customCell: 'actionsCell' },
 ];
 
 onMounted(async () => {
@@ -184,48 +192,46 @@ onMounted(async () => {
         :borderless="false"
         stripe
       >
-        <template #cell="{ record, column }">
-          <template v-if="column.key === 'title'">
-            <div style="display: flex; gap: 12px; align-items: center">
-              <div
-                style="
-                  display: flex;
-                  flex-shrink: 0;
-                  align-items: center;
-                  justify-content: center;
-                  width: 48px;
-                  height: 36px;
-                  font-size: 12px;
-                  color: #9ca3af;
-                  background: #f3f4f6;
-                  border-radius: 6px;
-                "
-              >
-                封面
-              </div>
-              <span>{{ (record as ArticleRecord).title }}</span>
+        <template #titleCell="{ record }">
+          <div style="display: flex; gap: 12px; align-items: center">
+            <div
+              style="
+                display: flex;
+                flex-shrink: 0;
+                align-items: center;
+                justify-content: center;
+                width: 48px;
+                height: 36px;
+                font-size: 12px;
+                color: #9ca3af;
+                background: #f3f4f6;
+                border-radius: 6px;
+              "
+            >
+              封面
             </div>
-          </template>
-          <template v-else-if="column.key === 'status'">
-            <IxTag :color="statusColorMap[(record as ArticleRecord).status]">
-              {{ statusLabelMap[(record as ArticleRecord).status] }}
-            </IxTag>
-          </template>
-          <template v-else-if="column.key === 'actions'">
-            <IxButton
-              mode="link"
-              size="sm"
-              @click="goEdit(record as ArticleRecord)"
-            >
-              编辑
-            </IxButton>
-            <IxPopconfirm
-              title="确定删除该文章？"
-              @confirm="handleDelete(record as ArticleRecord)"
-            >
-              <IxButton mode="link" size="sm" danger>删除</IxButton>
-            </IxPopconfirm>
-          </template>
+            <span>{{ (record as ArticleRecord).title }}</span>
+          </div>
+        </template>
+        <template #statusCell="{ record }">
+          <IxTag :color="statusColorMap[(record as ArticleRecord).status]">
+            {{ statusLabelMap[(record as ArticleRecord).status] }}
+          </IxTag>
+        </template>
+        <template #actionsCell="{ record }">
+          <IxButton
+            mode="link"
+            size="sm"
+            @click="goEdit(record as ArticleRecord)"
+          >
+            编辑
+          </IxButton>
+          <IxPopconfirm
+            title="确定删除该文章？"
+            @confirm="handleDelete(record as ArticleRecord)"
+          >
+            <IxButton mode="link" size="sm" danger>删除</IxButton>
+          </IxPopconfirm>
         </template>
       </IxTable>
       <div style="display: flex; justify-content: flex-end; margin-top: 16px">

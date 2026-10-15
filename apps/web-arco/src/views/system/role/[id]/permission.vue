@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { PermissionItem } from '@/api';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import { Message } from '@arco-design/web-vue';
 import { IconArrowLeft, IconSave } from '@arco-design/web-vue/es/icon';
@@ -72,7 +74,16 @@ const permissionTree = [
   },
 ];
 
+const detailRequests = useLatestRequest();
+const saveRequests = useLatestRequest();
+
 async function fetchRole() {
+  const isCurrent = detailRequests.start();
+  saveRequests.invalidate();
+  saving.value = false;
+  role.value = null;
+  checkedKeys.value = [];
+  availablePermissions.value = [];
   loading.value = true;
   try {
     const id = Number(route.params.id);
@@ -80,6 +91,7 @@ async function fetchRole() {
       api.role.detail(id),
       api.permission.list(),
     ]);
+    if (!isCurrent()) return;
     availablePermissions.value = permissions;
     role.value = {
       ...found,
@@ -90,30 +102,34 @@ async function fetchRole() {
       ? permissions.map(({ code }) => code)
       : [...found.permissions];
   } catch {
+    if (!isCurrent()) return;
     Message.error('加载角色信息失败');
   } finally {
-    loading.value = false;
+    if (isCurrent()) loading.value = false;
   }
 }
 
 const selectedCount = computed(() => checkedKeys.value.length);
 
 async function handleSave() {
-  if (!role.value) return;
+  if (!role.value || loading.value || saving.value) return;
+  const target = role.value;
+  const count = selectedCount.value;
+  const isCurrent = saveRequests.start();
   saving.value = true;
   try {
     const selected = new Set(checkedKeys.value);
     const permissionIds = availablePermissions.value
       .filter(({ code }) => selected.has(code))
       .map(({ id }) => id);
-    await api.role.update(role.value.id, { permissionIds });
-    Message.success(
-      `已保存「${role.value?.name ?? ''}」的权限配置（${selectedCount.value} 项）`,
-    );
+    await api.role.update(target.id, { permissionIds });
+    if (!isCurrent()) return;
+    Message.success(`已保存「${target.name}」的权限配置（${count} 项）`);
   } catch {
+    if (!isCurrent()) return;
     Message.error('权限配置保存失败');
   } finally {
-    saving.value = false;
+    if (isCurrent()) saving.value = false;
   }
 }
 
@@ -121,7 +137,7 @@ function goBack() {
   router.push('/system/role');
 }
 
-onMounted(fetchRole);
+watch(() => route.params.id, fetchRole, { immediate: true, flush: 'sync' });
 </script>
 
 <template>

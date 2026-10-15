@@ -2,6 +2,8 @@
 import type { ArticleItem } from '@/api';
 import type { FormInst } from 'naive-ui';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import {
   NButton,
@@ -19,9 +21,12 @@ const router = useRouter();
 const message = useMessage();
 
 const editId = computed(() => Number(route.query.id) || 0);
-const isEdit = computed(() => editId.value > 0);
 
 const submitting = ref(false);
+const loading = ref(true);
+const loadedId = ref<null | number>(null);
+const detailRequests = useLatestRequest();
+const saveRequests = useLatestRequest();
 const formRef = ref<FormInst | null>(null);
 
 interface ArticleForm {
@@ -52,14 +57,35 @@ const tagOptions = ['Vue', 'TypeScript', 'Vite', '架构', '教程', '公告'].m
 );
 
 async function loadForEdit() {
+  const id = editId.value;
+  const isCurrent = detailRequests.start();
+  saveRequests.invalidate();
+  submitting.value = false;
+  loading.value = true;
+  loadedId.value = null;
+  Object.assign(form, {
+    title: '',
+    categoryId: undefined,
+    author: '',
+    summary: '',
+    cover: '',
+    content: '',
+    status: 'draft',
+    tags: [],
+  });
   try {
     const categories = await api.content.categoryList();
+    if (!isCurrent()) return;
     categoryOptions.value = categories.map(({ id, name }) => ({
       label: name,
       value: id,
     }));
-    if (!isEdit.value) return;
-    const article = await api.content.articleDetail(editId.value);
+    if (id === 0) {
+      loadedId.value = 0;
+      return;
+    }
+    const article = await api.content.articleDetail(id);
+    if (!isCurrent()) return;
     form.title = article.title;
     form.categoryId = article.categoryId;
     form.author = article.author;
@@ -68,48 +94,59 @@ async function loadForEdit() {
     form.content = article.content.join('\n\n');
     form.status = article.status;
     form.tags = [...article.tags];
+    loadedId.value = id;
   } catch {
+    if (!isCurrent()) return;
     message.error('文章加载失败');
+  } finally {
+    if (isCurrent()) loading.value = false;
   }
 }
 
-function handleSubmit() {
-  if (!formRef.value) return;
-  formRef.value.validate(async (errors) => {
-    if (errors) {
-      message.warning('请完善必填项');
+async function handleSubmit() {
+  if (submitting.value || loading.value || loadedId.value !== editId.value)
+    return;
+  const id = editId.value;
+  const isCurrent = saveRequests.start();
+  submitting.value = true;
+  try {
+    if (!formRef.value) return;
+    try {
+      await formRef.value.validate();
+    } catch {
+      if (isCurrent()) message.warning('请完善必填项');
       return;
     }
-    submitting.value = true;
-    try {
-      const payload = {
-        author: form.author,
-        categoryId: form.categoryId,
-        content: form.content.split('\n\n'),
-        cover: form.cover,
-        status: form.status,
-        summary: form.summary,
-        tags: form.tags,
-        title: form.title,
-      };
-      await (isEdit.value
-        ? api.content.articleUpdate(editId.value, payload)
-        : api.content.articleCreate(payload));
-      message.success(isEdit.value ? '文章已更新' : '文章已创建');
-      router.push('/content/article');
-    } catch {
-      message.error('保存失败');
-    } finally {
-      submitting.value = false;
-    }
-  });
+    if (!isCurrent() || loadedId.value !== id || editId.value !== id) return;
+    const payload = {
+      author: form.author,
+      categoryId: form.categoryId,
+      content: form.content.split('\n\n'),
+      cover: form.cover,
+      status: form.status,
+      summary: form.summary,
+      tags: [...form.tags],
+      title: form.title,
+    };
+    await (id > 0
+      ? api.content.articleUpdate(id, payload)
+      : api.content.articleCreate(payload));
+    if (!isCurrent()) return;
+    message.success(id > 0 ? '文章已更新' : '文章已创建');
+    router.push('/content/article');
+  } catch {
+    if (!isCurrent()) return;
+    message.error('保存失败');
+  } finally {
+    if (isCurrent()) submitting.value = false;
+  }
 }
 
 function goBack() {
   router.push('/content/article');
 }
 
-onMounted(loadForEdit);
+watch(editId, loadForEdit, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
@@ -144,6 +181,7 @@ onMounted(loadForEdit);
           label="分类"
           path="categoryId"
           :rule="{
+            type: 'number',
             required: true,
             message: '请选择分类',
             trigger: ['change', 'blur'],
@@ -194,7 +232,12 @@ onMounted(loadForEdit);
           </NRadioGroup>
         </NFormItem>
         <NFormItem>
-          <NButton type="primary" :loading="submitting" @click="handleSubmit">
+          <NButton
+            type="primary"
+            :loading="submitting"
+            :disabled="loading || loadedId !== editId"
+            @click="handleSubmit"
+          >
             保存
           </NButton>
           <NButton style="margin-left: 12px" @click="goBack"> 取消 </NButton>

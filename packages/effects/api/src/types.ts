@@ -280,6 +280,7 @@ export interface UserItem {
 }
 
 export interface UserQuery extends PageQuery {
+  role?: string;
   status?: string;
 }
 

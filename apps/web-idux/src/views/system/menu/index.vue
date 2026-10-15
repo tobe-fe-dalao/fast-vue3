@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TableColumn } from '@idux/components/table';
+
 import { http } from '@/api/http';
 import { useMessage } from '@idux/components/message';
 
@@ -43,15 +45,15 @@ const typeMap: Record<string, { color: string; label: string }> = {
   button: { label: '按钮', color: 'warning' },
 };
 
-const columns = [
+const columns: TableColumn<MenuRecord>[] = [
   { title: 'ID', dataKey: 'id', width: 60 },
   { title: '菜单名称', dataKey: 'name' },
   { title: '路径', dataKey: 'path' },
   { title: '图标', dataKey: 'icon', width: 140 },
-  { title: '类型', key: 'type', width: 100, customCell: true },
+  { title: '类型', key: 'type', width: 100, customCell: 'typeCell' },
   { title: '排序', dataKey: 'sort', width: 80 },
-  { title: '状态', key: 'status', width: 100, customCell: true },
-  { title: '操作', key: 'actions', width: 200, customCell: true },
+  { title: '状态', key: 'status', width: 100, customCell: 'statusCell' },
+  { title: '操作', key: 'actions', width: 200, customCell: 'actionsCell' },
 ];
 
 async function fetchData() {
@@ -165,34 +167,32 @@ onMounted(fetchData);
         children-key="children"
         stripe
       >
-        <template #cell="{ record, column }">
-          <template v-if="column.key === 'type'">
-            <IxTag :color="typeMap[record.type]?.color as any">
-              {{ typeMap[record.type]?.label }}
-            </IxTag>
-          </template>
-          <template v-else-if="column.key === 'status'">
-            <IxTag :color="record.status === 'active' ? 'success' : 'info'">
-              {{ record.status === 'active' ? '启用' : '禁用' }}
-            </IxTag>
-          </template>
-          <template v-else-if="column.key === 'actions'">
-            <IxButton mode="link" size="sm" @click="openDialog(record)">
-              编辑
-            </IxButton>
-            <IxButton
-              mode="link"
-              size="sm"
-              @click="
-                openDialog({ ...record, parentId: record.id, id: 0 } as any)
-              "
-            >
-              添加子项
-            </IxButton>
-            <IxPopconfirm title="确定删除？" @confirm="handleDelete(record.id)">
-              <IxButton mode="link" size="sm" danger>删除</IxButton>
-            </IxPopconfirm>
-          </template>
+        <template #typeCell="{ record }">
+          <IxTag :color="typeMap[record.type]?.color as any">
+            {{ typeMap[record.type]?.label }}
+          </IxTag>
+        </template>
+        <template #statusCell="{ record }">
+          <IxTag :color="record.status === 'active' ? 'success' : 'info'">
+            {{ record.status === 'active' ? '启用' : '禁用' }}
+          </IxTag>
+        </template>
+        <template #actionsCell="{ record }">
+          <IxButton mode="link" size="sm" @click="openDialog(record)">
+            编辑
+          </IxButton>
+          <IxButton
+            mode="link"
+            size="sm"
+            @click="
+              openDialog({ ...record, parentId: record.id, id: 0 } as any)
+            "
+          >
+            添加子项
+          </IxButton>
+          <IxPopconfirm title="确定删除？" @confirm="handleDelete(record.id)">
+            <IxButton mode="link" size="sm" danger>删除</IxButton>
+          </IxPopconfirm>
         </template>
       </IxTable>
     </IxCard>

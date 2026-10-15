@@ -2,6 +2,9 @@
   "name": "@fast-vue3/stores",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
@@ -16,5 +19,8 @@
     "pinia-plugin-persistedstate": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "vitest": "catalog:"
   }
 }

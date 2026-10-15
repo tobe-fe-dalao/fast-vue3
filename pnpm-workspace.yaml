@@ -112,6 +112,7 @@ catalog:
   pinia: ^3.0.4
   pinia-plugin-persistedstate: ^4.7.1
   pkg-types: ^2.3.0
+  playwright: 1.62.1
   postcss: ^8.5.14
 
   postcss-html: ^1.8.1

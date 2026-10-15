@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { http } from '@/api/http';
 import { Message } from '@arco-design/web-vue';
 import {
@@ -51,11 +53,21 @@ const roleLabel = (value: string) =>
 
 const isActive = computed(() => user.value?.status === 'active');
 
+const detailRequests = useLatestRequest();
+const statusRequests = useLatestRequest();
+const statusUpdating = ref(false);
+
 async function fetchUser() {
+  const isCurrent = detailRequests.start();
+  statusRequests.invalidate();
+  statusUpdating.value = false;
+  user.value = null;
+  activities.value = [];
   loading.value = true;
   try {
     const id = Number(route.params.id);
     const found = await http.get<UserRecord>({ url: `/users/${id}` });
+    if (!isCurrent()) return;
     user.value = found;
     if (found) {
       activities.value = [
@@ -70,9 +82,10 @@ async function fetchUser() {
       ];
     }
   } catch {
+    if (!isCurrent()) return;
     Message.error('加载用户详情失败');
   } finally {
-    loading.value = false;
+    if (isCurrent()) loading.value = false;
   }
 }
 
@@ -86,14 +99,21 @@ function goEdit() {
 }
 
 async function toggleStatus() {
-  if (!user.value) return;
+  if (!user.value || loading.value || statusUpdating.value) return;
+  const target = user.value;
+  const isCurrent = statusRequests.start();
+  statusUpdating.value = true;
   const status = isActive.value ? 'disabled' : 'active';
   try {
-    await http.put({ data: { status }, url: `/users/${user.value.id}` });
-    user.value.status = status;
+    await http.put({ data: { status }, url: `/users/${target.id}` });
+    if (!isCurrent()) return;
+    target.status = status;
     Message.success(`已${status === 'active' ? '启用' : '禁用'}该用户`);
   } catch {
+    if (!isCurrent()) return;
     Message.error('状态更新失败');
+  } finally {
+    if (isCurrent()) statusUpdating.value = false;
   }
 }
 
@@ -103,7 +123,7 @@ const columns = [
   { title: 'IP 地址', dataIndex: 'ip', width: 140 },
 ];
 
-onMounted(fetchUser);
+watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
 </script>
 
 <template>

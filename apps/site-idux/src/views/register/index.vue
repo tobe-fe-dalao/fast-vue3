@@ -19,6 +19,7 @@ const form = reactive({
 });
 
 async function handleRegister() {
+  if (loading.value) return;
   if (!form.username || !form.email || !form.password) {
     msgWarning('请填写完整信息');
     return;
@@ -86,14 +87,16 @@ async function handleRegister() {
               </IxFormItem>
             </div>
             <IxFormItem label="密码" required>
-              <IxInputPassword
+              <IxInput
+                type="password"
                 v-model:value="form.password"
                 placeholder="至少 6 位密码"
                 size="lg"
               />
             </IxFormItem>
             <IxFormItem label="确认密码" required>
-              <IxInputPassword
+              <IxInput
+                type="password"
                 v-model:value="form.confirmPassword"
                 placeholder="请再次输入密码"
                 size="lg"

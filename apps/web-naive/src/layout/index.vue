@@ -4,6 +4,7 @@ import type { MenuOption } from 'naive-ui';
 import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
+import { userApi } from '@/api/user';
 import { NIcon, useMessage } from 'naive-ui';
 
 // Use dynamic import for fluent-system-icons if available, fallback to text
@@ -193,10 +194,10 @@ function closeTab(path: string) {
   }
 }
 
-function handleDropdown(key: string) {
+async function handleDropdown(key: string) {
   if (key === 'profile') router.push('/profile');
   else if (key === 'logout') {
-    userStore.logout();
+    if (!(await userStore.logoutWithRevoke(userApi.logout))) return;
     msg.success('已退出登录');
     tabs.value = [];
     router.push('/login');

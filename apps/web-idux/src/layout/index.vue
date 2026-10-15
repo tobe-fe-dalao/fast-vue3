@@ -2,6 +2,7 @@
 import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
+import { userApi } from '@/api/user';
 import { storeToRefs } from 'pinia';
 const router = useRouter();
 const route = useRoute();
@@ -125,7 +126,7 @@ function closeTab(path: string) {
     );
 }
 async function handleLogout() {
-  userStore.logout();
+  if (!(await userStore.logoutWithRevoke(userApi.logout))) return;
   tabs.value = [];
   await router.push('/login');
 }

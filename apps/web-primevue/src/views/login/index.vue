@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useUserStore } from '@fast-vue3/stores';
-import { setRefreshToken } from '@fast-vue3/utils';
 
 import { userApi } from '@/api/user';
 import { useToast } from 'primevue/usetoast';
@@ -12,14 +11,15 @@ const loading = ref(false);
 const form = reactive({ username: 'admin', password: '123456' });
 
 async function onLogin() {
+  if (loading.value) return;
   if (!form.username || !form.password) return;
   loading.value = true;
   try {
-    const res = await userApi.login(form);
-    userStore.setToken(res.accessToken);
-    setRefreshToken(res.refreshToken);
-    const profile = await userApi.getProfile();
-    userStore.setUserInfo(profile);
+    const loggedIn = await userStore.login(
+      () => userApi.login({ ...form }),
+      userApi.getProfile,
+    );
+    if (!loggedIn) return;
     toast.add({
       severity: 'success',
       summary: '成功',

@@ -349,6 +349,9 @@ catalogs:
       specifier: ^2.0.0
       version: 2.0.0
 
+    playwright:
+      specifier: 1.62.1
+      version: 1.62.1
 importers:
 
   .:
@@ -416,6 +419,9 @@ importers:
       oxlint:
         specifier: 'catalog:'
         version: 1.66.0
+      playwright:
+        specifier: 'catalog:'
+        version: 1.62.1
       postcss-html:
         specifier: 'catalog:'
         version: 1.8.1
@@ -504,6 +510,9 @@ importers:
       '@fast-vue3/request':
         specifier: workspace:*
         version: link:../../packages/effects/request
+      '@fast-vue3/shared':
+        specifier: workspace:*
+        version: link:../../packages/@core/shared
       '@fast-vue3/styles':
         specifier: workspace:*
         version: link:../../packages/styles
@@ -556,6 +565,9 @@ importers:
       '@fast-vue3/request':
         specifier: workspace:*
         version: link:../../packages/effects/request
+      '@fast-vue3/shared':
+        specifier: workspace:*
+        version: link:../../packages/@core/shared
       '@fast-vue3/styles':
         specifier: workspace:*
         version: link:../../packages/styles
@@ -605,6 +617,9 @@ importers:
       '@fast-vue3/request':
         specifier: workspace:*
         version: link:../../packages/effects/request
+      '@fast-vue3/shared':
+        specifier: workspace:*
+        version: link:../../packages/@core/shared
       '@fast-vue3/styles':
         specifier: workspace:*
         version: link:../../packages/styles
@@ -654,6 +669,9 @@ importers:
       '@fast-vue3/request':
         specifier: workspace:*
         version: link:../../packages/effects/request
+      '@fast-vue3/shared':
+        specifier: workspace:*
+        version: link:../../packages/@core/shared
       '@fast-vue3/styles':
         specifier: workspace:*
         version: link:../../packages/styles
@@ -706,6 +724,9 @@ importers:
       '@fast-vue3/request':
         specifier: workspace:*
         version: link:../../packages/effects/request
+      '@fast-vue3/shared':
+        specifier: workspace:*
+        version: link:../../packages/@core/shared
       '@fast-vue3/styles':
         specifier: workspace:*
         version: link:../../packages/styles
@@ -755,6 +776,9 @@ importers:
       '@fast-vue3/request':
         specifier: workspace:*
         version: link:../../packages/effects/request
+      '@fast-vue3/shared':
+        specifier: workspace:*
+        version: link:../../packages/@core/shared
       '@fast-vue3/styles':
         specifier: workspace:*
         version: link:../../packages/styles
@@ -813,6 +837,9 @@ importers:
       '@fast-vue3/request':
         specifier: workspace:*
         version: link:../../packages/effects/request
+      '@fast-vue3/shared':
+        specifier: workspace:*
+        version: link:../../packages/@core/shared
       '@fast-vue3/styles':
         specifier: workspace:*
         version: link:../../packages/styles
@@ -1793,6 +1820,10 @@ importers:
       vue:
         specifier: 'catalog:'
         version: 3.5.34(typescript@6.0.3)
+    devDependencies:
+      vitest:
+        specifier: 'catalog:'
+        version: 4.1.7(@types/node@25.9.1)(happy-dom@21.0.4)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(less@4.6.4)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))
 
   packages/constants: {}
 
@@ -1848,6 +1879,10 @@ importers:
       axios:
         specifier: 'catalog:'
         version: 1.16.1
+    devDependencies:
+      vitest:
+        specifier: 'catalog:'
+        version: 4.1.7(@types/node@25.9.1)(happy-dom@21.0.4)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(less@4.6.4)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))
 
   packages/locales:
     dependencies:
@@ -1897,6 +1932,10 @@ importers:
       vue-router:
         specifier: 'catalog:'
         version: 5.0.7(@vue/compiler-sfc@3.5.34)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.34(typescript@6.0.3)))(vue@3.5.34(typescript@6.0.3))
+    devDependencies:
+      vitest:
+        specifier: 'catalog:'
+        version: 4.1.7(@types/node@25.9.1)(happy-dom@21.0.4)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(less@4.6.4)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))
 
   packages/styles: {}
 
@@ -1913,6 +1952,10 @@ importers:
       qs:
         specifier: 'catalog:'
         version: 6.15.2
+    devDependencies:
+      vitest:
+        specifier: 'catalog:'
+        version: 4.1.7(@types/node@25.9.1)(happy-dom@21.0.4)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(less@4.6.4)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))
 
   scripts/turbo-run:
     dependencies:
@@ -9441,6 +9484,24 @@ packages:
   zx@8.8.5:
     resolution: {integrity: sha512-SNgDF5L0gfN7FwVOdEFguY3orU5AkfFZm9B5YSHog/UDHv+lvmd82ZAsOenOkQixigwH2+yyH198AwNdKhj+RA==}
     engines: {node: '>= 12.17.0'}
+    hasBin: true
+
+
+  fsevents@2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+
+
+  playwright-core@1.62.1:
+    resolution: {integrity: sha512-wPYSwEBJY9GHraISXqyqtx0na0LpO3XEX7jNDhntbex7tzUS7kLnZsOlFruFJB4Hi/rhDMjXGqHewDZ68nYZVw==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+
+  playwright@1.62.1:
+    resolution: {integrity: sha512-0M+L3LAD8/nm554LOla9Ayx0j0tmFZ0FBcoQ7F1VuVHpM/XpiC8RcDzBQB8W5+hA8L22THxELzeF+2WcUzvcLg==}
+    engines: {node: '>=20'}
     hasBin: true
 
 snapshots:
@@ -17475,3 +17536,16 @@ snapshots:
       tslib: 2.3.0
 
   zx@8.8.5: {}
+
+  fsevents@2.3.2:
+    optional: true
+
+
+  playwright@1.62.1:
+    dependencies:
+      playwright-core: 1.62.1
+    optionalDependencies:
+      fsevents: 2.3.2
+
+
+  playwright-core@1.62.1: {}

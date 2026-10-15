@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { FormInst } from 'naive-ui';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import { useMessage } from 'naive-ui';
 
 const message = useMessage();
 
 const submitting = ref(false);
+const submitRequests = useLatestRequest();
 const formRef = ref<FormInst>();
 const form = reactive({
   name: '',
@@ -22,25 +25,38 @@ const contactInfo = [
 ];
 
 async function handleSubmit() {
-  try {
-    await formRef.value?.validate();
-  } catch {
-    message.warning('请完善必填项');
-    return;
-  }
+  if (submitting.value) return;
+  const isCurrent = submitRequests.start();
   submitting.value = true;
   try {
+    try {
+      await formRef.value?.validate();
+    } catch {
+      if (!isCurrent()) return;
+      message.warning('请完善必填项');
+      return;
+    }
+    if (!isCurrent()) return;
+    const submitted = { ...form };
     await api.portal.contact({
-      email: form.email,
-      name: form.name,
-      message: `[${form.subject}] ${form.message}`,
+      email: submitted.email,
+      name: submitted.name,
+      message: `[${submitted.subject}] ${submitted.message}`,
     });
+    if (!isCurrent()) return;
     message.success('演示提交成功；当前接口不会保存留言');
-    formRef.value?.restoreValidation();
+    if (
+      Object.entries(submitted).every(
+        ([key, value]) => form[key as keyof typeof form] === value,
+      )
+    ) {
+      formRef.value?.restoreValidation();
+    }
   } catch {
+    if (!isCurrent()) return;
     message.error('提交失败，请稍后重试');
   } finally {
-    submitting.value = false;
+    if (isCurrent()) submitting.value = false;
   }
 }
 </script>

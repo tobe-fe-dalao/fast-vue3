@@ -64,6 +64,7 @@ async function fetchData() {
       pageSize: pageSize.value,
       keyword: keyword.value || undefined,
       status: statusFilter.value || undefined,
+      role: roleFilter.value || undefined,
     });
     dataSource.value = res.items.map((user) => ({
       ...user,
@@ -133,7 +134,6 @@ async function handleSave() {
         realName: form.realName,
         email: form.email,
         phone: form.phone,
-        roleIds: [],
         status: form.status,
       });
       message.success('用户已更新');

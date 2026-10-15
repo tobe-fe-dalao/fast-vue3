@@ -2,6 +2,7 @@
 import { usePreferences } from '@fast-vue3/preferences';
 import { useUserStore } from '@fast-vue3/stores';
 
+import { userApi } from '@/api/user';
 import { Message } from '@arco-design/web-vue';
 import {
   IconApps,
@@ -133,7 +134,7 @@ function closeTab(path: string) {
 }
 
 async function handleLogout() {
-  userStore.logout();
+  if (!(await userStore.logoutWithRevoke(userApi.logout))) return;
   Message.success('已退出登录');
   tabs.value = [];
   await router.push('/login');

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TableColumn } from '@idux/components/table';
+
 import { http } from '@/api/http';
 import { useMessage } from '@idux/components/message';
 
@@ -34,16 +36,16 @@ const methodColor: Record<string, string> = {
   DELETE: 'error',
 };
 
-const columns = [
+const columns: TableColumn<OperationLog>[] = [
   { title: 'ID', dataKey: 'id', width: 60 },
   { title: '操作人', dataKey: 'username', width: 100 },
   { title: '模块', dataKey: 'module', width: 110 },
   { title: '操作', dataKey: 'action', width: 80 },
   { title: '描述', dataKey: 'description' },
-  { title: '方法', key: 'method', width: 80, customCell: true },
+  { title: '方法', key: 'method', width: 80, customCell: 'methodCell' },
   { title: 'IP', dataKey: 'ip', width: 130 },
-  { title: '耗时', key: 'duration', width: 80, customCell: true },
-  { title: '状态', key: 'status', width: 80, customCell: true },
+  { title: '耗时', key: 'duration', width: 80, customCell: 'durationCell' },
+  { title: '状态', key: 'status', width: 80, customCell: 'statusCell' },
   { title: '操作时间', dataKey: 'createdAt', width: 170 },
 ];
 
@@ -122,23 +124,21 @@ onMounted(fetchData);
         :borderless="false"
         stripe
       >
-        <template #cell="{ record, column }">
-          <template v-if="column.key === 'method'">
-            <IxTag :color="methodColor[record.method] as any">
-              {{ record.method }}
-            </IxTag>
-          </template>
-          <template v-else-if="column.key === 'duration'">
-            <span
-              :style="{ color: record.duration > 300 ? '#f56c6c' : '#67c23a' }"
-              >{{ record.duration }}ms</span
-            >
-          </template>
-          <template v-else-if="column.key === 'status'">
-            <IxTag :color="record.status === 'success' ? 'success' : 'error'">
-              {{ record.status === 'success' ? '成功' : '失败' }}
-            </IxTag>
-          </template>
+        <template #methodCell="{ record }">
+          <IxTag :color="methodColor[record.method] as any">
+            {{ record.method }}
+          </IxTag>
+        </template>
+        <template #durationCell="{ record }">
+          <span
+            :style="{ color: record.duration > 300 ? '#f56c6c' : '#67c23a' }"
+            >{{ record.duration }}ms</span
+          >
+        </template>
+        <template #statusCell="{ record }">
+          <IxTag :color="record.status === 'success' ? 'success' : 'error'">
+            {{ record.status === 'success' ? '成功' : '失败' }}
+          </IxTag>
         </template>
       </IxTable>
       <div style="display: flex; justify-content: flex-end; margin-top: 16px">

@@ -8,10 +8,30 @@ type RequestConfig = Parameters<RequestClient['get']>[0];
 export function createStaticMockRequest(api: Api): RequestClient {
   async function request<T>(config: RequestConfig): Promise<T> {
     const method = (config.method ?? 'GET').toUpperCase();
-    const path = (config.url ?? '').split('?')[0] ?? '';
-    const [, domain, idText] = path.split('/');
+    const url = config.url ?? '';
+    const queryIndex = url.indexOf('?');
+    const path = queryIndex === -1 ? url : url.slice(0, queryIndex);
+    const search = queryIndex === -1 ? '' : url.slice(queryIndex + 1);
+    const route = /^\/(auth|menus|roles|users|log)(?:\/([^/]+))?\/?$/.exec(
+      path,
+    );
+    if (!route) throw new Error(`Unsupported demo request: ${method} ${path}`);
+    const [, domain, idText] = route;
     const id = Number(idText);
-    const params = config.params;
+    if (
+      idText &&
+      (domain === 'users' ||
+        domain === 'roles' ||
+        (domain === 'menus' && idText !== 'tree')) &&
+      (!/^[1-9]\d*$/.test(idText) || !Number.isSafeInteger(id))
+    )
+      throw new Error(`Unsupported demo request: ${method} ${path}`);
+    const params = {
+      ...Object.fromEntries(new URLSearchParams(search)),
+      ...(config.params instanceof URLSearchParams
+        ? Object.fromEntries(config.params)
+        : config.params),
+    };
     const data = config.data;
     let result: unknown;
 
