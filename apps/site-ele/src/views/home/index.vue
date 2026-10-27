@@ -27,7 +27,7 @@ const features = [
   {
     icon: '🎨',
     title: '7 大 UI 框架',
-    desc: 'Ant Design Vue / Element Plus / Naive UI / Arco Design / TDesign / PrimeVue / iDux，一站式覆盖主流组件库。',
+    desc: 'Ant Design Vue / Element Plus / Naive UI / Arco Design / TDesign / OpenVue / iDux，一站式覆盖主流组件库。',
   },
   {
     icon: '🌗',

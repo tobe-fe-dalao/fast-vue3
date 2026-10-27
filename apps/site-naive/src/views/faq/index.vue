@@ -28,7 +28,7 @@ const fallbackFaqGroups = [
       },
       {
         q: '支持哪些 UI 框架？',
-        a: '当前支持 Ant Design Vue、Element Plus、Naive UI、Arco Design、TDesign、PrimeVue 与 iDux，共 7 种。',
+        a: '当前支持 Ant Design Vue、Element Plus、Naive UI、Arco Design、TDesign、OpenVue 与 iDux，共 7 种。',
       },
       {
         q: '不同 UI 框架的功能是否一致？',

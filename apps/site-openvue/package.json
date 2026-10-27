@@ -1,0 +1,34 @@
+{
+  "name": "@fast-vue3/site-openvue",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode development",
+    "build": "vite build --mode production",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@fast-vue3/api": "workspace:*",
+    "@fast-vue3/layout": "workspace:*",
+    "@fast-vue3/request": "workspace:*",
+    "@fast-vue3/styles": "workspace:*",
+    "@fast-vue3/utils": "workspace:*",
+    "@openvue/themes": "catalog:",
+    "@vueuse/core": "catalog:",
+    "openvue": "catalog:",
+    "primeicons": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "@fast-vue3/vite-config": "workspace:*",
+    "@openvue/auto-import-resolver": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "unplugin-vue-components": "catalog:",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

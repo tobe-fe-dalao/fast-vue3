@@ -10,15 +10,15 @@ Documentation: <https://tobe-fe-dalao.github.io/fast-vue3-site/> · [Spring Boot
 
 ## Applications
 
-| UI ecosystem     | Admin app      | Site app        |
-| ---------------- | -------------- | --------------- |
-| Ant Design Vue   | `web-antd`     | `site-antd`     |
-| Arco Design      | `web-arco`     | `site-arco`     |
-| Element Plus     | `web-ele`      | `site-ele`      |
-| iDux             | `web-idux`     | `site-idux`     |
-| Naive UI         | `web-naive`    | `site-naive`    |
-| PrimeVue         | `web-primevue` | `site-primevue` |
-| TDesign Vue Next | `web-tdesign`  | `site-tdesign`  |
+| UI ecosystem     | Admin app     | Site app       |
+| ---------------- | ------------- | -------------- |
+| Ant Design Vue   | `web-antd`    | `site-antd`    |
+| Arco Design      | `web-arco`    | `site-arco`    |
+| Element Plus     | `web-ele`     | `site-ele`     |
+| iDux             | `web-idux`    | `site-idux`    |
+| Naive UI         | `web-naive`   | `site-naive`   |
+| OpenVue          | `web-openvue` | `site-openvue` |
+| TDesign Vue Next | `web-tdesign` | `site-tdesign` |
 
 All 14 framework apps consume the same typed API contract. Admin apps include dashboards, users, roles, menus, content, logs, configuration, and monitoring. Site apps include home, product, pricing, FAQ, blog, authentication, and contact pages.
 
@@ -72,7 +72,7 @@ pnpm dev:web-arco
 pnpm dev:web-ele
 pnpm dev:web-idux
 pnpm dev:web-naive
-pnpm dev:web-primevue
+pnpm dev:web-openvue
 pnpm dev:web-tdesign
 
 pnpm dev:site-antd
@@ -80,7 +80,7 @@ pnpm dev:site-arco
 pnpm dev:site-ele
 pnpm dev:site-idux
 pnpm dev:site-naive
-pnpm dev:site-primevue
+pnpm dev:site-openvue
 pnpm dev:site-tdesign
 ```
 

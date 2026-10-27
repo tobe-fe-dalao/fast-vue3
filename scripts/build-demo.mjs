@@ -19,7 +19,7 @@ const labels = {
   ele: 'Element Plus',
   idux: 'iDux',
   naive: 'Naive UI',
-  primevue: 'PrimeVue',
+  openvue: 'OpenVue',
   tdesign: 'TDesign',
 };
 const entries = await readdir(join(root, 'apps'), { withFileTypes: true });
