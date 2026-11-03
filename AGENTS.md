@@ -5,7 +5,7 @@ This repository is a Vue 3 + TypeScript monorepo for building the same admin/sit
 ## Repo Shape
 
 - `apps/`: runnable applications.
-  - `web-*`: admin applications for Ant Design Vue, Arco Design, Element Plus, iDux, Naive UI, PrimeVue, and TDesign.
+  - `web-*`: admin applications for Ant Design Vue, Arco Design, Element Plus, iDux, Naive UI, OpenVue, and TDesign.
   - `site-*`: portal/marketing site templates for the same UI families.
   - `web-app`: generic site-style app.
   - `backend-mock`: Nitro mock API service.

@@ -11,7 +11,7 @@ const featureGroups = [
   {
     icon: '🎨',
     title: '7 大 UI 框架',
-    desc: 'Ant Design Vue / Element Plus / Naive UI / Arco / TDesign / PrimeVue / iDux，开箱即用，原生设计语言。',
+    desc: 'Ant Design Vue / Element Plus / Naive UI / Arco / TDesign / OpenVue / iDux，开箱即用，原生设计语言。',
     items: ['统一的功能能力', '各自原生视觉', '一键切换'],
   },
   {

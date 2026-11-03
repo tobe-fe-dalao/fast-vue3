@@ -10,15 +10,15 @@
 
 ## アプリケーション
 
-| UI               | 管理画面       | サイト          |
-| ---------------- | -------------- | --------------- |
-| Ant Design Vue   | `web-antd`     | `site-antd`     |
-| Arco Design      | `web-arco`     | `site-arco`     |
-| Element Plus     | `web-ele`      | `site-ele`      |
-| iDux             | `web-idux`     | `site-idux`     |
-| Naive UI         | `web-naive`    | `site-naive`    |
-| PrimeVue         | `web-primevue` | `site-primevue` |
-| TDesign Vue Next | `web-tdesign`  | `site-tdesign`  |
+| UI               | 管理画面      | サイト         |
+| ---------------- | ------------- | -------------- |
+| Ant Design Vue   | `web-antd`    | `site-antd`    |
+| Arco Design      | `web-arco`    | `site-arco`    |
+| Element Plus     | `web-ele`     | `site-ele`     |
+| iDux             | `web-idux`    | `site-idux`    |
+| Naive UI         | `web-naive`   | `site-naive`   |
+| OpenVue          | `web-openvue` | `site-openvue` |
+| TDesign Vue Next | `web-tdesign` | `site-tdesign` |
 
 14 個のアプリは同じ型付き API 契約を利用します。管理画面にはダッシュボード、ユーザー、ロール、メニュー、コンテンツ、ログ、設定、監視を、サイトにはホーム、製品、価格、FAQ、ブログ、認証、お問い合わせを用意しています。
 
@@ -65,7 +65,7 @@ pnpm dev:web-antd
 pnpm dev:site-antd
 ```
 
-他の UI は `antd` を `arco`、`ele`、`idux`、`naive`、`primevue`、`tdesign` に置き換えます。Mock のアカウントは `admin / 123456` です。
+他の UI は `antd` を `arco`、`ele`、`idux`、`naive`、`openvue`、`tdesign` に置き換えます。Mock のアカウントは `admin / 123456` です。
 
 `pnpm dev:mock` は選択したフロントエンド用に Nitro Mock を起動します。Mock API のみをポート 5320 で起動する場合は `pnpm dev:mock:api` を使用します。Mock は Spring Boot を呼び出しません。
 

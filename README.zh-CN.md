@@ -12,15 +12,15 @@
 
 ## 📦 项目概览
 
-| UI 框架          | 后台应用       | 门户应用        |
-| ---------------- | -------------- | --------------- |
-| Ant Design Vue 4 | `web-antd`     | `site-antd`     |
-| Arco Design Vue  | `web-arco`     | `site-arco`     |
-| Element Plus 2   | `web-ele`      | `site-ele`      |
-| iDux 2           | `web-idux`     | `site-idux`     |
-| Naive UI 2       | `web-naive`    | `site-naive`    |
-| PrimeVue 4       | `web-primevue` | `site-primevue` |
-| TDesign Vue Next | `web-tdesign`  | `site-tdesign`  |
+| UI 框架          | 后台应用      | 门户应用       |
+| ---------------- | ------------- | -------------- |
+| Ant Design Vue 4 | `web-antd`    | `site-antd`    |
+| Arco Design Vue  | `web-arco`    | `site-arco`    |
+| Element Plus 2   | `web-ele`     | `site-ele`     |
+| iDux 2           | `web-idux`    | `site-idux`    |
+| Naive UI 2       | `web-naive`   | `site-naive`   |
+| OpenVue 1        | `web-openvue` | `site-openvue` |
+| TDesign Vue Next | `web-tdesign` | `site-tdesign` |
 
 14 个框架应用共享同一份 API 契约。后台覆盖仪表盘、用户、角色、菜单、内容、日志、系统配置和监控；门户覆盖首页、博客、产品、价格、FAQ、登录和联系表单。
 
@@ -34,7 +34,7 @@ fast-vue3/
 │   ├── web-ele/          # Element Plus
 │   ├── web-idux/         # iDux
 │   ├── web-naive/        # Naive UI
-│   ├── web-primevue/     # PrimeVue
+│   ├── web-openvue/      # OpenVue
 │   └── web-tdesign/      # TDesign
 ├── packages/             # 共享包
 │   ├── @core/shared/     # 核心共享逻辑
@@ -95,7 +95,7 @@ pnpm dev:web-ele
 pnpm dev:web-naive
 pnpm dev:web-arco
 pnpm dev:web-tdesign
-pnpm dev:web-primevue
+pnpm dev:web-openvue
 pnpm dev:web-idux
 pnpm dev:site-antd
 ```

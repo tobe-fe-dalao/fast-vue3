@@ -14,7 +14,7 @@ type UILibrary =
   | 'element-plus'
   | 'idux'
   | 'naive'
-  | 'primevue'
+  | 'openvue'
   | 'tdesign';
 
 interface UIConfig {
@@ -83,13 +83,13 @@ const UI_CONFIGS: Record<UILibrary, UIConfig> = {
       "import { TDesignResolver } from '@tdesign-vue-next/auto-import-resolver';",
     resolverConfig: "TDesignResolver({ library: 'vue-next' })",
   },
-  primevue: {
+  openvue: {
     cssImport: "import 'primeicons/primeicons.css';",
     extraApplicationOptions: 'uiAutoImportResolvers: [],',
-    mainImports: `import Aura from '@primevue/themes/aura';
-import PrimeVue from 'primevue/config';
-import ConfirmationService from 'primevue/confirmationservice';
-import ToastService from 'primevue/toastservice';`,
+    mainImports: `import Aura from '@openvue/themes/aura';
+import PrimeVue from 'openvue/config';
+import ConfirmationService from 'openvue/confirmationservice';
+import ToastService from 'openvue/toastservice';`,
     mainSetup: `app.use(PrimeVue, {
   theme: {
     preset: Aura,
@@ -100,9 +100,9 @@ app.use(ToastService);
 app.use(ConfirmationService);
 `,
     packageDeps:
-      '"@primevue/auto-import-resolver": "catalog:", "@primevue/themes": "catalog:", "primeicons": "catalog:", "primevue": "catalog:"',
+      '"@openvue/auto-import-resolver": "catalog:", "@openvue/themes": "catalog:", "primeicons": "catalog:", "openvue": "catalog:"',
     resolverImport:
-      "import { PrimeVueResolver } from '@primevue/auto-import-resolver';",
+      "import { PrimeVueResolver } from '@openvue/auto-import-resolver';",
     resolverConfig: 'PrimeVueResolver()',
   },
   idux: {
@@ -1359,7 +1359,7 @@ function generateSiteHome(): string {
   return `<script setup lang="ts">
 const features = [
   { icon: '&#9889;', title: 'Vite + Turborepo', desc: '极速构建，monorepo 工程体系' },
-  { icon: '&#127912;', title: '7 大 UI 框架', desc: 'Antd / Element / Naive / Arco / TDesign / PrimeVue / iDux' },
+  { icon: '&#127912;', title: '7 大 UI 框架', desc: 'Antd / Element / Naive / Arco / TDesign / OpenVue / iDux' },
   { icon: '&#127769;', title: '深色/亮色双主题', desc: '基于 CSS Variables，一键切换' },
   { icon: '&#128241;', title: '响应式布局', desc: '完美适配桌面端和移动端' },
   { icon: '&#128295;', title: 'TypeScript', desc: '完整类型安全，开箱即用' },
@@ -1470,7 +1470,7 @@ const techItems = [
 function generateSiteFeatures(): string {
   return `<script setup lang="ts">
 const features = [
-  { title: '多 UI 框架集成', desc: '内置 7 大 UI 框架支持，Ant Design Vue、Element Plus、Naive UI、Arco Design、TDesign、PrimeVue、iDux，通过 create-app 命令一键选择。', icon: '&#127912;' },
+  { title: '多 UI 框架集成', desc: '内置 7 大 UI 框架支持，Ant Design Vue、Element Plus、Naive UI、Arco Design、TDesign、OpenVue、iDux，通过 create-app 命令一键选择。', icon: '&#127912;' },
   { title: 'Monorepo 工程体系', desc: '基于 pnpm workspace + Turborepo，统一管理 packages、apps、internal 工具链，依赖复用、增量构建、并行编译。', icon: '&#128230;' },
   { title: 'TypeScript 全覆盖', desc: '从 tsconfig 统一继承、vue-tsc 类型检查到 auto-import 类型声明，全链路类型安全。', icon: '&#128295;' },
   { title: '自动按需导入', desc: 'unplugin-auto-import 自动导入 Vue/Router/Pinia API，unplugin-vue-components 自动注册 UI 组件，零手动 import。', icon: '&#9889;' },
@@ -1721,7 +1721,7 @@ export function defineCreateAppCommand(cli: CAC) {
           { label: 'Naive UI', value: 'naive' },
           { label: 'Arco Design', value: 'arco' },
           { label: 'TDesign', value: 'tdesign' },
-          { label: 'PrimeVue', value: 'primevue' },
+          { label: 'OpenVue', value: 'openvue' },
           { label: 'iDux', value: 'idux' },
         ],
       });

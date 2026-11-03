@@ -22,7 +22,7 @@ const UI_FRAMEWORKS = new Set([
   'ele',
   'idux',
   'naive',
-  'primevue',
+  'openvue',
   'tdesign',
 ]);
 
@@ -32,7 +32,7 @@ const FRAMEWORK_LABELS: Record<string, string> = {
   ele: 'Element Plus',
   idux: 'iDux',
   naive: 'Naive UI',
-  primevue: 'PrimeVue',
+  openvue: 'OpenVue',
   tdesign: 'TDesign',
 };
 

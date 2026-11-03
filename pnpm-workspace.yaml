@@ -27,11 +27,11 @@ catalog:
   # Import maps
   '@jspm/generator': ^2.13.0
   '@manypkg/get-packages': ^3.1.0
+  '@openvue/auto-import-resolver': ^1.0.0
+  '@openvue/themes': ^1.0.0
   # @pnpm
   '@pnpm/workspace.read-manifest': ^1000.3.1
 
-  '@primevue/auto-import-resolver': ^4.3.4
-  '@primevue/themes': ^4.3.4
   # Stylelint
   '@stylistic/stylelint-plugin': ^5.1.0
   '@tailwindcss/vite': ^4.1.7
@@ -106,6 +106,7 @@ catalog:
 
   nprogress: ^0.2.0
 
+  openvue: ^1.0.0
   ora: ^9.3.0
   oxfmt: ^0.47.0
   oxlint: ^1.63.0
@@ -119,7 +120,6 @@ catalog:
   postcss-scss: ^4.0.9
   prettier: ^3.2.5
   primeicons: ^7.0.0
-  primevue: ^4.3.4
   publint: ^0.3.19
 
   qs: ^6.14.0
