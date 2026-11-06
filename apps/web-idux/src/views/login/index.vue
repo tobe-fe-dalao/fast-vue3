@@ -8,7 +8,13 @@ const router = useRouter();
 const message = useMessage();
 const userStore = useUserStore();
 const loading = ref(false);
-const form = reactive({ username: 'admin', password: '123456' });
+const mockLogin =
+  import.meta.env.VITE_STATIC_MOCK === 'true' ||
+  (import.meta.env.DEV && import.meta.env.VITE_DEV_BACKEND !== 'server');
+const form = reactive({
+  username: mockLogin ? 'admin' : '',
+  password: mockLogin ? '123456' : '',
+});
 
 async function onLogin() {
   if (loading.value) return;
@@ -20,7 +26,7 @@ async function onLogin() {
       userApi.getProfile,
     );
     if (!loggedIn) return;
-    message.success('登录成功');
+    message.success('登录成功', { destroyOnHover: true });
     const redirect =
       (router.currentRoute.value.query.redirect as string) || '/';
     await router.push(redirect);
@@ -41,8 +47,8 @@ async function onLogin() {
         <p>多 UI 框架 · Monorepo 工程模板</p>
         <ul class="brand-list">
           <li>✦ Vue 3.5 + TypeScript</li>
-          <li>✦ Vite 7 + Turborepo</li>
-          <li>✦ Pinia + UnoCSS</li>
+          <li>✦ Vite + Turborepo</li>
+          <li>✦ Pinia + Tailwind CSS</li>
           <li>✦ 7 套 UI 框架</li>
         </ul>
       </div>
@@ -59,7 +65,7 @@ async function onLogin() {
             <IxInput
               v-model:value="form.username"
               size="lg"
-              placeholder="请输入用户名（admin）"
+              placeholder="请输入用户名"
               @keyup.enter="onLogin"
             />
           </IxFormItem>
@@ -68,7 +74,7 @@ async function onLogin() {
               v-model:value="form.password"
               type="password"
               size="lg"
-              placeholder="请输入密码（123456）"
+              placeholder="请输入密码"
               @keyup.enter="onLogin"
             />
           </IxFormItem>
@@ -82,7 +88,7 @@ async function onLogin() {
             登录
           </IxButton>
         </IxForm>
-        <p class="login-hint">默认账号：admin / 123456</p>
+        <p v-if="mockLogin" class="login-hint">演示账号：admin / 123456</p>
       </div>
     </div>
   </div>

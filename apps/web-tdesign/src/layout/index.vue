@@ -15,7 +15,11 @@ import { MessagePlugin } from 'tdesign-vue-next';
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
-const collapsed = ref(false);
+const isNarrowScreen = useMediaQuery('(max-width: 767px)');
+const collapsed = ref(isNarrowScreen.value);
+watch(isNarrowScreen, (isNarrow) => {
+  collapsed.value = isNarrow;
+});
 const isFullscreen = ref(false);
 const prefs = usePreferences();
 const { isDark } = storeToRefs(prefs);
@@ -356,7 +360,9 @@ async function handleDropdown(item: {
           background: #f5f6fa;
         "
       >
-        <RouterView />
+        <div class="admin-workspace">
+          <RouterView />
+        </div>
       </t-content>
     </t-layout>
   </t-layout>

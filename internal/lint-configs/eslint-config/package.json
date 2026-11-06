@@ -5,7 +5,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "stub": "pnpm exec tsdown"
+    "stub": "pnpm exec tsdown",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "files": [
     "dist"
@@ -27,6 +28,7 @@
     "eslint": "catalog:",
     "eslint-plugin-jsonc": "catalog:",
     "eslint-plugin-n": "catalog:",
+    "eslint-plugin-oxlint": "catalog:",
     "eslint-plugin-perfectionist": "catalog:",
     "eslint-plugin-pnpm": "catalog:",
     "eslint-plugin-unicorn": "catalog:",
@@ -34,6 +36,7 @@
     "eslint-plugin-vue": "catalog:",
     "eslint-plugin-yml": "catalog:",
     "globals": "catalog:",
+    "oxlint": "catalog:",
     "vue-eslint-parser": "catalog:",
     "yaml-eslint-parser": "catalog:"
   }

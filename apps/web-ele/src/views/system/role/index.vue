@@ -157,6 +157,7 @@ onMounted(fetchData);
           </template>
         </el-table-column>
         <el-table-column prop="createdAt" label="创建时间" width="170" />
+        <!-- @vue-generic {RoleRecord} -->
         <el-table-column label="操作" width="200">
           <template #default="{ row }">
             <el-button

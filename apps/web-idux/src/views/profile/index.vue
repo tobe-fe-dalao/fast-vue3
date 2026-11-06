@@ -15,7 +15,7 @@ function handleSave() {
 }
 </script>
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <div class="grid grid-cols-3 gap-4">
       <div
         style="

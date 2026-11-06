@@ -41,10 +41,14 @@ function triggerLoading() {
 </script>
 
 <template>
-  <div class="components-page">
+  <section class="component-gallery" aria-labelledby="component-gallery-title">
+    <header class="component-gallery__heading">
+      <h1 id="component-gallery-title">组件展示</h1>
+      <p>试用常见控件，查看表单、表格和操作反馈在实际界面中的表现。</p>
+    </header>
     <!-- 按钮 -->
     <t-card title="按钮 Button" :bordered="false" class="shadow-sm">
-      <t-space wrap>
+      <div class="component-gallery__samples">
         <t-button theme="primary"> 主要按钮 </t-button>
         <t-button>默认按钮</t-button>
         <t-button theme="danger"> 危险按钮 </t-button>
@@ -55,44 +59,44 @@ function triggerLoading() {
           加载按钮
         </t-button>
         <t-button theme="primary" disabled> 禁用按钮 </t-button>
-      </t-space>
+      </div>
     </t-card>
 
     <!-- 标签 -->
     <t-card title="标签 Tag" :bordered="false" class="shadow-sm">
-      <t-space wrap>
+      <div class="component-gallery__samples">
         <t-tag>Default</t-tag>
         <t-tag theme="primary"> Primary </t-tag>
         <t-tag theme="success"> Success </t-tag>
         <t-tag theme="warning"> Warning </t-tag>
         <t-tag theme="danger"> Danger </t-tag>
-      </t-space>
+      </div>
     </t-card>
 
     <!-- 输入框 -->
     <t-card title="输入框 Input" :bordered="false" class="shadow-sm">
-      <t-row :gutter="16">
-        <t-col :span="8">
+      <div class="component-gallery__controls">
+        <div>
           <t-input v-model="inputVal" placeholder="基础输入框" />
-        </t-col>
-        <t-col :span="8">
+        </div>
+        <div>
           <t-input-number
             v-model="numVal"
             :min="0"
             :max="100"
             style="width: 100%"
           />
-        </t-col>
-        <t-col :span="8">
+        </div>
+        <div>
           <t-slider v-model="sliderVal" />
-        </t-col>
-      </t-row>
+        </div>
+      </div>
     </t-card>
 
     <!-- 选择器 -->
     <t-card title="选择器 Select" :bordered="false" class="shadow-sm">
-      <t-row :gutter="16">
-        <t-col :span="8">
+      <div class="component-gallery__controls">
+        <div>
           <t-select
             v-model="selectVal"
             placeholder="请选择"
@@ -105,44 +109,33 @@ function triggerLoading() {
               :value="opt.value"
             />
           </t-select>
-        </t-col>
-        <t-col :span="8">
+        </div>
+        <div>
           <t-date-picker placeholder="请选择日期" style="width: 100%" />
-        </t-col>
-        <t-col :span="8">
+        </div>
+        <div>
           <t-switch v-model="switchVal" />
           <span class="ml-2">{{ switchVal ? '开启' : '关闭' }}</span>
-        </t-col>
-      </t-row>
+        </div>
+      </div>
     </t-card>
 
     <!-- 进度条 -->
     <t-card title="进度条 Progress" :bordered="false" class="shadow-sm">
-      <t-row :gutter="16">
-        <t-col :span="12">
+      <div class="component-gallery__controls">
+        <div>
           <t-progress :percentage="progressVal" />
           <t-slider v-model="progressVal" class="mt-4" />
-        </t-col>
-        <t-col :span="12">
+        </div>
+        <div>
           <t-progress theme="circle" :percentage="progressVal" />
-        </t-col>
-      </t-row>
-    </t-card>
-
-    <!-- 表格 -->
-    <t-card title="表格 Table" :bordered="false" class="shadow-sm">
-      <t-table
-        :data="tableData"
-        :columns="columns"
-        :pagination="{ pageSize: 5 }"
-        size="medium"
-        row-key="key"
-      />
+        </div>
+      </div>
     </t-card>
 
     <!-- 通知反馈 -->
     <t-card title="通知反馈" :bordered="false" class="shadow-sm">
-      <t-space>
+      <div class="component-gallery__samples">
         <t-button @click="MessagePlugin.success('操作成功！')">
           成功消息
         </t-button>
@@ -153,23 +146,29 @@ function triggerLoading() {
           警告消息
         </t-button>
         <t-button @click="MessagePlugin.info('提示信息')"> 普通消息 </t-button>
-      </t-space>
+      </div>
     </t-card>
-  </div>
+
+    <!-- 表格 -->
+    <t-card
+      title="表格 Table"
+      :bordered="false"
+      class="component-gallery__wide shadow-sm"
+    >
+      <div
+        class="component-gallery__table"
+        role="region"
+        aria-label="表格示例"
+        tabindex="0"
+      >
+        <t-table
+          :data="tableData"
+          :columns="columns"
+          :pagination="{ pageSize: 5 }"
+          size="medium"
+          row-key="key"
+        />
+      </div>
+    </t-card>
+  </section>
 </template>
-
-<style scoped>
-.components-page {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 0;
-  padding: 8px;
-}
-
-@media (max-width: 767px) {
-  .components-page {
-    padding: 0;
-  }
-}
-</style>

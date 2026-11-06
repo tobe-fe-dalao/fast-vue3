@@ -1,14 +1,18 @@
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-import { viteUnpluginPlugin } from '@fast-vue3/vite-config';
+import {
+  viteFileRoutesPlugin,
+  viteUnpluginPlugin,
+} from '@fast-vue3/vite-config';
 
 const root = process.cwd();
 const appNames = readdirSync(resolve(root, 'apps'), { withFileTypes: true })
   .filter(
     (entry) =>
       entry.isDirectory() &&
-      (entry.name.startsWith('web-') || entry.name.startsWith('site-')),
+      (entry.name.startsWith('web-') || entry.name.startsWith('site-')) &&
+      existsSync(resolve(root, 'apps', entry.name, 'package.json')),
   )
   .map((entry) => entry.name);
 
@@ -22,6 +26,13 @@ for (const appName of appNames) {
       throw new TypeError('Auto import declaration generator is unavailable');
     }
     await autoImport.buildEnd();
+    if (existsSync(resolve('src/views'))) {
+      const router = viteFileRoutesPlugin(false);
+      if (typeof router.buildStart !== 'function') {
+        throw new TypeError('File route declaration generator is unavailable');
+      }
+      await router.buildStart();
+    }
   } finally {
     process.chdir(root);
   }

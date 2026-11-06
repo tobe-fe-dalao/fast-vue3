@@ -19,7 +19,7 @@ function handleSave() {
 }
 </script>
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <div class="grid grid-cols-3 gap-4">
       <Card>
         <template #content>
@@ -88,6 +88,5 @@ function handleSave() {
         <Button label="保存" @click="handleSave" />
       </template>
     </Dialog>
-    <Toast />
   </div>
 </template>

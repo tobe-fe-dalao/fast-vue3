@@ -10,7 +10,6 @@ import InputText from 'openvue/inputtext';
 import RadioButton from 'openvue/radiobutton';
 import Select from 'openvue/select';
 import Textarea from 'openvue/textarea';
-import Toast from 'openvue/toast';
 import { useToast } from 'openvue/usetoast';
 
 const route = useRoute();
@@ -158,9 +157,7 @@ watch(editId, loadForEdit, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page" style="max-width: 880px">
-    <Toast />
-
+  <div class="admin-page admin-page--narrow" style="max-width: 880px">
     <div
       class="mb-4"
       style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px"

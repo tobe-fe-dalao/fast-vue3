@@ -59,6 +59,7 @@ onMounted(async () => {
       <IxCard title="近7天趋势">
         <IxTable
           :columns="trendColumns"
+          get-key="date"
           :data-source="trendData"
           :pagination="false"
         />
@@ -66,6 +67,7 @@ onMounted(async () => {
       <IxCard title="热门页面">
         <IxTable
           :columns="pageColumns"
+          get-key="page"
           :data-source="topPages"
           :pagination="false"
         />

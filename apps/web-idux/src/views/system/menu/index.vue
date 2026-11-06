@@ -157,9 +157,10 @@ onMounted(fetchData);
       <IxButton mode="primary" @click="openDialog()">+ 新增菜单</IxButton>
     </div>
 
-    <IxCard shadow="never">
+    <IxCard :shadow="false">
       <IxTable
         :columns="columns"
+        get-key="id"
         :data-source="buildTree(dataSource)"
         :loading="loading"
         :pagination="false"

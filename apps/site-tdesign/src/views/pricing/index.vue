@@ -120,7 +120,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <section class="site-hero">
+    <section class="site-hero site-hero--compact">
       <h1 class="site-hero-title">价格方案</h1>
       <p class="site-hero-desc">选择适合你的方案，从开源起步，随业务平滑升级</p>
     </section>

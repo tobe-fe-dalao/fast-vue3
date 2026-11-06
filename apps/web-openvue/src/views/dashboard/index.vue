@@ -58,6 +58,7 @@ onMounted(async () => {
     lineChart = echarts.init(lineChartRef.value);
     lineChart.setOption({
       tooltip: { trigger: 'axis' },
+      grid: { containLabel: true },
       legend: { data: ['PV', 'UV'] },
       xAxis: { type: 'category', data: dashboard.weeklyTrend.days },
       yAxis: { type: 'value' },
@@ -99,6 +100,7 @@ onMounted(async () => {
     barChart = echarts.init(barChartRef.value);
     barChart.setOption({
       tooltip: { trigger: 'axis' },
+      grid: { containLabel: true },
       xAxis: {
         type: 'category',
         data: dashboard.topPages.map((page) => page.title),
@@ -133,11 +135,11 @@ onUnmounted(() => {
 </script>
 <template>
   <p v-if="loadError" role="alert">{{ loadError }}</p>
-  <div class="admin-page flex flex-col gap-4">
-    <div class="grid grid-cols-4 gap-4">
+  <div class="admin-page dashboard">
+    <div class="dashboard-stats">
       <Card v-for="card in statCards" :key="card.title">
         <template #content>
-          <div class="text-sm text-gray-500">
+          <div class="dashboard-stat-label text-sm">
             {{ card.title }}
           </div>
           <div class="text-2xl font-bold mt-1">
@@ -146,25 +148,63 @@ onUnmounted(() => {
         </template>
       </Card>
     </div>
-    <div class="grid grid-cols-3 gap-4">
-      <Card class="col-span-2">
+    <div class="dashboard-overview">
+      <Card>
         <template #title> 访问趋势（近7天） </template>
         <template #content>
-          <div ref="lineChartRef" style="height: 280px"></div>
+          <div ref="lineChartRef" class="admin-dashboard-chart"></div>
         </template>
       </Card>
       <Card>
         <template #title> 用户角色分布 </template>
         <template #content>
-          <div ref="pieChartRef" style="height: 280px"></div>
+          <div ref="pieChartRef" class="admin-dashboard-chart"></div>
         </template>
       </Card>
     </div>
     <Card>
       <template #title> 各模块使用频率 </template>
       <template #content>
-        <div ref="barChartRef" style="height: 240px"></div>
+        <div
+          ref="barChartRef"
+          class="admin-dashboard-chart admin-dashboard-chart--compact"
+        ></div>
       </template>
     </Card>
   </div>
 </template>
+
+<style scoped>
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard-stat-label {
+  color: var(--app-text-secondary);
+}
+
+.dashboard-stats,
+.dashboard-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .dashboard-overview {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+}
+</style>

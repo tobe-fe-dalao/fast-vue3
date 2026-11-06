@@ -13,7 +13,6 @@ import InputText from 'openvue/inputtext';
 import Paginator from 'openvue/paginator';
 import Select from 'openvue/select';
 import Tag from 'openvue/tag';
-import Toast from 'openvue/toast';
 import { useConfirm } from 'openvue/useconfirm';
 import { useToast } from 'openvue/usetoast';
 
@@ -156,7 +155,6 @@ onMounted(async () => {
 
 <template>
   <div class="admin-page">
-    <Toast />
     <ConfirmDialog />
 
     <!-- Search -->

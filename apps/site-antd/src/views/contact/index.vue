@@ -66,7 +66,7 @@ async function handleSubmit() {
 
 <template>
   <div>
-    <section class="site-hero">
+    <section class="site-hero site-hero--compact">
       <h1 class="site-hero-title">联系我们</h1>
       <p class="site-hero-desc">
         有疑问或合作意向？填写表单，或直接通过以下方式联系我们
@@ -87,9 +87,7 @@ async function handleSubmit() {
               <div class="info-value">{{ c.value }}</div>
             </div>
           </div>
-          <p class="info-note">
-            我们会在 1 个工作日内回复你的留言，企业客户可获得专属架构咨询。
-          </p>
+          <p class="info-note">此表单用于演示提交，留言不会被保存。</p>
         </aside>
 
         <!-- Form -->

@@ -84,7 +84,7 @@ onMounted(fetchData);
 
 <template>
   <div class="admin-page">
-    <IxCard shadow="never" style="margin-bottom: 16px">
+    <IxCard :shadow="false" style="margin-bottom: 16px">
       <div style="display: flex; gap: 12px; align-items: center">
         <IxSelect
           v-model:value="statusFilter"
@@ -99,9 +99,10 @@ onMounted(fetchData);
       </div>
     </IxCard>
 
-    <IxCard shadow="never">
+    <IxCard :shadow="false">
       <IxTable
         :columns="columns"
+        get-key="id"
         :data-source="dataSource"
         :loading="loading"
         :pagination="false"

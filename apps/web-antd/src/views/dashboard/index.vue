@@ -158,19 +158,22 @@ onUnmounted(() => {
     <ARow :gutter="16" class="mb-4">
       <ACol :span="16">
         <ACard title="访问趋势（近7天）" :bordered="false" class="shadow-sm">
-          <div ref="lineChartRef" style="height: 280px"></div>
+          <div ref="lineChartRef" class="admin-dashboard-chart"></div>
         </ACard>
       </ACol>
       <ACol :span="8">
         <ACard title="用户角色分布" :bordered="false" class="shadow-sm">
-          <div ref="pieChartRef" style="height: 280px"></div>
+          <div ref="pieChartRef" class="admin-dashboard-chart"></div>
         </ACard>
       </ACol>
     </ARow>
     <ARow :gutter="16">
       <ACol :span="24">
         <ACard title="各模块使用频率" :bordered="false" class="shadow-sm">
-          <div ref="barChartRef" style="height: 240px"></div>
+          <div
+            ref="barChartRef"
+            class="admin-dashboard-chart admin-dashboard-chart--compact"
+          ></div>
         </ACard>
       </ACol>
     </ARow>

@@ -20,7 +20,6 @@
     "postcss-html": "catalog:",
     "postcss-scss": "catalog:",
     "stylelint-config-recess-order": "catalog:",
-    "stylelint-config-recommended": "catalog:",
     "stylelint-config-recommended-scss": "catalog:",
     "stylelint-config-recommended-vue": "catalog:",
     "stylelint-config-standard": "catalog:",

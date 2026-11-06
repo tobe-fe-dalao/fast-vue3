@@ -154,7 +154,7 @@ onUnmounted(() => {
           <template #header>
             <span class="font-semibold">访问趋势（近7天）</span>
           </template>
-          <div ref="lineChartRef" style="height: 280px"></div>
+          <div ref="lineChartRef" class="admin-dashboard-chart"></div>
         </IxCard>
       </IxCol>
       <IxCol span="8">
@@ -162,7 +162,7 @@ onUnmounted(() => {
           <template #header>
             <span class="font-semibold">用户角色分布</span>
           </template>
-          <div ref="pieChartRef" style="height: 280px"></div>
+          <div ref="pieChartRef" class="admin-dashboard-chart"></div>
         </IxCard>
       </IxCol>
     </IxRow>
@@ -172,7 +172,10 @@ onUnmounted(() => {
           <template #header>
             <span class="font-semibold">各模块使用频率</span>
           </template>
-          <div ref="barChartRef" style="height: 240px"></div>
+          <div
+            ref="barChartRef"
+            class="admin-dashboard-chart admin-dashboard-chart--compact"
+          ></div>
         </IxCard>
       </IxCol>
     </IxRow>

@@ -3,6 +3,8 @@ import type { GlobalConfigProvider } from 'tdesign-vue-next/es/config-provider/t
 
 import zhCN from 'tdesign-vue-next/es/locale/zh_CN';
 
+import Layout from './layout/index.vue';
+
 // ConfigProvider types its lists as mutable, while the locale preset uses readonly tuples.
 const locale = {
   ...zhCN,
@@ -18,6 +20,6 @@ const locale = {
 
 <template>
   <TConfigProvider :global-config="locale">
-    <RouterView />
+    <Layout />
   </TConfigProvider>
 </template>

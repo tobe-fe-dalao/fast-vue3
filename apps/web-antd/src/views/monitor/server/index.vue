@@ -28,7 +28,7 @@ onMounted(fetchData);
 </script>
 
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <ASpin :spinning="loading">
       <ARow :gutter="[16, 16]">
         <!-- CPU -->

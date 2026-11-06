@@ -9,7 +9,6 @@ import Column from 'openvue/column';
 import DataTable from 'openvue/datatable';
 import ProgressSpinner from 'openvue/progressspinner';
 import Tag from 'openvue/tag';
-import Toast from 'openvue/toast';
 import { useToast } from 'openvue/usetoast';
 
 interface UserRecord {
@@ -145,9 +144,7 @@ watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page">
-    <Toast />
-
+  <div class="admin-page admin-page--narrow">
     <!-- Page Header -->
     <div
       style="

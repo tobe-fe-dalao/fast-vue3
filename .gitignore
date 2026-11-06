@@ -70,6 +70,13 @@ vite.config.ts.*
 # Local assistant/tool state
 .workbuddy
 
+# pnpm-generated skill ignore files
+/.agent/skills/.gitignore
+/.agents/skills/.gitignore
+/.claude/skills/.gitignore
+/.gemini/skills/.gitignore
+/.github/skills/.gitignore
+
 # Logs
 logs
 *.log

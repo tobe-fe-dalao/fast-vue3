@@ -7,7 +7,6 @@ import { api } from '@/api';
 import Button from 'openvue/button';
 import Card from 'openvue/card';
 import Tag from 'openvue/tag';
-import Toast from 'openvue/toast';
 import Tree from 'openvue/tree';
 import { useToast } from 'openvue/usetoast';
 
@@ -174,9 +173,7 @@ watch(() => route.params.id, fetchRole, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page">
-    <Toast />
-
+  <div class="admin-page admin-page--narrow">
     <div
       style="
         display: flex;

@@ -141,7 +141,7 @@ watch(editId, loadForEdit, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page" style="max-width: 880px">
+  <div class="admin-page admin-page--narrow" style="max-width: 880px">
     <!-- Page Header -->
     <div
       class="mb-4"
@@ -150,7 +150,7 @@ watch(editId, loadForEdit, { immediate: true, flush: 'sync' });
       <IxButton mode="text" @click="goBack">← 返回</IxButton>
     </div>
 
-    <IxCard shadow="never">
+    <IxCard :shadow="false">
       <IxForm :label-col="{ span: 4 }" :control-col="{ span: 18 }">
         <IxFormItem label="标题">
           <IxInput v-model:value="form.title" placeholder="请输入文章标题" />

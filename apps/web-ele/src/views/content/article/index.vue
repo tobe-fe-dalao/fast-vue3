@@ -224,6 +224,7 @@ onMounted(async () => {
         </el-table-column>
         <el-table-column prop="views" label="浏览量" width="100" />
         <el-table-column prop="publishedAt" label="发布时间" width="170" />
+        <!-- @vue-generic {ArticleRecord} -->
         <el-table-column label="操作" width="140" fixed="right">
           <template #default="{ row }">
             <el-button type="primary" link size="small" @click="goEdit(row)">

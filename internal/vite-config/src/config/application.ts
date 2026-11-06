@@ -51,18 +51,15 @@ function defineApplicationConfig(userConfigPromise?: DefineApplicationOptions) {
     const applicationConfig: UserConfig = {
       base,
       build: {
-        rollupOptions: {
+        rolldownOptions: {
           output: {
             assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
             chunkFileNames: 'assets/js/[name]-[hash].js',
             entryFileNames: 'assets/js/index-[name]-[hash].js',
+            minify: isBuild ? { compress: { dropDebugger: true } } : false,
           },
         },
         target: 'es2015',
-      },
-      esbuild: {
-        drop: isBuild ? ['debugger'] : [],
-        legalComments: 'none',
       },
       plugins,
       server: {

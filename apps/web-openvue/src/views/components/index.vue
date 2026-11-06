@@ -31,11 +31,15 @@ function triggerLoading() {
 }
 </script>
 <template>
-  <div class="components-page">
+  <section class="component-gallery" aria-labelledby="component-gallery-title">
+    <header class="component-gallery__heading">
+      <h1 id="component-gallery-title">组件展示</h1>
+      <p>试用常见控件，查看表单、表格和操作反馈在实际界面中的表现。</p>
+    </header>
     <Card>
       <template #title> 按钮 Button </template>
       <template #content>
-        <div class="flex flex-wrap gap-2">
+        <div class="component-gallery__samples">
           <Button label="默认" severity="secondary" />
           <Button label="主要" />
           <Button label="成功" severity="success" />
@@ -48,7 +52,7 @@ function triggerLoading() {
     <Card>
       <template #title> 标签 Tag </template>
       <template #content>
-        <div class="flex flex-wrap gap-2">
+        <div class="component-gallery__samples">
           <Tag value="默认" /><Tag value="成功" severity="success" /><Tag
             value="信息"
             severity="info"
@@ -62,11 +66,11 @@ function triggerLoading() {
     <Card>
       <template #title> 表单 Form </template>
       <template #content>
-        <div class="flex gap-4 mb-4">
+        <div class="component-gallery__controls mb-4">
           <InputText
             v-model="inputVal"
             placeholder="请输入内容"
-            class="flex-1"
+            class="component-gallery__control"
           />
           <Select
             v-model="selectVal"
@@ -74,7 +78,7 @@ function triggerLoading() {
             option-label="label"
             option-value="value"
             placeholder="请选择"
-            class="flex-1"
+            class="component-gallery__control"
           />
           <ToggleSwitch v-model="switchVal" />
         </div>
@@ -86,40 +90,54 @@ function triggerLoading() {
       </template>
     </Card>
     <Card>
-      <template #title> 表格 DataTable </template>
+      <template #title> 通知反馈 </template>
       <template #content>
-        <DataTable :value="tableData" striped-rows>
-          <Column field="name" header="姓名" /><Column
-            field="role"
-            header="角色"
-          /><Column field="dept" header="部门" />
-          <Column field="status" header="状态">
-            <template #body="{ data }">
-              <Tag
-                :value="data.status"
-                :severity="data.status === '在职' ? 'success' : 'secondary'"
-              />
-            </template>
-          </Column>
-        </DataTable>
+        <div class="component-gallery__samples">
+          <Button
+            label="成功消息"
+            @click="
+              toast.add({
+                severity: 'success',
+                summary: '操作成功！',
+                life: 2000,
+              })
+            "
+          />
+          <Button
+            label="警告消息"
+            severity="warn"
+            @click="
+              toast.add({ severity: 'warn', summary: '请注意！', life: 2000 })
+            "
+          />
+        </div>
       </template>
     </Card>
-    <Toast />
-  </div>
+    <Card class="component-gallery__wide">
+      <template #title> 表格 DataTable </template>
+      <template #content>
+        <div
+          class="component-gallery__table"
+          role="region"
+          aria-label="表格示例"
+          tabindex="0"
+        >
+          <DataTable :value="tableData" striped-rows>
+            <Column field="name" header="姓名" /><Column
+              field="role"
+              header="角色"
+            /><Column field="dept" header="部门" />
+            <Column field="status" header="状态">
+              <template #body="{ data }">
+                <Tag
+                  :value="data.status"
+                  :severity="data.status === '在职' ? 'success' : 'secondary'"
+                />
+              </template>
+            </Column>
+          </DataTable>
+        </div>
+      </template>
+    </Card>
+  </section>
 </template>
-
-<style scoped>
-.components-page {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 0;
-  padding: 8px;
-}
-
-@media (max-width: 767px) {
-  .components-page {
-    padding: 0;
-  }
-}
-</style>

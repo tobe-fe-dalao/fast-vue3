@@ -58,21 +58,23 @@ function mergeOxlintConfigs(...configs: OxlintConfig[]): OxlintConfig {
   return merged;
 }
 
+const oxlintConfigs = [
+  javascript,
+  command,
+  comments,
+  plugins,
+  importPluginConfig,
+  node,
+  overrides,
+  test,
+  typescript,
+  unicorn,
+  vue,
+];
+
+// The ESLint bridge consumes the merged rule set. Oxlint uses native extends.
 const oxlintConfig = defineOxlintConfig(
-  mergeOxlintConfigs(
-    javascript,
-    command,
-    comments,
-    ignores,
-    plugins,
-    importPluginConfig,
-    node,
-    overrides,
-    test,
-    typescript,
-    unicorn,
-    vue,
-  ),
+  mergeOxlintConfigs(...oxlintConfigs, ignores),
 );
 
 export {
@@ -85,6 +87,7 @@ export {
   node,
   overrides,
   oxlintConfig,
+  oxlintConfigs,
   plugins,
   test,
   typescript,

@@ -1,42 +1,48 @@
 <script setup lang="ts">
 import type { BlogPost } from '@/api';
 
+import { useLatestRequest } from '@fast-vue3/shared';
+
 import { api } from '@/api';
 import Paginator from 'openvue/paginator';
 import Select from 'openvue/select';
 import Tag from 'openvue/tag';
 
-const router = useRouter();
-
 const currentPage = ref(1);
 const pageSize = 6;
 const categoryFilter = ref<string>('全部');
-const blogPosts = reactive<BlogPost[]>([]);
+const blogPosts = ref<BlogPost[]>([]);
 const blogCategories = ref<string[]>(['全部']);
+const total = ref(0);
+const loading = ref(true);
+const loadFailed = ref(false);
+const requests = useLatestRequest();
 
 async function loadPosts() {
-  const result = await api.portal.blogList({ page: 1, pageSize: 100 });
-  blogPosts.splice(0, blogPosts.length, ...result.items);
-  blogCategories.value = [
-    '全部',
-    ...result.categories.filter((category) => category !== '全部'),
-  ];
+  const isCurrent = requests.start();
+  loading.value = true;
+  loadFailed.value = false;
+  try {
+    const result = await api.portal.blogList({
+      category: categoryFilter.value,
+      page: currentPage.value,
+      pageSize,
+    });
+    if (!isCurrent()) return;
+    blogPosts.value = result.items;
+    blogCategories.value = [
+      '全部',
+      ...result.categories.filter((category) => category !== '全部'),
+    ];
+    total.value = result.total;
+  } catch {
+    if (isCurrent()) loadFailed.value = true;
+  } finally {
+    if (isCurrent()) loading.value = false;
+  }
 }
 
-onMounted(loadPosts);
-
-const filtered = computed(() =>
-  categoryFilter.value === '全部'
-    ? blogPosts
-    : blogPosts.filter((p) => p.category === categoryFilter.value),
-);
-
-const paged = computed(() => {
-  const start = (currentPage.value - 1) * pageSize;
-  return filtered.value.slice(start, start + pageSize);
-});
-
-const total = computed(() => filtered.value.length);
+watch([categoryFilter, currentPage], loadPosts, { immediate: true });
 
 const categoryOptions = computed(() =>
   blogCategories.value.map((c) => ({ label: c, value: c })),
@@ -48,14 +54,11 @@ function handleCategoryChange() {
 function handlePageChange(event: { page: number }) {
   currentPage.value = event.page + 1;
 }
-function goDetail(post: BlogPost) {
-  router.push(`/blog/${post.id}`);
-}
 </script>
 
 <template>
   <div>
-    <section class="site-hero">
+    <section class="site-hero site-hero--compact">
       <h1 class="site-hero-title">博客</h1>
       <p class="site-hero-desc">
         工程实践、架构解析与团队故事，来自 Fast Vue3 一线开发者
@@ -74,16 +77,35 @@ function goDetail(post: BlogPost) {
           />
           <span class="blog-count">共 {{ total }} 篇</span>
         </div>
-        <div class="site-grid">
+        <p v-if="loading" class="site-list-status" role="status">
+          正在加载文章…
+        </p>
+        <div v-else-if="loadFailed" class="site-list-status" role="alert">
+          文章列表加载失败。
+          <button class="site-text-button" type="button" @click="loadPosts">
+            重试
+          </button>
+        </div>
+        <p
+          v-else-if="blogPosts.length === 0"
+          class="site-list-status"
+          role="status"
+        >
+          暂无文章
+        </p>
+        <div v-else class="site-grid">
           <article
-            v-for="(post, i) in paged"
+            v-for="(post, i) in blogPosts"
             :key="post.id"
             v-reveal="(i % 3) * 100"
             class="site-card blog-card"
-            @click="goDetail(post)"
           >
             <div class="blog-cover">{{ post.category }}</div>
-            <h3 class="blog-title">{{ post.title }}</h3>
+            <h2 class="blog-title">
+              <RouterLink class="site-card-link" :to="`/blog/${post.id}`">
+                {{ post.title }}
+              </RouterLink>
+            </h2>
             <p class="blog-excerpt">{{ post.excerpt }}</p>
             <div class="blog-meta">
               <span>{{ post.author }}</span
@@ -94,7 +116,7 @@ function goDetail(post: BlogPost) {
             </div>
           </article>
         </div>
-        <div class="blog-pagination">
+        <div v-if="total > pageSize && !loadFailed" class="blog-pagination">
           <Paginator
             :rows="pageSize"
             :total-records="total"
@@ -121,8 +143,8 @@ function goDetail(post: BlogPost) {
 }
 
 .blog-card {
+  position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .blog-cover {

@@ -71,7 +71,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <section class="site-hero">
+    <section class="site-hero site-hero--compact">
       <h1 class="site-hero-title">常见问题</h1>
       <p class="site-hero-desc">关于 Fast Vue3 的使用、架构与定制的常见疑问</p>
     </section>

@@ -36,7 +36,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div class="admin-page" style="max-width: 720px">
+  <div class="admin-page admin-page--narrow" style="max-width: 720px">
     <Card class="mb-4">
       <template #title>基础设置</template>
       <template #content>

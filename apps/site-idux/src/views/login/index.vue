@@ -30,7 +30,7 @@ async function handleLogin() {
     const result = await api.auth.login(form);
     setToken(result.accessToken);
     setRefreshToken(result.refreshToken);
-    msgSuccess('登录成功');
+    msgSuccess('登录成功', { destroyOnHover: true });
     const requestedRedirect = route.query.redirect;
     const redirect =
       typeof requestedRedirect === 'string' && requestedRedirect.startsWith('/')

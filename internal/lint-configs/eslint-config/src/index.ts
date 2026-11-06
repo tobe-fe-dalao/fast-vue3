@@ -12,6 +12,7 @@ import {
   vue,
   yaml,
 } from './configs';
+import { oxlintCompatibility } from './configs/oxlint';
 import { customConfig } from './custom-config';
 
 type FlatConfig = Linter.Config;
@@ -34,13 +35,16 @@ async function defineConfig(config: FlatConfig[] = []) {
     unicorn(),
     yaml(),
     pnpm(),
-    ...customConfig,
-    ...config,
   ];
 
   const resolved = await Promise.all(configs);
 
-  return resolved.flat();
+  return [
+    ...resolved.flat(),
+    ...oxlintCompatibility(),
+    ...customConfig,
+    ...config,
+  ];
 }
 
 export { defineConfig };

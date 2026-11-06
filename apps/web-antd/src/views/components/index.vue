@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { message } from 'ant-design-vue';
 
-const loading = ref(false);
+const { isPending: loading, start: triggerLoading } = useTimeoutFn(
+  () => {},
+  1200,
+  { immediate: false },
+);
 const inputVal = ref('');
 const numVal = ref(50);
 const selectVal = ref('vue');
@@ -26,26 +30,30 @@ const tableData = [
 </script>
 
 <template>
-  <div class="components-page">
+  <section class="component-gallery" aria-labelledby="component-gallery-title">
+    <header class="component-gallery__heading">
+      <h1 id="component-gallery-title">组件展示</h1>
+      <p>试用常见控件，查看表单、表格和操作反馈在实际界面中的表现。</p>
+    </header>
     <!-- 按钮 -->
     <ACard title="按钮 Button" :bordered="false" class="shadow-sm">
-      <ASpace wrap>
+      <div class="component-gallery__samples">
         <AButton type="primary"> 主要按钮 </AButton>
         <AButton>默认按钮</AButton>
         <AButton type="dashed"> 虚线按钮 </AButton>
         <AButton type="text"> 文本按钮 </AButton>
         <AButton type="link"> 链接按钮 </AButton>
         <AButton type="primary" danger> 危险按钮 </AButton>
-        <AButton type="primary" :loading="loading" @click="loading = !loading">
+        <AButton type="primary" :loading="loading" @click="triggerLoading()">
           加载按钮
         </AButton>
         <AButton type="primary" disabled> 禁用按钮 </AButton>
-      </ASpace>
+      </div>
     </ACard>
 
     <!-- 标签 -->
     <ACard title="标签 Tag" :bordered="false" class="shadow-sm">
-      <ASpace wrap>
+      <div class="component-gallery__samples">
         <ATag>Default</ATag>
         <ATag color="success"> Success </ATag>
         <ATag color="processing"> Processing </ATag>
@@ -59,37 +67,37 @@ const tableData = [
         <ATag color="blue"> Blue </ATag>
         <ATag color="geekblue"> Geekblue </ATag>
         <ATag color="purple"> Purple </ATag>
-      </ASpace>
+      </div>
     </ACard>
 
     <!-- 输入框 -->
     <ACard title="输入框 Input" :bordered="false" class="shadow-sm">
-      <ARow :gutter="16">
-        <ACol :span="8">
+      <div class="component-gallery__controls">
+        <div>
           <AInput v-model:value="inputVal" placeholder="基础输入框" />
-        </ACol>
-        <ACol :span="8">
+        </div>
+        <div>
           <AInputSearch
             v-model:value="inputVal"
             placeholder="搜索输入框"
             enter-button
           />
-        </ACol>
-        <ACol :span="8">
+        </div>
+        <div>
           <AInputNumber
             v-model:value="numVal"
             :min="0"
             :max="100"
             class="w-full"
           />
-        </ACol>
-      </ARow>
+        </div>
+      </div>
     </ACard>
 
     <!-- 选择器 -->
     <ACard title="选择器 Select" :bordered="false" class="shadow-sm">
-      <ARow :gutter="16">
-        <ACol :span="8">
+      <div class="component-gallery__controls">
+        <div>
           <ASelect
             v-model:value="selectVal"
             class="w-full"
@@ -99,64 +107,59 @@ const tableData = [
             <ASelectOption value="react"> React </ASelectOption>
             <ASelectOption value="angular"> Angular </ASelectOption>
           </ASelect>
-        </ACol>
-        <ACol :span="8">
+        </div>
+        <div>
           <ADatePicker class="w-full" />
-        </ACol>
-        <ACol :span="8">
+        </div>
+        <div>
           <ASwitch v-model:checked="switchVal" />
           <span class="ml-2">{{ switchVal ? '开启' : '关闭' }}</span>
-        </ACol>
-      </ARow>
+        </div>
+      </div>
     </ACard>
 
     <!-- 进度条 -->
     <ACard title="进度条 Progress" :bordered="false" class="shadow-sm">
-      <ARow :gutter="16">
-        <ACol :span="12">
+      <div class="component-gallery__controls">
+        <div>
           <AProgress :percent="progressVal" />
           <ASlider v-model:value="progressVal" class="mt-4" />
-        </ACol>
-        <ACol :span="12">
+        </div>
+        <div>
           <AProgress type="circle" :percent="progressVal" />
-        </ACol>
-      </ARow>
-    </ACard>
-
-    <!-- 表格 -->
-    <ACard title="表格 Table" :bordered="false" class="shadow-sm">
-      <ATable
-        :data-source="tableData"
-        :columns="columns"
-        :pagination="{ pageSize: 5 }"
-        size="middle"
-      />
+        </div>
+      </div>
     </ACard>
 
     <!-- 通知反馈 -->
     <ACard title="通知反馈" :bordered="false" class="shadow-sm">
-      <ASpace>
+      <div class="component-gallery__samples">
         <AButton @click="message.success('操作成功！')"> 成功消息 </AButton>
         <AButton @click="message.error('操作失败！')"> 错误消息 </AButton>
         <AButton @click="message.warning('请注意！')"> 警告消息 </AButton>
         <AButton @click="message.info('提示信息')"> 普通消息 </AButton>
-      </ASpace>
+      </div>
     </ACard>
-  </div>
+
+    <!-- 表格 -->
+    <ACard
+      title="表格 Table"
+      :bordered="false"
+      class="component-gallery__wide shadow-sm"
+    >
+      <div
+        class="component-gallery__table"
+        role="region"
+        aria-label="表格示例"
+        tabindex="0"
+      >
+        <ATable
+          :data-source="tableData"
+          :columns="columns"
+          :pagination="{ pageSize: 5 }"
+          size="middle"
+        />
+      </div>
+    </ACard>
+  </section>
 </template>
-
-<style scoped>
-.components-page {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 0;
-  padding: 8px;
-}
-
-@media (max-width: 767px) {
-  .components-page {
-    padding: 0;
-  }
-}
-</style>

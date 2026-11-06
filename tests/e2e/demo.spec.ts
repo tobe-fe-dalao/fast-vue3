@@ -8,7 +8,7 @@ const frameworks = [
   'ele',
   'idux',
   'naive',
-  'primevue',
+  'openvue',
   'tdesign',
 ];
 const firstArticle = 'Fast Vue3 多应用能力介绍';
@@ -50,7 +50,10 @@ test('demo hub exposes all fifteen applications under the repository base', asyn
   }
 });
 
-test('generic web application renders its portal content', async ({ page }) => {
+test('generic web application renders its portal content and mobile navigation', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('web-app/');
   await expect(
     page.getByRole('heading', { name: 'Fast Vue3', exact: true }),
@@ -59,15 +62,26 @@ test('generic web application renders its portal content', async ({ page }) => {
     page.getByRole('heading', { name: '核心特性', exact: true }),
   ).toBeVisible();
   await expect(page.getByRole('alert')).toHaveCount(0);
+  const menu = page.getByRole('button', { name: '菜单' });
+  await menu.click();
+  const navigation = page.getByRole('navigation', { name: '主导航' });
+  await navigation.getByRole('link', { name: '博客' }).focus();
+  await page.keyboard.press('Escape');
+  await expect(menu).toBeFocused();
+  await expect(menu).toHaveAttribute('aria-expanded', 'false');
 });
 
-test('iDux component messages use the active provider', async ({ page }) => {
-  await login(page, 'idux', '/components');
-  await page.getByRole('button', { name: '成功消息' }).click();
-  await expect(page.getByText('操作成功！', { exact: true })).toBeVisible();
-  await page.getByRole('button', { name: '警告消息' }).click();
-  await expect(page.getByText('请注意！', { exact: true })).toBeVisible();
-});
+for (const framework of ['idux', 'openvue']) {
+  test(`${framework} component messages use the active provider`, async ({
+    page,
+  }) => {
+    await login(page, framework, '/components');
+    await page.getByRole('button', { name: '成功消息' }).click();
+    await expect(page.getByText('操作成功！', { exact: true })).toBeVisible();
+    await page.getByRole('button', { name: '警告消息' }).click();
+    await expect(page.getByText('请注意！', { exact: true })).toBeVisible();
+  });
+}
 
 test('iDux native table slots render management actions and log status', async ({
   page,
@@ -116,6 +130,67 @@ test('iDux registration renders editable password inputs', async ({ page }) => {
 
 for (const framework of frameworks) {
   test.describe(framework, () => {
+    test('component examples share space on desktop and fit on mobile', async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 1440, height: 960 });
+      await login(page, framework, '/components');
+      await expect(
+        page.getByRole('heading', { name: '组件展示' }),
+      ).toBeVisible();
+      const grid = page.locator('.component-gallery');
+      const buttons = grid.getByText('按钮 Button', { exact: true });
+      const tags = grid.getByText('标签 Tag', { exact: true });
+      const table = grid.getByRole('region', { name: '表格示例' });
+      await expect(table).toBeVisible();
+      const desktopButtons = await buttons.boundingBox();
+      const desktopTags = await tags.boundingBox();
+      if (!desktopButtons || !desktopTags)
+        throw new Error('Missing example cards');
+      expect(Math.abs(desktopTags.y - desktopButtons.y)).toBeLessThan(8);
+      expect(desktopTags.x).toBeGreaterThan(desktopButtons.x);
+
+      await page.setViewportSize({ width: 390, height: 844 });
+      await expect
+        .poll(async () => {
+          const first = await buttons.boundingBox();
+          const second = await tags.boundingBox();
+          return first && second ? second.y - first.y : 0;
+        })
+        .toBeGreaterThan(0);
+      await expect
+        .poll(() =>
+          grid.evaluate((element) => {
+            return element.getBoundingClientRect().right;
+          }),
+        )
+        .toBeLessThanOrEqual(390);
+      await expect
+        .poll(() =>
+          grid.evaluate((element) => element.scrollWidth - element.clientWidth),
+        )
+        .toBeLessThanOrEqual(1);
+    });
+
+    test('portal detail pages keep the heading and content in view on mobile', async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(`site-${framework}/`);
+      const menu = page.getByRole('button', { name: '菜单' });
+      await expect(menu).toHaveAttribute('aria-expanded', 'false');
+      await menu.click();
+      const nav = page.getByRole('navigation', { name: '主导航' });
+      await nav.getByRole('link', { name: '常见问题' }).click();
+      await expect(menu).toHaveAttribute('aria-expanded', 'false');
+      const title = page.getByRole('heading', { level: 1, name: '常见问题' });
+      await expect(title).toBeVisible();
+      await expect(title.locator('..')).toHaveClass(/site-hero--compact/);
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth),
+      ).toBeLessThanOrEqual(390);
+    });
+
     test('guard and requests share canonical session state', async ({
       page,
     }) => {
@@ -185,7 +260,8 @@ for (const framework of frameworks) {
     test('blog details follow parameters and anonymous comments preserve redirect', async ({
       page,
     }) => {
-      await page.goto(`site-${framework}/#/blog/1`);
+      await page.goto(`site-${framework}/#/blog`);
+      await page.getByRole('link', { name: firstBlog }).click();
       await expect(
         page.getByRole('heading', { name: firstBlog }),
       ).toBeVisible();
@@ -232,9 +308,7 @@ for (const framework of frameworks) {
         .getByPlaceholder('请描述你的需求')
         .fill('验证联系表单的提交流程');
       await submit.click();
-      await expect(page.getByPlaceholder('请描述你的需求')).toHaveValue(
-        framework === 'naive' ? '验证联系表单的提交流程' : '',
-      );
+      await expect(page.getByPlaceholder('请描述你的需求')).toHaveValue('');
       await expect(page).toHaveURL(/#\/contact$/);
     });
   });

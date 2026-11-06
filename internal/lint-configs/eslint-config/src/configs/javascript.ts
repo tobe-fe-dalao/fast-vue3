@@ -4,73 +4,7 @@ import js from '@eslint/js';
 import pluginUnusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 
-const rulesCoveredByOxlint = new Set([
-  'constructor-super',
-  'for-direction',
-  'getter-return',
-  'no-async-promise-executor',
-  'no-case-declarations',
-  'no-class-assign',
-  'no-compare-neg-zero',
-  'no-cond-assign',
-  'no-const-assign',
-  'no-constant-binary-expression',
-  'no-constant-condition',
-  'no-debugger',
-  'no-delete-var',
-  'no-dupe-args',
-  'no-dupe-class-members',
-  'no-dupe-else-if',
-  'no-dupe-keys',
-  'no-duplicate-case',
-  'no-empty',
-  'no-empty-character-class',
-  'no-empty-pattern',
-  'no-empty-static-block',
-  'no-ex-assign',
-  'no-extra-boolean-cast',
-  'no-fallthrough',
-  'no-func-assign',
-  'no-global-assign',
-  'no-import-assign',
-  'no-invalid-regexp',
-  'no-irregular-whitespace',
-  'no-loss-of-precision',
-  'no-misleading-character-class',
-  'no-new-native-nonconstructor',
-  'no-nonoctal-decimal-escape',
-  'no-obj-calls',
-  'no-prototype-builtins',
-  'no-redeclare',
-  'no-regex-spaces',
-  'no-self-assign',
-  'no-setter-return',
-  'no-shadow-restricted-names',
-  'no-sparse-arrays',
-  'no-this-before-super',
-  'no-unreachable',
-  'no-unsafe-finally',
-  'no-unsafe-negation',
-  'no-unsafe-optional-chaining',
-  'no-unused-labels',
-  'no-unused-private-class-members',
-  'no-unused-vars',
-  'no-useless-backreference',
-  'no-useless-catch',
-  'no-useless-escape',
-  'no-with',
-  'require-yield',
-  'use-isnan',
-  'valid-typeof',
-]);
-
 export async function javascript(): Promise<Linter.Config[]> {
-  const recommendedRules = Object.fromEntries(
-    Object.entries(js.configs.recommended.rules).filter(
-      ([ruleName]) => !rulesCoveredByOxlint.has(ruleName),
-    ),
-  );
-
   return [
     {
       languageOptions: {
@@ -99,7 +33,7 @@ export async function javascript(): Promise<Linter.Config[]> {
         'unused-imports': pluginUnusedImports,
       },
       rules: {
-        ...recommendedRules,
+        ...js.configs.recommended.rules,
         'dot-notation': ['error', { allowKeywords: true }],
         'keyword-spacing': 'off',
         'no-control-regex': 'error',

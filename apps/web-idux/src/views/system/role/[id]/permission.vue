@@ -147,7 +147,7 @@ watch(() => route.params.id, fetchRole, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <div
       style="
         display: flex;
@@ -167,7 +167,7 @@ watch(() => route.params.id, fetchRole, { immediate: true, flush: 'sync' });
     <IxSpin :spinning="loading">
       <IxRow :gutter="16">
         <IxCol :span="8">
-          <IxCard title="角色信息" shadow="never">
+          <IxCard title="角色信息" :shadow="false">
             <IxDesc v-if="role">
               <IxDescItem label="角色名称">{{ role.name }}</IxDescItem>
               <IxDescItem label="角色标识">{{ role.code }}</IxDescItem>
@@ -183,7 +183,7 @@ watch(() => route.params.id, fetchRole, { immediate: true, flush: 'sync' });
           </IxCard>
         </IxCol>
         <IxCol :span="16">
-          <IxCard shadow="never">
+          <IxCard :shadow="false">
             <div
               style="
                 display: flex;

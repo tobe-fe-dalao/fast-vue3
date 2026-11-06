@@ -94,7 +94,7 @@ onMounted(async () => {
 <template>
   <p v-if="loadError" role="alert" class="site-container">{{ loadError }}</p>
   <div>
-    <section class="site-hero">
+    <section class="site-hero site-hero--compact">
       <h1 class="site-hero-title">关于 Fast Vue3</h1>
       <p class="site-hero-desc">
         基于 Vue 3 + pnpm Monorepo 的多 UI 框架工程平台， 集成 7

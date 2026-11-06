@@ -18,7 +18,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div class="admin-page" style="max-width: 720px">
+  <div class="admin-page admin-page--narrow" style="max-width: 720px">
     <el-card shadow="never" class="mb-4">
       <template #header>
         <span style="font-weight: 600">基础设置</span>

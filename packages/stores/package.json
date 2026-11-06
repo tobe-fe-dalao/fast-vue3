@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "sideEffects": false,
   "exports": {
@@ -17,8 +18,7 @@
     "@fast-vue3/utils": "workspace:*",
     "pinia": "catalog:",
     "pinia-plugin-persistedstate": "catalog:",
-    "vue": "catalog:",
-    "vue-router": "catalog:"
+    "vue": "catalog:"
   },
   "devDependencies": {
     "vitest": "catalog:"

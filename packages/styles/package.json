@@ -2,6 +2,9 @@
   "name": "@fast-vue3/styles",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
   "sideEffects": [
     "*.css"
   ],

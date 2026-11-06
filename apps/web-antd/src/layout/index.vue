@@ -41,7 +41,11 @@ const prefs = usePreferences();
 const { isDark } = storeToRefs(prefs);
 const { setThemeMode } = prefs;
 
-const collapsed = ref(false);
+const isNarrowScreen = useMediaQuery('(max-width: 767px)');
+const collapsed = ref(isNarrowScreen.value);
+watch(isNarrowScreen, (isNarrow) => {
+  collapsed.value = isNarrow;
+});
 const permissions = ref<string[]>([]);
 const hasPermission = (code: string) =>
   permissions.value.includes('*') || permissions.value.includes(code);
@@ -571,7 +575,9 @@ async function handleLogout() {
           background: #f5f6fa;
         "
       >
-        <RouterView />
+        <div class="admin-workspace">
+          <RouterView />
+        </div>
       </ALayoutContent>
     </ALayout>
   </ALayout>

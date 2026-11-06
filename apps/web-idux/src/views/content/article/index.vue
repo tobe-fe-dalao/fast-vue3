@@ -139,7 +139,7 @@ onMounted(async () => {
 <template>
   <div class="admin-page">
     <!-- Search -->
-    <IxCard shadow="never" style="margin-bottom: 16px">
+    <IxCard :shadow="false" style="margin-bottom: 16px">
       <div
         style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center"
       >
@@ -183,9 +183,10 @@ onMounted(async () => {
     </IxCard>
 
     <!-- Table -->
-    <IxCard shadow="never">
+    <IxCard :shadow="false">
       <IxTable
         :columns="columns"
+        get-key="id"
         :data-source="dataSource"
         :loading="loading"
         :pagination="false"

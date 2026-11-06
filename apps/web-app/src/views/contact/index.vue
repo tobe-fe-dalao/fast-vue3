@@ -7,7 +7,7 @@ const submitting = ref(false);
 const error = ref('');
 
 async function handleSubmit() {
-  if (!form.name || !form.email || !form.message) return;
+  if (submitting.value || !form.name.trim() || !form.message.trim()) return;
   submitting.value = true;
   error.value = '';
   try {
@@ -23,128 +23,77 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="contact-page">
-    <div class="page-header">
-      <h1>联系我们</h1>
-      <p>有任何问题或建议？欢迎随时联系我们</p>
-    </div>
-    <div class="content-row">
-      <div class="info-side">
-        <div class="info-item">
-          <span class="info-icon">&#128231;</span>
-          <div>
-            <h3>邮箱</h3>
-            <p>contact@fast-vue3.com</p>
+  <div>
+    <header class="site-hero site-hero--compact">
+      <h1 class="site-hero-title">联系我们</h1>
+      <p class="site-hero-desc">体验留言表单的提交与校验流程</p>
+    </header>
+    <section class="site-section site-container">
+      <div class="content-row">
+        <aside class="site-card">
+          <h2>联系表单演示</h2>
+          <p>留言不会被保存。项目问题请在 GitHub 提交。</p>
+          <a href="https://github.com/tobe-fe-dalao/fast-vue3/issues"
+            >查看项目 Issues</a
+          >
+        </aside>
+        <div class="site-card">
+          <div v-if="sent" class="success-msg">
+            <span>&#10003;</span>
+            <h2>演示提交成功</h2>
+            <p>当前接口仅确认请求，留言不会被保存。</p>
           </div>
-        </div>
-        <div class="info-item">
-          <span class="info-icon">&#128187;</span>
-          <div>
-            <h3>GitHub</h3>
-            <p>github.com/fast-vue3</p>
-          </div>
-        </div>
-        <div class="info-item">
-          <span class="info-icon">&#128172;</span>
-          <div>
-            <h3>社区</h3>
-            <p>加入 Discord 交流群</p>
-          </div>
+          <form v-else @submit.prevent="handleSubmit">
+            <div class="field">
+              <label for="contact-name">姓名</label
+              ><input
+                id="contact-name"
+                v-model="form.name"
+                required
+                placeholder="您的姓名"
+              />
+            </div>
+            <div class="field">
+              <label for="contact-email">邮箱</label
+              ><input
+                id="contact-email"
+                v-model="form.email"
+                required
+                type="email"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div class="field">
+              <label for="contact-message">留言</label
+              ><textarea
+                id="contact-message"
+                v-model="form.message"
+                required
+                rows="5"
+                placeholder="请输入您的留言…"
+              ></textarea>
+            </div>
+            <p v-if="error" role="alert">{{ error }}</p>
+            <button type="submit" class="btn-submit" :disabled="submitting">
+              {{ submitting ? '发送中…' : '发送留言' }}
+            </button>
+          </form>
         </div>
       </div>
-      <div class="form-side">
-        <div v-if="sent" class="success-msg">
-          <span>&#10003;</span>
-          <h2>演示提交成功</h2>
-          <p>当前接口仅确认请求，留言不会被保存。</p>
-        </div>
-        <form v-else @submit.prevent="handleSubmit">
-          <div class="field">
-            <label>姓名</label
-            ><input v-model="form.name" placeholder="您的姓名" />
-          </div>
-          <div class="field">
-            <label>邮箱</label
-            ><input
-              v-model="form.email"
-              type="email"
-              placeholder="your@email.com"
-            />
-          </div>
-          <div class="field">
-            <label>留言</label
-            ><textarea
-              v-model="form.message"
-              rows="5"
-              placeholder="请输入您的留言…"
-            ></textarea>
-          </div>
-          <p v-if="error" role="alert">{{ error }}</p>
-          <button type="submit" class="btn-submit" :disabled="submitting">
-            {{ submitting ? '发送中…' : '发送留言' }}
-          </button>
-        </form>
+      <div class="bottom-nav">
+        <RouterLink to="/blog">&#8592; 博客动态</RouterLink>
+        <RouterLink to="/">返回首页</RouterLink>
       </div>
-    </div>
-    <div class="bottom-nav">
-      <RouterLink to="/blog">&#8592; 博客动态</RouterLink>
-      <RouterLink to="/">返回首页</RouterLink>
-    </div>
+    </section>
   </div>
 </template>
 
 <style scoped>
-.contact-page {
-  max-width: 960px;
-  padding: 80px 20px;
-  margin: 0 auto;
-}
-
-.page-header {
-  margin-bottom: 48px;
-  text-align: center;
-}
-
-.page-header h1 {
-  margin: 0 0 16px;
-  font-size: 2.5rem;
-  color: #111827;
-}
-
-.page-header p {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #6b7280;
-}
-
 .content-row {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 48px;
   margin-bottom: 48px;
-}
-
-.info-item {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 28px;
-}
-
-.info-icon {
-  font-size: 1.5rem;
-}
-
-.info-item h3 {
-  margin: 0 0 4px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-.info-item p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #6b7280;
 }
 
 .field {
@@ -175,25 +124,24 @@ async function handleSubmit() {
 
 .field input:focus,
 .field textarea:focus {
-  border-color: #1677ff;
+  border-color: var(--site-brand);
   box-shadow: 0 0 0 3px rgb(22 119 255 / 10%);
 }
 
 .btn-submit {
-  width: 100%;
-  padding: 12px;
+  padding: 12px 24px;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
-  background: #1677ff;
+  background: var(--site-brand);
   border: none;
   border-radius: 8px;
   transition: background 0.2s;
 }
 
 .btn-submit:hover {
-  background: #4096ff;
+  background: var(--site-brand-hover);
 }
 
 .success-msg {
@@ -208,11 +156,11 @@ async function handleSubmit() {
 
 .success-msg h2 {
   margin: 16px 0 8px;
-  color: #111827;
+  color: var(--site-text-1);
 }
 
 .success-msg p {
-  color: #6b7280;
+  color: var(--site-text-3);
 }
 
 .bottom-nav {
@@ -222,7 +170,7 @@ async function handleSubmit() {
 
 .bottom-nav a {
   font-weight: 500;
-  color: #1677ff;
+  color: var(--site-brand);
   text-decoration: none;
 }
 

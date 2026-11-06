@@ -4,6 +4,15 @@ import Tag from 'openvue/tag';
 
 const route = useRoute();
 
+const menuOpen = ref(false);
+const menuButton = ref<HTMLButtonElement>();
+
+function closeMenu() {
+  if (!menuOpen.value) return;
+  menuOpen.value = false;
+  menuButton.value?.focus();
+}
+
 // 滚动状态：导航栏投影 + 返回顶部按钮
 const isScrolled = ref(false);
 const showBackTop = ref(false);
@@ -76,23 +85,41 @@ const footerGroups = [
 <template>
   <div class="site-layout">
     <header class="site-header" :class="{ 'is-scrolled': isScrolled }">
-      <div class="site-header-inner">
+      <div class="site-header-inner" @keydown.esc="closeMenu">
         <RouterLink to="/" class="site-logo">
           <span class="logo-mark">F</span>
           <span class="logo-text">Fast Vue3</span>
           <Tag value="OpenVue" severity="info" class="logo-tag" />
         </RouterLink>
-        <nav class="site-nav">
+        <button
+          ref="menuButton"
+          type="button"
+          class="site-nav-toggle"
+          :aria-expanded="menuOpen"
+          aria-controls="site-navigation"
+          @click="menuOpen = !menuOpen"
+        >
+          菜单
+        </button>
+        <nav
+          id="site-navigation"
+          class="site-nav"
+          :class="{ 'site-nav--open': menuOpen }"
+          aria-label="主导航"
+        >
           <RouterLink
             v-for="item in navItems"
             :key="item.path"
             :to="item.path"
+            @click="menuOpen = false"
             class="nav-link"
             :class="{ active: isActive(item.path) }"
           >
             {{ item.label }}
           </RouterLink>
-          <RouterLink to="/login" class="nav-cta"> 登录 </RouterLink>
+          <RouterLink to="/login" class="nav-cta" @click="menuOpen = false">
+            登录
+          </RouterLink>
         </nav>
       </div>
     </header>

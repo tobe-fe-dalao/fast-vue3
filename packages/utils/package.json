@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "exports": {
     ".": {
@@ -13,8 +14,7 @@
   },
   "dependencies": {
     "@fast-vue3/shared": "workspace:*",
-    "dayjs": "catalog:",
-    "qs": "catalog:"
+    "dayjs": "catalog:"
   },
   "devDependencies": {
     "vitest": "catalog:"

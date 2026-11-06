@@ -127,7 +127,7 @@ watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <!-- Page Header -->
     <div
       style="
@@ -158,7 +158,11 @@ watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
         <IxRow :gutter="16">
           <!-- Main -->
           <IxCol :span="16">
-            <IxCard title="基本信息" shadow="never" style="margin-bottom: 16px">
+            <IxCard
+              title="基本信息"
+              :shadow="false"
+              style="margin-bottom: 16px"
+            >
               <IxDesc>
                 <IxDescItem label="用户 ID">{{ user.id }}</IxDescItem>
                 <IxDescItem label="用户名">{{ user.username }}</IxDescItem>
@@ -175,7 +179,7 @@ watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
               </IxDesc>
             </IxCard>
 
-            <IxCard title="最近活动" shadow="never">
+            <IxCard title="最近活动" :shadow="false">
               <IxTable
                 :columns="activityColumns"
                 :data-source="activities"
@@ -188,7 +192,7 @@ watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
 
           <!-- Side -->
           <IxCol :span="8">
-            <IxCard shadow="never" style="margin-bottom: 16px">
+            <IxCard :shadow="false" style="margin-bottom: 16px">
               <div
                 style="
                   display: flex;
@@ -220,7 +224,7 @@ watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
 
             <IxCard
               title="角色与权限"
-              shadow="never"
+              :shadow="false"
               style="margin-bottom: 16px"
             >
               <div style="margin-bottom: 8px; font-size: 14px; color: #9ca3af">
@@ -237,7 +241,7 @@ watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
               </div>
             </IxCard>
 
-            <IxCard title="账户状态" shadow="never">
+            <IxCard title="账户状态" :shadow="false">
               <div
                 style="
                   display: flex;

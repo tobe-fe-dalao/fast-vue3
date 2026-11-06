@@ -14,7 +14,7 @@ function handleSave() {
 }
 </script>
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <n-grid :cols="3" :x-gap="16">
       <n-gi>
         <n-card>

@@ -108,6 +108,7 @@ onMounted(fetchData);
           </template>
         </el-table-column>
         <el-table-column prop="createdAt" label="时间" width="170" />
+        <!-- @vue-generic {ErrorLog} -->
         <el-table-column label="操作" width="130">
           <template #default="{ row }">
             <el-button

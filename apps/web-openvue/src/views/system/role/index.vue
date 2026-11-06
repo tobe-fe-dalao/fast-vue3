@@ -142,7 +142,6 @@ onMounted(fetchData);
 
 <template>
   <div class="admin-page">
-    <Toast />
     <ConfirmDialog />
 
     <Card style="margin-bottom: 16px">

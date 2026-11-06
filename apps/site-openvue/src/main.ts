@@ -3,8 +3,9 @@ import '@fast-vue3/styles/reset';
 import '@fast-vue3/styles/site';
 import '@fast-vue3/styles/themes';
 
+import { definePreset, palette } from '@openvue/themes';
 import Aura from '@openvue/themes/aura';
-import PrimeVue from 'openvue/config';
+import OpenVue from 'openvue/config';
 import ToastService from 'openvue/toastservice';
 
 import App from './App.vue';
@@ -14,11 +15,15 @@ import { router } from './router';
 
 import 'primeicons/primeicons.css';
 
+const theme = definePreset(Aura, {
+  semantic: { primary: palette('{blue}') },
+});
+
 const app = createApp(App);
-app.use(PrimeVue, {
+app.use(OpenVue, {
   locale: zhCN,
   theme: {
-    preset: Aura,
+    preset: theme,
     options: { darkModeSelector: '.dark' },
   },
 });

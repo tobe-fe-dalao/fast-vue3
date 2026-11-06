@@ -8,6 +8,7 @@ const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
 const isFullscreen = ref(false);
+const isNarrowScreen = useMediaQuery('(max-width: 767px)');
 const prefs = usePreferences();
 const { isDark } = storeToRefs(prefs);
 
@@ -133,7 +134,10 @@ async function handleLogout() {
 </script>
 <template>
   <IxLayout style="height: 100vh">
-    <IxLayoutSider style="background: #111827" :width="220">
+    <IxLayoutSider
+      style="background: #111827"
+      :width="isNarrowScreen ? 112 : 220"
+    >
       <div
         style="
           display: flex;
@@ -303,7 +307,9 @@ async function handleLogout() {
           background: #f5f6fa;
         "
       >
-        <RouterView />
+        <div class="admin-workspace">
+          <RouterView />
+        </div>
       </IxLayoutContent>
     </IxLayout>
   </IxLayout>

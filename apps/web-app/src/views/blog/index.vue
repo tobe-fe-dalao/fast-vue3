@@ -17,53 +17,36 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="blog-page">
-    <div class="page-header">
-      <h1>博客动态</h1>
-      <p>项目更新、技术分享与最佳实践</p>
-    </div>
-    <div class="post-list">
-      <p v-if="error" role="alert">{{ error }}</p>
-      <article v-for="post in posts" :key="post.id" class="post-card">
-        <div class="post-meta">
-          <span class="tag">{{ post.category }}</span>
-          <span class="date">{{ post.date }}</span>
-        </div>
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.excerpt }}</p>
-      </article>
-    </div>
-    <div class="bottom-nav">
-      <RouterLink to="/features">&#8592; 产品特性</RouterLink>
-      <RouterLink to="/contact">联系我们 &#8594;</RouterLink>
-    </div>
+  <div>
+    <header class="site-hero site-hero--compact">
+      <h1 class="site-hero-title">博客动态</h1>
+      <p class="site-hero-desc">项目更新、技术分享与最佳实践</p>
+    </header>
+    <section class="site-section site-container site-container--narrow">
+      <div class="post-list">
+        <p v-if="error" role="alert">{{ error }}</p>
+        <article
+          v-for="post in posts"
+          :key="post.id"
+          class="site-card post-card"
+        >
+          <div class="post-meta">
+            <span class="tag">{{ post.category }}</span>
+            <span class="date">{{ post.date }}</span>
+          </div>
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.excerpt }}</p>
+        </article>
+      </div>
+      <div class="bottom-nav">
+        <RouterLink to="/features">&#8592; 产品特性</RouterLink>
+        <RouterLink to="/contact">联系我们 &#8594;</RouterLink>
+      </div>
+    </section>
   </div>
 </template>
 
 <style scoped>
-.blog-page {
-  max-width: 800px;
-  padding: 80px 20px;
-  margin: 0 auto;
-}
-
-.page-header {
-  margin-bottom: 48px;
-  text-align: center;
-}
-
-.page-header h1 {
-  margin: 0 0 16px;
-  font-size: 2.5rem;
-  color: #111827;
-}
-
-.page-header p {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #6b7280;
-}
-
 .post-list {
   display: flex;
   flex-direction: column;
@@ -73,8 +56,7 @@ onMounted(async () => {
 
 .post-card {
   padding: 28px;
-  cursor: pointer;
-  background: #f9fafb;
+  background: var(--site-bg);
   border-radius: 12px;
   transition: box-shadow 0.2s;
 }
@@ -94,7 +76,7 @@ onMounted(async () => {
   padding: 2px 10px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #1677ff;
+  color: var(--site-brand);
   background: #e6f4ff;
   border-radius: 4px;
 }
@@ -108,13 +90,13 @@ onMounted(async () => {
   margin: 0 0 8px;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--site-text-1);
 }
 
 .post-card p {
   margin: 0;
   line-height: 1.6;
-  color: #6b7280;
+  color: var(--site-text-3);
 }
 
 .bottom-nav {
@@ -124,7 +106,7 @@ onMounted(async () => {
 
 .bottom-nav a {
   font-weight: 500;
-  color: #1677ff;
+  color: var(--site-brand);
   text-decoration: none;
 }
 

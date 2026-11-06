@@ -1,5 +1,6 @@
 import '@fast-vue3/styles/global';
 import '@fast-vue3/styles/reset';
+import '@fast-vue3/styles/site';
 import '@fast-vue3/styles/themes';
 
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';

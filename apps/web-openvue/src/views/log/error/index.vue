@@ -81,8 +81,6 @@ onMounted(fetchData);
 
 <template>
   <div class="admin-page">
-    <Toast />
-
     <Card style="margin-bottom: 16px">
       <template #content>
         <div style="display: flex; gap: 12px; align-items: center">

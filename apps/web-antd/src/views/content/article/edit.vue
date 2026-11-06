@@ -145,7 +145,7 @@ watch(editId, loadForEdit, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page" style="max-width: 880px">
+  <div class="admin-page admin-page--narrow" style="max-width: 880px">
     <!-- Page Header -->
     <div class="mb-4 flex items-center gap-3">
       <AButton aria-label="返回" type="text" class="!p-1" @click="goBack">

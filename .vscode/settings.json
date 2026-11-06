@@ -21,5 +21,6 @@
     "**/.turbo": true,
     "**/.nitro": true,
     "**/.output": true
-  }
+  },
+  "cSpell.words": ["openvue", "tdesign"]
 }

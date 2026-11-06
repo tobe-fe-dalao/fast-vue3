@@ -24,9 +24,13 @@ const tableData = [
 ];
 </script>
 <template>
-  <div class="components-page">
+  <section class="component-gallery" aria-labelledby="component-gallery-title">
+    <header class="component-gallery__heading">
+      <h1 id="component-gallery-title">组件展示</h1>
+      <p>试用常见控件，查看表单、表格和操作反馈在实际界面中的表现。</p>
+    </header>
     <el-card header="按钮 Button" shadow="never">
-      <el-space wrap>
+      <div class="component-gallery__samples">
         <el-button>默认</el-button><el-button type="primary"> 主要 </el-button>
         <el-button type="success"> 成功 </el-button
         ><el-button type="warning"> 警告 </el-button>
@@ -34,21 +38,21 @@ const tableData = [
         ><el-button :loading="loading" type="primary" @click="triggerLoading">
           加载中
         </el-button>
-      </el-space>
+      </div>
     </el-card>
     <el-card header="标签 Tag" shadow="never">
-      <el-space wrap>
+      <div class="component-gallery__samples">
         <el-tag>默认</el-tag><el-tag type="success"> 成功 </el-tag>
         <el-tag type="info"> 信息 </el-tag><el-tag type="warning"> 警告 </el-tag
         ><el-tag type="danger"> 危险 </el-tag>
-      </el-space>
+      </div>
     </el-card>
     <el-card header="表单 Form" shadow="never">
-      <el-row :gutter="16">
-        <el-col :span="8">
+      <div class="component-gallery__controls">
+        <div>
           <el-input v-model="inputVal" placeholder="请输入内容" clearable />
-        </el-col>
-        <el-col :span="8">
+        </div>
+        <div>
           <el-select
             v-model="selectVal"
             placeholder="请选择"
@@ -61,40 +65,22 @@ const tableData = [
               :value="o.value"
             />
           </el-select>
-        </el-col>
-        <el-col :span="4">
+        </div>
+        <div>
           <el-switch v-model="switchVal" />
-        </el-col>
-      </el-row>
-      <el-row :gutter="16" class="mt-4">
-        <el-col :span="12">
+        </div>
+      </div>
+      <div class="component-gallery__controls mt-4">
+        <div>
           <el-progress :percentage="progress" />
-        </el-col>
-        <el-col :span="12">
+        </div>
+        <div>
           <el-slider v-model="progress" />
-        </el-col>
-      </el-row>
-    </el-card>
-    <el-card header="表格 Table" shadow="never">
-      <el-table :data="tableData" border stripe style="width: 100%">
-        <el-table-column prop="name" label="姓名" /><el-table-column
-          prop="role"
-          label="角色"
-        />
-        <el-table-column prop="dept" label="部门" /><el-table-column
-          prop="status"
-          label="状态"
-        >
-          <template #default="{ row }">
-            <el-tag :type="row.status === '在职' ? 'success' : 'info'">
-              {{ row.status }}
-            </el-tag>
-          </template>
-        </el-table-column>
-      </el-table>
+        </div>
+      </div>
     </el-card>
     <el-card header="反馈 Feedback" shadow="never">
-      <el-space>
+      <div class="component-gallery__samples">
         <el-button @click="ElMessage.success('操作成功')"> 成功提示 </el-button>
         <el-button @click="ElMessage.warning('请注意！')"> 警告提示 </el-button>
         <el-button @click="ElMessage.error('出错了！')"> 错误提示 </el-button>
@@ -109,23 +95,33 @@ const tableData = [
         >
           通知
         </el-button>
-      </el-space>
+      </div>
     </el-card>
-  </div>
+
+    <el-card header="表格 Table" shadow="never" class="component-gallery__wide">
+      <div
+        class="component-gallery__table"
+        role="region"
+        aria-label="表格示例"
+        tabindex="0"
+      >
+        <el-table :data="tableData" border stripe style="width: 100%">
+          <el-table-column prop="name" label="姓名" /><el-table-column
+            prop="role"
+            label="角色"
+          />
+          <el-table-column prop="dept" label="部门" /><el-table-column
+            prop="status"
+            label="状态"
+          >
+            <template #default="{ row }">
+              <el-tag :type="row.status === '在职' ? 'success' : 'info'">
+                {{ row.status }}
+              </el-tag>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </el-card>
+  </section>
 </template>
-
-<style scoped>
-.components-page {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 0;
-  padding: 8px;
-}
-
-@media (max-width: 767px) {
-  .components-page {
-    padding: 0;
-  }
-}
-</style>

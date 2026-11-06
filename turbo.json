@@ -2,8 +2,10 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": [
     "pnpm-lock.yaml",
+    ".node-version",
     "**/.env.*",
     "**/tsconfig*.json",
+    "internal/node-utils/src/**/*.ts",
     "internal/vite-config/src/**/*.ts",
     "scripts/**/*.ts"
   ],
@@ -18,13 +20,22 @@
       "outputs": ["dist/**"]
     },
     "typecheck": {
-      "outputs": []
+      "outputs": [],
+      "dependsOn": ["^stub"]
     },
     "dev": {
       "dependsOn": ["^build"],
       "outputs": [],
       "cache": false,
       "persistent": true
+    },
+    "stub": {
+      "dependsOn": ["^stub"],
+      "outputs": ["dist/**"]
+    },
+    "@fast-vue3/backend-mock#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".output/**"]
     }
   }
 }

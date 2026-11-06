@@ -146,7 +146,7 @@ watch(() => route.params.id, fetchRole, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <div
       style="
         display: flex;

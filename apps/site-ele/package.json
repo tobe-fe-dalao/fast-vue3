@@ -7,7 +7,7 @@
     "dev": "vite --mode development",
     "build": "vite build --mode production",
     "preview": "vite preview",
-    "type-check": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@element-plus/icons-vue": "catalog:",

@@ -1,7 +1,9 @@
 import { spawnSync } from 'node:child_process';
-import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import { findDemoApps } from './demo/apps.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist/demo');
@@ -22,13 +24,7 @@ const labels = {
   openvue: 'OpenVue',
   tdesign: 'TDesign',
 };
-const entries = await readdir(join(root, 'apps'), { withFileTypes: true });
-const apps = entries
-  .filter(
-    (entry) => entry.isDirectory() && /^(?:web|site)-[\w-]+$/.test(entry.name),
-  )
-  .map((entry) => entry.name)
-  .toSorted();
+const apps = await findDemoApps(join(root, 'apps'));
 
 function run(args, env = {}) {
   const result = spawnSync('pnpm', args, {

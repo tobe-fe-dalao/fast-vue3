@@ -40,7 +40,7 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <ACard v-if="organization" :bordered="false">
       <AForm layout="vertical" style="max-width: 480px">
         <AFormItem label="组织编码">

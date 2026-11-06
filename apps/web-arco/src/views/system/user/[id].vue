@@ -127,7 +127,7 @@ watch(() => route.params.id, fetchUser, { immediate: true, flush: 'sync' });
 </script>
 
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <!-- Page Header -->
     <div class="mb-4 flex items-center justify-between">
       <div class="mb-4 flex items-center gap-3">

@@ -26,7 +26,11 @@ try {
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
-const collapsed = ref(false);
+const isNarrowScreen = useMediaQuery('(max-width: 767px)');
+const collapsed = ref(isNarrowScreen.value);
+watch(isNarrowScreen, (isNarrow) => {
+  collapsed.value = isNarrow;
+});
 const msg = useMessage();
 
 const isFullscreen = ref(false);
@@ -236,6 +240,7 @@ async function handleDropdown(key: string) {
           {{ collapsed ? 'FV3' : 'Fast Vue3' }}
         </div>
         <n-menu
+          inverted
           :collapsed="collapsed"
           :value="route.path"
           :options="menuOptions"
@@ -419,7 +424,9 @@ async function handleDropdown(key: string) {
             background: #f5f6fa;
           "
         >
-          <RouterView />
+          <div class="admin-workspace">
+            <RouterView />
+          </div>
         </n-layout-content>
       </n-layout>
     </n-layout>

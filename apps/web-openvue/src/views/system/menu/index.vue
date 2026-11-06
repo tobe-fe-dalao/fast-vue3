@@ -174,8 +174,6 @@ onMounted(fetchData);
       <Button label="+ 新增菜单" @click="openDialog()" />
     </div>
 
-    <Toast />
-
     <Card>
       <template #content>
         <DataTable

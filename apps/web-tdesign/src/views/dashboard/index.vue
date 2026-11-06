@@ -152,19 +152,22 @@ onUnmounted(() => {
     <t-row :gutter="16" class="mb-4">
       <t-col :span="8">
         <t-card title="访问趋势（近7天）" :bordered="false" class="shadow-sm">
-          <div ref="lineChartRef" style="height: 280px"></div>
+          <div ref="lineChartRef" class="admin-dashboard-chart"></div>
         </t-card>
       </t-col>
       <t-col :span="4">
         <t-card title="用户角色分布" :bordered="false" class="shadow-sm">
-          <div ref="pieChartRef" style="height: 280px"></div>
+          <div ref="pieChartRef" class="admin-dashboard-chart"></div>
         </t-card>
       </t-col>
     </t-row>
     <t-row :gutter="16">
       <t-col :span="12">
         <t-card title="各模块使用频率" :bordered="false" class="shadow-sm">
-          <div ref="barChartRef" style="height: 240px"></div>
+          <div
+            ref="barChartRef"
+            class="admin-dashboard-chart admin-dashboard-chart--compact"
+          ></div>
         </t-card>
       </t-col>
     </t-row>

@@ -13,7 +13,7 @@ function handleSave() {
 }
 </script>
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <t-row :gutter="16">
       <t-col :span="4">
         <t-card :bordered="false">

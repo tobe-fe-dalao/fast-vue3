@@ -16,7 +16,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <ARow :gutter="16">
       <ACol :span="8">
         <ACard :bordered="false" class="shadow-sm">

@@ -115,7 +115,7 @@ function goBack() {
 
 <template>
   <div>
-    <section class="site-hero detail-hero">
+    <section class="site-hero site-hero--compact detail-hero">
       <a-button type="text" class="back-btn" @click="goBack">
         <IconLeft />返回博客列表
       </a-button>
@@ -222,22 +222,18 @@ function goBack() {
 </template>
 
 <style scoped>
-.detail-hero {
-  padding-block: 64px 48px;
-}
-
 .back-btn {
   margin-bottom: 16px;
-  color: rgb(255 255 255 / 85%) !important;
+  color: var(--site-brand) !important;
 }
 
 .back-btn:hover {
-  color: #fff !important;
+  color: var(--site-brand-hover) !important;
 }
 
 .hero-meta {
   font-size: 0.95rem;
-  color: rgb(255 255 255 / 80%);
+  color: var(--site-text-2);
 }
 
 .hero-meta .dot {

@@ -45,6 +45,15 @@
   }
 }
 
+/* Shared ECharts containers in the admin dashboards. */
+.admin-dashboard-chart {
+  height: 280px;
+}
+
+.admin-dashboard-chart--compact {
+  height: 240px;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
@@ -88,4 +97,72 @@
 .slide-left-leave-to {
   opacity: 0;
   transform: translateX(-20px);
+}
+
+.admin-workspace {
+  min-inline-size: 0;
+  max-inline-size: 100rem;
+  margin-inline: auto;
+}
+
+.admin-page--narrow {
+  max-inline-size: 65rem;
+  margin-inline: auto;
+}
+
+.component-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  min-inline-size: 0;
+  max-inline-size: 72rem;
+  margin-inline: auto;
+}
+
+.component-gallery > * {
+  min-inline-size: 0;
+}
+
+.component-gallery__heading,
+.component-gallery__wide {
+  grid-column: 1 / -1;
+}
+
+.component-gallery__heading h1 {
+  margin-block-end: 4px;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--app-text-color);
+}
+
+.component-gallery__heading p {
+  color: var(--app-text-secondary);
+}
+
+.component-gallery__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.component-gallery__controls > *,
+.component-gallery__control {
+  inline-size: min(100%, 11rem);
+  min-inline-size: 0;
+}
+
+.component-gallery__table {
+  overflow-x: auto;
+}
+
+.component-gallery__table > * {
+  min-inline-size: 30rem;
+}
+
+.component-gallery__samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }

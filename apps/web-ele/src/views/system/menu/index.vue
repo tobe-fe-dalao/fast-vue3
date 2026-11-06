@@ -171,6 +171,7 @@ onMounted(fetchData);
             </el-tag>
           </template>
         </el-table-column>
+        <!-- @vue-generic {MenuRecord} -->
         <el-table-column label="操作" width="200">
           <template #default="{ row }">
             <el-button

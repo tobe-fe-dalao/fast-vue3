@@ -5,7 +5,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 export default defineConfig(async () => {
   return {
     application: {
-      uiResolvers: [ElementPlusResolver()],
+      uiResolvers: [ElementPlusResolver({ importStyle: false })],
     },
   };
 });

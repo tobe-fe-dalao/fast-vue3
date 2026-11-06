@@ -158,18 +158,21 @@ onUnmounted(() => {
     <n-grid :cols="3" :x-gap="16" class="mb-4">
       <n-gi :span="2">
         <n-card title="访问趋势（近7天）">
-          <div ref="lineChartRef" style="height: 280px"></div>
+          <div ref="lineChartRef" class="admin-dashboard-chart"></div>
         </n-card>
       </n-gi>
       <n-gi>
         <n-card title="用户角色分布">
-          <div ref="pieChartRef" style="height: 280px"></div>
+          <div ref="pieChartRef" class="admin-dashboard-chart"></div>
         </n-card>
       </n-gi>
     </n-grid>
 
     <n-card title="各模块使用频率">
-      <div ref="barChartRef" style="height: 240px"></div>
+      <div
+        ref="barChartRef"
+        class="admin-dashboard-chart admin-dashboard-chart--compact"
+      ></div>
     </n-card>
   </div>
 </template>

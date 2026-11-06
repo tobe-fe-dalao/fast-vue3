@@ -3,7 +3,7 @@ import { IxMessageProvider } from '@idux/components/message';
 </script>
 
 <template>
-  <IxMessageProvider>
+  <IxMessageProvider :top="16">
     <RouterView />
   </IxMessageProvider>
 </template>

@@ -89,7 +89,7 @@ onMounted(async () => {
 <template>
   <p v-if="loadError" role="alert" class="site-container">{{ loadError }}</p>
   <div>
-    <section class="site-hero">
+    <section class="site-hero site-hero--compact">
       <h1 class="site-hero-title">产品功能</h1>
       <p class="site-hero-desc">
         {{ productSlogan }}

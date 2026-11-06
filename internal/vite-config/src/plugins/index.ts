@@ -28,6 +28,15 @@ import { viteNitroMockPlugin } from './nitro-mock';
 import { vitePrintPlugin } from './print';
 import { viteUnpluginPlugin } from './unplugin';
 
+function viteFileRoutesPlugin(watch: boolean) {
+  return VueRouter({
+    routesFolder: 'src/views',
+    dts: 'types/typed-router.d.ts',
+    extensions: ['.vue'],
+    watch,
+  });
+}
+
 /**
  * 获取条件成立的 vite 插件
  */
@@ -60,12 +69,7 @@ async function loadCommonPlugins(
     {
       condition: true,
       plugins: () => [
-        VueRouter({
-          routesFolder: 'src/views',
-          dts: 'types/typed-router.d.ts',
-          extensions: ['.vue'],
-          watch: !isBuild,
-        }),
+        viteFileRoutesPlugin(!isBuild),
         viteVue({
           script: {
             defineModel: true,
@@ -238,3 +242,5 @@ export {
   viteUnpluginPlugin,
   viteVisualizerPlugin,
 };
+
+export { viteFileRoutesPlugin };

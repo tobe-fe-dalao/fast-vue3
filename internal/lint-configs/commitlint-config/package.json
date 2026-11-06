@@ -16,11 +16,9 @@
     }
   },
   "dependencies": {
-    "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@fast-vue3/node-utils": "workspace:*",
     "commitlint-plugin-function-rules": "catalog:",
-    "cz-git": "catalog:",
-    "czg": "catalog:"
+    "cz-git": "catalog:"
   }
 }

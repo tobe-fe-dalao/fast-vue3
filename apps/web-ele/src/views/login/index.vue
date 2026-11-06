@@ -10,7 +10,13 @@ const router = useRouter();
 const userStore = useUserStore();
 const formRef = ref<FormInstance>();
 const loading = ref(false);
-const form = reactive({ username: 'admin', password: '123456' });
+const mockLogin =
+  import.meta.env.VITE_STATIC_MOCK === 'true' ||
+  (import.meta.env.DEV && import.meta.env.VITE_DEV_BACKEND !== 'server');
+const form = reactive({
+  username: mockLogin ? 'admin' : '',
+  password: mockLogin ? '123456' : '',
+});
 const rules = {
   username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
@@ -51,8 +57,8 @@ async function onLogin() {
         <p>多 UI 框架 · Monorepo 工程模板</p>
         <ul class="brand-list">
           <li>✦ Vue 3.5 + TypeScript</li>
-          <li>✦ Vite 7 + Turborepo</li>
-          <li>✦ Pinia + UnoCSS</li>
+          <li>✦ Vite + Turborepo</li>
+          <li>✦ Pinia + Tailwind CSS</li>
           <li>✦ 7 套 UI 框架</li>
         </ul>
       </div>
@@ -75,7 +81,7 @@ async function onLogin() {
             <el-input
               v-model="form.username"
               size="large"
-              placeholder="请输入用户名（admin）"
+              placeholder="请输入用户名"
             />
           </el-form-item>
           <el-form-item label="密码" prop="password">
@@ -84,7 +90,7 @@ async function onLogin() {
               type="password"
               size="large"
               show-password
-              placeholder="请输入密码（123456）"
+              placeholder="请输入密码"
             />
           </el-form-item>
           <el-button
@@ -97,7 +103,7 @@ async function onLogin() {
             登录
           </el-button>
         </el-form>
-        <p class="login-hint">默认账号：admin / 123456</p>
+        <p v-if="mockLogin" class="login-hint">演示账号：admin / 123456</p>
       </div>
     </div>
   </div>

@@ -181,7 +181,7 @@ onMounted(async () => {
     <!-- Stats Bar -->
     <section id="stats" class="stats-section">
       <div class="site-container site-container--narrow">
-        <div class="site-grid" style="--site-grid-cols: 4">
+        <div class="site-grid site-grid--stats">
           <div
             v-for="(s, i) in shownStats"
             :key="s.label"
@@ -254,19 +254,15 @@ onMounted(async () => {
           <h2 class="site-section-title">技术栈</h2>
           <p class="site-section-desc">拥抱最新的 Vue 生态工具链</p>
         </div>
-        <div class="site-grid" style="--site-grid-cols: 6">
+        <div class="site-grid site-grid--technologies">
           <div
             v-for="(t, i) in techStack"
             :key="t.name"
             v-reveal="i * 60"
-            class="site-card site-card--hoverable tech-card"
+            class="site-card site-card--hoverable site-home-tech-card"
           >
             <div class="tech-name">{{ t.name }}</div>
-            <Tag
-              :value="t.tag"
-              :severity="t.severity"
-              style="margin-top: 8px"
-            />
+            <Tag :value="t.tag" :severity="t.severity" />
           </div>
         </div>
       </div>
@@ -342,7 +338,7 @@ onMounted(async () => {
         <h2 class="cta-title">开始使用 Fast Vue3</h2>
         <p class="cta-desc">一行命令，即可启动你的下一个项目</p>
         <div class="cta-code">pnpm create fast-vue3</div>
-        <div class="site-btn-row" style="margin-top: 24px">
+        <div class="site-btn-row site-home-cta-actions">
           <Button
             label="阅读文档"
             class="cta-btn"
@@ -565,11 +561,6 @@ onMounted(async () => {
   color: var(--site-text-4);
 }
 
-.tech-card {
-  padding: 20px 12px;
-  text-align: center;
-}
-
 .tech-name {
   font-size: 1.05rem;
   font-weight: 600;
@@ -716,7 +707,15 @@ onMounted(async () => {
 
 @media (max-width: 640px) {
   .hero {
-    padding: 72px 20px 96px;
+    padding: 56px 20px 80px;
+  }
+
+  .hero-scroll-hint {
+    bottom: 28px;
+  }
+
+  .stats-section {
+    margin-top: -28px;
   }
 
   .hero-title {

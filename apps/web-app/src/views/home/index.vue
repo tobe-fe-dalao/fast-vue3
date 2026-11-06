@@ -29,26 +29,37 @@ onMounted(async () => {
     <section class="hero">
       <h1>Fast Vue3</h1>
       <p>基于 Vite + Turborepo 的多 UI 框架 Monorepo 模板</p>
-      <div class="hero-actions">
+      <div class="site-btn-row">
         <RouterLink to="/features" class="btn-white">了解更多</RouterLink>
         <RouterLink to="/contact" class="btn-outline-white">
           联系我们
         </RouterLink>
       </div>
     </section>
-    <section class="features">
+    <section class="site-container site-section features">
       <h2>核心特性</h2>
-      <div class="grid">
-        <div v-for="f in features" :key="f.title" class="feature-card">
+      <div class="site-grid">
+        <div
+          v-for="f in features"
+          :key="f.title"
+          class="site-card feature-card"
+        >
           <span class="feature-icon">{{ f.icon }}</span>
           <h3>{{ f.title }}</h3>
           <p>{{ f.desc }}</p>
         </div>
       </div>
     </section>
-    <section v-if="stats.length > 0" class="features">
-      <div class="grid">
-        <div v-for="item in stats" :key="item.label" class="feature-card">
+    <section
+      v-if="stats.length > 0"
+      class="site-container site-section features"
+    >
+      <div class="site-grid site-grid--stats">
+        <div
+          v-for="item in stats"
+          :key="item.label"
+          class="site-card feature-card"
+        >
           <h3>{{ item.value }}</h3>
           <p>{{ item.label }}</p>
         </div>
@@ -64,15 +75,15 @@ onMounted(async () => {
 
 <style scoped>
 .hero {
-  padding: 120px 20px 100px;
+  padding: clamp(56px, 9vw, 120px) 24px;
   color: #fff;
   text-align: center;
-  background: linear-gradient(135deg, #1677ff, #722ed1);
+  background: var(--site-gradient);
 }
 
 .hero h1 {
   margin: 0 0 16px;
-  font-size: 3.5rem;
+  font-size: clamp(2.25rem, 7vw, 3.5rem);
   font-weight: 800;
 }
 
@@ -82,16 +93,10 @@ onMounted(async () => {
   opacity: 0.85;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-}
-
 .btn-white {
   padding: 12px 32px;
   font-weight: 600;
-  color: #1677ff;
+  color: var(--site-brand);
   text-decoration: none;
   background: #fff;
   border-radius: 8px;
@@ -118,28 +123,19 @@ onMounted(async () => {
 }
 
 .features {
-  max-width: 1100px;
-  padding: 80px 20px;
-  margin: 0 auto;
   text-align: center;
 }
 
 .features h2 {
   margin: 0 0 48px;
   font-size: 2rem;
-  color: #111827;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
+  color: var(--site-text-1);
 }
 
 .feature-card {
   padding: 32px 24px;
   text-align: left;
-  background: #f9fafb;
+  background: var(--site-bg);
   border-radius: 12px;
   transition:
     box-shadow 0.2s,
@@ -161,30 +157,30 @@ onMounted(async () => {
   margin: 0 0 8px;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--site-text-1);
 }
 
 .feature-card p {
   margin: 0;
   line-height: 1.6;
-  color: #6b7280;
+  color: var(--site-text-3);
 }
 
 .cta {
   padding: 80px 20px;
   text-align: center;
-  background: #f9fafb;
+  background: var(--site-bg);
 }
 
 .cta h2 {
   margin: 0 0 12px;
   font-size: 2rem;
-  color: #111827;
+  color: var(--site-text-1);
 }
 
 .cta p {
   margin: 0 0 24px;
-  color: #6b7280;
+  color: var(--site-text-3);
 }
 
 .cta code {
@@ -193,7 +189,7 @@ onMounted(async () => {
   font-family: monospace;
   font-size: 1rem;
   color: #52c41a;
-  background: #111827;
+  background: var(--site-text-1);
   border-radius: 8px;
 }
 </style>

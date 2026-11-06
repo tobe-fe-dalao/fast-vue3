@@ -5,7 +5,7 @@ import Layout from './layout/index.vue';
 </script>
 
 <template>
-  <IxMessageProvider>
+  <IxMessageProvider :top="16">
     <Layout />
   </IxMessageProvider>
 </template>

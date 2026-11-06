@@ -13,7 +13,6 @@
   "dependencies": {
     "@arco-design/web-vue": "catalog:",
     "@fast-vue3/api": "workspace:*",
-    "@fast-vue3/preferences": "workspace:*",
     "@fast-vue3/request": "workspace:*",
     "@fast-vue3/styles": "workspace:*",
     "@vueuse/core": "catalog:",

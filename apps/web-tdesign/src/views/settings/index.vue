@@ -29,7 +29,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div class="admin-page" style="max-width: 720px">
+  <div class="admin-page admin-page--narrow" style="max-width: 720px">
     <t-card title="基础设置" :bordered="false" class="mb-4">
       <t-form :data="form" :label-width="100">
         <t-form-item label="站点名称" name="siteName">

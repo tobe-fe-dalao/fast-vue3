@@ -75,7 +75,7 @@ onMounted(async () => {
 <template>
   <p v-if="loadError" role="alert" class="site-container">{{ loadError }}</p>
   <div>
-    <section class="site-hero">
+    <section class="site-hero site-hero--compact">
       <h1 class="site-hero-title">核心特性</h1>
       <p class="site-hero-desc">
         从工程架构到开发体验，Fast Vue3 为你提供企业级最佳实践

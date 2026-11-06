@@ -18,7 +18,7 @@ function handleSave() {
 </script>
 
 <template>
-  <div class="admin-page" style="max-width: 720px">
+  <div class="admin-page admin-page--narrow" style="max-width: 720px">
     <a-card title="基础设置" :bordered="false" class="mb-4 shadow-sm">
       <a-form
         :model="form"

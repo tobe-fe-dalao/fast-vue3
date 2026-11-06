@@ -52,7 +52,7 @@ async function download(item: StoredFile) {
 </script>
 
 <template>
-  <div class="admin-page">
+  <div class="admin-page admin-page--narrow">
     <ACard :bordered="false">
       <AAlert
         message="上传记录仅保留在当前页面。下载操作使用当前登录身份访问文件。"

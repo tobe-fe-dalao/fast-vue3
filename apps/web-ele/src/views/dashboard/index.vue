@@ -149,19 +149,22 @@ onUnmounted(() => {
     <el-row :gutter="16" class="mb-4">
       <el-col :span="16">
         <el-card header="访问趋势（近7天）" shadow="never">
-          <div ref="lineChartRef" style="height: 280px"></div>
+          <div ref="lineChartRef" class="admin-dashboard-chart"></div>
         </el-card>
       </el-col>
       <el-col :span="8">
         <el-card header="用户角色分布" shadow="never">
-          <div ref="pieChartRef" style="height: 280px"></div>
+          <div ref="pieChartRef" class="admin-dashboard-chart"></div>
         </el-card>
       </el-col>
     </el-row>
     <el-row :gutter="16">
       <el-col :span="24">
         <el-card header="各模块使用频率" shadow="never">
-          <div ref="barChartRef" style="height: 240px"></div>
+          <div
+            ref="barChartRef"
+            class="admin-dashboard-chart admin-dashboard-chart--compact"
+          ></div>
         </el-card>
       </el-col>
     </el-row>

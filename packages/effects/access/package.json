@@ -2,6 +2,9 @@
   "name": "@fast-vue3/access",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
@@ -11,7 +14,6 @@
   },
   "dependencies": {
     "@fast-vue3/stores": "workspace:*",
-    "@fast-vue3/utils": "workspace:*",
     "vue-router": "catalog:"
   }
 }

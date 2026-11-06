@@ -18,26 +18,26 @@ const techItems = [
   { label: 'Vue', value: 'Vue 3.5 + Composition API' },
   { label: 'Build', value: 'Vite + Turborepo' },
   { label: 'Language', value: 'TypeScript' },
-  { label: 'Style', value: 'UnoCSS + CSS Variables' },
+  { label: 'Style', value: 'Tailwind CSS + CSS Variables' },
   { label: 'State', value: 'Pinia + Persistedstate' },
-  { label: 'Router', value: 'Vue Router + File Routes' },
+  { label: 'Router', value: 'Vue Router' },
 ];
 </script>
 
 <template>
-  <div class="about-page">
+  <div class="site-section site-container site-container--narrow about-page">
     <p v-if="error" role="alert">{{ error }}</p>
     <h1>关于项目</h1>
     <p v-if="about" class="desc">{{ about.intro }}</p>
-    <div v-if="about" class="grid">
-      <div v-for="item in about.stats" :key="item.label" class="card">
+    <div v-if="about" class="site-grid grid">
+      <div v-for="item in about.stats" :key="item.label" class="site-card card">
         <div class="value">{{ item.value }}</div>
         <div class="label">{{ item.label }}</div>
       </div>
     </div>
     <h2>技术栈</h2>
-    <div class="grid">
-      <div v-for="item in techItems" :key="item.label" class="card">
+    <div class="site-grid grid">
+      <div v-for="item in techItems" :key="item.label" class="site-card card">
         <div class="label">{{ item.label }}</div>
         <div class="value">{{ item.value }}</div>
       </div>
@@ -50,41 +50,34 @@ const techItems = [
 </template>
 
 <style scoped>
-.about-page {
-  max-width: 800px;
-  padding: 80px 20px;
-  margin: 0 auto;
-}
-
 .about-page h1 {
   margin: 0 0 20px;
   font-size: 2.5rem;
-  color: #111827;
+  color: var(--site-text-1);
 }
 
 .desc {
   margin: 0 0 48px;
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #6b7280;
+  color: var(--site-text-3);
 }
 
 .about-page h2 {
   margin: 0 0 24px;
   font-size: 1.5rem;
-  color: #111827;
+  color: var(--site-text-1);
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  --site-grid-cols: 2;
+
   margin-bottom: 48px;
 }
 
 .card {
   padding: 20px;
-  background: #f9fafb;
+  background: var(--site-bg);
   border-radius: 8px;
   transition: box-shadow 0.2s;
 }
@@ -103,7 +96,7 @@ const techItems = [
 
 .value {
   font-weight: 600;
-  color: #111827;
+  color: var(--site-text-1);
 }
 
 .nav-links {
@@ -113,7 +106,7 @@ const techItems = [
 
 .nav-links a {
   font-weight: 500;
-  color: #1677ff;
+  color: var(--site-brand);
   text-decoration: none;
 }
 

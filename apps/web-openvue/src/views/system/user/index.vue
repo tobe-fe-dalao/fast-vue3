@@ -216,17 +216,15 @@ onMounted(fetchData);
 
 <template>
   <div class="admin-page">
-    <Toast />
     <ConfirmDialog />
 
     <!-- 搜索区域 -->
-    <Card style="margin-bottom: 16px">
+    <Card class="user-filters">
       <template #content>
-        <div
-          style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center"
-        >
+        <div class="user-filter-bar">
           <InputText
             v-model="keyword"
+            class="user-filter-keyword"
             placeholder="用户名 / 姓名 / 邮箱"
             @keyup.enter="handleSearch"
           />
@@ -237,7 +235,7 @@ onMounted(fetchData);
             option-value="value"
             placeholder="状态"
             show-clear
-            style="width: 140px"
+            class="user-filter-select"
           />
           <Select
             v-model="roleFilter"
@@ -246,14 +244,14 @@ onMounted(fetchData);
             option-value="value"
             placeholder="角色"
             show-clear
-            style="width: 140px"
+            class="user-filter-select"
           />
           <Button label="搜索" @click="handleSearch" />
           <Button label="重置" severity="secondary" @click="handleReset" />
           <Button
             label="+ 新增用户"
             @click="openDialog()"
-            style="margin-left: auto"
+            class="user-filter-create"
           />
         </div>
       </template>
@@ -273,6 +271,7 @@ onMounted(fetchData);
           striped-rows
           size="small"
           data-key="id"
+          table-class="user-table"
         >
           <Column field="id" header="ID" style="width: 60px" />
           <Column field="username" header="用户名" style="width: 110px" />
@@ -485,3 +484,52 @@ onMounted(fetchData);
     </Drawer>
   </div>
 </template>
+
+<style scoped>
+.user-filters {
+  margin-block-end: 16px;
+}
+
+.user-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.user-filter-keyword,
+.user-filter-select {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.user-filter-select {
+  width: 140px;
+}
+
+.user-filter-create {
+  margin-inline-start: auto;
+}
+
+:deep(.user-table) {
+  min-width: 960px;
+}
+
+@media (max-width: 639px) {
+  .user-filter-bar {
+    gap: 8px;
+  }
+
+  .user-filter-keyword {
+    width: 100%;
+  }
+
+  .user-filter-select {
+    flex: 1 1 104px;
+  }
+
+  .user-filter-create {
+    margin-inline-start: 0;
+  }
+}
+</style>

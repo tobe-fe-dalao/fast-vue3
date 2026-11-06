@@ -118,13 +118,30 @@ app.use(IduxComponents);
   },
 };
 
-function sortScripts(scripts: Record<string, string>): Record<string, string> {
-  const sorted: Record<string, string> = {};
-  for (const key of Object.keys(scripts).toSorted()) {
-    const value = scripts[key];
-    if (value !== undefined) sorted[key] = value;
-  }
-  return sorted;
+function addAppScript(
+  scripts: Record<string, string>,
+  command: 'build' | 'dev',
+  name: string,
+) {
+  const key = `${command}:${name}`;
+  const value = `pnpm -F @fast-vue3/${name} run ${command}`;
+  if (Object.hasOwn(scripts, key)) return { ...scripts, [key]: value };
+
+  const entries = Object.entries(scripts);
+  const appGroup = name.split('-')[0];
+  const prefix = `${command}:${appGroup}-`;
+  const lastApp = entries.findLastIndex(([script]) =>
+    script.startsWith(prefix),
+  );
+  const lastCommand = entries.findLastIndex(
+    ([script]) => script === command || script.startsWith(`${command}:`),
+  );
+  const groupEnd = lastApp === -1 ? lastCommand : lastApp;
+  entries.splice(groupEnd === -1 ? entries.length : groupEnd + 1, 0, [
+    key,
+    value,
+  ]);
+  return Object.fromEntries(entries);
 }
 
 function addRootAppScripts(root: string, name: string) {
@@ -134,11 +151,8 @@ function addRootAppScripts(root: string, name: string) {
   ) as RootPackageJson;
   const devKey = `dev:${name}`;
   const buildKey = `build:${name}`;
-  const filterFlag = `@fast-vue3/${name}`;
-
-  rootPkg.scripts[devKey] = `pnpm -F ${filterFlag} run dev`;
-  rootPkg.scripts[buildKey] = `pnpm -F ${filterFlag} run build`;
-  rootPkg.scripts = sortScripts(rootPkg.scripts);
+  rootPkg.scripts = addAppScript(rootPkg.scripts, 'dev', name);
+  rootPkg.scripts = addAppScript(rootPkg.scripts, 'build', name);
 
   writeFileSync(rootPkgPath, `${JSON.stringify(rootPkg, null, 2)}\n`);
 

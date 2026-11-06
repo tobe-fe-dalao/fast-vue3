@@ -12,6 +12,9 @@ on:
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'tsconfig.json'
+      - 'turbo.json'
+      - 'tests/**'
+      - '.node-version'
       - '.github/workflows/deploy-demo.yml'
   workflow_dispatch:
 
@@ -32,10 +35,10 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version-file: .node-version
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm -F @fast-vue3/api test
+      - run: pnpm test
       - run: pnpm typecheck
       - run: pnpm build:demo
         env:

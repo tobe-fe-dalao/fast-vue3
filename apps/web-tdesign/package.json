@@ -7,13 +7,11 @@
     "dev": "vite --mode development",
     "build": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
-    "type-check": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@fast-vue3/access": "workspace:*",
     "@fast-vue3/api": "workspace:*",
     "@fast-vue3/layout": "workspace:*",
-    "@fast-vue3/locales": "workspace:*",
     "@fast-vue3/preferences": "workspace:*",
     "@fast-vue3/request": "workspace:*",
     "@fast-vue3/shared": "workspace:*",
@@ -30,15 +28,12 @@
     "vue-router": "catalog:"
   },
   "devDependencies": {
-    "@fast-vue3/eslint-config": "workspace:*",
     "@fast-vue3/tsconfig": "workspace:*",
     "@fast-vue3/vite-config": "workspace:*",
     "@tdesign-vue-next/auto-import-resolver": "catalog:",
     "@types/node": "catalog:",
     "@types/nprogress": "catalog:",
-    "less": "catalog:",
     "typescript": "catalog:",
-    "unplugin-vue-components": "catalog:",
     "vite": "catalog:",
     "vue-tsc": "catalog:"
   }

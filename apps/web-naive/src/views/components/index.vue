@@ -2,13 +2,16 @@
 import { useMessage } from 'naive-ui';
 
 const message = useMessage();
-const loading = ref(false);
+const { isPending: loading, start: triggerLoading } = useTimeoutFn(
+  () => {},
+  1200,
+  { immediate: false },
+);
 const inputVal = ref('');
 const numVal = ref(50);
 const selectVal = ref('vue');
 const switchVal = ref(true);
 const progressVal = ref(60);
-const sliderVal = ref(45);
 
 const selectOptions = [
   { label: 'Vue 3', value: 'vue' },
@@ -34,10 +37,14 @@ const tableData = [
 </script>
 
 <template>
-  <div class="components-page">
+  <section class="component-gallery" aria-labelledby="component-gallery-title">
+    <header class="component-gallery__heading">
+      <h1 id="component-gallery-title">组件展示</h1>
+      <p>试用常见控件，查看表单、表格和操作反馈在实际界面中的表现。</p>
+    </header>
     <!-- 按钮 -->
     <n-card title="按钮 Button">
-      <n-space wrap>
+      <div class="component-gallery__samples">
         <n-button type="primary"> 主要按钮 </n-button>
         <n-button type="info"> 信息按钮 </n-button>
         <n-button type="success"> 成功按钮 </n-button>
@@ -45,16 +52,16 @@ const tableData = [
         <n-button type="error"> 错误按钮 </n-button>
         <n-button ghost> 幽灵按钮 </n-button>
         <n-button dashed> 虚线按钮 </n-button>
-        <n-button type="primary" :loading="loading" @click="loading = !loading">
+        <n-button type="primary" :loading="loading" @click="triggerLoading()">
           加载按钮
         </n-button>
         <n-button type="primary" disabled> 禁用按钮 </n-button>
-      </n-space>
+      </div>
     </n-card>
 
     <!-- 标签 -->
     <n-card title="标签 Tag">
-      <n-space wrap>
+      <div class="component-gallery__samples">
         <n-tag>Default</n-tag>
         <n-tag type="success"> Success </n-tag>
         <n-tag type="warning"> Warning </n-tag>
@@ -65,16 +72,16 @@ const tableData = [
         <n-tag type="warning" round> Round Warning </n-tag>
         <n-tag type="error" round> Round Error </n-tag>
         <n-tag type="info" round> Round Info </n-tag>
-      </n-space>
+      </div>
     </n-card>
 
     <!-- 输入框 -->
     <n-card title="输入框 Input">
-      <n-grid :cols="3" :x-gap="16">
-        <n-gi>
+      <div class="component-gallery__controls">
+        <div>
           <n-input v-model:value="inputVal" placeholder="基础输入框" />
-        </n-gi>
-        <n-gi>
+        </div>
+        <div>
           <n-input
             v-model:value="inputVal"
             type="text"
@@ -96,94 +103,85 @@ const tableData = [
               </n-icon>
             </template>
           </n-input>
-        </n-gi>
-        <n-gi>
+        </div>
+        <div>
           <n-input-number
             v-model:value="numVal"
             :min="0"
             :max="100"
             style="width: 100%"
           />
-        </n-gi>
-      </n-grid>
+        </div>
+      </div>
     </n-card>
 
     <!-- 选择器 -->
     <n-card title="选择器 Select + DatePicker + Switch">
-      <n-grid :cols="3" :x-gap="16">
-        <n-gi>
+      <div class="component-gallery__controls">
+        <div>
           <n-select
             v-model:value="selectVal"
             :options="selectOptions"
             placeholder="请选择"
           />
-        </n-gi>
-        <n-gi>
+        </div>
+        <div>
           <n-date-picker type="date" style="width: 100%" />
-        </n-gi>
-        <n-gi>
+        </div>
+        <div>
           <div class="flex items-center gap-2">
             <n-switch v-model:value="switchVal" />
             <span>{{ switchVal ? '开启' : '关闭' }}</span>
           </div>
-        </n-gi>
-      </n-grid>
+        </div>
+      </div>
     </n-card>
 
     <!-- 进度条 -->
     <n-card title="进度条 Progress + Slider">
-      <n-grid :cols="2" :x-gap="16">
-        <n-gi>
+      <div class="component-gallery__controls">
+        <div>
           <n-progress
             type="line"
             :percentage="progressVal"
             indicator-placement="inside"
           />
-          <n-slider v-model:value="sliderVal" :step="1" class="mt-4" />
-        </n-gi>
-        <n-gi>
+          <n-slider v-model:value="progressVal" :step="1" class="mt-4" />
+        </div>
+        <div>
           <div class="flex justify-center">
             <n-progress type="circle" :percentage="progressVal" />
           </div>
-        </n-gi>
-      </n-grid>
-    </n-card>
-
-    <!-- 表格 -->
-    <n-card title="表格 Table">
-      <n-data-table
-        :columns="columns"
-        :data="tableData"
-        :bordered="true"
-        :single-line="false"
-        size="medium"
-      />
+        </div>
+      </div>
     </n-card>
 
     <!-- 通知反馈 -->
     <n-card title="通知反馈">
-      <n-space>
+      <div class="component-gallery__samples">
         <n-button @click="message.success('操作成功！')"> 成功消息 </n-button>
         <n-button @click="message.error('操作失败！')"> 错误消息 </n-button>
         <n-button @click="message.warning('请注意！')"> 警告消息 </n-button>
         <n-button @click="message.info('提示信息')"> 普通消息 </n-button>
-      </n-space>
+      </div>
     </n-card>
-  </div>
+
+    <!-- 表格 -->
+    <n-card title="表格 Table" class="component-gallery__wide">
+      <div
+        class="component-gallery__table"
+        role="region"
+        aria-label="表格示例"
+        tabindex="0"
+      >
+        <n-data-table
+          :columns="columns"
+          :data="tableData"
+          :bordered="true"
+          :single-line="false"
+          size="medium"
+        />
+      </div>
+    </n-card>
+  </section>
 </template>
-
-<style scoped>
-.components-page {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 0;
-  padding: 8px;
-}
-
-@media (max-width: 767px) {
-  .components-page {
-    padding: 0;
-  }
-}
-</style>

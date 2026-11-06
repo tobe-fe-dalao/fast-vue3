@@ -1,6 +1,15 @@
 <script setup lang="ts">
 const route = useRoute();
 
+const menuOpen = ref(false);
+const menuButton = ref<HTMLButtonElement>();
+
+function closeMenu() {
+  if (!menuOpen.value) return;
+  menuOpen.value = false;
+  menuButton.value?.focus();
+}
+
 const navLinks = [
   { path: '/', label: '首页' },
   { path: '/features', label: '特性' },
@@ -12,14 +21,30 @@ const navLinks = [
 
 <template>
   <div class="app-layout">
-    <header class="app-header">
-      <div class="header-inner">
+    <header class="app-header site-header">
+      <div class="header-inner site-header-inner" @keydown.esc="closeMenu">
         <RouterLink to="/" class="logo">Fast Vue3</RouterLink>
-        <nav class="nav">
+        <button
+          ref="menuButton"
+          type="button"
+          class="site-nav-toggle"
+          :aria-expanded="menuOpen"
+          aria-controls="site-navigation"
+          @click="menuOpen = !menuOpen"
+        >
+          菜单
+        </button>
+        <nav
+          id="site-navigation"
+          class="nav site-nav"
+          :class="{ 'site-nav--open': menuOpen }"
+          aria-label="主导航"
+        >
           <RouterLink
             v-for="link in navLinks"
             :key="link.path"
             :to="link.path"
+            @click="menuOpen = false"
             class="nav-link"
             :class="{ active: route.path === link.path }"
           >

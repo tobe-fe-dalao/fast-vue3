@@ -54,6 +54,10 @@ async function mockApi(page: Page) {
         data = await api.notification.unreadCount();
         break;
       }
+      case '/public/blog': {
+        data = await api.portal.blogList(Object.fromEntries(url.searchParams));
+        break;
+      }
       default: {
         if (/^\/content\/articles\/\d+$/.test(path))
           data = await api.content.articleDetail(id);
@@ -87,6 +91,8 @@ async function mockApi(page: Page) {
 
 async function login(page: Page, path = '/content/article') {
   await page.goto(`/#/login?redirect=${encodeURIComponent(path)}`);
+  await page.getByPlaceholder('请输入用户名').fill('admin');
+  await page.getByPlaceholder('请输入密码').fill('123456');
   await page.getByRole('button', { name: /^登\s*录$/ }).click();
   await expect(page).toHaveURL(
     new RegExp(`#${path.replaceAll('?', String.raw`\?`)}$`),
@@ -99,6 +105,8 @@ test('profile failure rolls back the entire login session', async ({
   await mockApi(page);
   await page.route('**/api/v1/auth/me', (route) => fulfill(route, null, 500));
   await page.goto('/#/login');
+  await page.getByPlaceholder('请输入用户名').fill('admin');
+  await page.getByPlaceholder('请输入密码').fill('123456');
   await page.getByRole('button', { name: /^登\s*录$/ }).click();
   await expect(page.getByText('request failed', { exact: true })).toBeVisible();
   expect(
@@ -298,4 +306,24 @@ test('logout revokes the refresh token and clears local session state', async ({
       localStorage.getItem('fast-vue3:refresh-token'),
     ]),
   ).toEqual([null, null]);
+});
+
+test('portal blog retries a failed load and opens the article from its title', async ({
+  page,
+}) => {
+  await mockApi(page);
+  await page.route(
+    '**/api/v1/public/blog?**',
+    (route) => fulfill(route, null, 500),
+    { times: 1 },
+  );
+  await page.goto('http://127.0.0.1:4178/blog');
+  await expect(page.getByRole('alert')).toContainText('文章列表加载失败');
+  const retry = page.waitForRequest('**/api/v1/public/blog?**');
+  await page.getByRole('button', { name: '重试' }).click();
+  const request = await retry;
+  expect(new URL(request.url()).searchParams.get('pageSize')).toBe('6');
+  const title = '如何用 Fast Vue3 在一天内搭好企业后台';
+  await page.getByRole('link', { name: title }).press('Enter');
+  await expect(page.getByRole('heading', { name: title })).toBeVisible();
 });

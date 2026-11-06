@@ -12,7 +12,7 @@ const techStack = [
   { label: '框架', value: 'Vue 3.5 + Composition API' },
   { label: '构建', value: 'Vite 8 + Turborepo 2' },
   { label: '语言', value: 'TypeScript 6' },
-  { label: '样式', value: 'UnoCSS + CSS Variables' },
+  { label: '样式', value: 'Tailwind CSS + CSS Variables' },
   { label: '状态', value: 'Pinia 3 + Persistedstate' },
   { label: '路由', value: 'Vue Router 4 + File Routes' },
   { label: 'UI 框架', value: 'Naive UI' },
@@ -34,7 +34,7 @@ const depColumns = [
 </script>
 
 <template>
-  <div class="admin-page" style="max-width: 800px">
+  <div class="admin-page admin-page--narrow" style="max-width: 800px">
     <NCard title="项目信息" class="mb-4">
       <NDescriptions :column="2" label-placement="left">
         <NDescriptionsItem
